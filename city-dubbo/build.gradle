@@ -1,0 +1,219 @@
+//http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects/
+//https://github.com/davenkin/gradle-learning
+//https://github.com/spring-projects/spring-framework/blob/master/build.gradle
+allprojects {
+	group = 'cn.pengh.city'
+	version = '0.0.2'
+	ext {	
+		jvm_version 					= 1.6
+		junit_version 					= '4.12'
+		spring_version 					= '4.2.5.RELEASE'
+		spring_boot_version 			= '1.2.8.RELEASE'//1.3.5 jdk7
+		hibernate_version 				= '5.1.0.Final'//5.2+ requires jdk1.8
+		hibernate_validator_version		= '5.2.4.Final'
+		jackson_version 				= '2.4.6'
+		log4j2_version 					= '2.3'//2.4+ requires jdk1.7
+		httpclient_version 				= '4.5.2'
+		quartz_version 					= '2.2.1'
+		cglib_version 					= '3.2.2'
+		dubbo_version					= '2.5.3'
+		zookeeper_version				= '3.4.8'
+		zkclient_version				= '0.9'
+		javassist_version				= '3.20.0-GA'
+		netty_version					= '3.2.10.Final'
+		kryo_version					= '3.0.3'
+		tomcat_version					= '7.0.59'
+		local_libs						= 'c:/www/pengh/libs'
+		release_dir						= 'c:/users/pengh/desktop/release'
+	}
+
+	repositories {
+		mavenCentral()
+		//flatDir(dirs: "$projectDir/libs")
+	}
+}
+
+subprojects {	
+	apply plugin: 'java'
+	apply plugin: 'eclipse'	
+	
+	sourceCompatibility = jvm_version
+	targetCompatibility = jvm_version
+
+	dependencies {
+		//compile files("${System.properties['java.home']}/../lib/tools.jar")
+		compile (
+			//'commons-fileupload:commons-fileupload:1.3.1',
+			'commons-logging:commons-logging:1.2',
+			//'commons-lang:commons-lang:2.6',
+			//'org.apache.commons:commons-lang3:3.4',
+			//'commons-collections:commons-collections:3.2.2',
+			//'commons-beanutils:commons-beanutils:1.9.2',
+
+			//'org.apache.ant:ant-parent:1.9.7',
+			'joda-time:joda-time:2.9.3',
+			//'com.google.guava:guava:19.0',
+
+	        //"com.google.code.gson:gson:2.6.2",
+			"com.fasterxml.jackson.core:jackson-core:${jackson_version}",//log4j2.json依赖Jackson
+			"com.fasterxml.jackson.core:jackson-databind:${jackson_version}",
+
+			"org.apache.logging.log4j:log4j-api:$log4j2_version",
+			"org.apache.logging.log4j:log4j-core:$log4j2_version",
+			"org.apache.logging.log4j:log4j-1.2-api:$log4j2_version",
+			"org.apache.logging.log4j:log4j-slf4j-impl:$log4j2_version",
+
+			"org.springframework:spring-core:${spring_version}",
+			"org.springframework:spring-context-support:${spring_version}",
+			
+
+			//"org.hibernate:hibernate-validator:$hibernate_validator_version",
+
+
+			'javax.annotation:javax.annotation-api:1.2',
+			'javax.ws.rs:javax.ws.rs-api:2.0.1',
+			//'de.javakaffee:kryo-serializers:0.38',
+			//"com.esotericsoftware:kryo:$kryo_version",
+			"org.jboss.netty:netty:$netty_version",
+			"org.javassist:javassist:${javassist_version}"
+		)
+		compile ("org.apache.zookeeper:zookeeper:$zookeeper_version"){
+			exclude(module: 'log4j')
+			exclude(module: 'slf4j-log4j12')
+			exclude(module: 'netty')
+		}
+		compile ("com.101tec:zkclient:$zkclient_version"){
+			exclude(module: 'slf4j-api')
+			exclude(module: 'slf4j-log4j12')
+		}
+		compile ("com.alibaba:dubbo:$dubbo_version"){
+			exclude(module: 'log4j')
+			exclude(module: 'slf4j-log4j12')
+			exclude(module: 'logback-classic')
+			exclude(module: 'spring')
+		}
+		testCompile "junit:junit:${junit_version}"
+
+		compile fileTree(dir: "${local_libs}/pbase", 		include: '*.jar')
+		compile fileTree(dir: "${local_libs}/json/jsonlib", include: '*.jar')
+	}
+		
+
+	//
+	[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+	jar {
+		//from sourceSets.main.allSource//jar里面添加源码
+		manifest.attributes["Created-By"] = "${System.getProperty("java.version")} (${System.getProperty("java.specification.vendor")}) --pengh"
+		manifest.attributes["Implementation-Title"] = name
+		manifest.attributes["Implementation-Version"] = version
+	}
+	
+	
+	task sourcesJar(type: Jar, dependsOn: classes) {
+		classifier = 'sources'
+		from sourceSets.main.allSource
+	}
+	task javadocJar(type: Jar, dependsOn: javadoc) {
+		classifier = 'javadoc'
+		from javadoc.destinationDir
+	}
+	//打包源码、javaDoc
+	artifacts {
+		archives sourcesJar
+		//archives javadocJar
+	}
+
+	//gradle publish
+	//https://docs.gradle.org/current/userguide/userguide_single.html#publishing_ivy:plugin	
+	/*
+	apply plugin: 'ivy-publish'
+	publishing {
+		repositories {
+			ivy {
+				// change to point to your repo, e.g. http://my.org/repo
+				url "${rootProject.buildDir}/repo"
+			}
+		}
+		publications {
+			ivy(IvyPublication) {
+				from components.java
+				artifact(sourcesJar) {
+					type "sources"
+					conf "runtime"
+				}
+			}
+		}
+	}*/
+
+	apply plugin: 'maven-publish'
+	publishing {
+		repositories {
+			maven {
+				// change to point to your repo, e.g. http://my.org/repo
+				url "${rootProject.buildDir}/repo"
+			}
+		}
+		publications {
+			mavenJava(MavenPublication) {
+				from components.java
+			}
+		}
+	}
+
+	// 生成Eclipse支持时，自动生成Deployment Assembly
+	//https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.eclipse.model.EclipseProject.html
+	//https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.eclipse.model.EclipseClasspath.html
+	eclipse.classpath.file.withXml {
+		def node = it.asNode();
+		for (Node n : node.children()) {
+			if ("lib".equals(n.attribute("kind"))) {
+				def node_attributes = new Node(n, "attributes");
+				def map = new HashMap();
+				map.put("value", "libs");
+				def node_attribute = new Node(node_attributes, "attribute", map);
+			}
+		}
+		//修改输出路径，默认${project.projectDir}/bin
+		//just for web application
+		//node.appendNode('classpathentry', [ combineaccessrules: false, exported: true, kind: 'output', path: webAppDirName+'/WEB-INF/classes' ])
+		//设置server apache，需根据本地eclipse配置
+		//node.appendNode('classpathentry', [ kind: 'con', path: 'org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0' ])
+	}
+
+	// 设置 Project Facets
+	/*eclipse {
+	    wtp {
+	        facet {
+	            facet name: 'jst.web', type: Facet.FacetType.fixed
+	            facet name: 'wst.jsdt.web', type: Facet.FacetType.fixed
+	            facet name: 'jst.java', type: Facet.FacetType.fixed
+	            facet name: 'jst.web', version: '2.5'
+	            facet name: 'jst.java', version: '1.8'
+	            facet name: 'wst.jsdt.web', version: '1.0'
+	        }
+	    }
+	}*/
+
+	task dirs << {
+		sourceSets*.java.srcDirs*.each { it.mkdirs() }
+		sourceSets*.resources.srcDirs*.each { it.mkdirs() }	
+		//for web app --> src/main/webapp
+		//webAppDir.mkdirs()
+	}
+	//上传到指定目录
+	task up(type: Copy) { 
+		from "${project.buildDir}/libs"
+		into "$release_dir"
+		include "${project.name}-${project.version}.*ar"
+	}
+
+	task del(type: Delete) { 
+		delete ".classpath",".project",".settings"
+	}
+
+	//https://docs.gradle.org/current/dsl/org.gradle.api.Project.html
+	/*println "${rootProject.buildDir}"
+	println "${project.buildDir}"
+	println "${project.rootDir}"*/
+}

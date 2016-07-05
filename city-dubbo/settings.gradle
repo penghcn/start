@@ -1,0 +1,3 @@
+rootProject.name = "city"
+
+include 'city-api','city-consumer','city-provider','city-provider-boot'

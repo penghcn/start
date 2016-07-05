@@ -1,0 +1,58 @@
+
+/*sourceCompatibility = 1.8
+targetCompatibility = 1.8
+*/
+
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+dependencies {
+	compile (project(":city-api"))
+
+	compile (
+		'javax.servlet:javax.servlet-api:3.1.0',
+		//'javax.servlet:servlet-api:2.5',
+		//'javax.servlet:jsp-api:2.0',
+		//'jstl:jstl:1.2',
+		
+		//
+		//'com.mchange:c3p0:0.9.5.2',
+		'com.alibaba:druid:1.0.20',
+		//'com.googlecode.xmemcached:xmemcached:2.0.0',
+
+		'mysql:mysql-connector-java:5.1.39',//6.0.2 requires jdk1.8
+
+		"org.springframework:spring-web:${spring_version}",
+		//"org.springframework:spring-webmvc:${spring_version}",
+		"org.springframework:spring-orm:${spring_version}",
+		"org.springframework:spring-jdbc:${spring_version}",
+		"org.springframework:spring-tx:${spring_version}",
+		"org.springframework:spring-aop:${spring_version}",
+		"org.springframework:spring-aspects:${spring_version}",
+
+		//"org.quartz-scheduler:quartz:${quartz_version}",
+		//"org.quartz-scheduler:quartz-jobs:${quartz_version}",
+
+		"org.hibernate:hibernate-core:${hibernate_version}",
+		"org.hibernate:hibernate-entitymanager:${hibernate_version}"//jpa
+
+	)	
+	compile fileTree(dir: "${local_libs}/springdata", 	include: '*.jar')
+}
+
+//web项目打成jar而不是war
+jar.enabled = true
+war {
+	//baseName = 'pbase_web'//重命名war包
+	dependsOn jar
+	from "web/contents"
+	classpath = jar.archivePath
+	webInf { from 'web/webInf'}
+	//webXml = file('web/web.xml')
+}
+
+task dirsWeb(dependsOn: dirs) << {	
+	//for web app --> src/main/webapp
+	webAppDir.mkdirs()
+}

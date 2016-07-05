@@ -1,0 +1,65 @@
+{
+	"configuration": {
+		"status": "warn",//log4j2自身的日志级别
+		"name": "no-name",
+		"packages": "cn.pengh.log",
+		//
+		"properties": {
+			"property":{"name":"loggername","value":"pbaseLogger"},
+			"property":{"name":"filename","value":"c:/temp/log4j2/test.log"},
+			"property":{"name":"filepattern","value":"c:/temp/log4j2/logs/%d{yyyy}/%d{MM}/%d{dd}/%d{HH}_%i.log"},
+			//"property":{"name":"patternlayout","value":"%d %p %c{1.} [%t] %m%n"}
+			"property":{"name":"patternlayout","value":"%d %p %c [%t] %m%n"}
+		},
+		//设置日志方式
+		"appenders": {
+			"Console": {
+				"name": "STDOUT",
+				"PatternLayout": {"pattern": "${patternlayout}"}
+			},
+			"RollingFile": {
+				"name": "File",
+				"PatternLayout": {"pattern": "${patternlayout}"},				
+				/*"fileName": "${filename}",
+				"filePattern": "${filepattern}",*/
+				"fileName": "c:/temp/log4j2/test.log",
+				"filePattern": "c:/temp/log4j2/logs/%d{yyyy}/%d{MM}/%d{dd}/%d{HH}_%i.log",
+				"Policies": {
+					"TimeBasedTriggeringPolicy": {"modulate": "true", "interval":"1"},
+					"SizeBasedTriggeringPolicy": {"size": "51200 KB"}
+				},
+				"DefaultRolloverStrategy": {"max": "20"}
+				
+			}
+		},
+		//
+		"loggers": {
+			//自定义，覆盖全局
+			"logger": [
+				{
+					"name": "EventLogger",
+					"level": "info",
+					"additivity": "false",
+					"AppenderRef": [{"ref": "STDOUT"}, {"ref": "File"}]
+				},
+				{
+					"name": "cn.pengh.library.Log",
+					"level": "debug",
+					"additivity": "false",
+					"AppenderRef": [{"ref": "STDOUT"}, {"ref": "File"}]
+				},
+				{
+					"name": "org.hibernate.SQL",
+					"level": "debug",
+					"additivity": "false",
+					"AppenderRef": [{"ref": "STDOUT"},{"ref": "File"}]
+				}
+			],
+			//全局配置
+			"root": {
+				"level": "info",
+				"AppenderRef": [{"ref": "STDOUT"},{"ref": "File"}]
+			}
+		}
+	}
+}
