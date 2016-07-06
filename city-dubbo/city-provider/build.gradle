@@ -36,9 +36,10 @@ dependencies {
 
 		"org.hibernate:hibernate-core:${hibernate_version}",
 		"org.hibernate:hibernate-entitymanager:${hibernate_version}"//jpa
-
 	)	
-	compile fileTree(dir: "${local_libs}/springdata", 	include: '*.jar')
+	compile('org.springframework.data:spring-data-jpa:1.10.2.RELEASE') {
+		exclude (group: 'org.springframework')
+	}
 }
 
 //web项目打成jar而不是war
