@@ -45,6 +45,7 @@
     }
 ###2.使用
 代码片段见Demo.java,主要是这2行
+
     RegisterHelper.init();
     CityService cityService = AppCtxKeeper.getBean(CityService.class);
 以上只是提供个大概，希望有用
