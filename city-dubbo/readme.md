@@ -7,9 +7,9 @@ gradle,spring4,netty,zkclient0.9,log4j2
 
 ps：也可以使用dubbox，有人对dubbox的源码fork修改，直接支持上面这些，[点这里](http://www.cnblogs.com/yjmyzz/p/update-dubbo-to-spring-4-and-add-log4j2-support.html)或者[这里](https://github.com/yjmyzz/dubbox)
 
-这个是dubbo的demo，支持jdk6，dubbox需要jdk7+
+这个是dubbo的demo，支持jdk6；dubbox需要jdk7+
 
-在项目根目录下运行 gradle eclipse
+在项目根目录下运行 `gradle eclipse`
 
 ## 2 使用
 ### 2.1 zookeeper
