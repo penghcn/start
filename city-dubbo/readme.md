@@ -2,9 +2,9 @@
     我这里随便写了个省市区代码对照表的查询，基于spring-jpa
 ## dubbo原生是绑定了spring3.2的，这里做了一点小升级，只是build脚本不一样而已
 ### 升级支持
-gradle,spring4,netty,zkclient0.9,log4j2
-ps：当然，你也可以参照：有人对dubbox的源码fork修改，直接支持上面这些，[点这里](http://www.cnblogs.com/yjmyzz/p/update-dubbo-to-spring-4-and-add-log4j2-support.html)或者[这里](https://github.com/yjmyzz/dubbox)
-我这个是dubbo的demo，dubbox需要jdk7+
+-gradle,spring4,netty,zkclient0.9,log4j2
+-ps：当然，你也可以参照：有人对dubbox的源码fork修改，直接支持上面这些，[点这里](http://www.cnblogs.com/yjmyzz/p/update-dubbo-to-spring-4-and-add-log4j2-support.html)或者[这里](https://github.com/yjmyzz/dubbox)
+-我这个是dubbo的demo，dubbox需要jdk7+
 
 ## 使用
 ### zookeeper
