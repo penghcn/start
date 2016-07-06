@@ -1,6 +1,6 @@
 # 这是一个dubbo的demo
     我这里随便写了个省市区代码对照表的查询，基于spring-jpa
-## dubbo原生是绑定了spring3.2的，这里做了一点小升级，只是build脚本不一样而已
+## dubbo原生是绑定了spring2.5.6.SEC03的，这里做了一点小升级，只是build脚本不一样而已
 ### 升级支持
 gradle,spring4,netty,zkclient0.9,log4j2
 
