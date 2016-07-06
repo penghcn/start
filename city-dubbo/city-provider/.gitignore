@@ -1,10 +1,11 @@
 .svn/*
 .svn/
 *.svn
-#.settings
+.settings
 .class
 *.class
-#.classpath
+.classpath
+.project
 /build/
 /bin/
 .gradle/*
