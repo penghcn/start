@@ -1,10 +1,11 @@
-# 这是一个dubbo的demo
-    我这里随便写了个省市区代码对照表的查询，基于spring-jpa
-## 1 dubbo原生是绑定了spring2.5.6.SEC03的，这里做了一点小升级，只是build脚本不一样而已
+# 一个dubbo的demo
+    随便写了个省市区代码对照表的查询，基于spring-jpa
+## 1 说在前面~
+    dubbo原生是绑定了spring2.5.6.SEC03的，这里做了一点小升级，只是build脚本不一样而已
 ### 1.1 升级支持
 gradle,spring4,netty,zkclient0.9,log4j2
 
-ps：当然，你也可以参照：有人对dubbox的源码fork修改，直接支持上面这些，[点这里](http://www.cnblogs.com/yjmyzz/p/update-dubbo-to-spring-4-and-add-log4j2-support.html)或者[这里](https://github.com/yjmyzz/dubbox)
+ps：也可以使用dubbox，有人对dubbox的源码fork修改，直接支持上面这些，[点这里](http://www.cnblogs.com/yjmyzz/p/update-dubbo-to-spring-4-and-add-log4j2-support.html)或者[这里](https://github.com/yjmyzz/dubbox)
 
 这个是dubbo的demo，支持jdk6，dubbox需要jdk7+
 
@@ -13,14 +14,14 @@ ps：当然，你也可以参照：有人对dubbox的源码fork修改，直接�
     安装就不说了，启动先
 ### 2.2 api
     定义接口，这里就一个CityService
-    定义请求与响应的父类，这里是 Request 和 Response
+    定义请求与响应的父类，这里是 CityRequest 和 CityResponse
 ### 2.3 provider
     提供服务，见dubbo-provider.xml
     main方法启动 AppConfig.java
     或者使用tomcat启动，见web.xml
 ### 2.4 consumer 
     消费者，见dubbo-consumer.xml
-    测试 Demo.java    
+    测试main方法 Demo.java    
 
 ## 3 可以这样用
     把consumer打成jar，放到别的项目中
