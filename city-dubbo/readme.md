@@ -18,7 +18,12 @@
 
 ##可以这样用
 我这里可以把consumer打成jar，放到别的项目中，
-###1.添加依赖
+###1.添加依赖(gradle)
+        dubbo_version                   = '2.5.3'
+        zookeeper_version               = '3.4.8'
+        zkclient_version                = '0.9'
+        javassist_version               = '3.20.0-GA'
+        netty_version                   = '3.2.10.Final'
 
     compile file('city-dubbo-api-0.0.2.jar')
     compile file('city-dubbo-consumer-0.0.2.jar')
@@ -43,7 +48,7 @@
         exclude(module: 'logback-classic')
         exclude(module: 'spring')
     }
-###2.使用
+###2.使用示例
 代码片段见Demo.java,主要是这2行
 
     RegisterHelper.init();
