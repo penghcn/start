@@ -56,15 +56,15 @@ public class AppConfig {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		long beach = System.nanoTime();
+		long benchmark = System.nanoTime();
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		AppCtxKeeper.init(ctx);
 		
 		//
 		ctx.getBean(CityCache.class).refreshCache();
 		
-		Log.debug("Time elapsed: " + CurrencyUtil.divide((System.nanoTime() - beach),1e9,3)+"ms");		
-		/*beach = System.nanoTime();
+		Log.debug("Time elapsed: " + CurrencyUtil.divide((System.nanoTime() - benchmark),1e9,6)+"s");		
+		/*benchmark = System.nanoTime();
 		
 		CityCache s = ctx.getBean(CityCache.class);
 		s.refreshCache();
@@ -73,7 +73,7 @@ public class AppConfig {
 		Log.debug(CityCache.getNm(360781));
 		Log.debug(CityCache.getNm(310115));
 		
-		Log.debug("Time elapsed: " + CurrencyUtil.divide((System.nanoTime() - beach),1e9,3)+"ms");*/
+		Log.debug("Time elapsed: " + CurrencyUtil.divide((System.nanoTime() - benchmark),1e9,6)+"s");*/
 		
 		Log.debug("Dubbo服务启动完毕, listening...");
 		System.in.read();//
