@@ -16,7 +16,7 @@ allprojects {
 		httpclient_version              = '4.5.2'
 		quartz_version                  = '2.2.1'
 		cglib_version                   = '3.2.2'
-		dubbo_version                   = '2.5.3'
+		dubbo_version                   = '2.4.10'
 		zookeeper_version               = '3.4.8'
 		zkclient_version                = '0.9'
 		javassist_version               = '3.20.0-GA'
