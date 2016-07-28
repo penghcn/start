@@ -21,7 +21,7 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	
     <dubbo:application name="city-provider" owner="pengh" organization="fuiou"/>
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="zookeeper://192.168.8.29:2181"/>
     <!-- Protostuff,Kryo,Hessian,Java -->
     <dubbo:protocol name="dubbo" port="20880" serialization="hessian2" dispatcher="all" threadpool="fixed" threads="100" />
     

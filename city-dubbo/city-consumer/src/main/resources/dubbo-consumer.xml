@@ -21,7 +21,7 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="city-consumer" owner="pengh" organization="fuiou"/>
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="zookeeper://192.168.8.29:2181"/>
     
 	<!--  如果是线上需求需要点对点，可在<dubbo:reference>中配置url指向提供者，将绕过注册中心，多个地址用分号隔开，配置如下 -->
     <!-- <dubbo:reference id="cityService" interface="cn.pengh.dubbo.api.city.CityService" url="dubbo://192.168.62.63:20880"/> -->
