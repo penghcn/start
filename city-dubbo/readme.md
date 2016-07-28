@@ -28,7 +28,7 @@ ps：也可以使用dubbox，有人对dubbox的源码fork修改，直接支持�
 ## 3 可以这样用
     把consumer打成jar，放到别的项目中
 ### 3.1 添加依赖(gradle)
-    dubbo_version                   = '2.5.3'
+    dubbo_version                   = '2.4.10'
     zookeeper_version               = '3.4.8'
     zkclient_version                = '0.9'
     javassist_version               = '3.20.0-GA'
