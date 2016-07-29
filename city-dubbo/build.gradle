@@ -93,6 +93,7 @@ subprojects {
 			exclude(module: 'slf4j-log4j12')
 			exclude(module: 'logback-classic')
 			exclude(module: 'spring')
+			exclude(module: 'netty')
 		}
 		testCompile "junit:junit:${junit_version}"
 
