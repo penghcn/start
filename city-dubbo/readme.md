@@ -1,5 +1,5 @@
 # 一个dubbo的demo
-    随便写了个省市区代码对照表的查询，基于spring-jpa
+    写了个省市区代码对照表的查询(CityService)和手机号归属地查询(PhoneBinService)，基于spring-jpa
 ## 1 说在前面~
     dubbo原生是绑定了spring2.5.6.SEC03的，这里做了一点小升级，通过修改build.gradle构建脚本可以实现
 ### 1.1 升级支持
