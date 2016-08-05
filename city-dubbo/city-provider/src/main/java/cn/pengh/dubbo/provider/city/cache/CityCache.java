@@ -64,5 +64,29 @@ public class CityCache implements ICache{
 		}
 		return cityId;
 	}
+	
+	//440308 -> 440300
+	private static int getRealCityId(int countyId){
+		return countyId /100 * 100;
+	}
+	
+	//深圳 -> 440300
+	public static Integer getCityId(String cityNm){
+		for(Map.Entry<Integer, CityModel>  e : cacheMap.entrySet()) {
+			if (e.getValue().getCityNm().indexOf(cityNm) > -1)
+				return getRealCityId(e.getKey());
+		}
+		return null;
+	}
+	
+	//440000,深圳 -> 440300
+	public static Integer getCityId(int provId,String cityNm){
+		provId = getValidCityId(provId);
+		for(Map.Entry<Integer, CityModel>  e : cacheMap.entrySet()) {
+			if (e.getKey()/10000 == provId /10000 && e.getValue().getCityNm().indexOf(cityNm) > -1)
+				return getRealCityId(e.getKey());
+		}
+		return null;
+	}
 
 }

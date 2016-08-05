@@ -11,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import cn.pengh.dubbo.provider.city.cache.CityCache;
+import cn.pengh.dubbo.provider.city.cache.PhoneBinCache;
 import cn.pengh.dubbo.provider.city.jconf.ioc.ServiceConfig;
 import cn.pengh.library.ConfigReader;
 import cn.pengh.library.Log;
@@ -62,6 +63,7 @@ public class AppConfig {
 		
 		//
 		ctx.getBean(CityCache.class).refreshCache();
+		ctx.getBean(PhoneBinCache.class).refreshCache();
 		
 		Log.debug("Time elapsed: " + CurrencyUtil.divide((System.nanoTime() - benchmark),1e9,6)+"s");		
 		/*benchmark = System.nanoTime();
@@ -74,6 +76,9 @@ public class AppConfig {
 		Log.debug(CityCache.getNm(310115));
 		
 		Log.debug("Time elapsed: " + CurrencyUtil.divide((System.nanoTime() - benchmark),1e9,6)+"s");*/
+		
+		Log.debug(CityCache.getCityId(330000, "杭州"));		
+		//ClazzHelper.print(PhoneBinCache.get("1730168"));
 		
 		Log.debug("Dubbo服务启动完毕, listening...");
 		System.in.read();//

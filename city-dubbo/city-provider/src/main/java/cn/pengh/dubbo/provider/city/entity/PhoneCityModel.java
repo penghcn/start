@@ -59,4 +59,10 @@ public class PhoneCityModel {
 	public void setBrandId(Byte brandId) {
 		this.brandId = brandId;
 	}
+	public PhoneCityModel() {}
+	public PhoneCityModel(String phoneBin,Integer cityId,Byte brandId) {
+		this.phoneBin = phoneBin;
+		this.cityId = cityId;
+		this.brandId = brandId;
+	}
 }
