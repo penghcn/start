@@ -16,7 +16,7 @@ import cn.pengh.dubbo.provider.city.entity.PhoneCityModel;
  * @Date 2016年8月5日 下午2:31:03
  */
 public class PhoneBinServiceImpl implements PhoneBinService {
-	public static Map<Byte, String> BRAND_DESC = new HashMap<Byte, String>(){
+	private static Map<Byte, String> BRAND_DESC = new HashMap<Byte, String>(){
 		private static final long serialVersionUID = -4110769094190514344L;{
 			put((byte)0,"固话");
 			put((byte)1,"移动");

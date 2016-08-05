@@ -18,7 +18,7 @@ import net.sf.json.JSONObject;
  * @Date 2016年8月5日 下午3:02:49
  */
 public class PhoneBinRealtimeQuery {
-	public static Map<Integer, Byte> BRAND_2_MY = new HashMap<Integer, Byte>(){
+	private static Map<Integer, Byte> BRAND_2_MY = new HashMap<Integer, Byte>(){
 		private static final long serialVersionUID = -4110769094190514333L;{
 			put(1,(byte)1);
 			put(2,(byte)3);

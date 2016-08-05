@@ -16,7 +16,7 @@ public class Demo {
 	public static void main(String[] args) {
 		//测试常规服务
 		RegisterHelper.init();
-        /*CityService cityService = AppCtxKeeper.getBean(CityService.class);
+        CityService cityService = AppCtxKeeper.getBean(CityService.class);
         
         Log.debug(RpcContext.getContext().isConsumerSide());
         
@@ -25,7 +25,7 @@ public class Demo {
         ClazzHelper.print(cityService.get(new CityRequest(360782)));
         ClazzHelper.print(cityService.get(new CityRequest(310115)));//310115 上海市上海市浦东新区
         ClazzHelper.print(cityService.get(new CityRequest(330101)));//杭州
-        */
+        
         Log.debug(RpcContext.getContext().isConsumerSide());
         
         
