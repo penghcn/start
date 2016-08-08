@@ -86,7 +86,7 @@ public class CityCache implements ICache{
 	public static Integer getCityId(int provId,String cityNm){
 		provId = getValidCityId(provId);
 		for(Map.Entry<Integer, CityModel>  e : cacheMap.entrySet()) {
-			if (e.getKey()/10000 == provId /10000 && e.getValue().getCityNm().indexOf(cityNm) > -1)
+			if (e.getKey()/10000 == provId /10000 && e.getValue().getCityNm().indexOf(cityNm.trim()) > -1)
 				return getRealCityId(e.getKey());
 		}
 		return null;
