@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import cn.pengh.dubbo.provider.city.entity.PhoneCityModel;
 
 @Repository
-public interface PhoneCityRepository extends JpaRepository<PhoneCityModel, Integer> {
+public interface PhoneCityRepository extends JpaRepository<PhoneCityModel, String> {
 
 }
