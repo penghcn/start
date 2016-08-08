@@ -65,4 +65,15 @@ public class PhoneCityModel {
 		this.cityId = cityId;
 		this.brandId = brandId;
 	}
+	
+	//手机号
+	public boolean likeMobilephone(){
+		return phoneBin.length() >= 7;
+	}
+	public boolean isProv(){
+		return cityId % 10000 == 0;
+	}
+	public boolean isCity(){
+		return cityId % 100 == 0;
+	}
 }

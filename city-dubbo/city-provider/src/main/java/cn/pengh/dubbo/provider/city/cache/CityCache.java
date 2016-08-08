@@ -66,8 +66,11 @@ public class CityCache implements ICache{
 	}
 	
 	//440308 -> 440300
-	private static int getRealCityId(int countyId){
-		return countyId /100 * 100;
+	private static int getRealCityId(int cityId){
+		//几个特殊直辖市
+		if (cityId == 310000 || cityId == 110000 || cityId == 120000 || cityId == 500000)
+			return cityId + 100;
+		return cityId /100 * 100;
 	}
 	
 	//深圳 -> 440300

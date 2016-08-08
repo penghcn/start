@@ -8,7 +8,6 @@ import cn.pengh.dubbo.provider.city.entity.PhoneCityModel;
 import cn.pengh.helper.ClazzHelper;
 import cn.pengh.http.HttpRequest;
 import cn.pengh.http.HttpRequest.HttpRequestConfig;
-import cn.pengh.library.Log;
 import net.sf.json.JSONObject;
 
 /**
@@ -32,7 +31,7 @@ public class PhoneBinRealtimeQuery {
 	public PhoneCityModel query(String tel){
 		String back = HttpRequest.get(BAIDU_API_URL+"?num="+tel,HttpRequestConfig.createDefault()
 				.setHeaders("apikey", BAIDU_API_KEY)
-				.setTimeout(500)
+				.setTimeout(1000)
 				.build());
 		if (back == null)
 			return null;
@@ -43,7 +42,7 @@ public class PhoneBinRealtimeQuery {
 		}
 		
 		JSONObject info = json.getJSONObject("showapi_res_body");
-		Log.getLogger().debug("{}{}, {}", info.getString("prov"), info.get("city") == null ? "" : info.getString("city"), info.getString("name"));
+		//Log.getLogger().debug("{}{}, {}", info.getString("prov"), info.get("city") == null ? "" : info.getString("city"), info.getString("name"));
 		
 		//
 		byte brandId = BRAND_2_MY.get(info.getInt("type"));		
@@ -57,6 +56,7 @@ public class PhoneBinRealtimeQuery {
 		}
 		return new PhoneCityModel(info.getString("num"),cityId,brandId);
 	}
+	
 	
 	public static void main(String[] args) {
 		String tel = "1709183";

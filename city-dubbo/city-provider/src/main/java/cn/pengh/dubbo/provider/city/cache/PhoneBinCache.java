@@ -1,5 +1,6 @@
 package cn.pengh.dubbo.provider.city.cache;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import cn.pengh.mvc.core.cache.ICache;
 
 public class PhoneBinCache implements ICache{
 	private static Map<String, PhoneCityModel> cacheMap = new HashMap<String, PhoneCityModel>();
+	private static List<String> cacheRealtimePhoneBinList = new ArrayList<String>();
 	@Autowired
 	private PhoneCityRepository phoneCityRepository;
 	@Autowired
@@ -33,8 +35,7 @@ public class PhoneBinCache implements ICache{
 		for (PhoneCityModel c : list) {
 			map.put(c.getPhoneBin(), c);
 		}
-		cacheMap = map;
-		
+		cacheMap = map;		
 	}
 	
 	public static PhoneCityModel get(String bin){
@@ -49,12 +50,15 @@ public class PhoneBinCache implements ICache{
 				
 			Log.debug("----保存并刷新phone bin缓存");
 			ClazzHelper.print(realModel);
+			if (realModel.isProv())
+				cacheRealtimePhoneBinList.add(bin);
 			self.phoneCityRepository.save(realModel);
 			cacheMap.put(realModel.getPhoneBin(), realModel);
 			return realModel;
-		} else if (bin.length() >= 7 && pcm.getCityId() % 10000 == 0) {//只是省代码
+		} else if (!cacheRealtimePhoneBinList.contains(bin) && pcm.likeMobilephone() && pcm.isProv() ) {//只是省代码			
 			PhoneCityModel realModel = self.phoneBinRealtimeQuery.query(bin);
-			if (realModel == null || realModel.getCityId() % 10000 == 0) {
+			cacheRealtimePhoneBinList.add(bin);
+			if (realModel == null || realModel.isProv()) {
 				return pcm;
 			}
 			ClazzHelper.print(realModel);
@@ -65,9 +69,4 @@ public class PhoneBinCache implements ICache{
 		}
 		return pcm;
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(330100 % 10000);
-	}
-
 }
