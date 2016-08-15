@@ -55,10 +55,10 @@ public class CityCache implements ICache{
 			else*/ 
 			if (cityId < 100)
 				return cityId * 10000;
-			else if (cityId < 10000)
-				return cityId * 100;
 			else if (cityId < 1000)
 				return cityId * 1000;
+			else if (cityId < 10000)
+				return cityId * 100;
 			else 
 				return cityId * 10;
 		}

@@ -20,6 +20,7 @@ public class Demo {
         
         Log.debug(RpcContext.getContext().isConsumerSide());
         
+        ClazzHelper.print(cityService.get(new CityRequest(110)));//
         ClazzHelper.print(cityService.get(new CityRequest(36)));//360000 江西省
         ClazzHelper.print(cityService.get(new CityRequest(3607)));//360700 江西省赣州市
         ClazzHelper.print(cityService.get(new CityRequest(360782)));
