@@ -36,6 +36,6 @@ public class Demo {
         ClazzHelper.print(phoneBinService.get(new PhoneBinRequest("1868201XXXX")));//
         ClazzHelper.print(phoneBinService.get(new PhoneBinRequest("1709183")));//
         ClazzHelper.print(phoneBinService.get(new PhoneBinRequest("1730169")));//
-        ClazzHelper.print(phoneBinService.get(new PhoneBinRequest("1314846")));//
+        ClazzHelper.print(phoneBinService.get(new PhoneBinRequest("1314847")));//
 	}
 }

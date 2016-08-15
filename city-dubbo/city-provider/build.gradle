@@ -20,6 +20,7 @@ dependencies {
 		//'com.mchange:c3p0:0.9.5.2',
 		'com.alibaba:druid:1.0.20',
 		//'com.googlecode.xmemcached:xmemcached:2.0.0',
+		"com.google.code.gson:gson:2.6.2",
 
 		'mysql:mysql-connector-java:5.1.39',//6.0.2 requires jdk1.8
 

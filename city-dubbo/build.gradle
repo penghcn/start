@@ -98,7 +98,6 @@ subprojects {
 		testCompile "junit:junit:${junit_version}"
 
 		compile fileTree(dir: "${local_libs}/pbase", 		include: '*.jar')
-		compile fileTree(dir: "${local_libs}/json/jsonlib", 	include: '*.jar')
 	}
 		
 
