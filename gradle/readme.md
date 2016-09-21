@@ -1,7 +1,6 @@
 #gradle的一些使用
 ##介绍
 1、java项目的构建工具常用的有ivy `build.xml`，maven `pom.xml`，gradle `build.gradle`
-2、
 ##安装使用
 1、安装。下载安装包，解压到某文件夹，把bin目录加入到系统环境变量
 
@@ -15,10 +14,10 @@
 
 一般是放在 ~/.gradle/caches/modules-2/files-2.1/...，比如amqp-client-3.6.5.jar在下面的目录
 
-C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/amqp-client/3.6.5/59e11141636ba2469a6fdd8c986d622480c3e239
+C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 ##build.gradle示例
-    [https://github.com/penghcn/demo/blob/master/gradle/build.gradle](https://github.com/penghcn/demo/blob/master/gradle/build.gradle)    
+[https://github.com/penghcn/demo/blob/master/gradle/build.gradle](https://github.com/penghcn/demo/blob/master/gradle/build.gradle)    
 ##eclipse
 1、一般的web项目，建立根目录，如C:\www\demo\test
 
@@ -30,5 +29,5 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/amqp-client/3.6.5
 
 5、每次需要添加新的jar依赖时，只需修改build.gradle文件然后在项目根目录运行`gradle eclipse`即可
 
-6、构建上线 运行`gradle build`
+6、构建生成jar或者war 运行`gradle build`
 
