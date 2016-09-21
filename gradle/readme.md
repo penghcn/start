@@ -31,5 +31,5 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 5、每次需要添加新的jar依赖时，只需修改build.gradle文件然后在项目根目录运行`gradle eclipse`即可
 
-6、构建生成jar或者war文件，运行`gradle build`
+6、构建生成jar或者war文件，运行`gradle build`或者`gradle build -x test`
 
