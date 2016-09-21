@@ -1,37 +1,11 @@
 //http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects/
 //https://github.com/davenkin/gradle-learning
 //https://github.com/spring-projects/spring-framework/blob/master/build.gradle
+//https://yrom.net/blog/2015/02/07/change-gradle-maven-repo-url/
+//见C:\Users\pengh\.gradle\init.gradle
 //allprojects {
 	group = 'com.fuiou.io.mycat'
-	version = '0.1.0'
-	ext {	
-		jvm_version                     = 1.6
-		junit_version                   = '4.12'
-		spring_version                  = '4.2.5.RELEASE'
-		spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
-		hibernate_version               = '5.1.0.Final'//5.2+ requires jdk1.8
-		hibernate_validator_version     = '5.2.4.Final'
-		jackson_version                 = '2.4.6'
-		log4j2_version                  = '2.3'//2.4+ requires jdk1.7
-		httpclient_version              = '4.5.2'
-		quartz_version                  = '2.2.1'
-		cglib_version                   = '3.2.2'
-		dubbo_version                   = '2.5.3'
-		zookeeper_version               = '3.4.8'
-		zkclient_version                = '0.9'
-		javassist_version               = '3.20.0-GA'
-		netty_version                   = '3.2.10.Final'
-		kryo_version                    = '3.0.3'
-		tomcat_version                  = '7.0.59'
-		local_libs                      = 'c:/www/pengh/libs'
-		release_dir                     = 'c:/users/pengh/desktop/release'
-	}
-
-	repositories {
-		mavenCentral()
-		//flatDir(dirs: "$projectDir/libs")
-	}  
-	
+	version = '0.1.0'	
 //}
 
 //subprojects {	
@@ -148,23 +122,6 @@
 	}
 
 	
-	task dirs << {
-		sourceSets*.java.srcDirs*.each { it.mkdirs() }
-		sourceSets*.resources.srcDirs*.each { it.mkdirs() }	
-		//for web app --> src/main/webapp
-		webAppDir.mkdirs()
-	}
-	//上传到指定目录
-	task up(type: Copy) { 
-		from "${project.buildDir}/libs"
-		into "$release_dir"
-		include "${project.name}-${project.version}.*ar"
-	}
-
-	task del(type: Delete) { 
-		delete ".classpath",".project",".settings"
-	}
-
 	//https://docs.gradle.org/current/dsl/org.gradle.api.Project.html
 	/*println "${rootProject.buildDir}"
 	println "${project.buildDir}"
