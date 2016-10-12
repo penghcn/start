@@ -1,11 +1,9 @@
 //http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects/
 //https://github.com/davenkin/gradle-learning
 //https://github.com/spring-projects/spring-framework/blob/master/build.gradle
-//https://yrom.net/blog/2015/02/07/change-gradle-maven-repo-url/
-//见C:\Users\pengh\.gradle\init.gradle
 //allprojects {
 	group = 'com.fuiou.io.mycat'
-	version = '0.1.0'	
+	version = '0.1.0'
 //}
 
 //subprojects {	
@@ -47,7 +45,7 @@
 			'com.rabbitmq:amqp-client:3.6.5',
 
 			//'com.alibaba:fastjson:1.2.16',
-	        "com.google.code.gson:gson:2.6.2",
+	                "com.google.code.gson:gson:2.6.2",
 			"com.fasterxml.jackson.core:jackson-core:${jackson_version}",//log4j2.json依赖Jackson
 			"com.fasterxml.jackson.core:jackson-databind:${jackson_version}",
 
@@ -68,19 +66,23 @@
 			"org.springframework:spring-tx:${spring_version}",
 			"org.springframework:spring-aop:${spring_version}",
 			"org.springframework:spring-messaging:${spring_version}",
-			"org.springframework:spring-aspects:${spring_version}"
+			"org.springframework:spring-aspects:${spring_version}",
+
+			'net.sf.ezmorph:ezmorph:1.0.6',
+			'net.sf.json:json-lib:2.4-jdk15',
+
+			"com.ibm.db2.jcc:db2jcc:10.1",
+			"com.ibm.db2.jcc:db2jcc_license_cu:10.1",
+			"org.patchca:patchca:1.2.0",
+
+			"com.fuiou:fuiou-ds:${fuiou_ds_version}",
+			"com.fuiou:fuiou-keyLoader:${fuiou_ds_version}",
+			"com.fuiou:fuiou-fas-client:1.2.0",
+			"com.fuiou:fus-dubbo-client:1.2.0",
+			"com.fuiou:fuiou-wx:1.2.0",
+			"cn.pengh.pbase:pbase-core:${pbase_version}"
 		)
 		testCompile "junit:junit:${junit_version}"
-
-		compile fileTree(dir: "${local_libs}/pbase", 		include: '*.jar')
-		compile fileTree(dir: "${local_libs}/jdbc/driver", 	include: '*.jar')
-		compile fileTree(dir: "${local_libs}/json/jsonlib", include: '*.jar')
-		compile files(
-			"${local_libs}/fuiou/fuiou-ds-1.1.0.jar",
-			"${local_libs}/fuiou/fuiou_keyLoader.jar",
-			"${local_libs}/fuiou/fuiou-wx-1.0.0.jar"
-			)
-		compile files("${local_libs}/other/patchca-1.0.1.jar")
 
 		compile ('dom4j:dom4j:1.6') {
 			exclude (group: '*')
@@ -92,6 +94,9 @@
 			exclude (group: '*')
 		}
 		compile ('org.springframework.retry:spring-retry:1.1.3.RELEASE') {
+			exclude (group: '*')
+		}
+		compile ("cn.pengh.pbase:pbase-mvc:${pbase_version}") {
 			exclude (group: '*')
 		}
 	}
@@ -110,7 +115,9 @@
 			if ("lib".equals(n.attribute("kind"))) {
 				def node_attributes = new Node(n, "attributes");
 				def map = new HashMap();
-				map.put("value", "libs");
+				/*map.put("name", "maven.pomderived");
+				map.put("value", "true");*/
+				map.put("value", "/WEB-INF/lib");
 				def node_attribute = new Node(node_attributes, "attribute", map);
 			}
 		}
@@ -121,7 +128,31 @@
 		//node.appendNode('classpathentry', [ kind: 'con', path: 'org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0' ])
 	}
 
+	/*eclipse {
+		//if you want parts of paths in resulting file to be replaced by variables (files):
+		//pathVariables 'GRADLE_HOME': file('/best/software/gradle'), 'TOMCAT_HOME': file('../tomcat')
+		classpath {
+			//you can tweak the classpath of the Eclipse project by adding extra configurations:
+			//plusConfigurations += [ configurations.provided ]
+			//plusConfigurations += [ maven.pomderived ]
+
+			//you can also remove configurations from the classpath:
+			//minusConfigurations += [ configurations.someBoringConfig ]
+
+			//if you want to append extra containers:
+			containers 'mavenContainer'
+
+			//customizing the classes output directory:
+			defaultOutputDir = file('build-eclipse')
+
+			//default settings for downloading sources and Javadoc:
+			downloadSources = true
+			downloadJavadoc = false
+		}
+	}
+*/
 	
+
 	//https://docs.gradle.org/current/dsl/org.gradle.api.Project.html
 	/*println "${rootProject.buildDir}"
 	println "${project.buildDir}"
