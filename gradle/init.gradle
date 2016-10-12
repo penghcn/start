@@ -1,13 +1,26 @@
+//
+println "-_- see init config C:/Users/pengh/.gradle/init.gradle -_-"
+
 allprojects{
     ext {   
         jvm_version                     = 1.6
         junit_version                   = '4.12'
-        spring_version                  = '4.2.7.RELEASE'
+        log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
+
+        xstream_version                 = '1.4.9'
+        jackson_version                 = '2.4.6'//2.8.3
+        spring_version                  = '4.2.5.RELEASE'
         spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
+
         hibernate_version               = '5.1.0.Final'//5.2+ requires jdk1.8
         hibernate_validator_version     = '5.2.4.Final'
-        jackson_version                 = '2.4.6'
-        log4j2_version                  = '2.3'//2.4+ requires jdk1.7
+        mybatis_version                 = '3.4.1'
+        mybatis_spring_version          = '1.3.0'       
+        druid_version                   = '1.0.26'
+        c3p0_version                    = '0.9.5.2'
+        mysql_connector_version         = '5.1.39'//6.0.2 requires jdk1.8
+        hikaricp_jdk6_version           = '2.3.13'//https://github.com/brettwooldridge/HikariCP
+
         httpclient_version              = '4.5.2'
         quartz_version                  = '2.2.1'
         cglib_version                   = '3.2.2'
@@ -15,16 +28,28 @@ allprojects{
         zookeeper_version               = '3.4.8'
         zkclient_version                = '0.9'
         javassist_version               = '3.20.0-GA'
-        netty_version                   = '3.2.10.Final'
+        netty_version                   = '3.2.10.Final'//jboss netty
         kryo_version                    = '3.0.3'
-        tomcat_version                  = '7.0.59'
-        local_libs                      = 'c:/www/pengh/libs'
+        tomcat_version                  = '7.0.68'
+
+        pbase_version                   = '1.5.20'
+
+        fuiou_fas_client_version        = '1.1.5'
+        fuiou_wx_version                = '1.0.0'
+        fuiou_ds_version                = '1.2.0'
+
         release_dir                     = 'c:/users/pengh/desktop/release'
+        jar_prefix                      = 'fuiou'
+
+        REPO_PROXY_URL                  = 'http://192.168.8.29:29106/repository/maven-central'
+        REPO_PUBLISH_URL                = 'http://192.168.8.29:29106/repository/maven-releases'
+        REPO_DEV_URL                    = 'http://192.168.8.29:29106/repository/maven-snapshots'
     }
 
     repositories {
         //maven.oschina.net已经不可用，使用mavenCentral就好，实在嫌下载慢，可使用vpn
-        /*def REPOSITORY_URL = 'http://maven.oschina.net/content/groups/public'
+        //这里使用自己搭建的maven私有库
+        def REPOSITORY_URL = "$REPO_PROXY_URL"//http://maven.oschina.net/content/groups/public
         all { ArtifactRepository repo ->
             if(repo instanceof MavenArtifactRepository){
                 def url = repo.url.toString()
@@ -36,24 +61,11 @@ allprojects{
         }
         maven {
             url REPOSITORY_URL
-        }*/
-        mavenCentral()
-    }
-
-
-    
-
-    task dirs << {
-        sourceSets*.java.srcDirs*.each { it.mkdirs() }
-        sourceSets*.resources.srcDirs*.each { it.mkdirs() } 
-        //for web app --> src/main/webapp
-        webAppDir.mkdirs()
-    }
-    //上传到指定目录
-    task up(type: Copy) { 
-        from "${project.buildDir}/libs"
-        into "$release_dir"
-        include "${project.name}-${project.version}.*ar"
+        }
+        maven {
+            url "$REPO_PUBLISH_URL"
+        }
+        //mavenCentral()
     }
 
     task del(type: Delete) { 
