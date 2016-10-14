@@ -4,7 +4,9 @@
 
 2、详细使用文档参见官方文件
 ##安装使用
-1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，解压到某文件夹，把bin目录加入到系统环境变量
+1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-3.1 windows版
+
+解压到某文件夹，把bin目录加入到系统环境变量
 
     比如 windows环境下，C:\www\resources\gradle-3.1\bin
 
@@ -19,7 +21,13 @@
 C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 ##build.gradle示例
-[https://github.com/penghcn/demo/blob/master/gradle/build.gradle](https://github.com/penghcn/demo/blob/master/gradle/build.gradle)    
+[https://github.com/penghcn/demo/blob/master/gradle/build.gradle](https://github.com/penghcn/demo/blob/master/gradle/build.gradle) 
+
+##init.gradle示例
+可以把一些常用的配置放到~/.gradle/init.gradle文件中，若该文件不存在，新建一个，比如
+    C:/Users/pengh/.gradle/init.gradle
+[https://github.com/penghcn/demo/blob/master/gradle/init.gradle](https://github.com/penghcn/demo/blob/master/gradle/init.gradle)    
+
 ##eclipse
 1、一般的web项目，建立根目录，如C:\www\demo\test
 
