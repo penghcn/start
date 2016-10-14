@@ -25,7 +25,9 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 ##init.gradle示例
 可以把一些常用的配置放到~/.gradle/init.gradle文件中，若该文件不存在，新建一个，比如
+
     C:/Users/pengh/.gradle/init.gradle
+可以参考这个配置
 [https://github.com/penghcn/demo/blob/master/gradle/init.gradle](https://github.com/penghcn/demo/blob/master/gradle/init.gradle)    
 
 ##eclipse
