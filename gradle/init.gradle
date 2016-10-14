@@ -41,8 +41,11 @@ allprojects{
         release_dir                     = 'c:/users/pengh/desktop/release'
         jar_prefix                      = 'fuiou'
 
-        REPO_PROXY_URL                  = 'http://192.168.8.29:29106/repository/maven-central'
+        //本地私有仓库--代理maven中央仓库
+        REPO_PROXY_URL                  = 'http://192.168.8.29:29106/repository/maven-central' 
+        //本地私有仓库--自己或第三方jar稳定版发布地址
         REPO_PUBLISH_URL                = 'http://192.168.8.29:29106/repository/maven-releases'
+        //本地私有仓库--自己或第三方jar开发版发布地址
         REPO_DEV_URL                    = 'http://192.168.8.29:29106/repository/maven-snapshots'
     }
 
