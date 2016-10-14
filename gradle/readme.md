@@ -4,7 +4,7 @@
 
 2、详细使用文档参见官方文件
 ##安装使用
-1、安装。下载安装包，解压到某文件夹，把bin目录加入到系统环境变量
+1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，解压到某文件夹，把bin目录加入到系统环境变量
 
     比如 windows环境下，C:\www\resources\gradle-3.1\bin
 
