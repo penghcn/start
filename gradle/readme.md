@@ -35,7 +35,7 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 2、把build.gradle放到根目录，根据各自项目相应修改配置
 
-3、打开终端，切换到项目根目录(cd C:/www/demo/test)下运行 `gradle dirs` 创建基本结构，再运行`gradle eclipse`添加一些jar依赖
+3、打开终端，切换到项目根目录(cd C:/www/demo/test)下运行 `gradle init --type=java-library` 创建基本结构，再运行`gradle eclipse`添加一些jar依赖
 
 4、打开eclipse，导入该项目
 
