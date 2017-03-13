@@ -4,7 +4,7 @@
 
 2、详细使用文档参见官方文件
 ##安装使用
-1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-3.1 windows版
+1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-3.3-all 版
 
 解压到某文件夹，把bin目录加入到系统环境变量
 
@@ -16,7 +16,7 @@
 
 以后再下载相同依赖，会使用本地的缓存，就比较快了
 
-一般是放在 ~/.gradle/caches/modules-2/files-2.1/...，比如amqp-client-3.6.5.jar在下面的目录
+一般是放在系统home目录(`System.getProperty("user.home")`) ~/.gradle/caches/modules-2/files-2.1/...，比如amqp-client-3.6.5.jar在下面的目录
 
 C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
