@@ -8,7 +8,7 @@
 
 解压到某文件夹，把bin目录加入到系统环境变量
 
-    比如 windows环境下，C:\www\resources\gradle-3.1\bin
+    比如 windows环境下，C:\www\resources\gradle-3.3\bin
 
 2、运行。打开终端，运行 `gradle build` `gradle eclipse` `gradle check` `gradle clean`等命令
 
@@ -16,7 +16,11 @@
 
 以后再下载相同依赖，会使用本地的缓存，就比较快了
 
-一般是放在系统home目录(`System.getProperty("user.home")`) ~/.gradle/caches/modules-2/files-2.1/...，比如amqp-client-3.6.5.jar在下面的目录
+一般是放在系统home目录`System.getProperty("user.home")`
+
+~/.gradle/caches/modules-2/files-2.1/...，
+
+比如amqp-client-3.6.5.jar在下面的目录
 
 C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
