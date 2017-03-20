@@ -62,8 +62,6 @@ allprojects{
         jar_prefix                      = 'fuiou'
 
         PUBLISH_NAME                    = 'Release'
-        PUBLISH_USERNAME                = 'admin'
-        PUBLISH_PASSWORD                = 'fyadmin29'
 
 
 
