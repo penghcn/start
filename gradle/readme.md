@@ -1,10 +1,10 @@
-#gradle的一些使用
+# gradle的一些使用
 
-##介绍
+## 介绍
 1、java项目的构建工具常用的有ant `build.xml`，maven `pom.xml`，gradle `build.gradle` 等
 
 2、详细使用文档参见官方文件
-##安装使用
+## 安装使用
 1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-3.3-all 版
 
 解压到某文件夹，把bin目录加入到系统环境变量
@@ -25,17 +25,17 @@
 
 C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
-##build.gradle示例
+## build.gradle示例
 [https://github.com/penghcn/demo/blob/master/gradle/build.gradle](https://github.com/penghcn/demo/blob/master/gradle/build.gradle) 
 
-##init.gradle示例
+## init.gradle示例
 可以把一些常用的配置放到~/.gradle/init.gradle文件中，若该文件不存在，新建一个，比如
 
     C:/Users/pengh/.gradle/init.gradle
 可以参考这个配置
 [https://github.com/penghcn/demo/blob/master/gradle/init.gradle](https://github.com/penghcn/demo/blob/master/gradle/init.gradle)    
 
-##eclipse
+## eclipse
 1、一般的web项目，建立根目录，如C:\www\demo\test
 
 2、打开终端，切换到项目根目录(cd C:/www/demo/test)下运行 `gradle init --type=java-library` 创建基本结构
