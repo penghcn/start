@@ -58,9 +58,9 @@ allprojects{
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
-        fuiou_ds_user_act_version       = '1.2.4'
+        fuiou_ds_user_act_version       = '1.2.5'
         fuiou_ds_cab_base_version       = '1.0.0'
-        fuiou_box_contract_version      = '1.1.1'
+        fuiou_box_contract_version      = '1.1.2'
         fuiou_sms_version               = '1.0.2'
 
         release_dir                     = '/data/release'
@@ -102,6 +102,3 @@ allprojects{
         delete ".classpath",".project",".settings"
     }
 }
-
-//maven发布第三方jar
-//mvn deploy:deploy-file -DgroupId=com.fuiou -DartifactId=fuiou-fas-client -Dversion=1.2.9 -Dpackaging=jar -Dfile=C:\Users\pengh\Desktop\release/fuiou-fas-client-1.2.2.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
