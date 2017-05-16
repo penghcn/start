@@ -1,7 +1,16 @@
 ## 下载
   http://kafka.apache.org/downloads 
 ## 安装
-解压到指定目录，例如
+1、解压到指定目录，例如
 
     tar zxvf kafka_2.12-0.10.2.1.tgz -C /data/app/kafka_2.12-0.10.2.1    
     cd /data/app/kafka_2.12-0.10.2.1 
+
+2、修改配置文件`config/server.properties`，这里使用已有zookeeper环境
+
+    zookeeper.connect=192.168.8.27:2181,192.168.8.28:2181,192.168.8.29:2181
+
+3、启动kafka
+
+    bin/kafka-server-start.sh config/server.properties
+
