@@ -3,4 +3,4 @@
 
 1、下载 https://github.com/apache/flume/releases
 
-2、安装tar
+2、安装 tar
