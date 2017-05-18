@@ -14,13 +14,14 @@
 
 3、启动kafka
 
-    bin/kafka-server-start.sh config/server.properties
+    bin/kafka-server-start.sh config/server.properties &
+    //发送
+    bin/kafka-console-producer.sh --broker-list localhost:9092 --topic TEST
 
 4、消费端，查看指定topic的所有消息
 
     bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic TEST-TOPIC --from-beginning
     或者
     bin/kafka-console-consumer.sh --zookeeper 192.168.8.27:2181 --topic TEST-TOPIC --from-beginning
-    
-    //查看topic列表
+    //查看topic列表
     bin/kafka-topics.sh --list --zookeeper 192.168.8.27:2181
