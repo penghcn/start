@@ -1,19 +1,16 @@
 ## 简介
-1、生产
-  
+### 1、生产
 发送到topic，实际是topic中的不同物理分区partition中。理论上，相同消费者消费同一个partition
   
-2、消费
-  
+### 2、消费
 消费者 消费同一个groupId下的所有数据，更新offset
   
-3、数据清理
-  
+### 3、数据清理
 磁盘永久保存。删除设置：时间(16小时前的不保留之前的)，容量(超过1G不保留之前的)
   
       log.cleanup.policy=delete ## 启用删除策略
       log.retention.hours=16 ## 超过指定时间清理
-      log.retention.bytes=1073741824 ## 超过指定大小后，删除老数据
+      log.retention.bytes=1073741824 ## 超过指定大小后，删除老数据
       
   
 ## 安装使用
