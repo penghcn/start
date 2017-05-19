@@ -7,6 +7,7 @@
   
     cd /data/app/apache-flume-1.7.0-bin
     bin/flume-ng agent --conf conf --conf-file conf/flume.conf --name a1 -Dflume.root.logger=INFO,console
+    
 
 3、几个概念 source、channel、sink
 
