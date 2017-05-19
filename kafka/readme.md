@@ -1,6 +1,8 @@
 ## 简介
 ### 1、生产
-发送到topic，实际是topic中的不同物理分区partition中。理论上，相同消费者消费同一个partition
+发送到topic，实际是topic中的不同物理分区partition中。理论上，相同消费者消费同一个partition。
+
+按 mod(hash(key),partition)划分消息分区。若不指定key，则随机分区，并缓存(默认每10分钟或更新topic元数据时刷新)
   
 ### 2、消费
 消费者 消费同一个groupId下的所有数据，更新offset
