@@ -5,7 +5,8 @@
 
 2、安装启动
   
-    cd /data/app/apache-flume-1.7.0-bin
+    
+    cd /data/app/apache-flume-1.7.0-bin
     bin/flume-ng agent --conf conf --conf-file conf/flume.conf --name a1 -Dflume.root.logger=INFO,console
     
 
@@ -18,7 +19,7 @@ kafka source + memory channel + (kafka sink、hbase sink)
 log4j 推送到kafka队列，flume消费处理，落到sink出口(主要是2个出口：实时监控系统、日志存储)
 
 #### 1.1 实时处理
-log4j -> kafka topic -> flume(kafka source > memory channel + kafka sink) -> spark -> kafka -> realtime -> log system 
+log4j -> kafka topic -> flume(kafka source > memory channel + kafka sink) -> spark/flink/beam -> kafka -> realtime -> log system 
 
 #### 1.2 保存一份
 log4j -> kafka topic -> flume(kafka source > memory channel + hbase sink) -> log system
