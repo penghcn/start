@@ -4,8 +4,7 @@
 1、下载 https://github.com/apache/flume/releases
 
 2、安装启动
-  
-    
+
     cd /data/app/apache-flume-1.7.0-bin
     bin/flume-ng agent --conf conf --conf-file conf/flume.conf --name a1 -Dflume.root.logger=INFO,console
     
