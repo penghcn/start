@@ -52,6 +52,7 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 ## gretty
 1、在build.gradle文件中添加
+
 `apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'`
 
 2、gradle appRun
