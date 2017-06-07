@@ -50,6 +50,12 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 7、最后，也可以使用eclipse的gradle插件
 
+## gretty
+1、在build.gradle文件中添加`apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'`
+
+2、gradle appRun
+
+
 ## 多模块子项目
 主要使用到了settings.gradle
 参考[https://github.com/penghcn/demo/tree/master/city-dubbo](https://github.com/penghcn/demo/tree/master/city-dubbo)  
