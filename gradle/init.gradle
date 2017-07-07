@@ -51,7 +51,7 @@ allprojects{
         xmemcached_version              = '2.2.0'
         kafka_version                   = '0.10.2.1'
 
-        pbase_version                   = '1.8.10'
+        pbase_version                   = '1.8.17'
 
         fuiou_fas_client_version        = '1.3.2'
         fuiou_wx_version                = '1.0.0'
@@ -59,11 +59,11 @@ allprojects{
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
-        fuiou_ds_user_act_version       = '1.2.13'
+        fuiou_ds_user_act_version       = '1.2.17'
         fuiou_ds_cab_base_version       = '1.0.0'
-        fuiou_box_contract_version      = '1.1.4'
+        fuiou_box_contract_version      = '1.1.5'
         fuiou_sms_version               = '1.0.5'
-        fuiou_ds_o2o_version            = '0.0.1'
+        fuiou_ds_o2o_version            = '0.1.3'
 
         release_dir                     = '/data/release'
         jar_prefix                      = 'fuiou'
@@ -71,7 +71,6 @@ allprojects{
         PUBLISH_NAME                    = 'Release'
         PUBLISH_USERNAME                = ''
         PUBLISH_PASSWORD                = ''
-
 
 
 
@@ -100,6 +99,8 @@ allprojects{
         maven {
             url "$REPO_PUBLISH_URL"
         }
+
+        maven { url 'https://jitpack.io' }
         //mavenCentral()
     }
 
@@ -107,3 +108,4 @@ allprojects{
         delete ".classpath",".project",".settings"
     }
 }
+
