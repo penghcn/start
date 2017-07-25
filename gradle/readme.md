@@ -13,7 +13,9 @@
 
 2、运行。打开终端，运行 `gradle build` `gradle eclipse` `gradle check` `gradle clean`等命令
 
-3、在第一次运行`gradle build`等命令去获取jar依赖的时候，如果是maven中心，国内速度比较慢，可以慢慢下载或使用vpn
+3、在第一次运行`gradle build`等命令去获取jar依赖的时候，
+
+如果是maven中心，国内速度比较慢，可以慢慢下载或使用vpn，或者自建私有库，使用nexus的代理(缓存)
 
 以后再下载相同依赖，会使用本地的缓存，就比较快了
 
