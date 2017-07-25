@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  
+  <pluginGroups>    
+  </pluginGroups>
+
+  <proxies>    
+  </proxies>
+
+  
+  <servers>
+    <server>
+      <id>nexus29-maven-releases</id>
+      <username></username>
+      <password></password>
+    </server>   
+  </servers>
+
+  
+  <mirrors>
+    
+     <mirror>
+      <id>fuiou-central</id>
+      <mirrorOf>central</mirrorOf>
+      <name>8.29central</name>
+      <url>http://192.168.8.29:29106/repository/maven-central</url>
+    </mirror>
+    <mirror>
+      <id>fuiou-thirdparty</id>
+      <mirrorOf>thirdparty</mirrorOf>
+      <name>8.29releases</name>
+      <url>http://192.168.8.29:29106/repository/maven-releases</url>
+    </mirror>
+
+  </mirrors>
+  <profiles>
+  </profiles>
+</settings>
