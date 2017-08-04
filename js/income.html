@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>等额本息计算器</title>
+    <script type="text/javascript">
+        //等额本息每月还款计算
+        //本金，总期数(月)，年利率
+        function run() {
+            var invest = document.getElementById('invest').value * 10000;
+            var yearRate = document.getElementById('yearRate').value / 100;
+            var totalMonth = document.getElementById('totalMonth').value;
+            var monthIncome = calu(invest, totalMonth, yearRate), totalIncome = monthIncome * totalMonth;
+
+            document.getElementById('monthIncome').innerText = monthIncome.toFixed(4);
+            document.getElementById('totalInterest').innerText = (totalIncome - invest).toFixed(4);
+            document.getElementById('totalIncome').innerText = totalIncome.toFixed(4);
+        }
+        function calu(invest, totalMonth, yearRate) {
+            var monthRate = yearRate/totalMonth;
+            var monthIncome = invest * monthRate * Math.pow(1 + monthRate, totalMonth) / (Math.pow(1 + monthRate, totalMonth) - 1);
+            var totalIncome = monthIncome * totalMonth;
+            //console.log(monthIncome);
+            return monthIncome;
+        }
+    </script>
+</head>
+<body>
+    <div>本金<input name="invest" id="invest" >万元</div>
+    <div>年利率<input name="yearRate" id="yearRate" >%</div>
+    <div>期数<select name="totalMonth" id="totalMonth">
+        <option value="6">半年</option>
+        <option value="12" selected>1年</option>
+        <option value="120">10年</option>
+        <option value="240">20年</option>
+        <option value="300">25年</option>
+        <option value="360">30年</option>
+    </select></div>
+    <div><button onclick="run()">计算</button></div>
+
+    <h1>
+        <div>每月本息(元)：<span id="monthIncome"></span></div>
+        <div>总利息(元)：<span id="totalInterest"></span></div>
+        <div>总金额(元)：<span id="totalIncome"></span></div>
+    </h1>
+</body>
+</html>
