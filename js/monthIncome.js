@@ -6,4 +6,6 @@ function monthIncome(invest, totalMonth, yearRate) {
     console.log(monthIncome);
     return monthIncome.toFixed(4);
 }
+//on browser console 
+//test
 monthIncome(52000,12,0.083);
