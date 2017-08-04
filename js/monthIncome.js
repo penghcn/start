@@ -3,7 +3,7 @@
 function monthIncome(invest, totalMonth, yearRate) {
     var monthRate = yearRate/totalMonth;
     var monthIncome = invest * monthRate * Math.pow(1 + monthRate, totalMonth) / (Math.pow(1 + monthRate, totalMonth) - 1);
-    console.log(monthIncome);
+    console.log('monthIncome:'+monthIncome+', totalIncome:'+monthIncome * totalMonth);
     return monthIncome.toFixed(4);
 }
 //on browser console 
