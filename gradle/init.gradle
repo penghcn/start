@@ -1,5 +1,6 @@
 println "^_^ ************************************************************************************ ^_^"
-println "^_^ see gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
+println "^_^ see global gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
+println "^_^ see global gradle properties file at ${System.properties['user.home']}/.gradle/gradle.properties "
 println "^_^ ************************************************************************************ ^_^"
 
 allprojects{
