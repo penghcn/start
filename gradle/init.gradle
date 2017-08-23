@@ -54,7 +54,7 @@ allprojects{
 
         alipay_version                  = '1.0.0.20170615'
 
-        pbase_version                   = '1.8.20'
+        pbase_version                   = '1.8.21'
 
         fuiou_fas_client_version        = '1.3.2'
         fuiou_wx_version                = '1.0.0'
@@ -65,7 +65,7 @@ allprojects{
         fuiou_ds_user_act_version       = '1.2.17'
         fuiou_ds_cab_base_version       = '1.0.0'
         fuiou_box_contract_version      = '1.1.5'
-        fuiou_sms_version               = '1.0.8'
+        fuiou_sms_version               = '1.0.9'
         fuiou_ds_o2o_version            = '0.1.8'
 
         release_dir                     = '/data/release'
@@ -111,3 +111,6 @@ allprojects{
         delete ".classpath",".project",".settings"
     }
 }
+
+//maven发布第三方jar
+//mvn deploy:deploy-file -DgroupId=com.fuiou -DartifactId=fuiou-fas-client -Dversion=1.2.9 -Dpackaging=jar -Dfile=C:\Users\pengh\Desktop\release/fuiou-fas-client-1.2.2.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
