@@ -54,7 +54,7 @@ allprojects{
 
         alipay_version                  = '1.0.0.20170615'
 
-        pbase_version                   = '1.9.12'
+        pbase_version                   = '1.9.13'
 
         fuiou_fas_client_version        = '1.3.2'
         fuiou_wx_version                = '1.0.0'
