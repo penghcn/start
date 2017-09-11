@@ -21,7 +21,7 @@ allprojects{
         gson_version                    = '2.8.0'
         fastjson_version                = '1.2.37'
 
-        spring_version                  = '4.3.4.RELEASE'//4.2.5
+        spring_version                  = '4.3.10.RELEASE'//4.2.5
         spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
         spring_rabbit_version           = '1.7.0.RELEASE'//
         spring_redis_version            = '1.8.0.RELEASE'//
@@ -38,10 +38,10 @@ allprojects{
         hikaricp_jdk6_version           = '2.3.13'//https://github.com/brettwooldridge/HikariCP
         hikaricp_version                = '2.5.1'//https://github.com/brettwooldridge/HikariCP
 
-        httpclient_version              = '4.5.2'
+        httpclient_version              = '4.5.3'
         quartz_version                  = '2.2.1'
         cglib_version                   = '3.2.2'
-        dubbo_version                   = '2.5.3'
+        dubbo_version                   = '2.5.4'
         zookeeper_version               = '3.4.9'
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
