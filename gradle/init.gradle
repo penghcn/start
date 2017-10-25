@@ -71,7 +71,7 @@ allprojects{
         fuiou_ds_cab_base_version       = '1.0.0'
         fuiou_box_contract_version      = '1.1.5'
         fuiou_sms_version               = '1.0.10'
-        fuiou_ds_o2o_version            = '0.1.9'
+        fuiou_ds_o2o_version            = '0.2.0'
 
         release_dir                     = '/data/release'
         jar_prefix                      = 'fuiou'
