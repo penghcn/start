@@ -7,7 +7,8 @@ allprojects {
     ext {   
         jvm_version                     = 1.6
         jvm_version_8                   = 1.8
-        guava_version                   = '23.0'
+        guava_version                   = '19.0'
+        guava_version_jdk8              = '23.0'
         junit_version                   = '4.12'
         log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
         log4j2_version_jdk8             = '2.10.0'//2.4+ requires jdk1.7 
