@@ -50,7 +50,8 @@ allprojects {
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//jboss netty
-        netty_io_version                = '4.1.16.Final'//io netty
+        netty_io_version                = '4.1.19.Final'//io netty
+        protobuf_version                = '3.5.1'
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
         tomcat_version                  = '7.0.68'
@@ -72,7 +73,7 @@ allprojects {
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
-        fuiou_ds_user_act_version       = '2.0.2'
+        fuiou_ds_user_act_version       = '2.0.4'
         fuiou_ds_cab_base_version       = '1.0.0'
         fuiou_box_contract_version      = '1.1.5'
         //fuiou_sms_version               = '1.0.10'
