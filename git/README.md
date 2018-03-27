@@ -1,7 +1,7 @@
 ## 1、git简单使用
 ### git clone
     git clone git@10.0.0.0:docker_conf
-    git clone git:docker_conf
+    git clone git123:docker_conf
 ### git 强制覆盖更新本地
     git fetch --all && git reset --hard origin/master
 ### git 提交到主干
