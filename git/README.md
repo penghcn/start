@@ -9,9 +9,9 @@
 ### git 查看、创建分支 test
     git branch
     git branch test
-    git branch development
-    git branch release    
-    git branch hotfix
+    git branch development
+    git branch release 
+    git branch hotfix
 ### git 切换分支
     git checkout test
     git checkout master
