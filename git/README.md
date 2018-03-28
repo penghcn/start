@@ -7,7 +7,7 @@
 ### git 提交到主干
     git add . && git status && git commit -a -m "提交的一些说明" && git push --all origin
 ### git 查看、创建分支 test
-    git branch
+    git branch
     git branch test
     git branch development
     git branch release 
