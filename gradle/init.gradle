@@ -50,8 +50,8 @@ allprojects {
         zookeeper_version               = '3.4.10'
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
-        //netty_version                   = '3.2.10.Final'//jboss netty
-        netty_version                   = '3.7.0.Final'//jboss netty
+        netty_version                   = '3.2.10.Final'//jboss netty
+        //netty_version                   = '3.7.0.Final'//jboss netty
         netty_io_version                = '4.1.22.Final'//io.netty:netty-all:4.1.22.Final
         protobuf_version                = '3.5.1'
         mina_version                    = '1.1.7'//
