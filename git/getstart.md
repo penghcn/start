@@ -81,7 +81,7 @@
     git push --all origin && git push --tags
     
 #### (可选)3.5、生产版本发现了问题，需紧急修复，项目负责人启动hotfix分支
-    git flow hotfix start 1.0.1 1.0.0
+    git flow hotfix start 1.0.1 1.0.0
     git add . && git status && git commit -am "fix:修复登录提示异常" 
     git flow hotfix finish 1.0.1
     git push --all origin && git push --tags
