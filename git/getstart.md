@@ -42,7 +42,7 @@
 
 开始写代码。。。写好了，提交到本地仓库
     
-    git add . && git status && git commit -m "feat(user):加了用户登录模块"
+    git add . && git status && git commit -m "feat(#user):加了用户登录模块"
 自测完毕，结束这个功能分支。以下命令，会删除该分支，切换到develop，把代码合并到develop分支
     
     git flow init feature finish f-user-login-module
@@ -52,12 +52,12 @@
 
 #### 3.2、开发人员a2也开始一个小功能，比如商户添加、查询
     git flow init feature start f-mch-add
-    git add . && git status && git commit -am "feat(mch):加了商户添加模块"
+    git add . && git status && git commit -am "feat(#mch):加了商户添加模块"
     git flow init feature finish f-mch-add
     git push origin develop
 
     git flow init feature start f-mch-qry
-    git add . && git status && git commit -am "feat(mch):加了商户查询接口"
+    git add . && git status && git commit -am "feat(#mch):加了商户查询接口"
     git flow init feature finish f-mch-qry
     git push origin develop
 
