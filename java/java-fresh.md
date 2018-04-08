@@ -17,7 +17,7 @@
 4、[并发](#并发)
 
 ## 工具
-### eclipse
+### jdk
 推荐使用jdk1.8 [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
