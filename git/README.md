@@ -1,5 +1,5 @@
 ## 1、git简单使用
-原文地址 [https://github.com/penghcn/demo/tree/master/git]
+[原文地址](https://github.com/penghcn/demo/blob/master/git)
 ### git clone
     git clone git@10.0.0.0:docker_conf
     git clone git123:docker_conf
