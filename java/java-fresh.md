@@ -1,20 +1,29 @@
 # Java Web入门与实战
 视空闲，持续更新中...
 
+## 目录
+1、[工具](#工具)
+    1.1 [jdk](#jdk)
+2、[基本变量](#基本变量)
+3、[列表](#列表)
+4、[并发](#并发)
+
 ## 工具
-### 选择jdk
+### jdk
 推荐使用jdk1.8 [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 
 我电脑里面目前是装了这2个版本，1.8为主，1.6为辅
 
-### eclipse 基本掌握 
-[下载地址](https://www.eclipse.org/downloads/eclipse-packages/?osType=win32&release=undefined)
+### eclipse 
+掌握基本使用 [下载地址](https://www.eclipse.org/downloads/eclipse-packages/?osType=win32&release=undefined)
  
-### idea 推荐使用
+### idea 
+推荐使用
 
-### tomcat 或者 jetty
+### tomcat
+### jetty
 
 
 ## 基本变量
@@ -37,7 +46,7 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
     二叉树、B+树
     有向无环图
 
-## 并发 concurrent
+## 并发
 在这个包里面 java.util.concurrent
 ### atomic
         AtomicInteger i = new AtomicInteger(1);
