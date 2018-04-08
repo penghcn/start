@@ -26,8 +26,8 @@
 [https://github.com/penghcn/demo/blob/master/git/getstart.md](https://github.com/penghcn/demo/blob/master/git/getstart.md) 
 
 ## 从老项目开始
-### 从分支develop克隆项目
+### 1、从分支develop克隆项目
     cd /www/demo
     git clone -b develop http://192.168.8.251/ds/test.git
-### 参考下文
+### 2、然后参考下文
 [https://github.com/penghcn/demo/blob/master/git/getstart.md](https://github.com/penghcn/demo/blob/master/git/getstart.md) 
