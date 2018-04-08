@@ -10,6 +10,10 @@
 
 &nbsp; &nbsp;1.3 [idea](#idea)
 
+&nbsp; &nbsp;1.4 [gradle](#gradle)
+
+&nbsp; &nbsp;1.5 [git](#git)
+
 2、[基本变量](#基本变量)
 
 3、[列表](#列表)
@@ -32,6 +36,9 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 
 ### tomcat
 ### jetty
+### maven
+### gradle
+### git
 
 
 ## 基本变量
