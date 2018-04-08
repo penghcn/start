@@ -3,7 +3,7 @@
 ### 选择jdk
 推荐使用jdk1.8 [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装，
+jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 
 我电脑里面目前是装了这2个版本，1.8为主，1.6为辅
 
@@ -34,6 +34,36 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装�
     冒泡排序、快速排序、堆排序
     二叉树、B+树
     有向无环图
+
+## 并发 concurrent
+在这个包里面 java.util.concurrent
+### atomic
+        AtomicInteger i = new AtomicInteger(1);
+        i.addAndGet(2);
+        System.out.println("i = [" + i + "]");
+        i.decrementAndGet();
+        System.out.println("i = [" + i + "]");
+
+### lock
+    ReentrantLock, ReadWriteLock
+
+### 线程 Thread、线程池 ExecutorService
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //do something
+            }
+        }).start();
+        new Thread(()->{/*do something*/}).start();//jdk1.8+ lambda写法
+
+        ExecutorService es = Executors.newFixedThreadPool(3);
+        es.submit(()->{
+            //do something
+        });
+        es.shutdown();
+
+### 队列
+ConcurrentMap、CopyOnWriteArrayList、BlockingQueue、ConcurrentLinkedQueue
 
 
 
