@@ -1,4 +1,6 @@
 # Java Web入门与实战
+视空闲，持续更新中...
+
 ## 工具
 ### 选择jdk
 推荐使用jdk1.8 [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
