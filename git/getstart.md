@@ -1,4 +1,5 @@
 ## 开始一个新项目
+原文地址 [https://github.com/penghcn/demo/blob/master/git/getstart.md]
 ### 开始前
 推荐使用git flow工具。source tree图形工具 [https://www.sourcetreeapp.com](https://www.sourcetreeapp.com)
 
