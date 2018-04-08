@@ -2,6 +2,10 @@
 [原文地址](https://github.com/penghcn/demo/blob/master/git/gitflow.md)
 
 ## I、简单介绍
+先参考其他文档 
+
+[https://www.cnblogs.com/cnblogsfans/p/5075073.html](https://www.cnblogs.com/cnblogsfans/p/5075073.html)
+[https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow)
 
 ### master
 ### develop
