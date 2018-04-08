@@ -32,7 +32,7 @@
 
 ### 3、其他开发人员开始干活了，推荐从分支develop上clone项目
     cd /www/demo
-    git clone -b develop http://192.168.8.251/ds/test.git
+    git clone -b develop http://192.168.8.251/ds/test.git
     输入用户名密码
     git flow init
     都默认回车就好了
