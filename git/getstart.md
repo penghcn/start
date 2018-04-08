@@ -75,9 +75,17 @@
     git add . && git status && git commit -am "test:修复登录异常" 
     git add . && git status && git commit -am "opt:优化排序" && git push origin release/1.0.0
 
-结束release/1.0.0分支。以下命令，会删除release/1.0.0，代码会merge合并到master和develop分支
+结束release/1.0.0分支。以下命令，会删除本地仓库的release/1.0.0，代码会merge合并到master和develop分支
 
     git flow release finish 1.0.0
+
+(可选、推荐)同时，把push到远程仓库的release分支删除
+
+    git branch -a
+    git branch -d release/1.0.0
+    git push origin --delete release/1.0.0
+    git branch -a
+
 #### 3.4、项目负责人提交到远程master和develop分支，并tag
     git push --all origin && git push --tags
     

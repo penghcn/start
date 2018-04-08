@@ -1,7 +1,7 @@
 # git flow
 [原文地址](https://github.com/penghcn/demo/blob/master/git/gitflow.md)
 
-## 简单介绍
+## I、简单介绍
 
 ### master
 ### develop
@@ -11,7 +11,7 @@
     2、其他类似feature、release之类的，不推荐push 到 origin
     3、即使release分支测试的时候要push到远程origin里，也请在测试完成后删掉远程仓库里的分支
 
-## 权限
+## II、权限
 这里是指远程仓库gitlab的权限(guest、reporter、developer、master)
 其实还有admin和owner(项目的创建人)
 在gitlab创建项目，master分支默认是受保护的
@@ -22,12 +22,15 @@
     项目负责人配置该角色
 
     
-## 开始一个新项目
+## III、开始一个新项目
 [https://github.com/penghcn/demo/blob/master/git/getstart.md](https://github.com/penghcn/demo/blob/master/git/getstart.md) 
 
-## 从老项目开始
+## IV、从老项目开始
 ### 1、从分支develop克隆项目
     cd /www/demo
     git clone -b develop http://192.168.8.251/ds/test.git
 ### 2、然后参考下文
 [https://github.com/penghcn/demo/blob/master/git/getstart.md](https://github.com/penghcn/demo/blob/master/git/getstart.md) 
+
+## V、冲突解决
+待更新...
