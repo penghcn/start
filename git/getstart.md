@@ -68,7 +68,7 @@
 
     git flow release publish 1.0.0
 
-其他开发人员基于release/1.0.0来修改，再提交到改分支上
+其他开发人员基于release/1.0.0来修改，再提交到该分支上
 
     git flow release pull 1.0.0
     git add . && git status && git commit -am "test:修复登录异常" 
