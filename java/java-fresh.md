@@ -3,13 +3,21 @@
 
 ## 目录
 1、[工具](#工具)
-    1.1 [jdk](#jdk)
+    
+&nbsp; &nbsp;1.1 [jdk](#jdk)
+
+&nbsp; &nbsp;1.2 [eclipse](#eclipse)
+
+&nbsp; &nbsp;1.3 [idea](#idea)
+
 2、[基本变量](#基本变量)
+
 3、[列表](#列表)
+
 4、[并发](#并发)
 
 ## 工具
-### jdk
+### eclipse
 推荐使用jdk1.8 [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
