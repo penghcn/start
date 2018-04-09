@@ -120,7 +120,7 @@ ConcurrentMap、CopyOnWriteArrayList、BlockingQueue、ConcurrentLinkedQueue
 
 &nbsp; &nbsp;1.5 [git](#git)
 
-2、[基本变量](#基本变量)
+2、[变量](#变量)
 
 3、[列表](#列表)
 
