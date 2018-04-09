@@ -1,25 +1,6 @@
 # Java Web入门
 视空闲，持续更新中...
 
-## 目录
-1、[工具](#工具)
-    
-&nbsp; &nbsp;1.1 [jdk](#jdk)
-
-&nbsp; &nbsp;1.2 [eclipse](#eclipse)
-
-&nbsp; &nbsp;1.3 [idea](#idea)
-
-&nbsp; &nbsp;1.4 [gradle](#gradle)
-
-&nbsp; &nbsp;1.5 [git](#git)
-
-2、[基本变量](#基本变量)
-
-3、[列表](#列表)
-
-4、[并发](#并发)
-
 ## 工具
 ### jdk
 推荐使用jdk1.8 [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -34,16 +15,14 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 ### idea 
 推荐使用
 
-### tomcat
-### jetty
-### maven
-### gradle
-### git
+### 其他
+tomcat、jetty、maven、gradle、 git
 
-
-## 基本变量
+## 变量
 ### 0、八种基本数据类型
 基本数据类型的数据是在 **方法的** 栈空间中分配。栈在性能上高于堆。注意，**类** 对象中基本类型域还是分配在堆空间中
+
+以下涉及位数计算的，建议 **熟悉** **二进制(符号位、无符号)**
 
     byte,     1Byte, 2^7 -1,   [-128, 127]
     short,    2Byte, 2^15 -1,  [-32768, 32767]
@@ -127,6 +106,25 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 
 ### 队列
 ConcurrentMap、CopyOnWriteArrayList、BlockingQueue、ConcurrentLinkedQueue
+
+## 目录
+1、[工具](#工具)
+    
+&nbsp; &nbsp;1.1 [jdk](#jdk)
+
+&nbsp; &nbsp;1.2 [eclipse](#eclipse)
+
+&nbsp; &nbsp;1.3 [idea](#idea)
+
+&nbsp; &nbsp;1.4 [gradle](#gradle)
+
+&nbsp; &nbsp;1.5 [git](#git)
+
+2、[基本变量](#基本变量)
+
+3、[列表](#列表)
+
+4、[并发](#并发)
 
 
 
