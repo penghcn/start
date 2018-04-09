@@ -42,7 +42,9 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 
 
 ## 基本变量
-### 0、八种基础类型
+### 0、八种基本数据类型
+基本数据的数据是在 **方法的** 栈空间中分配。栈在性能上高于堆。注意，**类** 对象中基本类型域还是分配在堆空间中
+
     byte,     1Byte, 2^7 -1,   [-128, 127]
     short,    2Byte, 2^15 -1,  [-32768, 32767]
     int,      4Byte, 2^31 -1,  [-2147483648, 2147483647]
@@ -72,6 +74,22 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
     上面代表float类型能够表示的最小精度，并非最小值
     Float的最小值 == -Float.MAX_VALUE
 
+### 4、性能
+基本类型的效率优于装箱类型
+
+        long s1 = System.nanoTime();
+        int c1 = 0;
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            c1 += i;
+        }
+        System.out.println("int消耗时间："+ (System.nanoTime() - s1)/1e9 +"s");//0.75282627s
+
+        long s2 = System.nanoTime();
+        Integer c2 = 0;
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            c2 += i;
+        }
+        System.out.println("Integer消耗时间："+ (System.nanoTime() - s2)/1e9 +"s");//6.308165414s
 
 ## 列表
 ### Map、HashMap、List、ArrayList、HashSet、Collection
