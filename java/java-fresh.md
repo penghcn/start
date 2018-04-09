@@ -48,8 +48,8 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
     int,      4Byte, 2^31 -1,  [-2147483648, 2147483647]
     long,     8Byte, 2^63 -1,  [-9223372036854775808, 9223372036854775807]
     
-    float,    4Byte, 1+8+32,   [1.4E-45, 3.4028235E38]
-    dobule,   8Byte, 1+11+52   [4.9E-324, 1.7976931348623157E308]
+    float,    4Byte, 1+8+32,   [-3.4028235E38, 3.4028235E38]
+    dobule,   8Byte, 1+11+52   [-1.7976931348623157E308, 1.7976931348623157E308]
 
     char,     2Byte, 2^16 -1,  [0, 65535]
     
@@ -66,6 +66,12 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
         Integer a2 = 128, b2 = 128;
         System.out.println(a2 == b2);
         System.out.println(a2.equals(b2));
+
+### 4、Float.MIN_VALUE、Double.MIN_VALUE
+    Float.MIN_VALUE == 1.4E-45
+    上面代表float类型能够表示的最小精度，并非最小值
+    Float的最小值 == -Float.MAX_VALUE
+
 
 ## 列表
 ### Map、HashMap、List、ArrayList、HashSet、Collection
