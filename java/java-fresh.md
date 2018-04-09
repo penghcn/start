@@ -39,14 +39,15 @@ tomcat、jetty、maven、gradle、 git
 ### 1、int 和 Integer 的区别
 ### 2、IntegerCache、LongCache等(-128 <= i <=  127)
         int a = 128, b = 128;
-        System.out.println(a == b);
+        System.out.println(a == b);//true
 
         Integer a1 = 127, b1 = 127;
-        System.out.println(a1 == b1);
+        System.out.println(a1 == b1);//true
 
         Integer a2 = 128, b2 = 128;
-        System.out.println(a2 == b2);
-        System.out.println(a2.equals(b2));
+        System.out.println(a2 == b2);//false
+        System.out.println(a2.equals(b2));//true
+        System.out.println(a2.intValue() == b2.intValue());//true
 
 ### 3、Float.MIN_VALUE、Double.MIN_VALUE
     Float.MIN_VALUE == 1.4E-45; Double.MIN_VALUE == 4.9E-324
@@ -61,14 +62,14 @@ tomcat、jetty、maven、gradle、 git
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             c1 += i;
         }
-        System.out.println("int消耗时间："+ (System.nanoTime() - s1)/1e9 +"s");//0.75282627s
+        System.out.println("int消耗时间："+ (System.nanoTime() - s1)/1e9 +"s");//0.740560241s
 
         long s2 = System.nanoTime();
         Integer c2 = 0;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             c2 += i;
         }
-        System.out.println("Integer消耗时间："+ (System.nanoTime() - s2)/1e9 +"s");//6.308165414s
+        System.out.println("Integer消耗时间："+ (System.nanoTime() - s2)/1e9 +"s");//6.664173079s
 
 ## 列表
 ### Map、HashMap、List、ArrayList、HashSet、Collection
