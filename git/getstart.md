@@ -1,10 +1,6 @@
 ## 开始一个新项目
 [原文地址](https://github.com/penghcn/demo/blob/master/git/getstart.md)
 ### 开始前
-推荐使用git flow工具。source tree图形工具 [https://www.sourcetreeapp.com](https://www.sourcetreeapp.com)
-
-推荐git commit messege格式 [https://www.cnblogs.com/deng-cc/p/6322122.html](https://www.cnblogs.com/deng-cc/p/6322122.html)
-    
     项目负责人m，开发人员a1、a2，测试人员t1
 
 基本流程：
