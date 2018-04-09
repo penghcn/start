@@ -1,5 +1,5 @@
-# git message格式规范
-[原文地址](https://github.com/penghcn/demo/blob/master/git/get-start.md)
+# git message格式推荐
+[原文地址](https://github.com/penghcn/demo/blob/master/git/git-message.md)
 
 参考 
 
