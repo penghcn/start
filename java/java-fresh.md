@@ -53,7 +53,7 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
 
     char,     2Byte, 2^15 -1, [0,65535]
     
-    boolean,  1Byte, true,false
+    boolean,  1bit, true,false
 
 ### 1、int 和 Integer 的区别
 ### 2、IntegerCache、LongCache等(-128 <= i <=  127)
