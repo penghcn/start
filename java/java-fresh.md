@@ -67,8 +67,8 @@ jdk1.6，很多公司很多老项目都是基于这个版本，请自行安装
         System.out.println(a2 == b2);
         System.out.println(a2.equals(b2));
 
-### 4、Float.MIN_VALUE、Double.MIN_VALUE
-    Float.MIN_VALUE == 1.4E-45
+### 3、Float.MIN_VALUE、Double.MIN_VALUE
+    Float.MIN_VALUE == 1.4E-45; Double.MIN_VALUE == 4.9E-324
     上面代表float类型能够表示的最小精度，并非最小值
     Float的最小值 == -Float.MAX_VALUE
 
