@@ -73,8 +73,18 @@ tomcat、jetty、maven、gradle、 git
 
 ## 列表
 ### Map、HashMap、List、ArrayList、HashSet、Collection
-### 排序、数据结构
-    冒泡排序、快速排序、堆排序
+### 排序
+
+    List<StaffUserVO> list = new ArrayList<StaffUserVO>();
+    
+    Collections.sort(list, Comparator.comparing(StaffUserVO::getUserNo));
+    Collections.sort(list, Comparator.comparing(u -> u.getUserNo()));
+    list.sort(Comparator.comparing(StaffUserVO::getUserNo).thenComparing(StaffUserVO::getUserNamePinyin));
+
+### (可选)数据结构
+[冒泡排序](https://github.com/penghcn/start/blob/master/java/java-sort.md)
+    
+    快速排序、堆排序
     二叉树、B+树
     有向无环图
 
