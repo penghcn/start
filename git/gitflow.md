@@ -31,8 +31,17 @@
  
 
 ### master
+    项目负责人、admin才能修改该远程分支。其他人只有查看、下载权，不能提交
 ### develop
+    开发人员可以修改该远程分支
 ### 其他
+    feature分支
+        开发人员可以修改，不推荐提交发布到远程仓库
+    release分支
+        项目负责人创建，push到远程仓库以方便下载测试、修改
+        测试人员下载测试
+        开发人员下载修改、提交
+        项目负责人创建结束、删除本地和远程仓库
 ### 注意
     1、master 跟 develop分支是长期存在origin远程仓库里的
     2、其他类似feature、release分支，不推荐push 到 origin远程仓库里
@@ -48,16 +57,8 @@
 ### master
     项目负责人配置该角色
 
-    
-## III、开始一个新项目
+## III、来一个新项目
 [https://github.com/penghcn/demo/blob/master/git/getstart.md](https://github.com/penghcn/demo/blob/master/git/getstart.md) 
 
-## IV、从老项目开始
-### 1、从分支develop克隆项目
-    cd /www/demo
-    git clone -b develop http://192.168.8.251/ds/test.git
-### 2、然后参考下文
-[https://github.com/penghcn/demo/blob/master/git/getstart.md](https://github.com/penghcn/demo/blob/master/git/getstart.md) 
-
-## V、冲突解决
+## IV、冲突解决
 待更新...
