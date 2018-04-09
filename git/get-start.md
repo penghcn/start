@@ -1,6 +1,6 @@
 ## 开始一个新项目
-[上一篇](https://github.com/penghcn/demo/blob/master/git/git-flow.md) 
-[原文地址](https://github.com/penghcn/demo/blob/master/git/get-start.md)
+[上一篇](https://github.com/penghcn/start/blob/master/git/git-flow.md) 
+[原文地址](https://github.com/penghcn/start/blob/master/git/get-start.md)
 ### 开始前
     项目负责人m，开发人员a1、a2，测试人员t1
 

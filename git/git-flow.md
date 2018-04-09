@@ -1,5 +1,5 @@
 # git flow
-[原文地址](https://github.com/penghcn/demo/blob/master/git/git-flow.md)
+[原文地址](https://github.com/penghcn/start/blob/master/git/git-flow.md)
 
 ## I、简单介绍
 先参考其他文档 

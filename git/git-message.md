@@ -1,6 +1,6 @@
 # git message格式推荐
-[上一篇](https://github.com/penghcn/demo/blob/master/git/git-flow.md) 
-[原文地址](https://github.com/penghcn/demo/blob/master/git/git-message.md)
+[上一篇](https://github.com/penghcn/start/blob/master/git/git-flow.md) 
+[原文地址](https://github.com/penghcn/start/blob/master/git/git-message.md)
 
 参考 
 
