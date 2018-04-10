@@ -29,3 +29,25 @@
 ### docker gitolite
     sudo docker run -ti -h 'dc_git' -p 40022:22 -v /etc/localtime:/etc/localtime:ro -v /data:/data -w /data/docker_conf/git --name=dc_git pengh/gitolite:0.2.0 /bin/bash
 ### gitlab
+#### 新项目
+    git clone http://192.168.8.251/ds/test.git
+    cd box-contract
+    touch README.md
+    git add README.md
+    git commit -m "add README"
+    git push -u origin master
+
+#### 老项目提交到远程的空仓库
+    cd existing_folder
+    git init
+    git remote add origin http://192.168.8.251/ds/test.git
+    git add .
+    git commit -m "Initial commit"
+    git push -u origin master
+
+#### 切换远程仓库
+    cd existing_repo
+    git remote rename origin old-origin
+    git remote add origin http://192.168.8.251/ds/test.git
+    git push -u origin --all
+    git push -u origin --tags
