@@ -71,12 +71,63 @@ tomcat、jetty、maven、gradle、 git
         }
         System.out.println("Integer消耗时间："+ (System.nanoTime() - s2)/1e9 +"s");//6.664173079s
 
-## 列表
-### Map、HashMap、List、ArrayList、HashSet、Collection
+## 集合
+有数组
+### 数组
+    
+
+#### 1、`int[]` 转成 `Integer[]、List<Integer>`
+    int[] arr = {1,2,3,-1,0,-2};
+
+    //jdk1.8+
+    Integer[] array2 = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+    int[] arr1 = Arrays.stream(array2).mapToInt(Integer::valueOf).toArray();
+
+    List<Integer> list2 = Arrays.stream(arr1).boxed().collect(Collectors.toList());
+    List<Integer> list3 = Arrays.stream(array).collect(Collectors.toList());
+
+### Map
+#### HashMap
+参考 [深入理解HashMap](http://www.iteye.com/topic/539465) 和 [Java8之HashMap](http://www.importnew.com/20386.html)
+
+### List
+#### 1、ArrayList
+#### 2、for
+        List<String> list = new ArrayList<String>();
+        for (int i = 0; i < 10; i++) {
+            list.add((new Random().nextFloat() < 0.5 ? "-" : "") +(1+i));
+        }
+        System.out.println(list);
+
+        //jdk1.8+ 
+        list.forEach(str->{System.out.println(str);});
+
+#### 3、stream
+jdk1.8+ 流
+        
+        List<String> list = new ArrayList<String>() {
+            private static final long serialVersionUID = 1290668008506414196L; {
+                for (int i = 0; i < 10; i++) {
+                    add((new Random().nextFloat() < 0.5 ? "-" : "") +(1+i));
+                }
+            }
+        };
+        System.out.println(list);
+
+        List<String> results = list.stream()
+                .filter(str -> str != null)
+                .filter(str-> str.length() > 0)
+                .filter(str-> str.compareTo("0") > -1)
+                .collect(Collectors.toList());
+        System.out.println(results);
+
+### Set
+#### HashSet
+
 ### 排序
 
     List<StaffUserVO> list = new ArrayList<StaffUserVO>();
-    
+
     Collections.sort(list, Comparator.comparing(StaffUserVO::getUserNo));
     Collections.sort(list, Comparator.comparing(u -> u.getUserNo()));
     list.sort(Comparator.comparing(StaffUserVO::getUserNo).thenComparing(StaffUserVO::getUserNamePinyin));
