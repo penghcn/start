@@ -72,7 +72,7 @@ tomcat、jetty、maven、gradle、 git
         System.out.println("Integer消耗时间："+ (System.nanoTime() - s2)/1e9 +"s");//6.664173079s
 
 ## 集合
-有数组
+有数组、map、list、set等
 ### 数组
     
 
