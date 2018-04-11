@@ -51,3 +51,10 @@
     git remote add origin http://192.168.8.251/ds/test.git
     git push -u origin --all
     git push -u origin --tags
+
+## 3、配置
+### 换行符
+团队统一规范代码的换行符为类unix格式，即LF。图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
+    
+    git config --global core.autocrlf false
+    git config --global core.safecrlf true
