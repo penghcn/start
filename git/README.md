@@ -53,6 +53,15 @@
     git push -u origin --tags
 
 ## 3、配置
+### 查看配置，系统、用户、某项目本地仓库
+    git config --system  --list
+    git config --global  --list
+    git config --local  --list
+
+### 设置本地用户
+    git config --global user.name "pengh-mbp"
+    git config --global user.email "peng@test.com"
+
 ### 换行符
 团队统一规范代码的换行符为类unix格式，即LF。图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
     
