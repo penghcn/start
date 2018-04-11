@@ -22,8 +22,13 @@
     git checkout master
     git merge development
 ### 删除分支
-    git branch -d test-3.0.1
+    git branch -a
+    git branch -d test-3.0.1 && git push origin --delete test-3.0.1
     git branch -D hotfix-3.0.5    
+
+### 删除tag
+    git tag -d 3.0.1  && git push origin --delete tag 3.0.1
+    git tag
     
 ## 2、git服务器搭建
 ### docker gitolite
