@@ -1,0 +1,63 @@
+## --------------------------------------------------------------------
+## Refresh .gitignore file
+## git rm -r --cached . && git add . && git commit -m 'update .gitignore'
+## --------------------------------------------------------------------
+
+.svn/
+*.svn
+
+## Java
+*.class
+
+## Python
+*.py[cod]
+*.egg
+*.egg-info
+## *.so
+dist
+build
+
+
+## Logs File
+*.log
+logs/
+*/logs/
+
+## Gradle
+.gradle/
+gradlew
+gradlew.bat
+build/
+*/build/
+bin/
+*/bin/
+
+## Eclipse Project files
+.project
+.classpath
+.settings/
+
+## IntelliJ IDEA Project files
+.idea
+*.iml
+*.ipr
+*.iws
+out/
+*/out/
+
+## NodeJs
+node_modules/
+public/
+
+## MacOS
+.DS_Store
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+
+*.bak
+*.temp
+*.tmp
