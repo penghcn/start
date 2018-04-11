@@ -9,6 +9,9 @@
 ## Java
 *.class
 
+## Dubbo
+.dubbo-registry/
+
 ## Python
 *.py[cod]
 *.egg
