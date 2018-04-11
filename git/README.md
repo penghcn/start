@@ -20,7 +20,7 @@
 ### 合并分支
 #### 把development合并到master
     git checkout master
-    git merge development
+    git merge develop
 ### 删除分支
     git branch -a
     git branch -d test/3.0.1 && git push origin --delete test/3.0.1
