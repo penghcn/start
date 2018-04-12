@@ -1,8 +1,10 @@
 ## 1、git简单使用
 [原文地址](https://github.com/penghcn/start/blob/master/git)
+
+刚开始，不想看下面乱七八糟的，可以直接跳到 [**3、配置**](#3、配置)或 [**4、git flow开发流**](#4、git flow开发流)
+
 ### git clone
-    git clone git@10.0.0.0:docker_conf
-    git clone git123:docker_conf
+    git clone http://192.168.8.251/ds/test.git ## 这是最简单的用法，之后会提示输入用户名密码
 ### 强制覆盖更新本地
     git fetch --all && git reset --hard origin/master
 ### 提交到主干
