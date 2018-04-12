@@ -58,7 +58,7 @@
     项目负责人配置该角色
 
 ## III、来一个新项目
-[https://github.com/penghcn/demo/blob/master/git/get-start.md](https://github.com/penghcn/demo/blob/master/git/get-start.md) 
+[get-start.md](./get-start.md) 
 
 ## IV、冲突解决
 待更新...

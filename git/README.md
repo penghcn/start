@@ -7,6 +7,8 @@
     git fetch --all && git reset --hard origin/master
 ### 提交到主干
     git add . && git status && git commit -a -m "提交的一些说明" && git push --all origin
+    git push --all origin && git push --tags
+    
 ### 查看、创建分支 test
     git branch
     git branch develop
