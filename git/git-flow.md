@@ -57,8 +57,12 @@
 ### master
     项目负责人配置该角色
 
-## III、来一个新项目
+## III、来一个项目
 [get-start.md](./get-start.md) 
 
 ## IV、冲突解决
+git diff 查看不同，或者使用eclipse等图形工具比较
+
 待更新...
+
+
