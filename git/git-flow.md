@@ -30,9 +30,9 @@
     git commit -m 'docs(#user):添加登录接口文档'
  
 
-### master
+### master分支
     项目负责人、admin才能修改该远程分支。其他人只有查看、下载权，不能提交
-### develop
+### develop分支
     开发人员可以修改该远程分支
 ### 其他
     feature分支
@@ -52,9 +52,9 @@
     其实还有admin和owner(项目的创建人)
     在gitlab创建项目，master分支默认是受保护的
 
-### developer
+### developer权限
     开发人员配置该角色
-### master
+### master权限
     项目负责人配置该角色
 
 ## III、来一个项目
