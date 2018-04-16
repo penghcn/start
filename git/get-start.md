@@ -25,7 +25,7 @@
     都默认回车就好了
     git push --all origin
 ### 2.1、项目负责人对项目的基本操作(可选)
-    写一些说明、构建文件，比如readme.md、build.gradle等
+    写一些说明、构建文件，比如readme.md、.gitignore、build.gradle等
     基本框架的一些代码，比如spring mvc、mybatis等
 
 ### 3、其他开发人员开始干活了，推荐从分支develop上clone项目

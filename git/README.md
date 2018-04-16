@@ -9,6 +9,7 @@
     git fetch --all && git reset --hard origin/master
 ### 提交到主干
     git add . && git status && git commit -a -m "提交的一些说明" && git push --all origin
+    git add . && git status && git commit -a -m "update" && git push --all origin
     git push --all origin && git push --tags
     
 ### 查看、创建分支 test
@@ -72,7 +73,7 @@
     git config --global user.email "peng@test.com"
 
 ### .gitignore 配置参考
-[gitignore.sample](./gitignore.sample)
+请特别注意，一定要配置.gitignore文件，配置参考 [gitignore.sample](./gitignore.sample)
 
 ### 换行符
 团队统一规范代码的换行符为类unix格式，即LF。图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
