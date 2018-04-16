@@ -17,7 +17,7 @@
 
 2、eclipse 原生支持，但需要开启：help，install new ，搜索git flow 安装重启即可
 
-3、git messege格式 [https://github.com/penghcn/demo/blob/master/git/git-message.md](https://github.com/penghcn/demo/blob/master/git/git-message.md)
+3、git messege格式 [git-message.md](./git-message.md)
    
     git commit -m 'init:初始化'
     git commit -m 'feat(#user):添加登录功能'
