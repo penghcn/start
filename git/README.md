@@ -73,11 +73,13 @@
 
 ### .gitignore 配置参考
 [gitignore.sample](./gitignore.sample)
+
 ### 换行符
 团队统一规范代码的换行符为类unix格式，即LF。图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
     
     git config --global core.autocrlf false
     git config --global core.safecrlf true
+eclipse、idea等ide开发工具配置换行符为LF，请自行百度谷歌，谢谢
 
 ## 4、git flow开发流
 详见这里[git-flow.md](./git-flow.md)
