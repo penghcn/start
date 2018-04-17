@@ -15,7 +15,11 @@
 
 1、source tree图形工具 [https://www.sourcetreeapp.com](https://www.sourcetreeapp.com)
 
-2、eclipse 原生支持，但需要开启：help，install new ，搜索git flow 安装重启即可
+2、eclipse 原生支持，但需要开启：
+    
+    help，install new software
+    选择对应版本的地址，比如目前2018.4月的最新版oxygen对应的是 http://download.eclipse.org/releases/oxygen
+    然后搜索git flow，勾选GitFlow support，安装重启即可
 
 3、git messege格式 [git-message.md](./git-message.md)
    
