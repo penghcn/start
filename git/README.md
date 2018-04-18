@@ -4,7 +4,7 @@
 刚开始，不想看下面乱七八糟的，可以直接跳到最下面 **3、配置** 或 **4、git flow开发流**
 
 ### git clone
-    git clone http://192.168.8.251/ds/test.git ## 这是最简单的用法，之后会提示输入用户名密码
+    git clone http://192.168.8.251/ds/test.git ## 这是最简单的用法，之后会提示输入用户名密码。也可以配置ssh key
 ### 强制覆盖更新本地
     git fetch --all && git reset --hard origin/master
 ### 提交到主干
@@ -41,7 +41,7 @@
 ### gitlab
 #### 新项目
     git clone http://192.168.8.251/ds/test.git
-    cd box-contract
+    cd test
     touch README.md
     git add README.md
     git commit -m "add README"
