@@ -8,7 +8,7 @@
 
     负责人分配任务、开发人员领各自任务
     开发人员 基于任务创建feature分支、feature自测
-    开发人员 结束feature，合并到develop。若有冲突，跟其他组员沟通后，先rebase 再merge合并到develop
+    开发人员 结束feature，合并到develop。若有冲突，跟其他组员沟通后，先rebase 再push合并到develop
     负责人  创建release分支
     测试人员(或者持续集成工具、负责人、开发人员)基于release代码，发布到测试(或者UAT、灰度)环境。release分支充分测试、修改结束后，代表可以发布到正式生产环境
     负责人结束release分支，合并到develop和master，并打上tag
