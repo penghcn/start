@@ -19,7 +19,7 @@
 ### 2、项目负责人在本地机器上克隆该项目
     cd /www/demo
     git clone http://192.168.8.251/ds/test.git
-    输入用户名密码
+    输入用户名密码(或者配置ssh key免密码)
     cd test
     git flow init
     都默认回车就好了
