@@ -65,7 +65,8 @@
 [get-start.md](./get-start.md) 
 
 ## IV、冲突解决
-git diff 查看不同，或者使用eclipse等图形工具比较
+推荐git rebase解决提交冲突 [参考这里](https://blog.csdn.net/wh_19910525/article/details/7554489)， 或者使用eclipse等图形工具比较
+
 
 待更新...
 
