@@ -7,11 +7,12 @@ allprojects {
     ext {  
         jvm_version                     = 1.6
         jvm_version_8                   = 1.8
+
         guava_version                   = '19.0'
         guava_version_jdk8              = '23.0'
         junit_version                   = '4.12'
         log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
-        log4j2_version_jdk8             = '2.10.0'//2.4+ requires jdk1.7 
+        log4j2_version_jdk8             = '2.11.0'//2.4+ requires jdk1.7 //http://logging.apache.org/log4j/2.x/maven-artifacts.html
 
         
         joda_version                    = '2.9.3'
@@ -78,7 +79,7 @@ allprojects {
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
-        fuiou_ds_user_act_version       = '2.0.5'
+        fuiou_ds_user_act_version       = '2.0.6'
         fuiou_ds_cab_base_version       = '1.0.0'
         fuiou_box_contract_version      = '1.1.5'
         fuiou_box_book_version          = '1.0.0'
@@ -89,6 +90,7 @@ allprojects {
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
+        jar_include_sources             = true
 
         PUBLISH_NAME                    = 'Release'
         PUBLISH_USERNAME                = ''
