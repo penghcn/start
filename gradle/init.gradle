@@ -99,13 +99,14 @@ allprojects {
         REPO_PROXY_URL                  = 'http://192.168.8.29:29106/repository/maven-central'
         REPO_PUBLISH_URL                = 'http://192.168.8.29:29106/repository/maven-releases'
         REPO_DEV_URL                    = 'http://192.168.8.29:29106/repository/maven-snapshots'
+        REPO_PROXY_URL_J                = 'http://192.168.8.29:29106/repository/j-central'
     }
 
 
     repositories {
         //maven.oschina.net已经不可用，使用mavenCentral就好，实在嫌下载慢，可使用vpn
         //这里使用自己搭建的maven私有库
-        def REPOSITORY_URL = "$REPO_PROXY_URL"//http://maven.oschina.net/content/groups/public
+        //def REPOSITORY_URL = "$REPO_PROXY_URL"//http://maven.oschina.net/content/groups/public
         all { ArtifactRepository repo ->
             if(repo instanceof MavenArtifactRepository) {
                 def url = repo.url.toString()
@@ -117,10 +118,15 @@ allprojects {
         }
         
         maven {
-            url "$REPO_PUBLISH_URL"
+            url REPO_PUBLISH_URL
         }
+
         maven {
-            url REPOSITORY_URL
+            url REPO_PROXY_URL
+        }
+
+        maven {
+            url REPO_PROXY_URL_J
         }
 
         //maven { url 'https://jitpack.io' }
