@@ -55,21 +55,21 @@ tomcat、jetty、maven、gradle、 git
     Float的最小值 == -Float.MAX_VALUE
 
 ### 4、性能
-基本类型的效率优于装箱类型
+基本类型的效率 **优于** 装箱类型
 
         long s1 = System.nanoTime();
         int c1 = 0;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             c1 += i;
         }
-        System.out.println("int消耗时间："+ (System.nanoTime() - s1)/1e9 +"s");//0.740560241s
+        System.out.println("int耗时："+ (System.nanoTime() - s1)/1e9 +"s");//0.740560241s
 
         long s2 = System.nanoTime();
         Integer c2 = 0;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             c2 += i;
         }
-        System.out.println("Integer消耗时间："+ (System.nanoTime() - s2)/1e9 +"s");//6.664173079s
+        System.out.println("Integer耗时："+ (System.nanoTime() - s2)/1e9 +"s");//6.664173079s
 
 ## 集合
 有数组、map、list、set等
