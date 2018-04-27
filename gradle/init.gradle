@@ -69,7 +69,7 @@ allprojects {
         alipay_version                  = '1.0.0.20170615'
 
         //pbase_version                   = '1.10.2'
-        pbase_version                   = '2.2.17'
+        pbase_version                   = '2.2.18'
         //pbase_version                   = '3.0.0'
         pider_version                   = '1.0.0'
 
