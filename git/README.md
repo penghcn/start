@@ -98,6 +98,11 @@ mac下可以使用dos2unix批量转换某目录下的文件换行符为LF
     cd /target
     find . -name '*' -exec dos2unix {} \;
 
+    或者只是转换指定的后缀文件
+    find . -name '*.java' -exec dos2unix {} \;
+    find . -name '*.xml' -exec dos2unix {} \;
+    find . -name '*.pro*ies' -exec dos2unix {} \;
+
 windows的git命令行工具也自带dos2unix，同样可以使用上面(或下面)命令，来转换当前目录下的所有文件，换行符改为LF
 
     find . -type f -exec dos2unix {} \;
