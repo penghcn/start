@@ -19,5 +19,9 @@ develop分支，回退到本地仓库的某个历史提交版本，比如commit 
 ## 撤销
 #### 撤销最近一次提交
     git revert HEAD
+
 #### 撤销上上次提交
     git revert HEAD^
+
+#### 修改最近的提交message
+    git commit --amend
