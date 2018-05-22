@@ -103,3 +103,6 @@ windows的git命令行工具也自带dos2unix，同样可以使用上面(或下�
 ## 4、git flow开发流
 详见这里[git-flow.md](./git-flow.md)
 
+## 5、git merge合并与冲突解决
+详见这里[git-merge.md](./git-merge.md)
+
