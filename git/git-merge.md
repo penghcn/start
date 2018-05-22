@@ -10,6 +10,21 @@
 
 [Git 换行符](https://segmentfault.com/q/1010000011799577)
 
+## 中断合并
+    git merge feature/test1
+    Auto-merging hello.java
+    CONFLICT (content): Merge conflict in hello.java
+    Automatic merge failed; fix conflicts and then commit the result.
+    ...
+
+有时冲突文件太多，没办法(或不想立即)一个个手动解决。完全可以通过 git merge --abort 来简单地退出合并
+
+    git status -sb
+    git merge --abort
+    git status -sb
+
+当然，也可以使用回退来处理，参考这里 [git-reset.md](./git-reset.md)
+
 ## 单边合并
     git merge -Xtheirs 或者 git merge -Xours
 
