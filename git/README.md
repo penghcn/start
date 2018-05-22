@@ -76,11 +76,29 @@
 请特别注意，一定要配置.gitignore文件，配置参考 [gitignore.sample](./gitignore.sample)
 
 ### 换行符
-团队统一规范代码的换行符为类unix格式，即LF。图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
+团队统一规范代码的换行符为类UNIX格式，即LF。图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
+
+windows系统请配置   
     
     git config --global core.autocrlf false
     git config --global core.safecrlf true
+mac系统请配置
+
+    git config --global core.autocrlf input
+    git config --global core.safecrlf true
+
 eclipse、idea等ide开发工具配置换行符为LF，请自行百度谷歌，谢谢
+
+mac下可以使用dos2unix批量转换某目录下的文件换行符为LF
+
+    brew install dos2unix
+
+    cd /target
+    find . -name '*' -exec dos2unix {} \;
+
+windows的git命令行工具也自带dos2unix，同样可以使用上面(或下面)命令，来转换当前目录下的所有文件，换行符改为LF
+
+    find . -type f -exec dos2unix {} \;
 
 ## 4、git flow开发流
 详见这里[git-flow.md](./git-flow.md)
