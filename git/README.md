@@ -106,3 +106,12 @@ windows的git命令行工具也自带dos2unix，同样可以使用上面(或下�
 ## 5、git merge合并与冲突解决
 详见这里[git-merge.md](./git-merge.md)
 
+## 6、简单回退
+develop分支，回退到本地仓库的某个历史提交版本，比如commit id为 d373d3c
+
+    git checkout develop
+    git reset --hard d373d3c
+
+若同时需要覆盖远程仓库，则强制提交
+
+    git push origin develop –-force
