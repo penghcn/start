@@ -76,16 +76,12 @@
 请特别注意，一定要配置.gitignore文件，配置参考 [gitignore.sample](./gitignore.sample)
 
 ### 换行符
-团队统一规范代码的换行符为类UNIX格式，即LF。
+团队统一规范代码的换行符为类UNIX格式，即LF
 
-图形工具安装的时候选择“不自动转换，保持原样”，若选错，可以使用下面命令修改
+windows、mac系统都请配置
 
-windows系统请配置   
-    
-    git config --global core.autocrlf false
-    git config --global core.safecrlf true
-mac系统请配置
-
+    ## 提交时转换为LF，检出时不转换
+    ## 拒绝提交包含混合换行符的文件
     git config --global core.autocrlf input
     git config --global core.safecrlf true
 

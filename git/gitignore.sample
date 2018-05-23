@@ -28,6 +28,7 @@ logs/
 
 ## Gradle
 .gradle/
+gradle/
 gradlew
 gradlew.bat
 build/
@@ -52,6 +53,9 @@ out/
 node_modules/
 public/
 
+## Vue
+_vux*/
+
 ## MacOS
 .DS_Store
 
@@ -64,3 +68,4 @@ Desktop.ini
 *.bak
 *.temp
 *.tmp
+
