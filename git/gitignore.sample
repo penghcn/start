@@ -43,6 +43,7 @@ bin/
 
 ## IntelliJ IDEA Project files
 .idea
+.idea/
 *.iml
 *.ipr
 *.iws
