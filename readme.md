@@ -1,13 +1,15 @@
 # 快来试试吧
-## dubbo
 
-## java
-    java web入门以及进阶
+## Java
+[Java Web简单入门以及进阶](./java)
 
-## gradle
-    gradle的一些使用
-    init.gradle的配置参考
-    build.gradle的参考
+## Gradle
+[gradle的一些简单使用](./gradle)
 
-## git
-    收集或归纳的一些git使用
+[init.gradle的配置参考](./gradle/init.gradle)
+
+[build.gradle的参考](./gradle/build.gradle)
+
+## Git 
+[收集或归纳的一些git使用](./git)
+   
