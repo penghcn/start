@@ -3,13 +3,14 @@
 ## 介绍
 1、java项目的构建工具常用的有ant `build.xml`，maven `pom.xml`，gradle `build.gradle` 等
 
-2、详细使用文档参见官方文件
+2、详细使用文档参见官方文件 [https://docs.gradle.org/current/userguide/userguide.html](https://docs.gradle.org/current/userguide/userguide.html)
+
 ## 安装使用
-1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-3.3-all 版
+1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-4.7-all 版
 
 解压到某文件夹，把bin目录加入到系统环境变量
 
-    比如 windows环境下，C:\www\resources\gradle-3.3\bin
+    比如 windows环境下，C:\www\resources\gradle-4.7\bin
 
 2、运行。打开终端，运行 `gradle build` `gradle eclipse` `gradle check` `gradle clean`等命令
 
