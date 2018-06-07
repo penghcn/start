@@ -66,5 +66,5 @@ idea原生支持
 
 ## 多模块子项目
 主要使用到了settings.gradle
-参考[dubbo/city-dubbo](./dubbo/city-dubbo)  
+参考[dubbo/city-dubbo](./../dubbo/city-dubbo)  
 
