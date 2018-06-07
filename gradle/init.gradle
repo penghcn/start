@@ -106,6 +106,7 @@ allprojects {
         REPO_PUBLISH_URL                = 'http://192.168.8.29:29106/repository/maven-releases'
         REPO_DEV_URL                    = 'http://192.168.8.29:29106/repository/maven-snapshots'
         REPO_PROXY_URL_J                = 'http://192.168.8.29:29106/repository/j-central'
+        REPO_PROXY_URL_ALIYUN           = 'http://192.168.8.29:29106/repository/aliyun/'
     }
 
 
@@ -129,6 +130,10 @@ allprojects {
 
         maven {
             url REPO_PROXY_URL
+        }
+
+        maven {
+            url REPO_PROXY_URL_ALIYUN
         }
 
         maven {

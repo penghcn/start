@@ -7,10 +7,27 @@
     git clone http://192.168.8.251/ds/test.git ## 这是最简单的用法，之后会提示输入用户名密码。也可以配置ssh key
 ### 强制覆盖更新本地
     git fetch --all && git reset --hard origin/master
+
 ### 提交到主干
     git add . && git status && git commit -a -m "提交的一些说明" && git push --all origin
     git add . && git status && git commit -a -m "update" && git push --all origin
     git push --all origin && git push --tags
+
+### 添加多个远程仓库地址
+比如我有2个地址
+    
+    git@github.com:penghcn/start.git
+    git@192.168.8.251:open/doc.git
+
+先添第一个地址
+    
+    git remote add origin git@github.com:penghcn/start.git
+再添第二个地址，更多地址也类似
+    
+    git remote set-url --add origin git@192.168.8.251:open/doc.git
+提交所有
+
+    git push origin --all
     
 ### 查看、创建分支 test
     git branch
