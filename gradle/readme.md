@@ -29,14 +29,14 @@
 C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 ## build.gradle示例
-[https://github.com/penghcn/demo/blob/master/gradle/build.gradle](https://github.com/penghcn/demo/blob/master/gradle/build.gradle) 
+[build.gradle](./build.gradle) 
 
 ## init.gradle示例
 可以把一些常用的配置放到~/.gradle/init.gradle文件中，若该文件不存在，新建一个，比如
 
     C:/Users/pengh/.gradle/init.gradle
 可以参考这个配置
-[https://github.com/penghcn/demo/blob/master/gradle/init.gradle](https://github.com/penghcn/demo/blob/master/gradle/init.gradle)    
+[init.gradle](./init.gradle)    
 
 ## eclipse
 1、一般的web项目，建立根目录，如C:\www\demo\test
@@ -66,5 +66,5 @@ idea原生支持
 
 ## 多模块子项目
 主要使用到了settings.gradle
-参考[https://github.com/penghcn/start/tree/master/dubbo/city-dubbo](https://github.com/penghcn/start/tree/master/dubbo/city-dubbo)  
+参考[dubbo/city-dubbo](./dubbo/city-dubbo)  
 
