@@ -77,14 +77,14 @@ tomcat、jetty、maven、gradle、 git
     
 
 #### 1、`int[]` 转成 `Integer[]、List<Integer>`
-    int[] arr = {1,2,3,-1,0,-2};
+    int[] arr = {1,2,3,-1,0,-2,3};
 
     //jdk1.8+
     Integer[] array2 = Arrays.stream(arr).boxed().toArray(Integer[]::new);
     int[] arr1 = Arrays.stream(array2).mapToInt(Integer::valueOf).toArray();
 
     List<Integer> list2 = Arrays.stream(arr1).boxed().collect(Collectors.toList());
-    List<Integer> list3 = Arrays.stream(array).collect(Collectors.toList());
+    List<Integer> list3 = Arrays.stream(array2).collect(Collectors.toList());
 
 ### Map
 #### HashMap
@@ -150,6 +150,28 @@ jdk1.8+ 流
 
 ### lock
     ReentrantLock, ReadWriteLock
+
+    private ReentrantLock lock = new ReentrantLock();
+    public void run(){
+        try {
+            if (lock.tryLock()) {
+                // do something...
+            } else {
+                // or do something for get lock failed 
+                return;
+            }
+            lock.unlock();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (lock.isLocked())
+                lock.unlock();
+        }
+
+    }
+
+说明：ReentrantLock仅针对单节点机器，集群分布式(中央)加锁请参考redis、memcached锁
+
 
 ### 线程 Thread、线程池 ExecutorService
         new Thread(new Runnable() {
