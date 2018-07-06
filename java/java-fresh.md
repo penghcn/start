@@ -49,6 +49,14 @@ tomcat、jetty、maven、gradle、 git
         System.out.println(a2.equals(b2));//true
         System.out.println(a2.intValue() == b2.intValue());//true
 
+
+    Integer x = 127; //自动装箱,如果在-128到127之间,则值存在常量池IntegerCache中。等同于Integer x = Integer.valueOf(127);
+    Integer y = new Integer(127);//普通的堆中的对象
+
+    对于装箱类型，正确的比较写法应该是 a2.equals(b2) 或者 a2.intValue() == b2.intValue()
+    Integer内部使用了IntegerCache，
+    默认情况下，对于在(-128 <= i <=  127)范围的值，装箱赋值时，直接取的缓存，是同一个对象，引用相同，所以 == 运算返回true
+
 ### 3、Float.MIN_VALUE、Double.MIN_VALUE
     Float.MIN_VALUE == 1.4E-45; Double.MIN_VALUE == 4.9E-324
     上面代表float类型能够表示的最小精度，并非最小值
