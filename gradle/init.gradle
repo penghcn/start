@@ -99,8 +99,8 @@ allprojects {
         jar_include_sources             = true
 
         PUBLISH_NAME                    = 'Release'
-        PUBLISH_USERNAME                = 'admin'
-        PUBLISH_PASSWORD                = 'fyadmin29'//
+        PUBLISH_USERNAME                = ''
+        PUBLISH_PASSWORD                = ''//
 
 
 
