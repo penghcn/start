@@ -24,9 +24,9 @@ allprojects {
         gson_version                    = '2.8.0'
         fastjson_version                = '1.2.47'
 
-        spring_version_jdk8             = '5.0.6.RELEASE'//jdk8+
+        spring_version_jdk8             = '5.0.8.RELEASE'//jdk8+
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
-        spring_version                  = '4.3.17.RELEASE'//4.2.5，3.2.18
+        spring_version                  = '4.3.18.RELEASE'//4.2.5，3.2.18
         spring_data_version             = '1.13.12.RELEASE'//2.0.7
         //spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
         spring_boot_version             = '1.5.10.RELEASE'//1.3.5 jdk7
@@ -54,7 +54,7 @@ allprojects {
         jsoup_version                   = '1.10.3'
         quartz_version                  = '2.2.1'
         cglib_version                   = '3.2.2'
-        dubbo_version                   = '2.5.6'
+        dubbo_version                   = '2.5.10'
         zookeeper_version               = '3.4.10'
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
@@ -74,13 +74,14 @@ allprojects {
         alipay_version                  = '1.0.0.20170615'
 
         //pbase_version                   = '1.10.2'
-        pbase_version                   = '2.3.13'
-        //pbase_version                   = '3.0.0'
+        pbase_version                   = '2.3.13'//jdk6
+        pbase_version                   = '3.0.1'//jdk8+
+
         pider_version                   = '1.0.0'
 
         fuiou_fas_client_version        = '1.3.2'
         fuiou_wx_version                = '1.0.0'
-        fuiou_ds_version                = '1.2.4'
+        fuiou_ds_version                = '1.2.6'
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
@@ -90,7 +91,7 @@ allprojects {
         fuiou_box_book_version          = '1.0.0'
         //fuiou_sms_version               = '1.0.10'
         //fuiou_sms_version               = '1.3.7'
-        fuiou_sms_version               = '1.4.0'
+        fuiou_sms_version               = '1.4.2'
         fuiou_ds_o2o_version            = '1.1.0'
         fuiou_ds_fedqry_version         = '1.7.0'
         fuiou_ds_trigger_version        = '2.1.0'
@@ -151,4 +152,3 @@ allprojects {
         delete ".classpath",".project",".settings"
     }
 }
-
