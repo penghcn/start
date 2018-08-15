@@ -80,7 +80,7 @@ allprojects {
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.3.13'//jdk6
-        pbase_version                   = '3.0.5'//jdk8+
+        pbase_version                   = '3.0.6'//jdk8+
 
         pider_version                   = '1.0.0'
 
@@ -104,7 +104,7 @@ allprojects {
         fuiou_ds_fedqry_version         = '1.7.0'
         fuiou_ds_trigger_version        = '2.1.0'
         fuiou_wx_version                = '1.0.0'
-        fuiou_ds_lottery_version        = '0.1.4'
+        fuiou_ds_lottery_version        = '0.2.2'
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
