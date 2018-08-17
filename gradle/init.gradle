@@ -100,11 +100,12 @@ allprojects {
         fuiou_ds_cab_base_version       = '1.0.0'
         fuiou_box_contract_version      = '1.1.5'
         fuiou_box_book_version          = '1.0.0'
-        fuiou_ds_o2o_version            = '1.2.0'
+        fuiou_ds_o2o_version            = '1.2.1'
         fuiou_ds_fedqry_version         = '1.7.0'
+        fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:1.7.0
         fuiou_ds_trigger_version        = '2.1.0'
         fuiou_wx_version                = '1.0.0'
-        fuiou_ds_lottery_version        = '0.2.2'
+        fuiou_ds_lottery_version        = '0.3.7'
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
