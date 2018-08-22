@@ -74,7 +74,8 @@
 
 #### 切换远程仓库
     cd existing_repo
-    git remote rename origin old-origin
+    git remote rename origin old-origin 
+    或者 git remote remove old-origin
     git remote add origin http://192.168.8.251/ds/test.git
     git push -u origin --all
     git push -u origin --tags
