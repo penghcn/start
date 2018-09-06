@@ -1,7 +1,8 @@
-println "^_^ ************************************************************************************ ^_^"
+println "^_^ *********************************************************************************************************** ^_^"
 println "    see global gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
 println "    see global gradle properties file at ${System.properties['user.home']}/.gradle/gradle.properties "
-println "^_^ ************************************************************************************ ^_^"
+println "    请注意Gradle的全局配置，如上2行中的文件"
+println "^_^ *********************************************************************************************************** ^_^"
 
 allprojects {
     ext {  
@@ -81,7 +82,7 @@ allprojects {
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.3.13'//jdk6
-        pbase_version                   = '3.2.2'//jdk8+
+        pbase_version                   = '3.2.3'//jdk8+
 
         pider_version                   = '1.0.0'
 
@@ -103,10 +104,10 @@ allprojects {
         fuiou_ds_o2o_version            = '1.3.1'
         fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:1.7.0
         fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:1.7.0
-        fuiou_ds_trigger_version        = '2.1.0'
+        fuiou_ds_trigger_version        = '2.1.2'
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_lottery_version        = '0.3.8'
-        fuiou_ds_rock_version           = '1.0.2'//com.fuiou.ds:ds-rock-dubbo-api:1.0.1
+        fuiou_ds_rock_version           = '1.0.4'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
@@ -164,4 +165,3 @@ allprojects {
         delete ".classpath",".project",".settings"
     }
 }
-
