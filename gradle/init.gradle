@@ -84,7 +84,7 @@ allprojects {
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.3.13'//jdk6
-        pbase_version                   = '3.2.3'//jdk8+
+        pbase_version                   = '3.2.5'//jdk8+
 
         pider_version                   = '1.0.0'
 
@@ -100,7 +100,7 @@ allprojects {
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
-        fuiou_ds_user_act_version       = '2.3.4'
+        fuiou_ds_user_act_version       = '2.3.5'
         fuiou_box_contract_version      = '1.1.5'
         fuiou_box_book_version          = '1.0.0'
         fuiou_ds_o2o_version            = '1.3.2'
@@ -168,6 +168,3 @@ allprojects {
     }
 }
 
-//maven发布第三方jar
-//mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-trigger-dubbo-api -Dversion=2.0.1 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-trigger-dubbo-client-2.0.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
-//mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-fedqry-dubbo -Dversion=1.7.0 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-qry-dubbo-1.7.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
