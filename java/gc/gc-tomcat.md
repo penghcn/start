@@ -1,6 +1,8 @@
 # GC参数
 
 ## 参考配置
+保留参考，时区设置
+-Duser.timezone=GMT-5
 
 ### 4G
 JAVA_OPTS="
