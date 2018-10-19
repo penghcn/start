@@ -4,11 +4,15 @@
 保留参考，时区设置
 -Duser.timezone=GMT-5
 
+-Dconfig.environment=development
+-Dconfig.environment=production
+
 ### 4G
 JAVA_OPTS="
 -Dfile.encoding=UTF-8
 -server
 -Djava.awt.headless=true
+-Dconfig.environment=production
 -Xms2g
 -Xmx3g
 -XX:NewSize=1g
