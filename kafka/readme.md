@@ -29,16 +29,20 @@
 
     zookeeper.connect=192.168.8.27:2181,192.168.8.28:2181,192.168.8.29:2181
 
-3、启动kafka
+3、启动kafka 默认端口9092
 
     bin/kafka-server-start.sh config/server.properties &
-    //发送
-    bin/kafka-console-producer.sh --broker-list localhost:9092 --topic TEST
+
+    nohup sh bin/kafka-server-start.sh config/server.properties >/dev/null 2>&1 &
+    nohup sh bin/kafka-server-start.sh config/server.properties >logs/s.log 2>&1 &
+    
+    //创建 Create a topic 
+    bin/kafka-topics.sh --create --zookeeper 192.168.8.27:2181 --topic test
+
+    //a single partition and only one replica
+    bin/kafka-topics.sh --create --zookeeper 192.168.8.27:2181 --replication-factor 1 --partitions 1 --topic test-zk-1
 
 4、消费端，查看指定topic的所有消息
 
-    bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic TEST-TOPIC --from-beginning
-    或者
-    bin/kafka-console-consumer.sh --zookeeper 192.168.8.27:2181 --topic TEST-TOPIC --from-beginning
-    //查看topic列表
-    bin/kafka-topics.sh --list --zookeeper 192.168.8.27:2181
+    //查看topic
+    bin/kafka-topics.sh --list --zookeeper 192.168.8.27:2181
