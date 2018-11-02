@@ -37,12 +37,46 @@
     nohup sh bin/kafka-server-start.sh config/server.properties >logs/s.log 2>&1 &
     
     //创建 Create a topic 
-    bin/kafka-topics.sh --create --zookeeper 192.168.8.27:2181 --topic test
-
     //a single partition and only one replica
     bin/kafka-topics.sh --create --zookeeper 192.168.8.27:2181 --replication-factor 1 --partitions 1 --topic test-zk-1
 
 4、消费端，查看指定topic的所有消息
 
     //查看topic
-    bin/kafka-topics.sh --list --zookeeper 192.168.8.27:2181
+    bin/kafka-topics.sh --list --zookeeper 192.168.8.27:2181,192.168.8.28:2181
+    bin/kafka-topics.sh --describe --zookeeper 192.168.8.27:2181
+
+    bin/kafka-preferred-replica-election.sh --zookeeper 192.168.8.27:2181,192.168.8.28:2181
+    
+
+
+## 集群
+主要是broker.id的值，三个节点要配置不同的值，分别配置为0,1,2
+
+注意同主机下，log.dirs必须保证目录唯一
+
+分别修改配置文件`config/server.properties`，这里使用已有zookeeper环境
+    
+    broker.id=0
+    port=9092
+    host.name=192.168.8.29
+    log.dirs=/tmp/kafka-logs-0
+    zookeeper.connect=192.168.8.27:2181,192.168.8.28:2181,192.168.8.29:2181
+
+
+    broker.id=1
+    port=9092
+    host.name=192.168.8.28
+    advertised.listeners=PLAINTEXT://192.168.8.28:9092
+    log.dirs=/tmp/kafka-logs-1
+    zookeeper.connect=192.168.8.27:2181,192.168.8.28:2181,192.168.8.29:2181
+
+    broker.id=2
+    port=9093
+    host.name=192.168.8.28
+    advertised.listeners=PLAINTEXT://192.168.8.28:9093
+    log.dirs=/tmp/kafka-logs-2
+    zookeeper.connect=192.168.8.27:2181,192.168.8.28:2181,192.168.8.29:2181
+
+
+

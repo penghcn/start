@@ -10,7 +10,7 @@ allprojects {
         jvm_version_8                   = 1.8
 
         guava_version                   = '19.0'
-        guava_version_jdk8              = '23.0'
+        guava_version_jdk8              = '23.0'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.12'
         log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
         log4j2_version_jdk6             = '2.3'//
@@ -25,18 +25,19 @@ allprojects {
         gson_version                    = '2.8.0'
         fastjson_version                = '1.2.47'
 
-        spring_version_jdk8             = '5.0.8.RELEASE'//jdk8+
+        spring_version_jdk8             = '5.1.2.RELEASE'//jdk8+
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version                  = '4.3.18.RELEASE'//4.2.5，3.2.18
         spring_data_version             = '1.13.12.RELEASE'//2.0.7
         //spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
-        spring_boot_version             = '1.5.15.RELEASE'//1.3.5 jdk7        
-        spring_boot_version             = '2.0.4.RELEASE'//org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE
+        //spring_boot_version             = '1.5.15.RELEASE'//1.3.5 jdk7        
+        spring_boot_version             = '2.0.6.RELEASE'//org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE
         spring_retry_version            = '1.2.2.RELEASE'//
-        spring_rabbit_version           = '1.7.9.RELEASE'//
+        //spring_rabbit_version           = '1.7.9.RELEASE'//
         spring_rabbit_version           = '2.0.5.RELEASE'//
-        spring_redis_version            = '1.8.14.RELEASE'//2.0.9
+        //spring_redis_version            = '1.8.14.RELEASE'//2.0.9
         spring_redis_version            = '2.0.9.RELEASE'//
+        spring_kafka_version            = '2.2.0.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '2.9.0'//
 
         struts_version                  = '2.5.17'//
@@ -46,7 +47,7 @@ allprojects {
         hibernate_validator_version     = '5.2.4.Final'
         mybatis_version                 = '3.4.4'
         mybatis_spring_version          = '1.3.1'       
-        druid_version                   = '1.1.10'
+        druid_version                   = '1.1.12'//com.alibaba:druid:$druid_version
         c3p0_version                    = '0.9.5.2'
         hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
         hikaricp_version                = '3.2.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
@@ -69,7 +70,7 @@ allprojects {
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//jboss netty
         //netty_version                   = '3.7.0.Final'//jboss netty
-        netty_io_version                = '4.1.28.Final'//io.netty:netty-all:4.1.22.Final
+        netty_io_version                = '4.1.31.Final'//io.netty:netty-all:$netty_io_version
         protobuf_version                = '3.5.1'
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
@@ -79,12 +80,14 @@ allprojects {
         rabbitmq_version                = '4.2.0'
         xmemcached_version              = '2.2.0'
         kafka_version                   = '1.0.0'
+        kafka_version                   = '2.0.0'
+        canal_version                   = '1.1.0'//com.alibaba.otter:canal:$canal_version
 
         alipay_version                  = '3.3.49.ALL'
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
-        pbase_version                   = '3.4.4'//jdk8+
+        pbase_version                   = '3.5.6'//jdk8+
 
         pider_version                   = '1.0.0'
 
@@ -95,7 +98,7 @@ allprojects {
         fuiou_fus_version               = '1.2.1'//com.fuiou:fus-dubbo-client:1.2.1
         fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:1.2.0
         fuiou_fas_client_version        = '1.3.2'
-        fuiou_ds_version                = '1.2.9'//com.fuiou:fuiou-ds:$fuiou_ds_version
+        fuiou_ds_version                = '1.3.0'//com.fuiou:fuiou-ds:$fuiou_ds_version
         fuiou_kms_version               = '1.2.2'//com.fuiou:fuiou-keyLoader:1.2.2
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
@@ -151,9 +154,9 @@ allprojects {
             url REPO_PROXY_URL
         }
 
-        // maven {
-        //     url REPO_PROXY_URL_ALIYUN
-        // }
+        maven {
+            url REPO_PROXY_URL_ALIYUN
+        }
 
         // maven {
         //     url REPO_PROXY_URL_J
@@ -167,4 +170,3 @@ allprojects {
         delete ".classpath",".project",".settings"
     }
 }
-
