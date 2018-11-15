@@ -1,5 +1,5 @@
 # spring-mvc demo
-    需要提前安装：jdk1.8、gradle、git、mysql
+    需要提前安装：jdk1.8、gradle、git、mysql、idea、eclipse
     以下大部分是linux命令，win10可以使用自带的bash
 
 ## 1、创建、初始化项目
