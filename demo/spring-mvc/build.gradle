@@ -18,10 +18,9 @@ ext {
     mybatis_version                 = '3.4.4'
     mybatis_spring_version          = '1.3.1'  
     mysql_connector_version_jdk8    = '8.0.12'
-    hikaricp_version                = '3.2.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
+    hikaricp_version                = '3.2.0'
 
     junit_version                   = '4.12'
-
 }
 
 dependencies {
@@ -39,7 +38,6 @@ dependencies {
         "mysql:mysql-connector-java:$mysql_connector_version_jdk8",
         "org.mybatis:mybatis:$mybatis_version",
         "org.mybatis:mybatis-spring:$mybatis_spring_version"
-
     )
 
     testCompile "junit:junit:$junit_version"
