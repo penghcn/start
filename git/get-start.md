@@ -44,7 +44,7 @@
     git checkout master
     git merge develop
 ### 删除分支
-    git branch -a  
+    git branch -v  
     git branch -r -d test/3.0.1
     git branch -d test/3.0.1 && git push origin --delete test/3.0.1
     git branch -D hotfix/3.0.5  

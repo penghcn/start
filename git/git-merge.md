@@ -33,3 +33,6 @@ feature/test1合并到develop。使用feature/test1分支 **覆盖** 合并到de
     
     git checkout develop
     git merge -Xtheirs feature/test1
+
+#### 误删文件夹，还原到某个提交点，相当于创建新文件，不会冲突
+    git checkout 3e48555 /www/fuiou/ds/o2o/o2o-mch-web/src/main/java/com/fuiou/ds/o2o/data
