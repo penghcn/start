@@ -29,3 +29,9 @@
 
 ### idea打开项目
     Import Project，下一步，勾选“Use auto-import”，结束。
+
+
+## 附录
+[Gradle入门](../../gradle)
+
+[Git入门](../../git)
