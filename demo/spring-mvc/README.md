@@ -30,6 +30,11 @@
 ### idea打开项目
     Import Project，选择 Gradle，下一步(第一次使用，可能需要配置gradle安装目录，jdk安装目录)，勾选“Use auto-import”，结束。
 
+![choose Gradle](./img/idea-import-1.png)
+![auto-import](./img/idea-import-2.png)
+
+### idea尝试运行
+![run](./img/idea-run-1.png)
 
 ## 附录
 [Java入门参考](../../java)
