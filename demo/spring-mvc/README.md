@@ -28,10 +28,12 @@
     git init
 
 ### idea打开项目
-    Import Project，下一步，勾选“Use auto-import”，结束。
+    Import Project，选择 Gradle，下一步(第一次使用，可能需要配置gradle安装目录，jdk安装目录)，勾选“Use auto-import”，结束。
 
 
 ## 附录
+[Java入门参考](../../java)
+
 [Gradle入门](../../gradle)
 
 [Git入门](../../git)
