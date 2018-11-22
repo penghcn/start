@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd" >
+	
+	<bean id="sqlSessionFactory_hellodb" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="hellodb_ds"/>
+		<property name="configLocation" value="classpath:consts/mybatis-config.xml"></property>
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations" value="classpath:mapper/hellodb/*.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.pengh.demo.hello.mvc.dao.hellodb" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_hellodb"></property>
+		<!-- 将报错：不能加载properties配置-->
+		<!-- http://blog.csdn.net/cwzhsi/article/details/42247113 -->
+		<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory_rem"></property> -->
+	</bean>
+
+
+
+	<bean id="transactionManager_hellodb" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="hellodb_ds"/>
+	</bean>
+
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager_hellodb"/>
+	
+	
+</beans>

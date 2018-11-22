@@ -27,6 +27,8 @@ dependencies {
     compile (
         "org.springframework:spring-webmvc:$spring_version",
         "org.springframework:spring-aspects:$spring_version",
+        "org.springframework:spring-tx:$spring_version",
+        "org.springframework:spring-jdbc:$spring_version",
 
         "org.apache.logging.log4j:log4j-api:$log4j2_version",
         "org.apache.logging.log4j:log4j-core:$log4j2_version",
