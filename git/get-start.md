@@ -80,6 +80,8 @@
     git remote add origin http://192.168.8.251/ds/test.git
     git push -u origin --all
     git push -u origin --tags
+#### 添加多个远程仓库
+    git remote set-url --add origin git@github.com:penghcn/pbase.git
 
 ## 3、配置
 ### 查看配置，系统、用户、某项目本地仓库
