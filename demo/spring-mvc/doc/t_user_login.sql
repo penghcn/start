@@ -1,5 +1,5 @@
 --用户登录表
---mysql5.5+ boxdb
+--mysql5.5+ hellodb
 DROP TABLE t_user_login;
 CREATE TABLE t_user_login(
         id                                      BIGINT(20)     UNSIGNED AUTO_INCREMENT NOT NULL COMMENT '主键',

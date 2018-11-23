@@ -36,6 +36,9 @@
 ### idea尝试运行
 ![run](./img/idea-run-1.png)
 
+### idea尝试使用mybatis查询mysql表
+![run](./img/idea-run-mysql-1.png)
+
 ## 附录
 [Java入门参考](../../java)
 
