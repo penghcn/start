@@ -90,6 +90,9 @@ allprojects {
         excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
 
         alipay_version                  = '3.3.49.ALL'
+        cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
+
+        
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
@@ -100,7 +103,7 @@ allprojects {
 
         //fuiou_sms_version               = '1.0.10'
         //fuiou_sms_version               = '1.3.7'
-        fuiou_sms_version               = '1.5.1'//com.fuiou.sms:sms-api:1.5.0
+        fuiou_sms_version               = '1.5.2'//com.fuiou.sms:sms-api:$fuiou_sms_version
         fuiou_fus_version               = '1.2.1'//com.fuiou:fus-dubbo-client:1.2.1
         fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:1.2.0
         fuiou_fas_client_version        = '1.3.2'
@@ -110,15 +113,15 @@ allprojects {
         fuiou_version                   = '1.2.0'
 
         fuiou_ds_user_act_version       = '2.7.4'
-        fuiou_box_contract_version      = '1.1.7'
+        fuiou_box_contract_version      = '1.3.0'
         fuiou_box_book_version          = '1.0.0'
-        fuiou_ds_o2o_version            = '1.3.9'
+        fuiou_ds_o2o_version            = '1.3.10'
         fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:1.7.0
         fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:1.7.0
         fuiou_ds_trigger_version        = '2.1.3'//com.fuiou.ds:sjb-trigger-dubbo-api:${fuiou_ds_trigger_version}
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_lottery_version        = '0.3.8'
-        fuiou_ds_rock_version           = '1.4.0'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
+        fuiou_ds_rock_version           = '1.5.0'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
@@ -135,6 +138,9 @@ allprojects {
         REPO_DEV_URL                    = 'http://192.168.8.29:29106/repository/maven-snapshots'
         REPO_PROXY_URL_J                = 'http://192.168.8.29:29106/repository/j-central'
         REPO_PROXY_URL_ALIYUN           = 'http://192.168.8.29:29106/repository/aliyun/'
+        REPO_PROXY_URL_MEITUAN          = 'http://192.168.8.29:29106/repository/meituan/'
+        REPO_PROXY_URL_MEITUAN          = 'http://cat.meituan.com/nexus/content/repositories/releases/'
+
     }
 
 
@@ -150,6 +156,11 @@ allprojects {
                     remove repo
                 }
             }
+        }
+
+
+        maven {
+            url REPO_PROXY_URL_MEITUAN
         }
         
         maven {
