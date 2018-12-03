@@ -65,7 +65,7 @@ allprojects {
         quartz_version                  = '2.2.1'
         cglib_version                   = '3.2.2'
         dubbo_version                   = '2.5.8'
-        dubbo_version                   = '2.6.5'
+        //dubbo_version                   = '2.6.5'
         curator_version                 = '4.0.1'
         zookeeper_version               = '3.4.13'
         zkclient_version                = '0.10'
