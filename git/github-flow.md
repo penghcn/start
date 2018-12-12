@@ -29,12 +29,23 @@
 ### master权限
     项目负责人配置该角色
 
-## III、来一个项目
-[start-project.md](./start-project.md) 
+## III、试试看
+    查看当前分支 git status
+    从master分支创建some分支 git checkout -b some
+    新建一个测试文件 vi test.md
+    查看状态 git status
+    提交修改到本地仓库 git add . && git commit -m 'test pull request'
+    以防万一，在同步下远程master仓库 git pull origin master
+    提交some分支到远程仓库 git push origin some -u
 
-## IV、冲突解决
-推荐git rebase解决提交冲突 [参考这里](https://blog.csdn.net/wh_19910525/article/details/7554489)， 或者使用eclipse等图形工具比较
+    在gitlab上选择some分支，右边有个“合并请求”按钮，发起pull request，可以修改标题、描述等
+    注意 应该是 From some into master，最后提交合并请求
 
-详见这里[git-merge.md](./git-merge.md)
+    项目负责人会收到合并申请，合并或者拒绝
+
+    自动部署到测试环境、UAT环境，测试或者验收
+    
+    把远程仓库的some分支和本地的some分支删掉
+
 
 
