@@ -46,7 +46,9 @@ windows的git命令行工具也自带dos2unix，同样可以使用上面(或下�
 详见这里[get-start.md](./get-start.md)
 
 ## 3、git flow开发流
-详见这里[git-flow.md](./git-flow.md)
+<del>详见这里[git-flow.md](./git-flow.md)</del>
+
+详见这里[github-flow.md](./github-flow.md)
 
 ## 4、git merge合并与冲突解决
 详见这里[git-merge.md](./git-merge.md)
