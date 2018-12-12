@@ -44,8 +44,8 @@
     项目负责人会收到合并申请，合并或者拒绝
 
     自动部署到测试环境、UAT环境，测试或者验收
-    
-    把远程仓库的some分支和本地的some分支删掉
+
+    把远程仓库的some分支和本地的some分支删掉 git checkout master && git branch -d some && git push origin --delete some
 
 
 
