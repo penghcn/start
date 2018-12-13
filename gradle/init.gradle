@@ -1,4 +1,5 @@
 println "^_^ *********************************************************************************************************** ^_^"
+println "    Gradle $gradleVersion"
 println "    see global gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
 println "    see global gradle properties file at ${System.properties['user.home']}/.gradle/gradle.properties "
 println "    请注意Gradle的全局配置，如上2行中的文件"
@@ -146,7 +147,9 @@ allprojects {
 
     configurations.all {
         // check for updates every build
-        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+        resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
+        resolutionStrategy.cacheChangingModulesFor 4, 'hours'
+        //resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }
 
     repositories {
