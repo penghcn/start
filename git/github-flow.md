@@ -31,21 +31,24 @@
 
 ## III、试试看
     查看当前分支 git status
-    从master分支创建some分支 git checkout -b some
+    从master分支创建some-bugfix-or-feature分支 git checkout -b some-bugfix-or-feature
     新建一个测试文件 vi test.md
     查看状态 git status
     提交修改到本地仓库 git add . && git commit -m 'test pull request'
-    以防万一，在同步下远程master仓库 git pull origin master
-    提交some分支到远程仓库 git push origin some -u
+    以防万一，再同步下远程master仓库 git pull origin master
+    提交some分支到远程仓库 git push origin some-bugfix-or-feature -u
 
     在gitlab上选择some分支，右边有个“合并请求”按钮，发起pull request，可以修改标题、描述等
-    注意 应该是 From some into master，最后提交合并请求
+    注意 应该是 From some-bugfix-or-feature into master，最后提交合并请求，并通知项目负责人
 
     项目负责人会收到合并申请，合并或者拒绝
 
-    自动部署到测试环境、UAT环境，测试或者验收
+    自动触发，自动部署到测试环境、UAT环境，测试或者验收
 
-    把远程仓库的some分支和本地的some分支删掉 git checkout master && git branch -d some && git push origin --delete some
+    项目负责人手动触发，一键部署到生产环境，测试或者产品人员验收
+
+    最后，把远程仓库的some-bugfix-or-feature分支和本地的some-bugfix-or-feature分支删掉 
+    git checkout master && git branch -d some-bugfix-or-feature && git push origin --delete some-bugfix-or-feature
 
 
 
