@@ -4,7 +4,7 @@ println "    Gradle $gradleVersion"
 println "    see global gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
 println "    see global gradle properties file at ${System.properties['user.home']}/.gradle/gradle.properties "
 println "    see global local properties file at $localPropFile "
-println "    请注意Gradle的全局配置，如上2行中的文件"
+println "    请注意Gradle的全局配置，如上3行中的文件"
 println "^_^ *********************************************************************************************************** ^_^"
 
 Properties properties = new Properties()  
@@ -34,7 +34,7 @@ allprojects {
         jackson_version_jdk8            = '2.8.5'//2.8.3
         jackson_version                 = '2.4.6'//2.8.3
         gson_version                    = '2.8.0'
-        fastjson_version                = '1.2.47'
+        fastjson_version                = '1.2.54'
 
         spring_version_jdk8             = '5.1.2.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
@@ -93,7 +93,7 @@ allprojects {
         xmemcached_version              = '2.2.0'
         kafka_version                   = '1.0.0'
         kafka_version                   = '2.0.0'
-        canal_version                   = '1.1.0'//com.alibaba.otter:canal:$canal_version
+        canal_version                   = '1.1.2'//com.alibaba.otter:canal:$canal_version
 
         excel_poi_version               = '4.0.0'//org.apache.poi:poi:$excel_poi_version
         excel_jxls_version              = '2.4.6'//org.jxls:jxls:$excel_jxls_version
