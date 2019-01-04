@@ -29,6 +29,10 @@ develop分支，回退到本地仓库的某个历史提交版本，比如commit 
 ### 删除历史文件
 参考 [https://help.github.com/articles/removing-sensitive-data-from-a-repository/](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)
 
+[https://gitlab.com/gitlab-org/gitlab-ce/issues/30093](https://gitlab.com/gitlab-org/gitlab-ce/issues/30093)
+
+[https://gitlab.com/gitlab-org/gitlab-ce/issues/19376](https://gitlab.com/gitlab-org/gitlab-ce/issues/19376)
+
 [https://www.cnblogs.com/shines77/p/3460274.html](https://www.cnblogs.com/shines77/p/3460274.html)
 
     获取所有远程分支
