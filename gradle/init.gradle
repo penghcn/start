@@ -111,7 +111,7 @@ allprojects {
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
-        pbase_version                   = '3.7.5'//jdk8+
+        pbase_version                   = '3.7.6'//jdk8+
 
         pider_version                   = '1.0.0'
 
@@ -123,7 +123,7 @@ allprojects {
         fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:1.2.0
         fuiou_fas_client_version        = '1.3.2'
         fuiou_ds_version                = '1.3.2'//com.fuiou:fuiou-ds:$fuiou_ds_version
-        fuiou_kms_version               = '1.2.2'//com.fuiou:fuiou-keyLoader:1.2.2
+        fuiou_kms_version               = '1.2.2'//com.fuiou:fuiou-keyLoader:$fuiou_kms_version com.fuiou:fuiou-keyMgr:$fuiou_kms_version
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
