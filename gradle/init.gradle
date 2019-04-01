@@ -39,9 +39,9 @@ allprojects {
         jackson_version_jdk8            = '2.8.5'//2.8.3
         jackson_version                 = '2.4.6'//2.8.3
         gson_version                    = '2.8.0'
-        fastjson_version                = '1.2.54'
+        fastjson_version                = '1.2.56'
 
-        spring_version_jdk8             = '5.1.2.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version
+        spring_version_jdk8             = '5.1.6.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version                  = '4.3.18.RELEASE'//4.2.5，3.2.18
         spring_data_version             = '1.13.12.RELEASE'//2.0.7
@@ -75,13 +75,13 @@ allprojects {
         mysql_connector_version_jdk8    = '8.0.12'//'8.0.12'//6.0.6 requires jdk1.8 
 
         httpclient_version              = '4.5.3'
-        okhttp_version                  = '3.10.0'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
+        okhttp_version                  = '3.14.0'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
         jsoup_version                   = '1.10.3'
         quartz_version                  = '2.2.1'
         cglib_version                   = '3.2.2'
-        dubbo_version                   = '2.5.8'
-        //dubbo_version                   = '2.6.5'
-        curator_version                 = '4.0.1'
+        dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
+        dubbo_apache_version            = '2.7.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        curator_version                 = '4.2.0'
         zookeeper_version               = '3.4.13'
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
