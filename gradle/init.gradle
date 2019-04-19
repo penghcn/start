@@ -87,14 +87,14 @@ allprojects {
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//jboss netty
         //netty_version                   = '3.7.0.Final'//jboss netty
-        netty_io_version                = '4.1.32.Final'//io.netty:netty-all:$netty_io_version
+        netty_io_version                = '4.1.35.Final'//io.netty:netty-all:$netty_io_version
         protobuf_version                = '3.6.1'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
         //tomcat_version                  = '7.0.68'
         tomcat_version                  = '8.0.50'
         jetty_version                   = '9.4.8.v20171121'
-        rabbitmq_version                = '4.2.0'
+        rabbitmq_version                = '5.7.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'
         kafka_version                   = '1.0.0'
         kafka_version                   = '2.0.0'
