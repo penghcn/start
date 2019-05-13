@@ -188,10 +188,6 @@ allprojects {
         maven {
             url REPO_PUBLISH_URL
         }
-    
-        maven {
-            url REPO_PUBLISH_URL_OLD
-        }
 
         maven {
             url REPO_DEV_URL
@@ -199,6 +195,10 @@ allprojects {
 
         maven {
             url REPO_PROXY_URL
+        }
+    
+        maven {
+            url REPO_PUBLISH_URL_OLD
         }
 
         // maven {
