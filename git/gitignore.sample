@@ -10,6 +10,7 @@
 *.class
 *.war
 
+
 ## Dubbo
 .dubbo-registry/
 
@@ -36,6 +37,12 @@ build/
 */build/
 bin/
 */bin/
+/data/release/
+*/data/release/
+
+## Maven
+target/
+*/target/
 
 ## Eclipse Project files
 .project
