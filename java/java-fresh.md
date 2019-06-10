@@ -98,6 +98,10 @@ tomcat、jetty、maven、gradle、 git
 #### HashMap
 参考 [深入理解HashMap](http://www.iteye.com/topic/539465) 和 [Java8之HashMap](http://www.importnew.com/20386.html)
 
+    //List转Map
+    Map<String, MonthWageVO> map = wages.stream().collect(Collectors.toMap(MonthWageVO::getDepartment, Function.identity()));
+    Map<String, String> map = wages.stream().collect(Collectors.toMap(MonthWageVO::getUserNo, MonthWageVO::getDepartment));
+
 ### List
 #### 1、ArrayList
 #### 2、for
