@@ -111,7 +111,7 @@ allprojects {
 
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
-        pbase_version                   = '3.10.7'//jdk8+
+        pbase_version                   = '3.10.8'//jdk8+
 
         pider_version                   = '1.0.0'
 
