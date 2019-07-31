@@ -13,6 +13,10 @@
     git add . && git status && git commit -a -m "update" && git push --all origin
     git push --all origin && git push --tags
 
+### 切换远程仓库
+    git remote remove origin
+    git remote add origin git@github.com:penghcn/start.git
+    
 ### 添加多个远程仓库地址
 比如我有2个地址
     
