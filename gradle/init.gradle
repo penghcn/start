@@ -135,7 +135,7 @@ allprojects {
         fuiou_ds_o2o_version            = '2.2.6'
         fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:1.7.0
         fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:1.7.0
-        fuiou_ds_trigger_version        = '2.1.5'//com.fuiou.ds:sjb-trigger-dubbo-api:${fuiou_ds_trigger_version}
+        fuiou_ds_trigger_version        = '2.1.6'//com.fuiou.ds:sjb-trigger-dubbo-api:${fuiou_ds_trigger_version}
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_lottery_version        = '0.3.8'
         fuiou_ds_rock_version           = '1.8.8'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
