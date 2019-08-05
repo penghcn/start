@@ -140,7 +140,7 @@ allprojects {
         fuiou_ds_lottery_version        = '0.3.8'
         fuiou_ds_rock_version           = '1.8.8'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
         fuiou_ds_proxy_version          = '0.1.0'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
-        fuiou_opr_event_version         = '1.0.1'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
+        fuiou_opr_event_version         = '2.0.0'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
