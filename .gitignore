@@ -1,0 +1,80 @@
+## --------------------------------------------------------------------
+## Refresh .gitignore file
+## git rm -r --cached . && git add . && git commit -m 'update .gitignore'
+## --------------------------------------------------------------------
+
+.svn/
+*.svn
+
+## Java
+*.class
+*.war
+
+
+## Dubbo
+.dubbo-registry/
+
+## Python
+*.py[cod]
+*.egg
+*.egg-info
+## *.so
+dist
+build
+
+
+## Logs File
+*.log
+logs/
+*/logs/
+
+## Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+build/
+*/build/
+bin/
+*/bin/
+/data/release/
+*/data/release/
+
+## Maven
+target/
+*/target/
+
+## Eclipse Project files
+.project
+.classpath
+.settings/
+
+## IntelliJ IDEA Project files
+.idea
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+*/out/
+
+## NodeJs
+node_modules/
+public/
+
+## Vue
+_vux*/
+
+## MacOS
+.DS_Store
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+
+*.bak
+*.temp
+*.tmp
+
