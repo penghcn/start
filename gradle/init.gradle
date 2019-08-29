@@ -109,9 +109,9 @@ allprojects {
         alipay_version                  = '3.3.49.ALL'
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
         
-        poi_version                     = '3.16',
-        poi-ooxml-schemas_version       = '3.16',
-        poi-ooxml_version               = '3.16',
+        poi_version                     = '3.16'
+        poi-ooxml-schemas_version       = '3.16'
+        poi-ooxml_version               = '3.16'
         
 
         //pbase_version                   = '1.10.2'
