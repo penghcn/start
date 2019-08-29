@@ -30,7 +30,6 @@ logs/
 
 ## Gradle
 .gradle/
-gradle/
 gradlew
 gradlew.bat
 build/

@@ -1,0 +1,230 @@
+// wget http://192.168.8.251/open/doc/raw/master/gradle/init.gradle
+
+def localPropFile = "${System.properties['user.home']}/.gradle/local.properties"
+println "^_^ *********************************************************************************************************** ^_^"
+println "    Gradle $gradleVersion"
+println "    see global gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
+println "    see global gradle properties file at ${System.properties['user.home']}/.gradle/gradle.properties "
+println "    see global local properties file at $localPropFile "
+println "    请注意Gradle的全局配置，如上3行中的文件"
+println "^_^ *********************************************************************************************************** ^_^"
+
+Properties properties = new Properties()  
+properties.load(new FileInputStream("$localPropFile"))
+
+def nexus_host = properties.getProperty("nexus.host")
+def publish_user = properties.getProperty("publish.user")
+def publish_pass = properties.getProperty("publish.pass")
+
+allprojects {
+    ext {  
+        jvm_version                     = 1.6
+        jvm_version_8                   = 1.8
+
+        guava_version                   = '19.0'//com.google.guava:guava:$guava_version
+        guava_version_jdk8              = '28.0-jre'//com.google.guava:guava:$guava_version_jdk8
+        junit_version                   = '4.12'
+        log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
+        log4j2_version_jdk6             = '2.3'//
+        log4j2_version_jdk8             = '2.12.0'//2.4+ requires jdk1.7 //http://logging.apache.org/log4j/2.x/maven-artifacts.html
+        commons_fileupload_version      = '1.3.3'//commons-fileupload:commons-fileupload:$commons_fileupload_version
+        commons_codec_version           = '1.11'//commons-codec:commons-codec:$commons_codec_version
+        commons_io_version              = '2.6'//commons-io:commons-io:$commons_io_version
+        commons_lang_version            = '2.6'//commons-lang:commons-lang:$commons_lang_version
+
+        
+        joda_version                    = '2.10'
+
+        xstream_version                 = '1.4.10'
+        jackson_version_jdk8            = '2.8.5'//2.8.3
+        jackson_version                 = '2.4.6'//2.8.3
+        gson_version                    = '2.8.5'//com.google.code.gson:gson:$gson_version
+        fastjson_version                = '1.2.58'//com.alibaba:fastjson:$fastjson_version
+
+        spring_version_jdk8             = '5.1.8.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version
+        spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
+        spring_version                  = '4.3.24.RELEASE'//4.2.5，3.2.18
+        //spring_data_version             = '1.13.12.RELEASE'//2.0.7
+        spring_data_version             = '2.1.9.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
+        //spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
+        //spring_boot_version             = '1.5.15.RELEASE'//1.3.5 jdk7        
+        spring_boot_version             = '2.1.6.RELEASE'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_retry_version            = '1.2.4.RELEASE'//org.springframework.retry:spring-retry:$spring_retry_version
+        //spring_rabbit_version           = '1.7.9.RELEASE'//
+        spring_rabbit_version           = '2.1.7.RELEASE'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
+        //spring_redis_version            = '1.8.14.RELEASE'//2.0.9
+        spring_redis_version            = '2.0.9.RELEASE'//
+        spring_kafka_version            = '2.2.0.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
+        jedis_version                   = '2.9.0'//
+
+        struts_version                  = '2.5.17'//
+        struts_version                  = '2.3.35'//org.apache.struts:struts2-core:2.3.35
+
+        hibernate_version               = '5.3.7.Final'//5.2+ requires jdk1.8 org.hibernate:hibernate-core:$hibernate_version
+        hibernate_validator_version     = '6.0.13.Final'//org.hibernate:hibernate-validator:$hibernate_validator_version
+        mybatis_version                 = '3.5.2'
+        mybatis_spring_version          = '2.0.0'    
+        druid_version                   = '1.1.12'//com.alibaba:druid:$druid_version
+        c3p0_version                    = '0.9.5.2'
+        hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
+        hikaricp_version                = '3.2.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
+
+        mysql_connector_version         = '5.1.46'//6.0.6 requires jdk1.8
+        mysql_connector_version_jdk6    = '5.1.46'//
+        mysql_connector_version_jdk8    = '6.0.6'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
+        mysql_connector_version_jdk8    = '8.0.17'//'8.0.12'//6.0.6 requires jdk1.8 
+
+        httpclient_version              = '4.5.3'
+        okhttp_version                  = '3.14.2'
+        //okhttp_version                  = '4.0.1'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
+        jsoup_version                   = '1.10.3'
+        quartz_version                  = '2.2.1'
+        cglib_version                   = '3.2.2'
+        dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
+        dubbo_apache_version            = '2.7.3'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        curator_version                 = '4.2.0'
+        zookeeper_version               = '3.5.5'//org.apache.zookeeper:zookeeper:$zookeeper_version
+        zookeeper_version               = '3.4.14'//目前curator只适配3.4.X
+        zkclient_version                = '0.10'
+        javassist_version               = '3.20.0-GA'
+        netty_version                   = '3.2.10.Final'//jboss netty
+        //netty_version                   = '3.7.0.Final'//jboss netty
+        netty_io_version                = '4.1.38.Final'//io.netty:netty-all:$netty_io_version
+        protobuf_version                = '3.9.0'//com.google.protobuf:protobuf-java:$protobuf_version
+        mina_version                    = '1.1.7'//
+        kryo_version                    = '3.0.3'
+        //tomcat_version                  = '7.0.68'
+        tomcat_version                  = '8.0.50'
+        jetty_version                   = '9.4.8.v20171121'
+        rabbitmq_version                = '5.7.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        xmemcached_version              = '2.2.0'
+        kafka_version                   = '1.0.0'
+        kafka_version                   = '2.0.0'
+        canal_version                   = '1.1.2'//com.alibaba.otter:canal:$canal_version
+
+        excel_poi_version               = '4.0.0'//org.apache.poi:poi:$excel_poi_version
+        excel_jxls_version              = '2.4.6'//org.jxls:jxls:$excel_jxls_version
+        excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
+
+        alipay_version                  = '3.3.49.ALL'
+        cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
+        
+        
+
+        //pbase_version                   = '1.10.2'
+        pbase_version                   = '2.4.2'//jdk6
+        pbase_version                   = '3.11.0'//jdk8+
+
+        //pbase_version                   = '3.20.0'//jdk8+
+        pbase_version_320               = '3.20.0'//jdk8+
+
+        pider_version                   = '1.0.0'
+
+
+        //fuiou_sms_version               = '1.0.10'
+        //fuiou_sms_version               = '1.3.7'
+        fuiou_sms_version               = '1.5.2'//com.fuiou.sms:sms-api:$fuiou_sms_version
+        fuiou_fus_version               = '1.2.1'//com.fuiou:fus-dubbo-client:1.2.1
+        fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:1.2.0
+        fuiou_fas_client_version        = '1.3.2'
+        fuiou_ds_version                = '1.3.2'//com.fuiou:fuiou-ds:$fuiou_ds_version
+        fuiou_kms_version               = '1.2.2'//com.fuiou:fuiou-keyLoader:$fuiou_kms_version com.fuiou:fuiou-keyMgr:$fuiou_kms_version
+        fuiou_xmemcached_version        = '1.2.0'
+        fuiou_version                   = '1.2.0'
+
+        fuiou_ds_user_act_version       = '2.8.5'
+        //fuiou_ds_user_act_version       = '2.7.4-SNAPSHOT'
+        fuiou_box_contract_version      = '1.4.1'
+        fuiou_box_book_version          = '1.0.0'
+        fuiou_ds_o2o_version            = '2.2.14'
+        fuiou_dmkt_dispatch_version     = '1.0.4'
+        fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:1.7.0
+        fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:1.7.0
+        fuiou_ds_trigger_version        = '2.1.6'//com.fuiou.ds:sjb-trigger-dubbo-api:${fuiou_ds_trigger_version}
+        fuiou_wx_version                = '1.0.0'
+        fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
+        fuiou_ds_lottery_version        = '0.3.8'
+        fuiou_ds_rock_version           = '1.9.2'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
+        fuiou_ds_proxy_version          = '1.1.1'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
+        fuiou_opr_event_version         = '3.0.5'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
+
+        release_dir                     = '/data/release/jar'
+        jar_prefix                      = 'fuiou'
+        jar_include_sources             = true
+
+        PUBLISH_NAME                    = 'Release'
+        PUBLISH_USERNAME                = "$publish_user"
+        PUBLISH_PASSWORD                = "$publish_pass"//
+
+
+
+        REPO_PROXY_URL                  = "$nexus_host/repository/maven-central"
+        REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"//第2版富友maven私库
+        REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
+        REPO_PROXY_URL_J                = "$nexus_host/repository/j-central"
+        REPO_PROXY_URL_ALIYUN           = "$nexus_host/repository/aliyun/"
+        REPO_PROXY_URL_MEITUAN          = "$nexus_host/repository/meituan/"
+        //REPO_PROXY_URL_MEITUAN          = 'http://cat.meituan.com/nexus/content/repositories/releases/'
+
+    }
+
+    configurations.all {
+        // check for updates every build
+        resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
+        resolutionStrategy.cacheChangingModulesFor 4, 'hours'
+        //resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+    repositories {
+        //maven.oschina.net已经不可用，使用mavenCentral就好，实在嫌下载慢，可使用vpn
+        //这里使用自己搭建的maven私有库
+        all { ArtifactRepository repo ->
+            if(repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $REPO_PROXY_URL."
+                    remove repo
+                }
+            }
+        }
+
+
+        // maven {
+        //     url REPO_PROXY_URL_MEITUAN
+        // }
+        
+        maven {
+            url REPO_PUBLISH_URL
+        }
+
+        maven {
+            url REPO_DEV_URL
+        }
+
+        maven {
+            url REPO_PROXY_URL
+        }
+
+        // maven {
+        //     url REPO_PROXY_URL_ALIYUN
+        // }
+        // maven {
+        //     url REPO_PROXY_URL_J
+        // }
+
+        //maven { url 'https://jitpack.io' }
+        //mavenCentral()
+    }
+
+    task del(type: Delete) { 
+        delete ".classpath",".project",".settings"
+    }
+}
+
+//gradle build -x test --refresh-dependencies
+
+//maven发布第三方jar
+//mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-trigger-dubbo-api -Dversion=2.0.1 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-trigger-dubbo-client-2.0.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
+//mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-fedqry-dubbo -Dversion=1.7.0 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-qry-dubbo-1.7.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
+
+
