@@ -6,11 +6,11 @@
 2、详细使用文档参见官方文件 [https://docs.gradle.org/current/userguide/userguide.html](https://docs.gradle.org/current/userguide/userguide.html)
 
 ## 安装使用
-1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-4.7-all 版
+1、安装。下载安装包[https://gradle.org/gradle-download/](https://gradle.org/gradle-download/)，我这里有gradle-5.6.1-bin 版
 
 解压到某文件夹，把bin目录加入到系统环境变量
 
-    比如 windows环境下，C:\www\resources\gradle-4.7\bin
+    比如 windows环境下，C:\www\resources\gradle-5.6.1\bin
 
 2、运行。打开终端，运行 `gradle build` `gradle eclipse` `gradle check` `gradle clean`等命令
 
@@ -38,7 +38,7 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 可以参考这个配置
 [init.gradle](./init.gradle)    
 
-## eclipse
+## <del>eclipse</del>
 1、一般的web项目，建立根目录，如C:\www\demo\test
 
 2、打开终端，切换到项目根目录(cd C:/www/demo/test)下运行 `gradle init --type=java-library` 创建基本结构
@@ -55,14 +55,6 @@ C:/Users/pengh/.gradle/caches/modules-2/files-2.1/com.rabbitmq/...
 
 ## idea
 idea原生支持
-
-## gretty
-1、在build.gradle文件中添加
-
-`apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'`
-
-2、gradle appRun
-
 
 ## 多模块子项目
 主要使用到了settings.gradle
