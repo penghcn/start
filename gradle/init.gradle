@@ -44,6 +44,7 @@ allprojects {
 
         spring_version_jdk8             = '5.1.9.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
+        spring_version_4                = '4.3.24.RELEASE'//4.2.5，3.2.18
         spring_version                  = '4.3.24.RELEASE'//4.2.5，3.2.18
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
         spring_data_version             = '2.1.9.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
@@ -75,8 +76,8 @@ allprojects {
         mysql_connector_version_jdk8    = '6.0.6'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
         mysql_connector_version_jdk8    = '8.0.17'//'8.0.12'//6.0.6 requires jdk1.8 
 
-        httpclient_version              = '4.5.3'
-        okhttp_version                  = '3.14.2'
+        httpclient_version              = '4.5.3'//org.apache.httpcomponents:httpclient:$httpclient_version org.apache.httpcomponents:httpmime:$httpclient_version
+        okhttp_version                  = '3.14.2'//com.squareup.okhttp3:okhttp:$okhttp_version
         //okhttp_version                  = '4.0.1'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
         jsoup_version                   = '1.10.3'
         quartz_version                  = '2.2.1'
@@ -126,19 +127,19 @@ allprojects {
         //fuiou_sms_version               = '1.0.10'
         //fuiou_sms_version               = '1.3.7'
         fuiou_sms_version               = '1.5.2'//com.fuiou.sms:sms-api:$fuiou_sms_version
-        fuiou_fus_version               = '1.2.1'//com.fuiou:fus-dubbo-client:1.2.1
-        fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:1.2.0
-        fuiou_fas_client_version        = '1.3.2'
+        fuiou_fus_version               = '1.2.2'//com.fuiou:fus-dubbo-client:$fuiou_fus_version
+        fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:$fuiou_mail_version
+        fuiou_fas_client_version        = '1.3.2'//com.fuiou:fuiou-fas-client:$fuiou_fas_client_version
         fuiou_ds_version                = '1.3.2'//com.fuiou:fuiou-ds:$fuiou_ds_version
         fuiou_kms_version               = '1.2.2'//com.fuiou:fuiou-keyLoader:$fuiou_kms_version com.fuiou:fuiou-keyMgr:$fuiou_kms_version
         fuiou_xmemcached_version        = '1.2.0'
         fuiou_version                   = '1.2.0'
 
-        fuiou_ds_user_act_version       = '2.8.5'
+        fuiou_ds_user_act_version       = '2.8.5'//com.fuiou.ds:ds-user-act-api:$fuiou_ds_user_act_version
         //fuiou_ds_user_act_version       = '2.7.4-SNAPSHOT'
-        fuiou_box_contract_version      = '1.4.1'
-        fuiou_box_book_version          = '1.0.0'
-        fuiou_ds_o2o_version            = '2.2.14'
+        fuiou_box_contract_version      = '1.4.1'//com.fuiou.ds:box-contract-api:$fuiou_box_contract_version
+        fuiou_box_book_version          = '1.0.0'//com.fuiou.ds:box-book-api:$fuiou_box_book_version
+        fuiou_ds_o2o_version            = '2.2.14'//com.fuiou.ds:o2o-dubbo-api:$fuiou_ds_o2o_version
         fuiou_dmkt_dispatch_version     = '1.0.4'
         fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:1.7.0
         fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:1.7.0
