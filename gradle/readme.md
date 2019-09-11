@@ -58,5 +58,19 @@ idea原生支持
 
 ## 多模块子项目
 主要使用到了settings.gradle
+
 参考[dubbo/city-dubbo](./../dubbo/city-dubbo)  
+
+## checkstyle
+代码规范检查， 参考[checkstyle.xml](./checkstyle/checkstyle.xml)  
+
+使用 `gradle build` 或者  `gradle check`
+    
+    //见项目目录 checkstyle/checkstyle.xml
+    checkstyle {
+        toolVersion = "8.23"
+        configDir = rootProject.file("checkstyle")
+    }
+
+
 
