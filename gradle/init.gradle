@@ -69,7 +69,7 @@ allprojects {
         druid_version                   = '1.1.12'//com.alibaba:druid:$druid_version
         c3p0_version                    = '0.9.5.2'
         hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
-        hikaricp_version                = '3.2.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
+        hikaricp_version                = '3.4.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
 
         mysql_connector_version         = '5.1.46'//6.0.6 requires jdk1.8
         mysql_connector_version_jdk6    = '5.1.46'//
@@ -91,8 +91,8 @@ allprojects {
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//jboss netty
         //netty_version                   = '3.7.0.Final'//jboss netty
-        netty_io_version                = '4.1.38.Final'//io.netty:netty-all:$netty_io_version
-        protobuf_version                = '3.9.0'//com.google.protobuf:protobuf-java:$protobuf_version
+        netty_io_version                = '4.1.41.Final'//io.netty:netty-all:$netty_io_version
+        protobuf_version                = '3.9.1'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version

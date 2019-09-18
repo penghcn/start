@@ -97,6 +97,9 @@
     git config --global user.name "pengh-mbp"
     git config --global user.email "peng@test.com"
 
+    //master 分支git pull 全局改成rebase模式
+    git config --global branch.master.rebase true
+
 ### .gitignore 配置参考
 请特别注意，一定要配置.gitignore文件，配置参考 [gitignore.sample](./gitignore.sample)
 
