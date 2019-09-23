@@ -239,4 +239,16 @@ allprojects {
 //mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-trigger-dubbo-api -Dversion=2.0.1 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-trigger-dubbo-client-2.0.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
 //mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-fedqry-dubbo -Dversion=1.7.0 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-qry-dubbo-1.7.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
 
+/**
+//npm私服安装使用
+npm install verdaccio -g
+vi ~/.config/verdaccio/config.yaml
+listen: 0.0.0.0:14873
+
+npm install -g pm2 --unsafe-perm
+pm2 start verdaccio
+
+npm set registry https://registry.npmjs.org
+npm set registry http://192.168.8.29:14873
+**/
 
