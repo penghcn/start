@@ -22,5 +22,25 @@
 ## 减少sidekiq并发数
     sidekiq['concurrency'] = 8
 
-## 备份
+## 备份、还原
+    ## 备份
     gitlab-rake gitlab:backup:create
+
+    ## 默认备份目录/var/opt/gitlab/backups/
+    ## 还原
+    gitlab-rake gitlab:backup:restore BACKUP=1569390992_2019_09_25_12.3.1-ee
+
+## 安装、卸载、升级
+    ## 查看版本
+    cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
+    
+    ## 卸载
+    rpm -e gitlab-ee
+
+    ## 安装、升级
+    ## 升级前，请阅读升级注意
+    ## https://docs.gitlab.com/ee/policy/maintenance.html#upgrade-recommendations
+
+    curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+    wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ee/packages/el/7/gitlab-ee-12.3.1-ee.0.el7.x86_64.rpm/download.rpm
+    yum install gitlab-ee-12.3.1-ee.0.el7.x86_64

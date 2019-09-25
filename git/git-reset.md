@@ -63,7 +63,7 @@ develop分支，回退到本地仓库的某个历史提交版本，比如commit 
 
     cd /tmp
     git clone --mirror  git@192.168.8.251:ds/ds-wbp.git
-    java -jar /data/app/bfg-1.13.0.jar --strip-blobs-bigger-than 5M ds-wbp.git
+    java -jar /data/app/bfg-1.13.0.jar --strip-blobs-bigger-than 2M ds-wbp.git
     或者 java -jar /data/app/bfg-1.13.0.jar --delete-files *.war ds-wbp.git
 
     注意运行中的提示，可以看到类似如下日志，gitlab会用到里面的文件进行清理
