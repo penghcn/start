@@ -34,6 +34,33 @@ JAVA_OPTS="
 -XX:+PrintGCTimeStamps
 -Xloggc:/tmp/app-gc.log"
 
+### 1G
+JAVA_OPTS="
+-Dfile.encoding=UTF-8
+-server
+-Djava.awt.headless=true
+-Dconfig.environment=production
+-Xms1g
+-Xmx1g
+-XX:NewSize=1g
+-XX:MaxNewSize=1g
+-XX:PermSize=512m 
+-XX:MaxPermSize=512m 
+-XX:MaxTenuringThreshold=15
+-XX:NewRatio=2
+-XX:+AggressiveOpts
+-XX:+UseBiasedLocking
+-XX:+UseConcMarkSweepGC
+-XX:+UseParNewGC
+-XX:+CMSParallelRemarkEnabled
+-XX:LargePageSizeInBytes=128m
+-XX:+UseFastAccessorMethods
+-XX:+UseCMSInitiatingOccupancyOnly
+-XX:+DisableExplicitGC
+-XX:+PrintGCDetails 
+-XX:+PrintGCTimeStamps
+-Xloggc:/tmp/app-gc.log"
+
 
 ## 16G
 JAVA_OPTS="
@@ -85,6 +112,9 @@ JAVA_OPTS="
 -XX:+UseFastAccessorMethods
 -XX:+UseCMSInitiatingOccupancyOnly
 -XX:+DisableExplicitGC"
+
+
+
 
 
 
