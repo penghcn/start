@@ -111,7 +111,7 @@ allprojects {
 
         alipay_version                  = '3.3.49.ALL'
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
-        
+        fuiou_host_ads_version		    = '1.0.0'
         
 
         //pbase_version                   = '1.10.2'
