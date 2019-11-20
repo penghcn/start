@@ -103,8 +103,8 @@ allprojects {
         rabbitmq_version                = '5.7.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'
         kafka_version                   = '1.0.0'
-        kafka_version                   = '2.0.0'//org.apache.kafka:kafka_2.12:$kafka_version
-        canal_version                   = '1.1.2'//com.alibaba.otter:canal:$canal_version
+        kafka_version                   = '2.3.1'//org.apache.kafka:kafka_2.12:$kafka_version
+        canal_version                   = '1.1.4'//com.alibaba.otter:canal:$canal_version
 
         excel_poi_version               = '4.0.0'//org.apache.poi:poi:$excel_poi_version
         excel_jxls_version              = '2.4.6'//org.jxls:jxls:$excel_jxls_version
