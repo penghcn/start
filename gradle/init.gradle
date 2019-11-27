@@ -110,7 +110,7 @@ allprojects {
         excel_jxls_version              = '2.4.6'//org.jxls:jxls:$excel_jxls_version
         excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
 
-        alipay_version                  = '3.3.49.ALL'
+        alipay_version                  = '4.8.62.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
         
 
