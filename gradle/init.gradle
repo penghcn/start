@@ -32,6 +32,7 @@ allprojects {
         commons_codec_version           = '1.11'//commons-codec:commons-codec:$commons_codec_version
         commons_io_version              = '2.6'//commons-io:commons-io:$commons_io_version
         commons_lang_version            = '2.6'//commons-lang:commons-lang:$commons_lang_version
+        commons_lang_apache_version     = '3.9'//org.apache.commons:commons-lang3:$commons_lang_apache_version
 
         
         joda_version                    = '2.10'
@@ -83,6 +84,7 @@ allprojects {
         jsoup_version                   = '1.10.3'
         quartz_version                  = '2.2.1'
         cglib_version                   = '3.2.2'
+        dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.3'//org.apache.dubbo:dubbo:$dubbo_apache_version
         curator_version                 = '4.2.0'
