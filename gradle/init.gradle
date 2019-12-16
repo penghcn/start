@@ -37,7 +37,7 @@ allprojects {
         
         joda_version                    = '2.10'
 
-        xstream_version                 = '1.4.10'
+        xstream_version                 = '1.4.10'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.8.5'//2.8.3
         jackson_version                 = '2.4.6'//2.8.3
         gson_version                    = '2.8.5'//com.google.code.gson:gson:$gson_version
@@ -66,8 +66,8 @@ allprojects {
 
         hibernate_version               = '5.3.7.Final'//5.2+ requires jdk1.8 org.hibernate:hibernate-core:$hibernate_version
         hibernate_validator_version     = '6.0.13.Final'//org.hibernate:hibernate-validator:$hibernate_validator_version
-        mybatis_version                 = '3.5.2'
-        mybatis_spring_version          = '2.0.0'    
+        mybatis_version                 = '3.5.2' //org.mybatis:mybatis:$mybatis_version
+        mybatis_spring_version          = '2.0.0' //org.mybatis:mybatis-spring:$mybatis_spring_version
         druid_version                   = '1.1.12'//com.alibaba:druid:$druid_version
         c3p0_version                    = '0.9.5.2'
         hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
@@ -148,7 +148,7 @@ allprojects {
         fuiou_ds_trigger_version        = '2.3.7-SNAPSHOT'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
-        fuiou_ds_lottery_version        = '0.3.8'
+        //fuiou_ds_lottery_version        = '0.3.8'
         fuiou_ds_rock_version           = '1.9.6'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
         fuiou_ds_proxy_version          = '1.1.1'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
         fuiou_opr_event_version         = '3.1.1'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
