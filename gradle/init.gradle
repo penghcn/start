@@ -154,6 +154,7 @@ allprojects {
         fuiou_opr_event_version         = '3.1.1'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '0.0.3'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
+        fuiou_ds_market_version        = '1.0.0'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
