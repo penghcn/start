@@ -133,6 +133,8 @@ jdk1.8+ 流
                 .collect(Collectors.toList());
         System.out.println(results);
 
+        List<String> list = datas.stream().map(PkgMsgVO::getChannel).collect(Collectors.toList())
+
 ### Set
 #### HashSet
 
