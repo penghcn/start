@@ -111,6 +111,7 @@ allprojects {
         excel_poi_version               = '4.0.0'//org.apache.poi:poi:$excel_poi_version
         excel_jxls_version              = '2.4.6'//org.jxls:jxls:$excel_jxls_version
         excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
+        zxing_version                   = '3.4.0'//com.google.zxing:core:$zxing_version
 
         alipay_version                  = '4.8.62.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
@@ -154,7 +155,7 @@ allprojects {
         fuiou_opr_event_version         = '3.1.1'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '0.0.3'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
-        fuiou_ds_market_version        = '1.0.0'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
+        fuiou_ds_market_version         = '1.0.0'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
