@@ -140,13 +140,13 @@ allprojects {
 
         fuiou_ds_user_act_version       = '2.8.8'//com.fuiou.ds:ds-user-act-api:$fuiou_ds_user_act_version
         //fuiou_ds_user_act_version       = '2.7.4-SNAPSHOT'
-        fuiou_box_contract_version      = '1.4.5'//com.fuiou.ds:box-contract-api:$fuiou_box_contract_version
+        fuiou_box_contract_version      = '1.4.6'//com.fuiou.ds:box-contract-api:$fuiou_box_contract_version
         fuiou_box_book_version          = '1.0.0'//com.fuiou.ds:box-book-api:$fuiou_box_book_version
         fuiou_ds_o2o_version            = '2.2.27'//com.fuiou.ds:o2o-dubbo-api:$fuiou_ds_o2o_version
         fuiou_dmkt_dispatch_version     = '1.0.4'//com.fuiou.ds:dmkt-dispatch-api:$fuiou_dmkt_dispatch_version
         fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:$fuiou_ds_fedqry_version
         fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:$fuiou_ds_flyqry_version
-        fuiou_ds_trigger_version        = '2.4.2'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
+        fuiou_ds_trigger_version        = '2.4.3'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
         //fuiou_ds_lottery_version        = '0.3.8'
@@ -155,7 +155,7 @@ allprojects {
         fuiou_opr_event_version         = '3.1.1'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '0.0.9'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
-        fuiou_ds_market_version         = '1.6.0'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
+        fuiou_ds_market_version         = '1.6.1'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
