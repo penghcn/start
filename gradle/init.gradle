@@ -21,6 +21,10 @@ allprojects {
         jvm_version                     = 1.6
         jvm_version_8                   = 1.8
 
+        servlet_version                 = '3.1.0'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
+        tomcat_version                  = '8.0.50'
+        jetty_version                   = '9.4.8.v20171121'
+
         guava_version                   = '19.0'//com.google.guava:guava:$guava_version
         guava_version_jdk8              = '28.0-jre'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.12'
@@ -99,9 +103,8 @@ allprojects {
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
-        //tomcat_version                  = '7.0.68'
-        tomcat_version                  = '8.0.50'
-        jetty_version                   = '9.4.8.v20171121'
+    
+
         rabbitmq_version                = '5.7.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'
         kafka_version                   = '1.0.0'
