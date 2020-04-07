@@ -18,6 +18,8 @@ def publish_pass = properties.getProperty("publish.pass")
 
 allprojects {
     ext {  
+        charset                         = 'UTF-8'
+
         jvm_version                     = 1.6
         jvm_version_8                   = 1.8
 
