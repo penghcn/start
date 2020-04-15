@@ -101,7 +101,7 @@ allprojects {
         netty_version                   = '3.2.10.Final'//jboss netty
         //netty_version                   = '3.7.0.Final'//jboss netty
         netty_io_version                = '4.1.43.Final'//io.netty:netty-all:$netty_io_version
-        protobuf_version                = '3.9.1'//com.google.protobuf:protobuf-java:$protobuf_version
+        protobuf_version                = '3.11.4'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
