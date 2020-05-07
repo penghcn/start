@@ -163,6 +163,7 @@ allprojects {
         fuiou_ds_market_version         = '1.6.1'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
         fuiou_ds_pkg_version            = '0.0.1'//com.fuiou.ds:ds-pkg-api:$fuiou_ds_pkg_version
         fuiou_warn_version              = '1.0.1'//com.fuiou:fuiou-warn-client:$fuiou_warn_version
+        fuiou_ds_fed_qry_dubbo_version  = '1.9.0'//com.fuiou.ds:fed_qry_dubbo:fuiou_ds_fed_qry_dubbo_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
