@@ -149,7 +149,7 @@ allprojects {
         fuiou_box_book_version          = '1.0.0'//com.fuiou.ds:box-book-api:$fuiou_box_book_version
         fuiou_ds_o2o_version            = '2.2.27'//com.fuiou.ds:o2o-dubbo-api:$fuiou_ds_o2o_version
         fuiou_dmkt_dispatch_version     = '1.0.4'//com.fuiou.ds:dmkt-dispatch-api:$fuiou_dmkt_dispatch_version
-        fuiou_ds_fedqry_version         = '1.7.0'//com.fuiou.ds:sjb-fedqry-dubbo:$fuiou_ds_fedqry_version
+        fuiou_ds_fedqry_version         = '1.7.1'//com.fuiou.ds:sjb-fedqry-dubbo:$fuiou_ds_fedqry_version
         fuiou_ds_flyqry_version         = '1.7.0'//com.fuiou.ds:sjb-flyqry-dubbo:$fuiou_ds_flyqry_version
         fuiou_ds_trigger_version        = '2.4.3'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
         fuiou_wx_version                = '1.0.0'
