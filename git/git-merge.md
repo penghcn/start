@@ -36,3 +36,12 @@ feature/test1合并到develop。使用feature/test1分支 **覆盖** 合并到de
 
 #### 误删文件夹，还原到某个提交点，相当于创建新文件，不会冲突
     git checkout 3e48555 /www/fuiou/ds/o2o/o2o-mch-web/src/main/java/com/fuiou/ds/o2o/data
+
+## 强制合并
+如果分支合并时出现了冲突，而你的remote仓库是github或者bitbucket，那么只能强上了
+    
+    git branch -m master old-master
+    git branch -m develop master
+    git checkout master
+    git push -f origin master
+
