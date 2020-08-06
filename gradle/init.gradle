@@ -93,7 +93,7 @@ allprojects {
         //okhttp_version                  = '4.0.1'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
         jsoup_version                   = '1.10.3'
         quartz_version                  = '2.2.1'
-        cglib_version                   = '3.2.2'
+        cglib_version                   = '3.2.2'//cglib:cglib:$cglib_version
         dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
