@@ -72,5 +72,8 @@ idea原生支持
         configDir = rootProject.file("checkstyle")
     }
 
+## maven转gradle
+    gradle init --type pom
+
 
 
