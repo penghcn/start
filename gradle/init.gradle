@@ -40,6 +40,7 @@ allprojects {
         commons_io_version              = '2.6'//commons-io:commons-io:$commons_io_version
         commons_lang_version            = '2.6'//commons-lang:commons-lang:$commons_lang_version
         commons_lang_apache_version     = '3.9'//org.apache.commons:commons-lang3:$commons_lang_apache_version
+        commons_beanutils_version       = '1.9.4'//commons-beanutils:commons-beanutils:$commons_beanutils_version
 
         
         joda_version                    = '2.10'
