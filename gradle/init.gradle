@@ -119,7 +119,7 @@ allprojects {
         kafka_version                   = '2.3.1'//org.apache.kafka:kafka_2.12:$kafka_version
         canal_version                   = '1.1.4'//com.alibaba.otter:canal:$canal_version
 
-        excel_poi_version               = '4.0.0'//org.apache.poi:poi:$excel_poi_version
+        excel_poi_version               = '4.1.2'//org.apache.poi:poi:$excel_poi_version
         excel_jxls_version              = '2.8.1'//org.jxls:jxls:$excel_jxls_version
         excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
         zxing_version                   = '3.4.0'//com.google.zxing:core:$zxing_version
@@ -131,7 +131,7 @@ allprojects {
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
-        pbase_version_4                 = '4.0.0.24'//jdk8+
+        pbase_version_4                 = '4.0.1.5'//jdk8+
 
         //pbase_version                   = '3.20.4'//jdk8+
         pbase_version_320               = '3.20.4'//jdk8+
@@ -252,6 +252,10 @@ allprojects {
 
     task del(type: Delete) { 
         delete ".classpath",".project",".settings"
+    }
+
+    tasks.withType(GenerateModuleMetadata) {
+        enabled = false
     }
 }
 
