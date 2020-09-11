@@ -102,6 +102,14 @@ tomcat、jetty、maven、gradle、 git
     Map<String, MonthWageVO> map = wages.stream().collect(Collectors.toMap(MonthWageVO::getDepartment, Function.identity()));
     Map<String, String> map = wages.stream().collect(Collectors.toMap(MonthWageVO::getUserNo, MonthWageVO::getDepartment));
 
+    Map<String, MonthWageVO> map = wages.stream().collect(Collectors.toMap(MonthWageVO::getDepartment, Function.identity()));
+
+    //根据多个属性分组
+    Map<String, List<String>> groupBy = voList.stream().collect(Collectors.groupingBy(CountDefaultOrderVo::getProviderCode,
+                    Collectors.mapping(CountDefaultOrderVo::getPackCode, Collectors.toList())));
+    //根据某一个属性分组                 
+    Map<Integer, List<TestStreamModel>> map = list.stream().collect(Collectors.groupingBy(CountDefaultOrderVo::getGrade)); 
+
 ### List
 #### 1、ArrayList
 #### 2、for
@@ -112,7 +120,7 @@ tomcat、jetty、maven、gradle、 git
         System.out.println(list);
 
         //jdk1.8+ 
-        list.forEach(str->{System.out.println(str);});
+        list.forEach(str->System.out.println(str));
 
 #### 3、stream
 jdk1.8+ 流
