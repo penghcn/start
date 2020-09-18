@@ -65,10 +65,10 @@ allprojects {
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
         spring_data_version             = '2.3.4.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
         //spring_rabbit_version           = '1.7.9.RELEASE'//
-        spring_rabbit_version           = '2.3.4.RELEASE'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
+        spring_rabbit_version           = '2.2.11.RELEASE'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
         //spring_redis_version            = '1.8.14.RELEASE'//2.0.9
-        spring_redis_version            = '2.0.9.RELEASE'//
-        spring_kafka_version            = '2.3.3.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
+        spring_redis_version            = '2.3.4.RELEASE'//
+        spring_kafka_version            = '2.6.1.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '2.9.0'//
 
         struts_version                  = '2.5.22'//
