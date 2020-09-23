@@ -74,7 +74,7 @@ allprojects {
         struts_version                  = '2.5.22'//
         //struts_version                  = '2.3.35'//org.apache.struts:struts2-core:$struts_version
 
-        hibernate_version               = '5.3.7.Final'//5.2+ requires jdk1.8 org.hibernate:hibernate-core:$hibernate_version
+        hibernate_version               = '5.4.21.Final'//org.hibernate:hibernate-core:$hibernate_version
         hibernate_validator_version     = '6.0.13.Final'//org.hibernate:hibernate-validator:$hibernate_validator_version
         mybatis_version                 = '3.5.2' //org.mybatis:mybatis:$mybatis_version
         mybatis_spring_version          = '2.0.0' //org.mybatis:mybatis-spring:$mybatis_spring_version
@@ -92,7 +92,7 @@ allprojects {
         okhttp_version                  = '3.14.2'//com.squareup.okhttp3:okhttp:$okhttp_version
         //okhttp_version                  = '4.0.1'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
         jsoup_version                   = '1.10.3'
-        quartz_version                  = '2.2.1'
+        quartz_version                  = '2.3.2'//org.quartz-scheduler:quartz:$quartz_version
         cglib_version                   = '3.2.2'//cglib:cglib:$cglib_version
         dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
