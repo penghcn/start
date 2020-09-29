@@ -189,6 +189,7 @@ allprojects {
         REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"//第2版富友maven私库
         REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
         REPO_PROXY_URL_J                = "$nexus_host/repository/j-central"
+        REPO_PROXY_URL_GOOGLE           = "$nexus_host/repository/google-central"
         REPO_PROXY_URL_ALIYUN           = "$nexus_host/repository/aliyun/"
         REPO_PROXY_URL_MEITUAN          = "$nexus_host/repository/meituan/"
         //REPO_PROXY_URL_MEITUAN          = 'http://cat.meituan.com/nexus/content/repositories/releases/'
@@ -208,6 +209,32 @@ allprojects {
             }
         }
     }
+
+    buildscript {
+    
+        repositories {
+            maven {
+                url REPO_PUBLISH_URL
+            }
+            maven {
+                url REPO_PROXY_URL
+            }
+
+            maven {
+                url REPO_PROXY_URL_ALIYUN
+            }
+            maven {
+                url REPO_PROXY_URL_GOOGLE
+            }
+
+
+            //友盟Maven URL地址
+            maven {
+                url "https://dl.bintray.com/umsdk/release"
+            }
+        }
+    }
+
 
     repositories {
         //maven.oschina.net已经不可用，使用mavenCentral就好，实在嫌下载慢，可使用vpn
@@ -239,6 +266,11 @@ allprojects {
             url REPO_PROXY_URL
         }
 
+        //友盟Maven URL地址
+        maven {
+            url "https://dl.bintray.com/umsdk/release"
+        }
+
         // maven {
         //     url REPO_PROXY_URL_ALIYUN
         // }
@@ -258,6 +290,7 @@ allprojects {
         enabled = false
     }
 }
+
 
 //gradle build -x test --warning-mode=all --refresh-dependencies
 
