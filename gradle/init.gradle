@@ -27,8 +27,9 @@ allprojects {
         tomcat_version                  = '8.0.50'
         jetty_version                   = '9.4.8.v20171121'
 
+        caffeine_version                = '2.8.5'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
         guava_version                   = '19.0'//com.google.guava:guava:$guava_version
-        guava_version_jdk8              = '28.0-jre'//com.google.guava:guava:$guava_version_jdk8
+        guava_version_jdk8              = '29.0-jre'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.13'// 4.13 //testCompile "junit:junit:$junit_version"
         junit5_version                  = '5.6.2' // org.junit:junit-bom:$junit5_version
         log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
@@ -79,7 +80,7 @@ allprojects {
         mybatis_version                 = '3.5.2' //org.mybatis:mybatis:$mybatis_version
         mybatis_spring_version          = '2.0.0' //org.mybatis:mybatis-spring:$mybatis_spring_version
         druid_version                   = '1.1.23'//com.alibaba:druid:$druid_version
-        c3p0_version                    = '0.9.5.2'
+        c3p0_version                    = '0.9.5.5'//com.mchange:c3p0:$c3p0_version
         hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
         hikaricp_version                = '3.4.5'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
 
@@ -94,7 +95,7 @@ allprojects {
         jsoup_version                   = '1.10.3'
         quartz_version                  = '2.3.2'//org.quartz-scheduler:quartz:$quartz_version
         cglib_version                   = '3.2.2'//cglib:cglib:$cglib_version
-        dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
+        //dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
         //dubbo_apache_version            = '2.7.8'//org.apache.dubbo:dubbo:$dubbo_apache_version
@@ -104,18 +105,17 @@ allprojects {
         zookeeper_version               = '3.4.14'//目前curator只适配3.4.X
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
-        netty_version                   = '3.2.10.Final'//jboss netty
+        netty_version                   = '3.2.10.Final'//org.jboss.netty:netty:$netty_version
         //netty_version                   = '3.7.0.Final'//jboss netty
         netty_io_version                = '4.1.43.Final'//io.netty:netty-all:$netty_io_version
-        protobuf_version                = '3.11.4'//com.google.protobuf:protobuf-java:$protobuf_version
+        protobuf_version                = '3.13.0'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '3.0.3'
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
     
 
-        rabbitmq_version                = '5.7.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        rabbitmq_version                = '5.9.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
-        kafka_version                   = '1.0.0'
         kafka_version                   = '2.6.0'//org.apache.kafka:kafka_2.12:$kafka_version
         canal_version                   = '1.1.4'//com.alibaba.otter:canal:$canal_version
 
@@ -124,7 +124,7 @@ allprojects {
         excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
         zxing_version                   = '3.4.0'//com.google.zxing:core:$zxing_version
 
-        alipay_version                  = '4.9.124.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
+        alipay_version                  = '4.10.145.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
 
         android_tools_version           = '4.0.1'//com.android.tools.build:gradle:$android_tools_version
