@@ -1,7 +1,7 @@
 ## 开发入门
 
 ## 安装sdk
-[下载Command line tools](https://developer.android.google.cn/studio#downloads)
+[下载Command line tools，如commandlinetools-mac-6609375_latest.zip](https://developer.android.google.cn/studio#downloads)
 
 [sdkmanager 使用](https://developer.android.google.cn/studio/command-line/sdkmanager)
 
@@ -15,3 +15,4 @@
 
     生成位置 /data/app/android/platforms
     SDK HOME目录 /data/app/android
+    可以在idea中添加sdk，社区版先在plugins中激活Android

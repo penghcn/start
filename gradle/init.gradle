@@ -126,6 +126,8 @@ allprojects {
 
         alipay_version                  = '4.9.124.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
+
+        android_tools_version           = '4.0.1'//com.android.tools.build:gradle:$android_tools_version
         
 
         //pbase_version                   = '1.10.2'
