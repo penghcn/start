@@ -128,6 +128,7 @@ allprojects {
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
 
         android_tools_version           = '4.0.1'//com.android.tools.build:gradle:$android_tools_version
+        android_tools_version           = '3.6.4'//com.android.tools.build:gradle:$android_tools_version
         
 
         //pbase_version                   = '1.10.2'
@@ -261,16 +262,23 @@ allprojects {
         }
 
         maven {
-            url REPO_DEV_URL
+            url REPO_PROXY_URL
         }
 
         maven {
-            url REPO_PROXY_URL
+            url REPO_PROXY_URL_ALIYUN
+        }
+
+        maven {
+            url REPO_PROXY_URL_GOOGLE
         }
 
         //友盟Maven URL地址
         maven {
             url "https://dl.bintray.com/umsdk/release"
+        }
+        maven {
+            url REPO_DEV_URL
         }
 
         // maven {
@@ -316,4 +324,3 @@ npm set registry http://192.168.8.29:14873
 
 npm info node
 **/
-
