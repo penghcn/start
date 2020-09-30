@@ -165,7 +165,7 @@ allprojects {
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
         //fuiou_ds_lottery_version        = '0.3.8'
-        fuiou_ds_rock_version           = '2.2.7'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
+        fuiou_ds_rock_version           = '2.2.4'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
         fuiou_ds_proxy_version          = '1.2.6'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
         fuiou_opr_event_version         = '3.2.3'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
@@ -194,6 +194,8 @@ allprojects {
         REPO_PROXY_URL_J                = "$nexus_host/repository/j-central"
         REPO_PROXY_URL_GOOGLE           = "$nexus_host/repository/google-central"
         REPO_PROXY_URL_ALIYUN           = "$nexus_host/repository/aliyun/"
+        REPO_PROXY_URL_JITPACK          = "$nexus_host/repository/jitpack/"
+        REPO_PROXY_URL_UM               = "$nexus_host/repository/um/"
         REPO_PROXY_URL_MEITUAN          = "$nexus_host/repository/meituan/"
         //REPO_PROXY_URL_MEITUAN          = 'http://cat.meituan.com/nexus/content/repositories/releases/'
 
@@ -229,11 +231,14 @@ allprojects {
             maven {
                 url REPO_PROXY_URL_GOOGLE
             }
+            maven {
+                url REPO_PROXY_URL_JITPACK
+            }
 
 
             //友盟Maven URL地址
             maven {
-                url "https://dl.bintray.com/umsdk/release"
+                url REPO_PROXY_URL_UM
             }
         }
     }
@@ -273,9 +278,14 @@ allprojects {
             url REPO_PROXY_URL_GOOGLE
         }
 
+
+        maven { 
+            url REPO_PROXY_URL_JITPACK
+        }
+
         //友盟Maven URL地址
         maven {
-            url "https://dl.bintray.com/umsdk/release"
+            url REPO_PROXY_URL_UM
         }
         maven {
             url REPO_DEV_URL
@@ -324,3 +334,4 @@ npm set registry http://192.168.8.29:14873
 
 npm info node
 **/
+
