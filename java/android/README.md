@@ -36,3 +36,7 @@
 ### 安装build-tools
     ./sdkmanager --install "build-tools;30.0.2" --verbose --no_https 
 
+### 安装基于64位的system-images
+    ./sdkmanager --list   --no_https  | grep system-images
+    ./sdkmanager --install "system-images;android-30;google_apis;x86_64" --verbose --no_https 
+
