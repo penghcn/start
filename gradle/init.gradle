@@ -245,6 +245,25 @@ allprojects {
         }
     }
 
+    //配置gradle全局插件设置，如代理
+    settingsEvaluated { settings ->
+        settings.pluginManagement {
+
+            plugins {}
+
+            resolutionStrategy {}
+
+            repositories {
+                maven {
+                    url REPO_PUBLISH_URL
+                }
+                maven {
+                    url REPO_PROXY_URL
+                }
+            }
+        }
+    }
+
 
     repositories {
         //maven.oschina.net已经不可用，使用mavenCentral就好，实在嫌下载慢，可使用vpn
