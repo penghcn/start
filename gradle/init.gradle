@@ -19,6 +19,26 @@ def publish_pass = properties.getProperty("publish.pass")
 println "NEXUS代理HOST：$nexus_host"
 
 
+//配置gradle全局插件设置，如代理
+settingsEvaluated { settings ->
+    settings.pluginManagement {
+        def REPO_PROXY_URL_GRADLE_PLUGINS = "$nexus_host/repository/gradle-plugins"
+        println "pluginManagement $REPO_PROXY_URL_GRADLE_PLUGINS."
+        repositories.clear()
+
+        plugins {}
+
+        resolutionStrategy {}
+
+        repositories {
+            maven {
+                url REPO_PROXY_URL_GRADLE_PLUGINS
+            }
+        }
+    }
+}
+
+
 allprojects {
     ext {  
         charset                         = 'UTF-8'
@@ -197,7 +217,6 @@ allprojects {
         REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"//第2版富友maven私库
         REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
         REPO_PROXY_URL_J                = "$nexus_host/repository/j-central"
-        REPO_PROXY_URL_GRADLE_PLUGINS   = "$nexus_host/repository/gradle-plugins"
         REPO_PROXY_URL_GOOGLE           = "$nexus_host/repository/google-central"
         REPO_PROXY_URL_ALIYUN           = "$nexus_host/repository/aliyun/"
         REPO_PROXY_URL_JITPACK          = "$nexus_host/repository/jitpack/"
@@ -240,28 +259,12 @@ allprojects {
             maven {
                 url REPO_PROXY_URL_JITPACK
             }
+            
 
 
             //友盟Maven URL地址
             maven {
                 url REPO_PROXY_URL_UM
-            }
-        }
-    }
-
-    //配置gradle全局插件设置，如代理
-    settingsEvaluated { settings ->
-        project.logger.lifecycle "pluginManagement $REPO_PROXY_URL_GRADLE_PLUGINS."
-        settings.pluginManagement {
-
-            plugins {}
-
-            resolutionStrategy {}
-
-            repositories {
-                maven {
-                    url REPO_PROXY_URL_GRADLE_PLUGINS
-                }
             }
         }
     }
