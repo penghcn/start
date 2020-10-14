@@ -16,6 +16,9 @@ def nexus_host = properties.getProperty("nexus.host")
 def publish_user = properties.getProperty("publish.user")
 def publish_pass = properties.getProperty("publish.pass")
 
+println "NEXUS代理HOST：$nexus_host"
+
+
 allprojects {
     ext {  
         charset                         = 'UTF-8'
@@ -194,6 +197,7 @@ allprojects {
         REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"//第2版富友maven私库
         REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
         REPO_PROXY_URL_J                = "$nexus_host/repository/j-central"
+        REPO_PROXY_URL_GRADLE_PLUGINS   = "$nexus_host/repository/gradle-plugins"
         REPO_PROXY_URL_GOOGLE           = "$nexus_host/repository/google-central"
         REPO_PROXY_URL_ALIYUN           = "$nexus_host/repository/aliyun/"
         REPO_PROXY_URL_JITPACK          = "$nexus_host/repository/jitpack/"
@@ -247,6 +251,7 @@ allprojects {
 
     //配置gradle全局插件设置，如代理
     settingsEvaluated { settings ->
+        project.logger.lifecycle "pluginManagement $REPO_PROXY_URL_GRADLE_PLUGINS."
         settings.pluginManagement {
 
             plugins {}
@@ -255,10 +260,7 @@ allprojects {
 
             repositories {
                 maven {
-                    url REPO_PUBLISH_URL
-                }
-                maven {
-                    url REPO_PROXY_URL
+                    url REPO_PROXY_URL_GRADLE_PLUGINS
                 }
             }
         }
