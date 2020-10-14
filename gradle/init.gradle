@@ -45,6 +45,7 @@ allprojects {
 
         
         joda_version                    = '2.10'
+        pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
         xstream_version                 = '1.4.10'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.11.2'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
