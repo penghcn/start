@@ -152,6 +152,9 @@ allprojects {
         alipay_version                  = '4.10.145.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
 
+        android_sdk_version             = 30 //compileSdkVersion android_sdk_version
+        android_build_version           = "30.0.2" //buildToolsVersion "$android_build_version"
+        android_ndk_version             = "21.0.6113669" //ndkVersion "$android_ndk_version"
         android_tools_version           = '4.0.1'//com.android.tools.build:gradle:$android_tools_version
         android_tools_version           = '3.6.4'//com.android.tools.build:gradle:$android_tools_version
         greendao_version                = '3.3.0'//org.greenrobot:greendao-gradle-plugin:$greendao_version
