@@ -40,3 +40,6 @@
     ./sdkmanager --list   --no_https  | grep system-images
     ./sdkmanager --install "system-images;android-30;google_apis;x86_64" --verbose --no_https 
 
+
+## 一个简单的安卓项目
+[android-test](https://github.com/penghcn/start/tree/master/demo/android-test)
