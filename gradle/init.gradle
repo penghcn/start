@@ -1,5 +1,5 @@
 // wget http://192.168.8.251/open/doc/raw/master/gradle/init.gradle
-
+def isFuVpn = true
 def localPropFile = "${System.properties['user.home']}/.gradle/local.properties"
 println "^_^ *********************************************************************************************************** ^_^"
 println "    Gradle $gradleVersion"
@@ -16,14 +16,15 @@ def nexus_host = properties.getProperty("nexus.host")
 def publish_user = properties.getProperty("publish.user")
 def publish_pass = properties.getProperty("publish.pass")
 
-println "NEXUS代理HOST：$nexus_host"
+println isFuVpn ? "NEXUS代理HOST: $nexus_host" : "使用公网镜像，大部分aliyun"
+println "LOCAL IP: " + getLocalIp()
 
 
 //配置gradle全局插件设置，如代理
 settingsEvaluated { settings ->
     settings.pluginManagement {
-        def REPO_PROXY_URL_GRADLE_PLUGINS = "$nexus_host/repository/gradle-plugins"
-        println "pluginManagement $REPO_PROXY_URL_GRADLE_PLUGINS."
+        def REPO_PROXY_URL_GRADLE_PLUGINS = isFuVpn ? "$nexus_host/repository/gradle-plugins" : "https://plugins.gradle.org/m2"
+        println "PluginManagement: $REPO_PROXY_URL_GRADLE_PLUGINS"
         repositories.clear()
 
         plugins {}
@@ -248,6 +249,11 @@ allprojects {
     buildscript {
     
         repositories {
+            if (!isFuVpn) {
+                maven { url "https://maven.aliyun.com/repository/google"}
+                maven { url "https://jitpack.io"}
+            }
+
             maven {
                 url REPO_PUBLISH_URL
             }
@@ -289,9 +295,10 @@ allprojects {
         }
 
 
-        // maven {
-        //     url REPO_PROXY_URL_MEITUAN
-        // }
+        if (!isFuVpn) {
+            maven { url "https://maven.aliyun.com/repository/public"}
+            maven { url "https://maven.aliyun.com/repository/google"}
+        }
         
         maven {
             url REPO_PUBLISH_URL
@@ -340,6 +347,25 @@ allprojects {
     tasks.withType(GenerateModuleMetadata) {
         enabled = false
     }
+}
+
+def getLocalIp() {
+    InetAddress result = null;
+    Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+    while (interfaces.hasMoreElements()) {
+        Enumeration<InetAddress> addresses = interfaces.nextElement().getInetAddresses();
+        while (addresses.hasMoreElements()) {
+            InetAddress address = addresses.nextElement();
+            if (!address.isLoopbackAddress()) {
+                if (address.isSiteLocalAddress()) {
+                    return address.getHostAddress();
+                } else if (result == null) {
+                    result = address;
+                }
+            }
+        }
+    }
+    return (result != null ? result : InetAddress.getLocalHost()).getHostAddress();
 }
 
 
