@@ -16,8 +16,8 @@ def nexus_host = properties.getProperty("nexus.host")
 def publish_user = properties.getProperty("publish.user")
 def publish_pass = properties.getProperty("publish.pass")
 
-println isFuVpn ? "NEXUS代理HOST: $nexus_host" : "使用公网镜像，大部分aliyun"
 println "LOCAL IP: " + getLocalIp()
+println isFuVpn ? "NEXUS代理HOST: $nexus_host" : "使用公网镜像，大部分aliyun"
 
 
 //配置gradle全局插件设置，如代理
@@ -79,8 +79,8 @@ allprojects {
         fastjson_version                = '1.2.73'//com.alibaba:fastjson:$fastjson_version
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
 
-        spring_version_jdk8             = '5.1.18.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
-        spring_version_52               = '5.2.9.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
+        spring_version_jdk8             = '5.1.19.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
+        spring_version_52               = '5.2.10.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.29.RELEASE'//4.2.5，3.2.18
         spring_version                  = '4.3.29.RELEASE'//4.2.5，3.2.18
