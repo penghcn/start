@@ -9,7 +9,15 @@
     <!-- 文件长度不超过1500行 -->
     <module name="FileLength">
         <property name="max" value="1500"/>
-     </module>
+    </module>
+
+    <!-- 长度检查 -->
+        <!-- 每行不超过140个字符 -->
+        <!-- 每行不超过2096个字符 -->
+    <module name="LineLength">
+        <!--<property name="max" value="140" />-->
+        <property name="max" value="2096" />
+    </module>
  
     <!-- 每个java文件一个语法树 -->
     <module name="TreeWalker">
@@ -75,14 +83,8 @@
         <module name="ArrayTypeStyle"/>
         <!-- 检查long型定义是否有大写的“L” -->
         <module name="UpperEll"/>
- 
-        <!-- 长度检查 -->
-        <!-- 每行不超过140个字符 -->
-        <!-- 每行不超过2096个字符 -->
-        <module name="LineLength">
-            <!--<property name="max" value="140" />-->
-            <property name="max" value="2096" />
-        </module>
+
+        
         <!-- 方法不超过50行 -->
         <module name="MethodLength">
             <property name="tokens" value="METHOD_DEF" />
