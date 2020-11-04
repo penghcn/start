@@ -166,7 +166,7 @@ allprojects {
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
-        pbase_version_4                 = '4.0.24'//jdk8+
+        pbase_version_4                 = '4.0.25'//jdk8+
 
         //pbase_version                   = '3.20.4'//jdk8+
         pbase_version_320               = '3.20.4'//jdk8+
