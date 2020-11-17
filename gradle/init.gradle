@@ -59,7 +59,7 @@ allprojects {
         junit5_version                  = '5.7.0' // org.junit:junit-bom:$junit5_version
         log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
         log4j2_version_jdk6             = '2.3'//
-        log4j2_version_jdk8             = '2.12.0'//2.4+ requires jdk1.7 //http://logging.apache.org/log4j/2.x/maven-artifacts.html
+        log4j2_version_jdk8             = '2.14.0'//2.4+ requires jdk1.7 //http://logging.apache.org/log4j/2.x/maven-artifacts.html
         slf4j_version                   = '1.7.30'//org.slf4j:slf4j-api:$slf4j_version
         commons_fileupload_version      = '1.3.3'//commons-fileupload:commons-fileupload:$commons_fileupload_version
         commons_codec_version           = '1.11'//commons-codec:commons-codec:$commons_codec_version
