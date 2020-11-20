@@ -139,7 +139,7 @@ allprojects {
         netty_io_version                = '4.1.43.Final'//io.netty:netty-all:$netty_io_version
         protobuf_version                = '3.13.0'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
-        kryo_version                    = '3.0.3'
+        kryo_version                    = '5.0.0' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
     
 
