@@ -50,8 +50,9 @@ allprojects {
 
         servlet_version                 = '3.1.0'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
         tomcat_version                  = '8.0.50'
-        jetty_version                   = '9.4.8.v20171121'
+        jetty_version                   = '9.4.8.v20171121' 
 
+        disruptor_version               = '3.4.2'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.8.5'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
         guava_version                   = '19.0'//com.google.guava:guava:$guava_version
         guava_version_jdk8              = '29.0-jre'//com.google.guava:guava:$guava_version_jdk8
