@@ -99,7 +99,7 @@ allprojects {
         spring_kafka_version            = '2.5.6.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '3.3.0'//redis.clients:jedis:$jedis_version
 
-        struts_version                  = '2.5.22'//
+        struts_version                  = '2.5.26'//
         //struts_version                  = '2.3.35'//org.apache.struts:struts2-core:$struts_version
 
         hibernate_version               = '5.4.21.Final'//org.hibernate:hibernate-core:$hibernate_version
