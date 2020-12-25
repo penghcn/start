@@ -74,10 +74,10 @@ allprojects {
         pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
         xstream_version                 = '1.4.15'//com.thoughtworks.xstream:xstream:$xstream_version
-        jackson_version_jdk8            = '2.11.2'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
+        jackson_version_jdk8            = '2.12.0'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
         jackson_version                 = '2.4.6'//2.8.3
         gson_version                    = '2.8.6'//com.google.code.gson:gson:$gson_version
-        fastjson_version                = '1.2.73'//com.alibaba:fastjson:$fastjson_version
+        fastjson_version                = '1.2.75'//com.alibaba:fastjson:$fastjson_version
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
 
         spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
@@ -97,7 +97,7 @@ allprojects {
         //spring_redis_version            = '1.8.14.RELEASE'//2.0.9
         spring_redis_version            = '2.3.6.RELEASE'//
         spring_kafka_version            = '2.5.6.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
-        jedis_version                   = '3.3.0'//redis.clients:jedis:$jedis_version
+        jedis_version                   = '3.4.0'//redis.clients:jedis:$jedis_version
 
         struts_version                  = '2.5.26'//
         //struts_version                  = '2.3.35'//org.apache.struts:struts2-core:$struts_version
@@ -107,7 +107,7 @@ allprojects {
         mybatis_version                 = '3.5.6' //org.mybatis:mybatis:$mybatis_version
         mybatis_spring_version          = '2.0.5' //org.mybatis:mybatis-spring:$mybatis_spring_version
         mybatis_spring_boot_version     = '2.1.3' //org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatis_spring_boot_version
-        druid_version                   = '1.1.23'//com.alibaba:druid:$druid_version
+        druid_version                   = '1.2.4'//com.alibaba:druid:$druid_version
         c3p0_version                    = '0.9.5.5'//com.mchange:c3p0:$c3p0_version
         hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
         hikaricp_version                = '3.4.5'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
@@ -115,8 +115,8 @@ allprojects {
         mysql_connector_version         = '5.1.46'//6.0.6 requires jdk1.8
         mysql_connector_version_jdk6    = '5.1.46'//
         mysql_connector_version_jdk8    = '6.0.6'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
-        mysql_connector_version_jdk8    = '8.0.18'//'8.0.12'//6.0.6 requires jdk1.8 
-        sqlite_jdbc_version             = '3.32.3.2'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
+        mysql_connector_version_jdk8    = '8.0.22'//'8.0.12'//6.0.6 requires jdk1.8 
+        sqlite_jdbc_version             = '3.34.0'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
 
         httpclient_version              = '4.5.13'//org.apache.httpcomponents:httpclient:$httpclient_version org.apache.httpcomponents:httpmime:$httpclient_version
         okhttp_version                  = '3.14.9'//com.squareup.okhttp3:okhttp:$okhttp_version
@@ -128,24 +128,24 @@ allprojects {
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
         //dubbo_apache_version            = '2.7.8'//org.apache.dubbo:dubbo:$dubbo_apache_version
-        alibaba_spring_version          = '1.0.8'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
+        alibaba_spring_version          = '1.0.11'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
         curator_version                 = '4.2.0'
-        zookeeper_version               = '3.5.5'//org.apache.zookeeper:zookeeper:$zookeeper_version
+        zookeeper_version               = '3.6.2'//org.apache.zookeeper:zookeeper:$zookeeper_version
         zookeeper_version               = '3.4.14'//目前curator只适配3.4.X
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//org.jboss.netty:netty:$netty_version
         //netty_version                   = '3.7.0.Final'//jboss netty
-        netty_io_version                = '4.1.43.Final'//io.netty:netty-all:$netty_io_version
-        protobuf_version                = '3.13.0'//com.google.protobuf:protobuf-java:$protobuf_version
+        netty_io_version                = '4.1.56.Final'//io.netty:netty-all:$netty_io_version
+        protobuf_version                = '3.14.0'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '5.0.0' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
         hessian_lite_version            = '3.2.9' //com.alibaba:hessian-lite:$dubbo_hessian_version
 
-        rabbitmq_version                = '5.9.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        rabbitmq_version                = '5.10.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
-        kafka_version                   = '2.6.0'//org.apache.kafka:kafka_2.12:$kafka_version
+        kafka_version                   = '2.7.0'//org.apache.kafka:kafka_2.12:$kafka_version
         canal_version                   = '1.1.4'//com.alibaba.otter:canal:$canal_version
 
         excel_poi_version               = '4.1.2'//org.apache.poi:poi:$excel_poi_version
