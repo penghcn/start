@@ -68,6 +68,7 @@ allprojects {
         commons_lang_version            = '2.6'//commons-lang:commons-lang:$commons_lang_version
         commons_lang_apache_version     = '3.9'//org.apache.commons:commons-lang3:$commons_lang_apache_version
         commons_beanutils_version       = '1.9.4'//commons-beanutils:commons-beanutils:$commons_beanutils_version
+        zstd_jni_version                = '1.4.8-1'//commons-beanutils:commons-beanutils:$commons_beanutils_version
 
         
         joda_version                    = '2.10'
@@ -169,7 +170,7 @@ allprojects {
         //pbase_version                   = '1.10.2'
         pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
-        pbase_version_4                 = '4.0.30'//jdk8+
+        pbase_version_4                 = '4.0.31'//jdk8+
 
         //pbase_version                   = '3.20.4'//jdk8+
         pbase_version_320               = '3.20.4'//jdk8+
