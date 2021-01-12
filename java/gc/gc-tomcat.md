@@ -31,8 +31,9 @@ JAVA_OPTS="
 -XX:+UseCMSInitiatingOccupancyOnly
 -XX:+DisableExplicitGC
 -XX:+PrintGCDetails 
+-XX:+PrintGCDateStamps
 -XX:+PrintGCTimeStamps
--Xloggc:/tmp/app-gc.log"
+-Xloggc:../logs/app-gc.log"
 
 ### 1G
 JAVA_OPTS="
@@ -58,8 +59,9 @@ JAVA_OPTS="
 -XX:+UseCMSInitiatingOccupancyOnly
 -XX:+DisableExplicitGC
 -XX:+PrintGCDetails 
+-XX:+PrintGCDateStamps
 -XX:+PrintGCTimeStamps
--Xloggc:/tmp/app-gc.log"
+-Xloggc:../logs/app-gc.log"
 
 
 ## 16G
@@ -74,7 +76,11 @@ JAVA_OPTS="
 -XX:MaxPermSize=512m 
 -XX:MaxTenuringThreshold=10 
 -XX:NewRatio=2 
--XX:+DisableExplicitGC"
+-XX:+DisableExplicitGC
+-XX:+PrintGCDetails 
+-XX:+PrintGCDateStamps
+-XX:+PrintGCTimeStamps
+-Xloggc:../logs/app-gc.log"
 
 ## 32G
 JAVA_OPTS="
@@ -88,7 +94,11 @@ JAVA_OPTS="
 -XX:MaxPermSize=1g
 -XX:MaxTenuringThreshold=10 
 -XX:NewRatio=2 
--XX:+DisableExplicitGC"
+-XX:+DisableExplicitGC
+-XX:+PrintGCDetails 
+-XX:+PrintGCDateStamps
+-XX:+PrintGCTimeStamps
+-Xloggc:../logs/app-gc.log"
 
 ## 8G
 JAVA_OPTS="
@@ -111,7 +121,11 @@ JAVA_OPTS="
 -XX:LargePageSizeInBytes=128m
 -XX:+UseFastAccessorMethods
 -XX:+UseCMSInitiatingOccupancyOnly
--XX:+DisableExplicitGC"
+-XX:+DisableExplicitGC
+-XX:+PrintGCDetails 
+-XX:+PrintGCDateStamps
+-XX:+PrintGCTimeStamps
+-Xloggc:../logs/app-gc.log"
 
 
 
