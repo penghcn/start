@@ -144,7 +144,34 @@ jdk1.8+ 流
         List<String> list = datas.stream().map(PkgMsgVO::getChannel).collect(Collectors.toList())
 
 ### Set
+    涉及过滤的，如contains，请使用HashSet或者BitSet，效率远高于List
 #### HashSet
+        long start = System.nanoTime();
+        List<String> list = new ArrayList<>();
+        int tot = (int) Math.pow(10, LEN);
+        for (int i = 0; i < tot; i++) {
+            list.add(StringUtil.leftPadWithZero(i + "", LEN));
+        }
+        //Collections.shuffle(list); //乱序
+        Log.getSlf4jLogger().debug("{} to List.Time elapsed: {}s", tot, CurrencyUtil.divide((System.nanoTime() - start), 1e9, 6));
+
+        start = System.nanoTime();
+        HashSet hs = new HashSet<>(list);
+        Log.getSlf4jLogger().debug("to HashSet.Time elapsed: {}s", CurrencyUtil.divide((System.nanoTime() - start), 1e9, 6));
+
+        start = System.nanoTime();
+        int size = list.size();
+        BitSet bs = new BitSet(size);
+        for (int i = 0; i < size; i++) {
+            bs.set(Integer.valueOf(list.get(i)));
+        }
+        Log.getSlf4jLogger().debug("to BitSet.Time elapsed: {}s", CurrencyUtil.divide((System.nanoTime() - start), 1e9, 6));
+
+        list.contains(key);
+        hs.contains(key);
+        bs.get(key);
+
+#### BitSet
 
 ### 排序
 
@@ -195,7 +222,7 @@ jdk1.8+ 流
 说明：ReentrantLock仅针对单节点机器，集群分布式(中央)加锁请参考redis、memcached锁
 
 
-### 线程 Thread、线程池 ExecutorService
+### 线程 Thread、线程池 <del>ExecutorService</del> ThreadPoolExecutor ThreadPoolTaskExecutor 
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -209,6 +236,37 @@ jdk1.8+ 流
             //do something
         });
         es.shutdown();
+
+        // https://www.cnblogs.com/wjqhuaxia/p/11762150.html
+        // 类似ActiveMq，最大努力执行任务型
+        // 当触发拒绝策略时，在尝试N ms时间重新将任务塞进任务队列，超时还没成功时，就抛出异常
+        public static ThreadPoolExecutor getExecutor(int coreSize, int queueCapacity, int timeout, String threadName) {
+            return new ThreadPoolExecutor(coreSize, coreSize, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(queueCapacity), NamedThreadFactory.create(threadName), (r, e) -> {
+                try {
+                    if (e.getQueue().offer(r, timeout, TimeUnit.MILLISECONDS)) {
+                        return;
+                    }
+                } catch (InterruptedException e1) {
+                    throw new RejectedExecutionException("Interrupted waiting for BrokerService.worker");
+                }
+                String msg = String.format("Thread pool is EXHAUSTED!" +
+                                " Thread Name: %s, Pool Size: %d (active: %d, core: %d, max: %d, largest: %d), Task: %d (completed: %d)," +
+                                " Executor status:(isShutdown:%s, isTerminated:%s, isTerminating:%s)",
+                        threadName, e.getPoolSize(), e.getActiveCount(), e.getCorePoolSize(), e.getMaximumPoolSize(), e.getLargestPoolSize(),
+                        e.getTaskCount(), e.getCompletedTaskCount(), e.isShutdown(), e.isTerminated(), e.isTerminating());
+                LOGGER.warn(msg);
+                throw new RejectedExecutionException("Timed Out " + timeout + "ms while attempting to enqueue Task.");
+            });
+        }
+
+        // spring
+        ThreadPoolTaskExecutor redisTaskExecutor = new ThreadPoolTaskExecutor();
+        redisTaskExecutor.initialize();
+        redisTaskExecutor.setCorePoolSize(5);
+        redisTaskExecutor.setQueueCapacity(1000);
+        redisTaskExecutor.setMaxPoolSize(5);
+        redisTaskExecutor.setKeepAliveSeconds(10);
+        redisTaskExecutor.setThreadNamePrefix("redis-listener-");
 
 ### 队列
 ConcurrentMap、CopyOnWriteArrayList、BlockingQueue、ConcurrentLinkedQueue
