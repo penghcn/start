@@ -213,7 +213,7 @@ allprojects {
         fuiou_ds_fed_qry_dubbo_version  = '1.9.0'//com.fuiou.ds:fed_qry_dubbo:fuiou_ds_fed_qry_dubbo_version
         fuiou_fed_bridge_version        = '1.0.2'//com.fuiou.ds:fed-bridge-dubbo-api:$fuiou_fed_bridge_version
         fuiou_ds_log_version            = '0.0.3'//com.fuiou.ds:ds-log-api:$fuiou_ds_log_version
-        fuiou_ds_stock_version          = '0.0.4-SNAPSHOT'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
+        fuiou_ds_stock_version          = '0.0.5-SNAPSHOT'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
