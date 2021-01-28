@@ -36,6 +36,9 @@ tomcat、jetty、maven、gradle、 git
     
     boolean,  1bit,  false/true, [0, 1]
 
+    注意int unsigned 最大值为pow(2,32)-1 = 4294967295，10位
+    注意long unsigned 最大值为pow(2,64)-1 = 18446744073709551615L，20位
+
 ### 1、int 和 Integer 的区别
 ### 2、IntegerCache、LongCache等(-128 <= i <=  127)
         int a = 128, b = 128;
