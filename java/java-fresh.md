@@ -97,6 +97,9 @@ tomcat、jetty、maven、gradle、 git
     List<Integer> list2 = Arrays.stream(arr1).boxed().collect(Collectors.toList());
     List<Integer> list3 = Arrays.stream(array2).collect(Collectors.toList());
 
+    List<String> list4 = new ArrayList<>();
+    String[] arr4 = list4.stream().toArray(String[]::new);
+
 ### Map
 #### HashMap
 参考 [深入理解HashMap](http://www.iteye.com/topic/539465) 和 [Java8之HashMap](http://www.importnew.com/20386.html)
