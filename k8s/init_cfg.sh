@@ -16,11 +16,11 @@ fi
 
 # 此时是初始化第一个master节点，默认取本机IP为api server的集群代理ip
 if [[ ! -n $api_server_ip ]]; then
-    api_server_ip = $local_ip
+    api_server_ip=$local_ip
 fi
 
 if [[ ! -n $4 ]]; then
-    pod_subnet = '172.16.1.0/24'
+    pod_subnet="172.16.1.0/24"
 fi 
 
 if [[ ! -n $mirror ]]; then

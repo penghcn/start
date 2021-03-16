@@ -1,6 +1,7 @@
 # centos7.8+ 安装k8s
 ## 准备
     sh init_host.sh k8s-m1
+    curl -sSL http://192.168.8.251/open/doc/raw/master/k8s/init_host.sh | sh -s k8s-m1
 
     参考主机如下，操作系统都是centos7.9
     3节点master使用haproxy + keepalived实现负载均衡 VIP 10.0.7.205
@@ -17,7 +18,14 @@ worker | k8s-w2 | 10.0.6.11
 ## 同步时间
 
 ## 安装k8s单master
+    wget http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh
+    wget http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh
+    wget http://192.168.8.251/open/doc/raw/master/k8s/init_master.sh
+    wget http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh
+    wget http://192.168.8.251/open/doc/raw/master/k8s/install_join_k8s.sh
+
     sh install_master_k8s.sh apiserver.k8s
+
 
     # 查看
     kubectl get pods -o wide --all-namespaces
