@@ -110,7 +110,7 @@ crictl config runtime-endpoint /run/containerd/containerd.sock
 
 # 重启 docker，并启动 kubelet
 systemctl daemon-reload
-systemctl enable kubelet && systemctl start kubelet --max-pods=60
+systemctl enable kubelet && systemctl start kubelet 
 
 containerd --version
 crictl -v

@@ -39,7 +39,10 @@ export APISERVER_NAME=$api_server
 export POD_SUBNET=$pod_subnet
 export SERVICE_SUBNET=172.31.0.0/16
 
+
+#echo "192.168.8.121    apiserver.k8s" >> /etc/hosts
 echo "${APISERVER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+echo "nameserver 202.96.209.5" >> /etc/resolv.conf 
 
 echo ""
 echo "k8s安装版本$k8s_version，参数如下："

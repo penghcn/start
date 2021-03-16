@@ -4,25 +4,25 @@
     curl -sSL http://192.168.8.251/open/doc/raw/master/k8s/init_host.sh | sh -s k8s-m1
 
     参考主机如下，操作系统都是centos7.9
-    3节点master使用haproxy + keepalived实现负载均衡 VIP 10.0.7.205
+    3节点master使用haproxy + keepalived实现负载均衡 VIP 192.168.8.205
 
 角色 |主机名 |  ip
 -||
-master | k8s-m1 | 10.0.7.31
-master | k8s-m2 | 10.0.7.32
-master | k8s-m3 | 10.0.7.33
+master | k8s-m1 | 192.168.8.121
+master | k8s-m2 | 192.168.8.122
+master | k8s-m3 | 192.168.8.123
 |
-worker | k8s-w1 | 10.0.7.11
-worker | k8s-w2 | 10.0.6.11
+worker | k8s-w1 | 192.168.8.124
+worker | k8s-w2 | 192.168.8.125
 
 ## 同步时间
 
 ## 安装k8s单master
-    wget http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh
-    wget http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh
-    wget http://192.168.8.251/open/doc/raw/master/k8s/init_master.sh
-    wget http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh
-    wget http://192.168.8.251/open/doc/raw/master/k8s/install_join_k8s.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh > init_cfg.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh > install_kubelet.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/init_master.sh > init_master.sh
+
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh > install_master_k8s.sh
 
     sh install_master_k8s.sh apiserver.k8s
 
@@ -32,8 +32,12 @@ worker | k8s-w2 | 10.0.6.11
     kubectl get pods -o wide -A
 
 ## 安装k8s集群
+    curl http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh > init_cfg.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh > install_kubelet.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_join_k8s.sh > install_join_k8s.sh
+
     # 在第1台master节点k8s-m1运行
-    sh install_master_k8s.sh apiserver.k8 10.0.7.205
+    sh install_master_k8s.sh apiserver.k8 192.168.8.121
 
     ## 上述运行结束后，找到如下3行日志内容，等下加入第2、3台master节点需要，加入worker节点时取前2行即可
     ## 注意token时效2小时。超时请参考《附录一》
@@ -43,16 +47,16 @@ worker | k8s-w2 | 10.0.6.11
 
     # 下面其他节点的安装可以同时进行
     # 在第2、3台master节点k8s-m2 k8s-m3 运行
-    sh install_join_k8s.sh apiserver.k8 10.0.7.205 2
-    sh install_join_k8s.sh apiserver.k8 10.0.7.205 3
+    sh install_join_k8s.sh apiserver.k8 192.168.8.121 2
+    sh install_join_k8s.sh apiserver.k8 192.168.8.121 3
 
     kubeadm join apiserver.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
     --control-plane --certificate-key 429c22df0defab2329efd1454cee4df2c0d5f324614f345b6def654cc0b5dc51
 
     # 在第1、2台 worker 节点k8s-w1 k8s-w2 运行
-    sh install_join_k8s.sh apiserver.k8 10.0.7.205 11
-    sh install_join_k8s.sh apiserver.k8 10.0.7.205 12
+    sh install_join_k8s.sh apiserver.k8 192.168.8.121 11
+    sh install_join_k8s.sh apiserver.k8 192.168.8.121 12
 
     kubeadm join apiserver.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
