@@ -1,0 +1,103 @@
+apiVersion: apps/v1 #与k8s集群版本有关，使用 kubectl api-versions 即可查看当前集群支持的版本
+kind: Deployment    #该配置的类型，我们使用的是 Deployment
+metadata:           #译名为元数据，即 Deployment 的一些基本属性和信息
+    namespace: default #网络策略空间
+    name: nginx-demo-deployment    #Deployment 的名称
+    labels:       #标签，可以灵活定位一个或多个资源，其中key和value均可自定义，可以定义多组，目前不需要理解
+        app: nginx  #为该Deployment设置key为app，value为nginx的标签
+spec:           #这是关于该Deployment的描述，可以理解为你期待该Deployment在k8s中如何使用
+    replicas: 2   #使用该Deployment创建2个应用程序实例
+    selector:     #标签选择器，与上面的标签共同作用，目前不需要理解
+        matchLabels: #选择包含标签app:nginx的资源
+            app: nginx
+    template:     #这是选择或创建的Pod的模板
+        metadata:   #Pod的元数据
+            labels:   #Pod的标签，上面的selector即选择包含标签app:nginx的Pod
+                app: nginx
+        spec:       #期望Pod实现的功能（即在pod中部署）
+            containers:   #生成container，与docker中的container是同一种
+                -   name: nginx #container的名称
+                    image: nginx:1.18-alpine  #使用镜像nginx:1.18创建container，该container默认80端口可访问
+                    imagePullPolicy: IfNotPresent #先本地，若无再下载
+                    ports:
+                        -   name: http
+                            containerPort: 80
+                        -   name: http2
+                            containerPort: 443
+                    volumeMounts:
+                        -   mountPath: /etc/nginx/nginx.conf
+                            name: nginx-config # 使用下面的配置覆盖默认配置
+                            subPath: nginx.conf
+                        -   mountPath: /var/www/test
+                            name: nginx-data
+                    resources:
+                        limits:
+                            cpu: 100m # 0.1核，若总核数2，则占总比 0.1/2 = 5% 
+                            memory: 512Mi # 512Mb
+                        requests:
+                            cpu: 50m
+                            memory: 256Mi
+                -   name: php # sidecar 边车模式
+                    image: php:7.4-fpm-alpine
+                    imagePullPolicy: IfNotPresent #先本地，若无再下载
+                    ports:
+                        -   name: http
+                            containerPort: 9000
+                    volumeMounts:
+                        -   mountPath: /var/www/test
+                            name: nginx-data
+                    resources:
+                        limits:
+                            cpu: 100m  
+                            memory: 512Mi 
+                        requests:
+                            cpu: 50m
+                            memory: 256Mi
+            volumes:
+                -   name: nginx-config
+                    configMap:
+                        name: nginx.cm
+                -   name: nginx-data
+                    hostPath:
+                        path: /root/www
+
+#
+# useage
+# 
+# kubectl apply -f nginx-demo-deployment.yaml --record
+# kubectl get deployments -o wide -A
+# kubectl get pod  -o wide -A
+
+#
+# kubectl rollout history deployment nginx-demo-deployment
+# kubectl rollout undo deployment nginx-demo-deployment --to-revision=1
+# 
+# kubectl rollout status deploy/nginx-demo-deployment
+
+#
+# configmap
+# kubectl delete configmap nginx.cm 
+# kubectl create configmap nginx.cm2 --from-file nginx.conf -n policy-web-demo-ns
+# kubectl get configmap nginx.cm -o yaml -n policy-web-demo-ns
+# kubectl get configmap -o wide -A
+
+
+# kubectl expose -n policy-web-demo-ns deployment nginx-demo-deployment --port=80
+# 
+# kubectl describe deployment nginx -n policy-web-demo-ns
+# kubectl describe pod nginx-demo-deployment-79454f5d99-8w26m  -n policy-web-demo-ns
+# kubectl logs -f nginx-demo-deployment-5cc5c5bd88-hn9r7 -c php
+
+# 类似docker exec 
+# kubectl exec -it nginx-demo-deployment-5cc5c5bd88-hn9r7 -- /bin/bash
+# alpine 不使用/bin/bash ，使用sh 
+# kubectl exec -it nginx-demo-deployment-7bfc46ff58-znvlj -c php -- sh
+
+
+#
+# crictl ps
+# crictl images
+
+
+
+

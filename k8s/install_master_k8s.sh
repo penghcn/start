@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 安装master单节点
+# sh install_master_k8s.sh apiserver.k8
+
+# 脚本出错时终止执行
+set -e
+
+k8s_version=1.20.4
+
+# 一些配置或者环境变量
+source ./init_cfg.sh $k8s_version $1 $2 $3
+
+
+# 安装 containerd和kubelet
+sh install_kubelet.sh $k8s_version
+
+
+# 先卸载kube
+kubeadm reset -f
+# rm -rf ~/.kube/
+# rm -rf /etc/kubernetes/
+# rm -rf /etc/systemd/system/kubelet.service.d
+# rm -rf /etc/systemd/system/kubelet.service
+# rm -rf /usr/bin/kube*
+# rm -rf /etc/cni
+# rm -rf /opt/cni
+# rm -rf /var/lib/etcd
+# rm -rf /var/etcd
+
+# 初始化master
+sh init_master.sh $k8s_version
