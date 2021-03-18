@@ -116,9 +116,7 @@ spec:
                     imagePullPolicy: IfNotPresent #先本地，若无再下载
                     ports:
                         -   name: http
-                            containerPort: 80
-                        -   name: http2
-                            containerPort: 443
+                            containerPort: 6443
                     volumeMounts:
                         -   mountPath: /etc/nginx/nginx.conf
                             name: nginx-config # 使用下面的配置覆盖默认配置
@@ -149,12 +147,8 @@ spec:
     ports:
         -   name: http-nginx    
             protocol: TCP        
-            port: 80            #Svc 的端口
-            targetPort: 80      #Pod 的端口
-        -   name: http2-nginx    
-            protocol: TCP        
-            port: 443            #Svc 的端口
-            targetPort: 443      #Pod 的端口
+            port: 6443            #Svc 的端口
+            targetPort: 6443      #Pod 的端口
     type: ClusterIP
 
 #

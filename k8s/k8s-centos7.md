@@ -40,6 +40,9 @@ worker | k8s-w2 | 192.168.8.125
     curl http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh > install_master_k8s.sh
     sh install_master_k8s.sh api.k8 192.168.8.121
 
+    curl http://192.168.8.251/open/doc/raw/master/k8s/yml/ns-balancer.yaml > ns-balancer.yaml
+    kubectl create -f ns-balancer.yaml
+
     ## 上述运行结束后，找到如下3行日志内容，等下加入第2、3台master节点需要，加入worker节点时取前2行即可
     ## 注意token时效2小时。超时请参考《附录一》
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
