@@ -58,7 +58,7 @@ worker | k8s-w2 | 192.168.8.125
     --control-plane --certificate-key 429c22df0defab2329efd1454cee4df2c0d5f324614f345b6def654cc0b5dc51
 
     # 在第1、2台 worker 节点k8s-w1 k8s-w2 运行
-    sh install_join_k8s.sh api.k8 192.168.8.121
+    sh install_join_k8s.sh api.k8 192.168.8.121 http://192.168.8.71:29108
 
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
