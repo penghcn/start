@@ -3,6 +3,19 @@
 # 安装master或者worker其他节点
 # sh install_join_k8s.sh
 
+
+# 先卸载kube
+kubeadm reset -f
+rm -rf ~/.kube/
+rm -rf /etc/kubernetes/
+rm -rf /etc/systemd/system/kubelet.service.d
+rm -rf /etc/systemd/system/kubelet.service
+rm -rf /usr/bin/kube*
+rm -rf /etc/cni
+rm -rf /opt/cni
+rm -rf /var/lib/etcd
+rm -rf /var/etcd
+
 # 脚本出错时终止执行
 set -e
 

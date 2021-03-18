@@ -24,6 +24,7 @@ fi
 
 if [[ ! -n $mirror ]]; then
     mirror="https://registry.cn-shanghai.aliyuncs.com"
+    mirror="http://192.168.8.71:29108"
 fi
 
 
