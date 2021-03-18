@@ -4,10 +4,13 @@ k8s_version=$1
 
 local_ip=$(ip addr | grep eth0 | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')
 
+if [[ ! -n $local_ip ]]; then
+    local_ip=$(ip addr | grep bond0 | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')
+fi 
+
 api_server=$2
 api_server_ip=$3
-pod_subnet="172.16.$4.0/24"
-mirror=$5
+mirror=$4
 
 if [[ ! -n $api_server ]]; then
     echo "api_server 不能为空，如使用sh install_master_k8s.sh apiserver.k8s"
@@ -18,10 +21,6 @@ fi
 if [[ ! -n $api_server_ip ]]; then
     api_server_ip=$local_ip
 fi
-
-if [[ ! -n $4 ]]; then
-    pod_subnet="172.16.1.0/24"
-fi 
 
 if [[ ! -n $mirror ]]; then
     mirror="https://registry.cn-shanghai.aliyuncs.com"
@@ -36,12 +35,12 @@ fi
 export REGISTRY_MIRROR=$mirror
 export APISERVER_IP=$api_server_ip
 export APISERVER_NAME=$api_server
-export POD_SUBNET=$pod_subnet
+export POD_SUBNET=172.20.0.0/16
 export SERVICE_SUBNET=172.31.0.0/16
 
 
 #echo "192.168.8.121    apiserver.k8s" >> /etc/hosts
-echo "${APISERVER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+echo "${APISERVER_IP} ${APISERVER_NAME}" >> /etc/hosts
 echo "nameserver 202.96.209.5" >> /etc/resolv.conf 
 
 echo ""

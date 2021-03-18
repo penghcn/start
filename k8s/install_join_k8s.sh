@@ -9,7 +9,7 @@ set -e
 k8s_version=1.20.4
 
 # 一些配置或者环境变量
-source ./init_cfg.sh $k8s_version $1 $2 $3 $4
+source ./init_cfg.sh $k8s_version $1 $2 $3
 
 
 # 安装 containerd和kubelet
