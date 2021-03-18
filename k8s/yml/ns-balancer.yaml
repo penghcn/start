@@ -5,8 +5,6 @@ kind: Namespace
 metadata:         
     name: k8s-balancer
 
-
-
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -15,82 +13,82 @@ metadata:
     name: nginx.cm
 data:
     nginx.conf: |-
-    user  nginx;
+        user  nginx;
 
-    worker_processes  1;
+        worker_processes  1;
 
-    error_log  /var/log/nginx/error.log warn;
+        error_log  /var/log/nginx/error.log warn;
 
-    pid        /var/run/nginx.pid;
+        pid        /var/run/nginx.pid;
 
-    events {
-        use   epoll;
-        worker_connections  1024;
-    }
-
-
-    http {
-        include       /etc/nginx/mime.types;
-        default_type  application/octet-stream;
-        types_hash_max_size 2048;
-        server_names_hash_bucket_size 64;
-
-        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                          '$status $body_bytes_sent "$http_referer" '
-                          '"$http_user_agent" "$http_x_forwarded_for"';
-
-        access_log  /var/log/nginx/access.log  main;
-
-        sendfile        on;
-        #tcp_nopush     on;
-
-        keepalive_timeout  65;
-
-        gzip  on;
-        gzip_min_length  1000;
-        gzip_buffers     4 8k;
-        gzip_http_version 1.1;
-        gzip_disable    "MSIE 6";
-        gzip_proxied    any;
-        gzip_types      text/plain application/xml text/css text/js text/xml application/x-javascript text/javascript application/javascript  application/json application/xml+rss image/jpeg image/png;
-
-
-        ## request buffer 
-
-        client_header_buffer_size    128k;
-        large_client_header_buffers  4 128k;
-        client_max_body_size 5m;
-
-
-        #include /etc/nginx/conf.d/*.conf;
-        include /etc/nginx/sites-enabled/*;
-
-
-        upstream k8s {
-            sevver 192.168.8.121:6443
-            sevver 192.168.8.122:6443
-            sevver 192.168.8.123:6443
+        events {
+            use   epoll;
+            worker_connections  1024;
         }
 
 
-        ## add servers 
+        http {
+            include       /etc/nginx/mime.types;
+            default_type  application/octet-stream;
+            types_hash_max_size 2048;
+            server_names_hash_bucket_size 64;
 
-        server {
-            listen       6443;
-            listen  [::]:6443;
-            server_name  192.168.8.120;
-            real_ip_header X-Real-IP;
-            
-            location / {
-                proxy_pass http://k8s;
+            log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                              '$status $body_bytes_sent "$http_referer" '
+                              '"$http_user_agent" "$http_x_forwarded_for"';
+
+            access_log  /var/log/nginx/access.log  main;
+
+            sendfile        on;
+            #tcp_nopush     on;
+
+            keepalive_timeout  65;
+
+            gzip  on;
+            gzip_min_length  1000;
+            gzip_buffers     4 8k;
+            gzip_http_version 1.1;
+            gzip_disable    "MSIE 6";
+            gzip_proxied    any;
+            gzip_types      text/plain application/xml text/css text/js text/xml application/x-javascript text/javascript application/javascript  application/json application/xml+rss image/jpeg image/png;
+
+
+            ## request buffer 
+
+            client_header_buffer_size    128k;
+            large_client_header_buffers  4 128k;
+            client_max_body_size 5m;
+
+
+            #include /etc/nginx/conf.d/*.conf;
+            include /etc/nginx/sites-enabled/*;
+
+
+            upstream k8s {
+                server 192.168.8.121:6443;
+                server 192.168.8.122:6443;
+                server 192.168.8.123:6443;
             }
 
-            location ~ /.ht {
-                deny all;
+
+            ## add servers 
+
+            server {
+                listen       6443;
+                listen  [::]:6443;
+                server_name  192.168.8.120;
+                real_ip_header X-Real-IP;
+                
+                location / {
+                    proxy_pass http://k8s;
+                }
+
+                location ~ /.ht {
+                    deny all;
+                }
             }
+
         }
-
-    }
 
 ---
 apiVersion: apps/v1
@@ -101,7 +99,7 @@ metadata:
     labels: 
         app: nginx 
 spec:           
-    replicas: 3    
+    replicas: 2    
     selector:      
         matchLabels:  
             app: nginx
@@ -161,9 +159,16 @@ spec:
 #
 # kubectl get resourcequota mem-cpu -n k8s-balancer -o yaml
 
-# kubectl describe nodes k8s-m1
+# kubectl describe pod nginx-k8s-balancer-57fb954d65-9lgs9 -n k8s-balancer 
 
-# kubectl describe svc/nginx-k8s-balancer-service     
+# kubectl describe svc/nginx-k8s-balancer-service    -n k8s-balancer 
+
+# kubectl logs -f nginx-k8s-balancer-57fb954d65-9lgs9 -n k8s-balancer 
+
+# curl -ik https://api.k8:6443/version
+
+# curl -ik https://192.168.8.120:6443/version
+
 
 
 # kubectl get pod -A -o wide
