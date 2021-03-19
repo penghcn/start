@@ -112,28 +112,102 @@ metadata:
     namespace: ns-dev-web 
     name: nginx.cm
 data:
-    nginx.conf: "user  nginx;\n\nworker_processes  1;\n\nerror_log  /var/log/nginx/error.log
-    warn;\n\npid        /var/run/nginx.pid;\n\nevents {\n\n    use   epoll;\n\n    worker_connections
-    \ 1024;\n\n}\n\n\nhttp {\n    include       /etc/nginx/mime.types;\n    default_type
-    \ application/octet-stream;\n    types_hash_max_size 2048;\n    server_names_hash_bucket_size
-    64;\n\n    log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\"
-    '\n                      '$status $body_bytes_sent \"$http_referer\" '\n                      '\"$http_user_agent\"
-    \"$http_x_forwarded_for\"';\n\n\n    access_log  /var/log/nginx/access.log  main;\n\n\n
-    \   sendfile        on;\n    #tcp_nopush     on;\n\n    keepalive_timeout  65;\n\n
-    \   gzip  on;\n    gzip_min_length  1000;\n    gzip_buffers     4 8k;\n    gzip_http_version
-    1.1;\n    gzip_disable    \"MSIE 6\";\n    gzip_proxied    any;\n    gzip_types
-    \     text/plain application/xml text/css text/js text/xml application/x-javascript
-    text/javascript application/javascript  application/json application/xml+rss image/jpeg
-    image/png;\n\n\n    ## request buffer \n\n    client_header_buffer_size    128k;\n
-    \   large_client_header_buffers  4 128k;\n    client_max_body_size 5m;\n\n\n    include
-    /etc/nginx/sites-enabled/*;\n\n\n    ## add servers \n\n    server {\n        listen
-    \      80;\n        listen  [::]:80;\n        server_name  localhost;\n        root
-    /var/www/test/;\n        index index.htm;    \n        \n        real_ip_header
-    X-Real-IP;\n        \n        error_page   500 502 503 504 /50x.html;\n        location
-    /50x.html {\n            #\n        }\n\n        location ~ /.ht {\n            deny
-    all;\n        }\n    }\n\n    server {\n        listen       443;\n        listen
-    \ [::]:443;\n        server_name  localhost;\n\troot /var/www/test/;\n\tindex
-    index.htm;    \n}\n\n}\n\n"
+    nginx.conf: |-
+    user  nginx;
+
+    worker_processes  1;
+
+    error_log  /var/log/nginx/error.log warn;
+
+    pid        /var/run/nginx.pid;
+
+    events {
+
+        use   epoll;
+
+        worker_connections  1024;
+
+    }
+
+
+    http {
+        include       /etc/nginx/mime.types;
+        default_type  application/octet-stream;
+        types_hash_max_size 2048;
+        server_names_hash_bucket_size 64;
+
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+
+
+        access_log  /var/log/nginx/access.log  main;
+
+
+        sendfile        on;
+        #tcp_nopush     on;
+
+        keepalive_timeout  65;
+
+        gzip  on;
+        gzip_min_length  1000;
+        gzip_buffers     4 8k;
+        gzip_http_version 1.1;
+        gzip_disable    "MSIE 6";
+        gzip_proxied    any;
+        gzip_types      text/plain application/xml text/css text/js text/xml application/x-javascript text/javascript application/javascript  application/json application/xml+rss image/jpeg image/png;
+
+
+        ## request buffer 
+
+        client_header_buffer_size    128k;
+        large_client_header_buffers  4 128k;
+        client_max_body_size 5m;
+
+
+        #include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+
+
+        ## add servers 
+
+        server {
+            listen       80;
+            listen  [::]:80;
+            server_name  localhost;
+            root /var/www/test/;
+            index index.php index.htm;    
+            
+            real_ip_header X-Real-IP;
+
+            location ~ \.php$ {
+                fastcgi_intercept_errors on;
+                fastcgi_pass   localhost:9000;
+                fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+                include        fastcgi_params;
+            }
+            
+            error_page   500 502 503 504 /50x.html;
+            location /50x.html {
+                #
+            }
+
+            location ~ /.ht {
+                deny all;
+            }
+        }
+
+        server {
+            listen       443;
+            listen  [::]:443;
+            server_name  localhost;
+            root /var/www/test/;
+            index index.htm;
+        }
+
+    }
+
 
 ---
 apiVersion: apps/v1
