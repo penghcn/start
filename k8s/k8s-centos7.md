@@ -36,9 +36,6 @@ keepalived | k8s-w2 | 192.168.8.125
     sh install_master_k8s.sh api.k8 192.168.8.120
     sh realserver.sh 192.168.8.120
 
-    curl http://192.168.8.251/open/doc/raw/master/k8s/yml/ns-balancer.yaml > ns-balancer.yaml
-    kubectl create -f ns-balancer.yaml
-
     ## 上述运行结束后，找到如下3行日志内容，等下加入第2、3台master节点需要，加入worker节点时取前2行即可
     ## 注意token时效2小时。超时请参考《附录一》
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
@@ -60,11 +57,11 @@ keepalived | k8s-w2 | 192.168.8.125
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
 
-    curl -ik https://172.31.54.71:6443
+    curl -ik https://192.168.8.120:6443
 
 ## 安装k8s集群外接etcd
     sh install_etcd_k8s.sh
-    
+
 ## 安装k8s单master
     curl http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh > init_cfg.sh
     curl http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh > install_kubelet.sh
@@ -97,10 +94,6 @@ keepalived | k8s-w2 | 192.168.8.125
     kubeadm join api.k8:6443 --token c9ehvp.ogg0a6ugjq8vcyb1 \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
     --control-plane --certificate-key 6fcb441698ae10b18204d28385340e70f5cbf8efbfcb7b2c577ecc4e309fc18b
-
-    kubeadm join api.k8:6443 --token ucp5aj.scnkg89bntlc6njw \
-        --discovery-token-ca-cert-hash sha256:7ef39bfeb2c13f0225555028cf27a442a3d38a10ca01b83cc32bd903dd2480aa  \
-        --control-plane --certificate-key 08cd49e6da66899ea8ccfd73eafb81e309efe1c6c24f57a6322764cdbf7b61cb
 
 
 
