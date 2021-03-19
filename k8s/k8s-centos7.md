@@ -45,11 +45,13 @@ keepalived | k8s-w2 | 192.168.8.125
     # 下面其他节点的安装可以同时进行
     # 在第2、3台master节点k8s-m2 k8s-m3 运行
     sh install_join_k8s.sh api.k8 192.168.8.120
-    sh realserver.sh 192.168.8.120
 
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
     --control-plane --certificate-key 429c22df0defab2329efd1454cee4df2c0d5f324614f345b6def654cc0b5dc51
+
+    # 若上述命令卡住不动，先试试 service realserver stop
+    sh realserver.sh 192.168.8.120
 
     # 在第1、2台 worker 节点k8s-w1 k8s-w2 运行
     sh install_join_k8s.sh api.k8 192.168.8.120
@@ -57,7 +59,7 @@ keepalived | k8s-w2 | 192.168.8.125
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
 
-    curl -ik https://192.168.8.120:6443
+    curl -ik https://192.168.8.120:6443/version
 
 ## 安装k8s集群外接etcd
     sh install_etcd_k8s.sh
