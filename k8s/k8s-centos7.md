@@ -4,16 +4,19 @@
     curl -sSL http://192.168.8.251/open/doc/raw/master/k8s/init_host.sh | sh -s k8s-m1
 
     参考主机如下，操作系统都是centos7.9
-    任意2节点master使用keepalived实现负载均衡 VIP 192.168.8.120
+    使用keepalived lvs实现负载均衡 VIP 192.168.8.120
 
 角色 |主机名 |  ip
--||
+-|-|
 master | k8s-m1 | 192.168.8.121
 master | k8s-m2 | 192.168.8.122
 master | k8s-m3 | 192.168.8.123
 |
 worker | k8s-w1 | 192.168.8.124
 worker | k8s-w2 | 192.168.8.125
+|
+keepalived | k8s-w1 | 192.168.8.124
+keepalived | k8s-w2 | 192.168.8.125
 
 ## 同步时间
 
@@ -31,14 +34,21 @@ worker | k8s-w2 | 192.168.8.125
     kubectl get pods -o wide --all-namespaces
     kubectl get pods -o wide -A
 
+## 安装keepalived lvs
+    # 这里借用2台worker主机。推荐专门的其他主机安装keepalived，需相同网段
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_keepalived.sh > install_keepalived.sh
+    sh install_keepalived.sh 192.168.8.120 192.168.8.121,192.168.8.122,192.168.8.123 6443 bond0
+
 ## 安装k8s集群
     curl http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh > init_cfg.sh
     curl http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh > install_kubelet.sh
     curl http://192.168.8.251/open/doc/raw/master/k8s/install_join_k8s.sh > install_join_k8s.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/realserver.sh > realserver.sh
 
     # 在第1台master节点k8s-m1运行
     curl http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh > install_master_k8s.sh
     sh install_master_k8s.sh api.k8 192.168.8.120
+    sh realserver.sh 192.168.8.120
 
     curl http://192.168.8.251/open/doc/raw/master/k8s/yml/ns-balancer.yaml > ns-balancer.yaml
     kubectl create -f ns-balancer.yaml
@@ -52,6 +62,7 @@ worker | k8s-w2 | 192.168.8.125
     # 下面其他节点的安装可以同时进行
     # 在第2、3台master节点k8s-m2 k8s-m3 运行
     sh install_join_k8s.sh api.k8 192.168.8.120
+    sh realserver.sh 192.168.8.120
 
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
