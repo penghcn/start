@@ -6,33 +6,19 @@
     参考主机如下，操作系统都是centos7.9
     使用keepalived lvs实现负载均衡 VIP 192.168.8.120
 
-角色 |主机名 |  ip
--|-|
+角色 | 主机名 |  ip
+-|-|-
 master | k8s-m1 | 192.168.8.121
 master | k8s-m2 | 192.168.8.122
 master | k8s-m3 | 192.168.8.123
-|
+-|
 worker | k8s-w1 | 192.168.8.124
 worker | k8s-w2 | 192.168.8.125
-|
+-|
 keepalived | k8s-w1 | 192.168.8.124
 keepalived | k8s-w2 | 192.168.8.125
 
 ## 同步时间
-
-## 安装k8s单master
-    curl http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh > init_cfg.sh
-    curl http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh > install_kubelet.sh
-    curl http://192.168.8.251/open/doc/raw/master/k8s/init_master.sh > init_master.sh
-
-    curl http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh > install_master_k8s.sh
-
-    sh install_master_k8s.sh api.k8s
-
-
-    # 查看
-    kubectl get pods -o wide --all-namespaces
-    kubectl get pods -o wide -A
 
 ## 安装keepalived lvs
     # 这里借用2台worker主机。推荐专门的其他主机安装keepalived，需相同网段
@@ -78,6 +64,20 @@ keepalived | k8s-w2 | 192.168.8.125
 
 ## 安装k8s集群外接etcd
     sh install_etcd_k8s.sh
+    
+## 安装k8s单master
+    curl http://192.168.8.251/open/doc/raw/master/k8s/init_cfg.sh > init_cfg.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_kubelet.sh > install_kubelet.sh
+    curl http://192.168.8.251/open/doc/raw/master/k8s/init_master.sh > init_master.sh
+
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh > install_master_k8s.sh
+
+    sh install_master_k8s.sh api.k8s
+
+
+    # 查看
+    kubectl get pods -o wide --all-namespaces
+    kubectl get pods -o wide -A
 
 ## 附录一，超2小时获取kubeadm join token
 只在第1个master节点k8s-m1上执行 `kubeadm init phase upload-certs --upload-certs`
