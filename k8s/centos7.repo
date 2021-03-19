@@ -1,0 +1,27 @@
+[base]
+name=Nexus
+baseurl=http://192.168.8.71:29106/repository/centos7/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=http://192.168.8.71:29106/repository/centos7/RPM-GPG-KEY-CentOS-7
+ 
+[updates]
+name=CentOS-$releasever-Updates-custom
+baseurl=http://192.168.8.71:29106/repository/centos7/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=http://192.168.8.71:29106/repository/centos7/RPM-GPG-KEY-CentOS-7
+ 
+[extras]
+name=CentOS-$releasever-Extras-custom
+baseurl=http://192.168.8.71:29106/repository/centos7/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=http://192.168.8.71:29106/repository/centos7/RPM-GPG-KEY-CentOS-7
+ 
+[centosplus]
+name=CentOS-$releasever-Plus-custom
+baseurl=http://192.168.8.71:29106/repository/centos7/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=http://192.168.8.71:29106/repository/centos7/RPM-GPG-KEY-CentOS-7
+
+# 
+# yum-config-manager --add-repo http://192.168.8.251/open/doc/raw/master/k8s/centos7.repo
