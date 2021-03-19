@@ -41,6 +41,8 @@ yum remove -y containerd.io
 
 # 设置 yum repository
 yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo http://192.168.8.251/open/doc/raw/master/k8s/centos7.repo
+
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 

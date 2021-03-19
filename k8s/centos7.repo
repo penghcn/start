@@ -25,3 +25,5 @@ gpgkey=http://192.168.8.71:29106/repository/centos7/RPM-GPG-KEY-CentOS-7
 
 # 
 # yum-config-manager --add-repo http://192.168.8.251/open/doc/raw/master/k8s/centos7.repo
+# yum clean all
+# yum list all
