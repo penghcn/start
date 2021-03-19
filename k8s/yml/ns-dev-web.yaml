@@ -225,7 +225,7 @@ spec:
 # kubectl exec -it nginx-demo-deployment-85574c8749-nw456  -n ns-dev-web -- sh
 #
 # kubectl run -n ns-dev-web busybox-test --rm -ti --image busybox --requests 'cpu=100m,memory=512Mi' --limits 'cpu=200m,memory=512Mi' -- /bin/sh 
-# wget -q --timeout=5 nginx-demo-deployment -O -
+# wget -q --timeout=5 nginx-demo-service -O -
 # wget -q -T 2 -O - nginx-demo-deployment 
 # wget -q -T 2 -O - 172.16.1.153:443
 

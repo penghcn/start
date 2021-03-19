@@ -4,6 +4,8 @@
 ## 减少进程数
     vi /etc/gitlab/gitlab.rb
 
+    gitlab_rails['time_zone'] = 'Asia/Shanghai'
+    
     unicorn['worker_processes'] = 5
     unicorn['worker_timeout'] = 60
 
