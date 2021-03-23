@@ -1,6 +1,14 @@
 #!/bin/bash
 
-k8s_version=$1
+#1.20.5,apiserver.k8s,192.168.8.120,http://192.168.8.71:29108
+#k8s_version,api_server,api_server_ip,
+params=$1
+arr=(${params//\,/ })
+
+k8s_version=${arr[0]}
+api_server=${arr[1]}
+api_server_ip=${arr[2]}
+mirror=${arr[3]}
 
 local_ip=$(echo $(ip addr | grep eth0 | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')| awk '{print $1}')
 
@@ -9,9 +17,6 @@ if [[ ! -n $local_ip ]]; then
     echo "bond0 $local_ip"
 fi 
 
-api_server=$2
-api_server_ip=$3
-mirror=$4
 
 if [[ ! -n $api_server ]]; then
     echo "api_server 不能为空，如使用sh install_master_k8s.sh apiserver.k8s"
@@ -47,7 +52,7 @@ echo "nameserver 202.96.209.5" >> /etc/resolv.conf
 
 echo ""
 echo "k8s安装版本$k8s_version，参数如下："
-echo "镜像 $REGISTRY_MIRROR"
+echo "DOCKER镜像 $REGISTRY_MIRROR"
 echo "本机IP $local_ip"
 echo "api server集群代理ip $APISERVER_IP"
 echo "api server内部域名 $APISERVER_NAME"

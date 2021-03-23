@@ -33,8 +33,7 @@ keepalived | k8s-w2 | 192.168.8.125
 
     # 在第1台master节点k8s-m1运行
     curl http://192.168.8.251/open/doc/raw/master/k8s/install_master_k8s.sh > install_master_k8s.sh
-    sh install_master_k8s.sh api.k8 192.168.8.120
-    #sh realserver.sh 192.168.8.120
+    sh install_master_k8s.sh api.k8,192.168.8.120 1.20.1
 
     ## 上述运行结束后，找到如下3行日志内容，等下加入第2、3台master节点需要，加入worker节点时取前2行即可
     ## 注意token时效2小时。超时请参考《附录一》
@@ -44,17 +43,14 @@ keepalived | k8s-w2 | 192.168.8.125
 
     # 下面其他节点的安装可以同时进行
     # 在第2、3台master节点k8s-m2 k8s-m3 运行
-    sh install_join_k8s.sh api.k8 192.168.8.120
+    sh install_join_k8s.sh api.k8,192.168.8.120 1.20.1
 
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
     --control-plane --certificate-key 429c22df0defab2329efd1454cee4df2c0d5f324614f345b6def654cc0b5dc51
 
-    # 若上述命令卡住不动，先试试 service realserver stop
-    #sh realserver.sh 192.168.8.120
-
     # 在第1、2台 worker 节点k8s-w1 k8s-w2 运行
-    sh install_join_k8s.sh api.k8 192.168.8.120
+    sh install_join_k8s.sh api.k8,192.168.8.120 1.20.1
 
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
