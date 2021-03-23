@@ -57,6 +57,15 @@ keepalived | k8s-w2 | 192.168.8.125
 
     curl -ik https://192.168.8.120:6443/version
 
+## 升级k8s集群
+    curl http://192.168.8.251/open/doc/raw/master/k8s/upgrade_k8s.sh > upgrade_k8s.sh
+    
+    # 升级第一个master节点
+    sh upgrade_k8s.sh 1.20.4 1
+
+    # 升级其他节点
+    sh upgrade_k8s.sh 1.20.4
+
 ## 安装k8s集群外接etcd
     sh install_etcd_k8s.sh
 
