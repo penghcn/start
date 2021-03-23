@@ -16,8 +16,16 @@ curl https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/re
 #修改yaml配置超时时间12h
 sed -i '/--namespace=kubernetes-dashboard/a\ \ \ \ \ \ \ \ \ \ \ \ - --token-ttl=43200' recommended.yaml
 
+# 改成nodePort 暴露
+sed -i '/ports:/i\ \ type: NodePort' recommended.yaml
+sed -i '/targetPort: 8443/a\ \ \ \ \ \ nodePort: $node_port' recommended.yaml
+
 kubectl apply -f recommended.yaml
 
+
+#添加admin-user账户
+
+rm dashboard-adminuser.yaml
 cat > dashboard-adminuser.yaml << EOF
 apiVersion: v1
 kind: ServiceAccount
@@ -42,10 +50,6 @@ subjects:
 EOF
 
 kubectl apply -f dashboard-adminuser.yaml
-
-# 改成nodePort 暴露
-kubectl  patch svc kubernetes-dashboard -n kubernetes-dashboard \
--p '{"spec":{"type":"NodePort","ports":[{"port":443,"targetPort":8443,"nodePort":$node_port}]}}'
 
 
 #查看admin-user账户的token
