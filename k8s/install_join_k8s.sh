@@ -19,7 +19,7 @@ rm -rf /var/etcd
 # 脚本出错时终止执行
 set -e
 
-k8s_version=1.20.4
+k8s_version=1.20.5
 
 # 一些配置或者环境变量
 source ./init_cfg.sh $k8s_version $1 $2 $3 $4

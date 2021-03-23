@@ -14,6 +14,11 @@ ips=$2
 port=$3
 netId=$4
 
+# http://192.168.8.120:8888/stats
+ha_port=8888 # haproxy 的web页面端口
+ha_user=admin
+ha_pass=admin-ha
+
 if [[ ! -n $vip ]]; then
     vip="192.168.8.120"
     echo "Set default VIP $vip"
@@ -37,28 +42,41 @@ echo ""
 
 
 arr=(${ips//\,/ })
-rel_servers=""
 tmp=""
+ha_listen_servers=""
+
+# ha_listen_servers="
+# listen k8s-tcp:$port
+#         mode tcp
+#         "
+# for i in "${!arr[@]}"; do
+#     index=$[$i+1]
+#     tmp="server k8s_tcp_$index ${arr[i]}:$port
+#         "
+#     ha_listen_servers="$ha_listen_servers$tmp"
+# done
+
+
+ha_listen_servers="$ha_listen_servers
+listen k8s-http:$port
+        mode http
+        balance roundrobin   
+        cookie LBN insert indirect nocache   
+        option httpclose   
+        "
 
 for i in "${!arr[@]}"; do
-    tmp="real_server ${arr[i]} $port { 
-            weight 10
-            TCP_CHECK {
-                connect_timeout 5
-                retry 3 
-                delay_before_retry 1
-                connect_port $port
-            }
-        }
+    index=$[$i+1]
+    tmp="server k8s_http_$index ${arr[i]}:$port check inter 2000 fall 3 weight 20
         "
-    rel_servers="$rel_servers$tmp"
+    ha_listen_servers="$ha_listen_servers$tmp"
 done
-
 #echo $rel_servers
 
 
 conf=/etc/keepalived/keepalived.conf
 conf_ha=/etc/haproxy/haproxy.cfg
+chk_ha=/etc/keepalived/chk_haproxy.sh
 
 > $conf 
 > $conf_ha 
@@ -69,7 +87,13 @@ global_defs {
     router_id lb$iptail   
 }
 
-vrrp_instance VI_k8s {
+vrrp_script chk_haproxy {
+    script "$chk_ha"
+    interval 2   #每两秒进行一次
+    weight -10   #如果script中的指令执行失败，vrrp_instance的优先级会减少10个点
+}
+
+vrrp_instance VI_HAPROXY {
     state BACKUP
     interface $netId
     virtual_router_id 50
@@ -79,19 +103,28 @@ vrrp_instance VI_k8s {
         auth_type PASS
         auth_pass 111111@pass
     }
+    track_script {
+        chk_haproxy
+    }
     virtual_ipaddress {
         $vip
     }
 }
 
-virtual_server $vip $port {
-    delay_loop 6
-    lb_algo wlc
-    lb_kind DR
-    protocol TCP  
-    $rel_servers
-}
+EOF
 
+cat <<EOF > $chk_ha
+#!/bin/bash
+status=$(ps aux|grep haproxy | grep -v grep | grep -v bash | wc -l)
+if [ "${status}" = "0" ]; then
+    service haproxy restart
+
+    status2=$(ps aux|grep haproxy | grep -v grep | grep -v bash |wc -l)
+
+    if [ "${status2}" = "0"  ]; then
+        service keepalived stop
+    fi
+fi
 EOF
 
 cat <<EOF > $conf_ha
@@ -105,7 +138,7 @@ global
 
 
 defaults  #默认部分的定义
-        mode http #mode {http|tcp|health} 。
+        mode tcp #mode {http|tcp|health} 。
                   #http是七层模式，tcp是四层模式，health是健康检测返回OK
         #retries 2
         option redispatch
@@ -118,35 +151,20 @@ defaults  #默认部分的定义
             #使用本机syslog服务的local3设备记录错误信息
         balance roundrobin
 
-    # option httplog
-    # option httpclose
-    # option dontlognull
-    # option forwardfor
-
  
 listen admin_stats
         #定义一个名为status的部分，可以在listen指令指定的区域中定义匹配规则和后端服务器ip，
-        bind 0.0.0.0:8888   # 定义监听的套接字
+        mode http
+        bind 0.0.0.0:$ha_port   # 定义监听的套接字
         option httplog
         stats refresh 30s   #统计页面的刷新间隔为30s
         stats uri /stats     #登陆统计页面是的uri
         stats realm Haproxy Manager
-        stats auth admin:admin #登陆统计页面是的用户名和密码
+        stats auth $ha_user:$ha_pass #登陆统计页面是的用户名和密码
         #stats hide-version  # 隐藏统计页面上的haproxy版本信息
 
-listen tcp_test
-        bind :12345
-        mode tcp
-        server t1 127.0.0.1:9000
-        server t2 192.168.15.13:9000
+$ha_listen_servers
         
-listen zzs_dzfp_proxy:90
-        mode http
-        balance roundrobin   #轮询
-        cookie LBN insert indirect nocache   
-        option httpclose   
-        server web01 192.168.15.12:9000 check inter 2000 fall 3 weight 20  
-        server web02 192.168.15.13:9000 check inter 2000 fall 3 weight 20
 EOF
 
 service keepalived restart
