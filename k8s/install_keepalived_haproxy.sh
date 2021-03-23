@@ -45,32 +45,33 @@ arr=(${ips//\,/ })
 tmp=""
 ha_listen_servers=""
 
-# ha_listen_servers="
-# listen k8s-tcp:$port
-#         mode tcp
-#         "
-# for i in "${!arr[@]}"; do
-#     index=$[$i+1]
-#     tmp="server k8s_tcp_$index ${arr[i]}:$port
-#         "
-#     ha_listen_servers="$ha_listen_servers$tmp"
-# done
-
-
-ha_listen_servers="$ha_listen_servers
-listen k8s-http:$port
-        mode http
-        balance roundrobin   
-        cookie LBN insert indirect nocache   
-        option httpclose   
+ha_listen_servers="
+listen k8s-tcp-$port
+        mode tcp
+        bind *:$port
         "
-
 for i in "${!arr[@]}"; do
     index=$[$i+1]
-    tmp="server k8s_http_$index ${arr[i]}:$port check inter 2000 fall 3 weight 20
+    tmp="server k8s-m$index-${arr[i]} ${arr[i]}:$port weight 10 maxconn 10000 check inter 2s
         "
     ha_listen_servers="$ha_listen_servers$tmp"
 done
+
+# https 必须推荐tcp绑定，不用额外加载证书
+# ha_listen_servers="$ha_listen_servers
+# listen k8s-http-$port
+#         mode http
+#         balance roundrobin   
+#         cookie LBN insert indirect nocache   
+#         option httpclose   
+#         "
+
+# for i in "${!arr[@]}"; do
+#     index=$[$i+1]
+#     tmp="server k8s_http_$index ${arr[i]}:$port check inter 2000 fall 3 weight 20
+#         "
+#     ha_listen_servers="$ha_listen_servers$tmp"
+# done
 #echo $rel_servers
 
 
@@ -157,7 +158,7 @@ listen admin_stats
         mode http
         bind 0.0.0.0:$ha_port   # 定义监听的套接字
         option httplog
-        stats refresh 30s   #统计页面的刷新间隔为30s
+        stats refresh 5s   #统计页面的刷新间隔为5s
         stats uri /stats     #登陆统计页面是的uri
         stats realm Haproxy Manager
         stats auth $ha_user:$ha_pass #登陆统计页面是的用户名和密码

@@ -44,7 +44,7 @@ keepalived | k8s-w2 | 192.168.8.125
 
     # 下面其他节点的安装可以同时进行
     # 在第2、3台master节点k8s-m2 k8s-m3 运行
-    #sh install_join_k8s.sh api.k8 192.168.8.120
+    sh install_join_k8s.sh api.k8 192.168.8.120
 
     kubeadm join api.k8:6443 --token qah4f1.q891xtt3t8gmblbk \
     --discovery-token-ca-cert-hash sha256:535664219f948510f56ef00d5b1b9c2212a2e81d3c0c75687ecfa788c09d6e57 \
