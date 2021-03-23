@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# curl -sSL http://192.168.8.251/open/doc/raw/master/k8s/dashboard.sh | sh
+# curl -s http://192.168.8.251/open/doc/raw/master/k8s/dashboard.sh | sh
 
 
 # 管理员账户名称
@@ -18,7 +18,7 @@ sed -i '/--namespace=kubernetes-dashboard/a\ \ \ \ \ \ \ \ \ \ \ \ - --token-ttl
 
 # 改成nodePort 暴露
 sed -i '/ports:/i\ \ type: NodePort' recommended.yaml
-sed -i '/targetPort: 8443/a\ \ \ \ \ \ nodePort: $node_port' recommended.yaml
+sed -i "/targetPort: 8443/a\ \ \ \ \ \ nodePort: $node_port" recommended.yaml
 
 kubectl apply -f recommended.yaml
 
