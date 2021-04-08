@@ -22,7 +22,7 @@
 
 [daemonset概念](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
-[ymal语法](https://www.runoob.com/w3cnote/yaml-intro.html)
+[yaml语法](https://www.runoob.com/w3cnote/yaml-intro.html)
     
 ## 主机Node
     master管理节点、worker工作节点
