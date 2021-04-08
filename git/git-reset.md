@@ -16,6 +16,10 @@ develop分支，回退到本地仓库的某个历史提交版本，比如commit 
 
     git push origin develop –-force
 
+还原本地强制pull
+    
+    git reflog
+
 ## 撤销
 #### 撤销最近一次提交
     git revert HEAD
