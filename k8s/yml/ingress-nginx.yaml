@@ -1,0 +1,14 @@
+# k8s官方的ingress-nginx，基于nginx和openresty
+# https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal
+# https://kubernetes.github.io/ingress-nginx/deploy/baremetal/
+
+
+
+# kubectl delete namespace ingress-nginx
+# kubectl delete clusterrole ingress-nginx
+# kubectl delete clusterrolebinding ingress-nginx
+# 
+# kubectl apply -f ingress-nginx.yaml
+#
+
+

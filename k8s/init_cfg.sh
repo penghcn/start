@@ -42,7 +42,7 @@ fi
 export REGISTRY_MIRROR=$mirror
 export APISERVER_IP=$api_server_ip
 export APISERVER_NAME=$api_server
-export POD_SUBNET=172.20.0.0/16
+export POD_SUBNET=172.30.0.0/16
 export SERVICE_SUBNET=172.31.0.0/16
 
 

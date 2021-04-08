@@ -1,0 +1,102 @@
+#
+# https://github.com/moby/buildkit/blob/master/examples/kubernetes/deployment%2Bservice.rootless.yaml
+# https://github.com/moby/buildkit/tree/master/examples/kubernetes
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: infra 
+  labels:
+    app: buildkitd
+  name: buildkitd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buildkitd
+  template:
+    metadata:
+      labels:
+        app: buildkitd
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
+        container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
+    # see buildkit/docs/rootless.md for caveats of rootless mode
+    spec:
+      containers:
+        - name: buildkitd
+          image: moby/buildkit:master-rootless
+          args:
+            - --addr
+            - unix:///run/user/1000/buildkit/buildkitd.sock
+            - --addr
+            - tcp://0.0.0.0:1234
+            - --tlscacert
+            - /certs/ca.pem
+            - --tlscert
+            - /certs/cert.pem
+            - --tlskey
+            - /certs/key.pem
+            - --oci-worker-no-process-sandbox
+          # the probe below will only work after Release v0.6.3
+          readinessProbe:
+            exec:
+              command:
+                - buildctl
+                - debug
+                - workers
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          # the probe below will only work after Release v0.6.3
+          livenessProbe:
+            exec:
+              command:
+                - buildctl
+                - debug
+                - workers
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          securityContext:
+            # To change UID/GID, you need to rebuild the image
+            runAsUser: 1000
+            runAsGroup: 3000
+          ports:
+            - containerPort: 1234
+          volumeMounts:
+            - name: certs
+              readOnly: true
+              mountPath: /certs
+      volumes:
+        # buildkit-daemon-certs must contain ca.pem, cert.pem, and key.pem
+        - name: certs
+          secret:
+            secretName: buildkit-daemon-certs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: infra 
+  labels:
+    app: buildkitd
+  name: buildkitd
+spec:
+  ports:
+    - port: 31234
+      targetPort: 1234      #Pod 的端口
+      protocol: TCP
+  selector:
+    app: buildkitd
+
+# kubectl delete deployments.apps/buildkitd -n infra
+# kubectl delete services/buildkitd -n infra
+# kubectl create -f bk.yaml
+
+# kubectl describe pod buildkitd   -n infra
+# kubectl get pod -o wide  -n infra
+
+# yum install nss-tools
+# wget -O mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64
+# chmod +x  mkcert
+# sudo mv mkcert /usr/local/bin
+# mkcert -help
+

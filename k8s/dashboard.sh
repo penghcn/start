@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# curl -s http://192.168.8.251/open/doc/raw/master/k8s/dashboard.sh | sh
+# curl -sSL http://192.168.8.251/open/doc/raw/master/k8s/dashboard.sh | sh
 
 
 # 管理员账户名称
@@ -17,8 +17,8 @@ curl https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/re
 sed -i '/--namespace=kubernetes-dashboard/a\ \ \ \ \ \ \ \ \ \ \ \ - --token-ttl=43200' recommended.yaml
 
 # 改成nodePort 暴露
-sed -i '/ports:/i\ \ type: NodePort' recommended.yaml
 sed -i "/targetPort: 8443/a\ \ \ \ \ \ nodePort: $node_port" recommended.yaml
+sed -i "/nodePort: $node_port/a\ \ type: NodePort" recommended.yaml
 
 kubectl apply -f recommended.yaml
 
@@ -61,7 +61,7 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 local_ip=$(echo $(ip addr | grep bond0 | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')| awk '{print $1}')
 
 # 使用firefox 访问
-# curl -ki https://192.168.8.122:30443
+# curl -ki https://192.168.8.122:30043
 echo "请使用firefox访问如下地址，登录token参考上文"
 echo "https://$local_ip:$node_port"
 

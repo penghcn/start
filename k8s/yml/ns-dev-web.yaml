@@ -26,6 +26,7 @@ spec:
                 -   podSelector:
                         matchLabels:
                             app: tomcat
+                            app: dubbo
                 -   ipBlock:
                         cidr: 172.20.0.0/16
                         except:
@@ -278,6 +279,73 @@ spec:
             port: 443            #Svc 的端口
             targetPort: 443      #Pod 的端口
     type: ClusterIP
+
+---
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    namespace: ns-dev-web 
+    name: dubbo-demo-deployment 
+    labels: 
+        app: dubbo 
+spec:           
+    replicas: 3    
+    selector:      
+        matchLabels:  
+            app: dubbo
+    template: 
+        metadata: 
+            labels: 
+                app: dubbo
+        spec: 
+            containers: 
+                -   name: dubbo 
+                    image: nginx:1.18-alpine 
+                    imagePullPolicy: IfNotPresent
+                    ports:
+                        -   containerPort: 80
+                    volumeMounts:
+                        -   mountPath: /apps
+                            name: pv1
+                    resources:
+                        limits:
+                            cpu: "2"  
+                            memory: 2Gi  
+                        requests:
+                            cpu: "1"
+                            memory: 1Gi
+            volumes:
+                -   name: pv1
+                    persistentVolumeClaim:
+                        claimName: pvc1
+---
+apiVersion: v1
+kind: Service
+metadata:
+    namespace: ns-dev-web 
+    name: dubbo-demo-svc  
+    labels:        
+        app: dubbo   
+spec:        
+    selector:      
+        app: dubbo   
+    ports:
+        -   name: dubbo   
+            protocol: TCP        
+            port: 10180            #Svc 的端口
+            targetPort: 80      #Pod 的端口
+    type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: tcp-services
+    namespace: ingress-nginx
+data:
+    10180: "ns-dev-web/dubbo-demo-svc:10180"
 
 #
 # useage

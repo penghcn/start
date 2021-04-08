@@ -1,0 +1,209 @@
+# 基础架构空间infra，核心区
+# Jenkins
+apiVersion: v1
+kind: Namespace
+metadata:         
+    name: infra
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+    name: nfs-pv-jenkins
+spec:
+    storageClassName: infra-jenkins
+    capacity:
+        storage: 200Gi
+    accessModes:
+        -   ReadWriteOnce
+    persistentVolumeReclaimPolicy: Recycle
+    nfs:
+        path: /root/nfs_root/infra/jenkins_home # chmod 0777 -R /root/nfs_root/infra/jenkins_home
+        server: 192.168.8.123
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+    namespace: infra 
+    name: nfs-pvc-jenkins
+spec:
+    storageClassName: infra-jenkins
+    accessModes:
+        -   ReadWriteOnce
+    resources:
+        requests:
+            storage: 50Gi
+
+# https://www.jenkins.io/zh/doc/book/installing/#%E5%9C%A8docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BF%90%E8%A1%8Cjenkins
+# https://hub.docker.com/r/jenkins/jenkins/tags?page=1&ordering=last_updated
+# https://hub.docker.com/r/jenkinsci/blueocean/tags?page=1&ordering=last_updated
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    namespace: infra
+    name: jenkins 
+    labels: 
+        app: jenkins 
+spec:           
+    replicas: 1    
+    selector:      
+        matchLabels:  
+            app: jenkins
+    template: 
+        metadata: 
+            labels:
+                app: jenkins
+        spec:
+            securityContext: 
+                runAsUser: 1000
+                runAsGroup: 3000
+                fsGroup: 2000
+            containers:
+                -   name: jenkins
+                    image: jenkinsci/blueocean:1.24.5 # jenkins/jenkins:2.277.1-lts-alpine 
+                    imagePullPolicy: Always #IfNotPresent #先本地，若无再下载
+                    ports:
+                        -   name: http
+                            containerPort: 8080
+                        -   name: jnlp-agent
+                            containerPort: 50000
+                    env:
+                        -   name: JAVA_OPTS
+                            value: -Xms1g -Xmx2g
+                    volumeMounts:
+                        -   name: localtime
+                            mountPath: /etc/localtime
+                            readOnly: true
+                        -   name: jenkins-data
+                            mountPath: /var/jenkins_home
+                        -   name: docker
+                            mountPath: /var/run/docker.sock
+                    resources:
+                        limits:
+                            cpu: "2"  
+                            memory: 4Gi  
+                        requests:
+                            cpu: "1"
+                            memory: 2Gi
+            volumes:
+                -   name: jenkins-data
+                    persistentVolumeClaim:
+                        claimName: nfs-pvc-jenkins
+                -   name: docker
+                    hostPath:
+                        path: /run/docker.sock
+                        type: ''
+                -   name: localtime
+                    hostPath:
+                        path: /etc/localtime
+    strategy:
+        type: RollingUpdate
+        rollingUpdate: 
+            maxUnavailable: 1
+            maxSurge: 1
+    revisionHistoryLimit: 7
+    progressDeadlineSeconds: 600
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#     namespace: infra
+#     name: jenkins   
+#     labels:        
+#         app: jenkins   
+# spec:        
+#     selector:      
+#         app: jenkins   
+#     ports:
+#         -   name: http    
+#             protocol: TCP        
+#             port: 80              #Svc 的端口
+#             targetPort: 8080      #Pod 的端口
+#     type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    namespace: infra
+    name: jenkins   
+    labels:        
+        app: jenkins   
+spec: 
+    type: NodePort
+    selector:      
+        app: jenkins   
+    ports:
+        -   name: http    
+            protocol: TCP        
+            port: 80              #Svc 的端口
+            targetPort: 8080      #Pod 的端口
+            nodePort: 31080
+
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata: 
+    namespace: infra
+    name: jenkins
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+    rules:
+        -   host: infra.fusjb.io
+            http:
+                paths:
+                    -   path: /
+                        pathType: Prefix
+                        backend: 
+                            service: 
+                                name: jenkins
+                                port: 
+                                    number: 80
+                    -   path: /jenkins
+                        pathType: Prefix
+                        backend: 
+                            service: 
+                                name: jenkins
+                                port: 
+                                    number: 80
+
+# 代理端口
+# curl infra.fusjb.io:10180
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: tcp-services
+    namespace: ingress-nginx
+    labels:
+        app.kubernetes.io/name: ingress-nginx
+        app.kubernetes.io/instance: ingress-nginx
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: controller
+data:
+    10180: "infra/jenkins:80"
+
+
+
+
+#
+# useage
+# 
+# kubectl delete ns infra
+# kubectl delete persistentvolumes nfs-pv-jenkins
+# kubectl create -f jenkins.yaml
+#
+# kubectl describe limitrange/limit-mem-cpu-per-pod -n infra
+#
+# kubectl get resourcequota mem-cpu -n infra -o yaml
+
+# kubectl describe nodes k8s-m1
+
+# kubectl describe svc/jenkins   -n infra
+# kubectl get pod -o wide  -n infra
+
+# kubectl exec -it jenkins-556d78ddbc-bmbwr -n infra -- /bin/sh
