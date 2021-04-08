@@ -16,9 +16,9 @@
 
 [keepalived-haproxy部署](./install_keepalived_haproxy.sh)   
 
-[Jenkins服务部署](./yml/jenkins.ymal)   
+[Jenkins服务部署](./yml/jenkins.yaml)   
 
-[测试--服务部署](./yml/ns-dev-web.ymal)   
+[测试--服务部署](./yml/ns-dev-web.yaml)   
 
 [daemonset概念](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
