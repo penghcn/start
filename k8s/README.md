@@ -2,6 +2,8 @@
     主机、网络、存储
     POD、SERVICE
 
+[入门教程](https://kuboard.cn/learning/)
+[官方教程](https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
 ## 安装、使用
 <del>可使用sealos快速部署</del>
