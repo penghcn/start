@@ -1,5 +1,5 @@
 #
-# 暂时不支持containerd
+# rootless暂时不支持containerd
 # https://github.com/moby/buildkit/blob/master/docs/rootless.md#known-limitations
 # https://github.com/moby/buildkit/blob/master/examples/kubernetes/deployment%2Bservice.rootless.yaml
 # https://github.com/moby/buildkit/tree/master/examples/kubernetes
@@ -21,9 +21,9 @@ spec:
     metadata:
       labels:
         app: buildkitd
-      annotations:
-        container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
-        container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
+      #annotations:
+      #  container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
+      #  container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
     # see buildkit/docs/rootless.md for caveats of rootless mode
     spec:
       containers:
@@ -54,6 +54,8 @@ spec:
                 - workers
             initialDelaySeconds: 5
             periodSeconds: 30
+          securityContext:
+            privileged: true
           ports:
             - containerPort: 1234
 ---
@@ -96,17 +98,18 @@ data:
 
 # kubectl describe pod buildkitd   -n infra
 # kubectl get pod -o wide  -n infra
-# kubectl logs -f buildkitd-797ff49b5d-nvmps  -n infra
+# kubectl logs -f buildkitd-645c89b554-q55pl  -n infra
 # kubectl exec -it   buildkitd-797ff49b5d-nvmps  -n infra -- /bin/sh
 
 # wget https://github.com/moby/buildkit/releases/download/v0.8.2/buildkit-v0.8.2.linux-amd64.tar.gz
 # tar -xzf buildkit-v0.8.2.linux-amd64.tar.gz 
 
-# ./bin/buildctl  --addr tcp://127.0.0.1:2000 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt source=df.sh
+# ./bin/buildctl  --addr tcp://172.20.228.98:1234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt source=df.sh
 # ./bin/buildctl  --addr tcp://buildkitd:1234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt source=df.sh
 
 
-# buildctl  --addr tcp://infra.fusjb.io:11234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=192.168.8.71:29108/jenkins-gradle:1.0.0,push=true
+# buildctl  --addr tcp://infra.fusjb.io:11234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=192.168.8.71:29107/jenkins-gradle,push=true,registry.insecure=true
+
 
 
 # yum install nss-tools
