@@ -13,7 +13,7 @@ metadata:
 spec:
     storageClassName: infra-jenkins
     capacity:
-        storage: 200Gi
+        storage: 128Gi
     accessModes:
         -   ReadWriteOnce
     persistentVolumeReclaimPolicy: Recycle
@@ -33,7 +33,7 @@ spec:
         -   ReadWriteOnce
     resources:
         requests:
-            storage: 50Gi
+            storage: 128Gi
 
 # https://www.jenkins.io/zh/doc/book/installing/#%E5%9C%A8docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BF%90%E8%A1%8Cjenkins
 # https://hub.docker.com/r/jenkins/jenkins/tags?page=1&ordering=last_updated
@@ -60,9 +60,11 @@ spec:
                 runAsUser: 1000
                 runAsGroup: 3000
                 fsGroup: 2000
+            imagePullSecrets:
+                -   name: nexus
             containers:
                 -   name: jenkins
-                    image: jenkinsci/blueocean:1.24.5 # jenkins/jenkins:2.277.1-lts-alpine 
+                    image: 192.168.8.71:29108/jenkins-gradle:1.24.5-6.5.1-alpine # jenkinsci/blueocean:1.24.5 # jenkins/jenkins:2.277.1-lts-alpine 
                     imagePullPolicy: Always #IfNotPresent #先本地，若无再下载
                     ports:
                         -   name: http
@@ -196,6 +198,10 @@ data:
 # kubectl delete ns infra
 # kubectl delete persistentvolumes nfs-pv-jenkins
 # kubectl create -f jenkins.yaml
+
+# kubectl create secret docker-registry nexus --docker-server=192.168.8.71:29108 --docker-username=fy-nexus-dev --docker-password=fy-nexus-dev-71 -n infra
+
+# 
 #
 # kubectl describe limitrange/limit-mem-cpu-per-pod -n infra
 #
@@ -206,4 +212,4 @@ data:
 # kubectl describe svc/jenkins   -n infra
 # kubectl get pod -o wide  -n infra
 
-# kubectl exec -it jenkins-556d78ddbc-bmbwr -n infra -- /bin/sh
+# kubectl exec -it jenkins-7fdd867564-br2b6 -n infra -- /bin/sh

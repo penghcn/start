@@ -59,6 +59,19 @@ sed -i "s#k8s.gcr.io#registry.aliyuncs.com/k8sxio#g"  /etc/containerd/config.tom
 sed -i '/containerd.runtimes.runc.options/a\ \ \ \ \ \ \ \ \ \ \ \ SystemdCgroup = true' /etc/containerd/config.toml
 sed -i "s#https://registry-1.docker.io#${REGISTRY_MIRROR}#g"  /etc/containerd/config.toml
 
+#registry_mirrors=${REGISTRY_MIRROR}
+#arr=(${registry_mirrors//\:\/\// })
+#echo ${arr[1]}
+# 私有仓库也加入代理
+mirrors2=$(echo ${REGISTRY_MIRROR} | awk -F '://' '{ print $2}' )
+
+# sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ \ \ endpoint = [\"http://192.168.8.71:29108\"]"  /etc/containerd/config.toml
+# sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ [plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"192.168.8.71:29108\"]"  /etc/containerd/config.toml
+
+sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ \ \ endpoint = [\"${REGISTRY_MIRROR}\"]"  /etc/containerd/config.toml
+sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ [plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"${mirrors2}\"]"  /etc/containerd/config.toml
+
+
 
 systemctl daemon-reload
 systemctl enable containerd
