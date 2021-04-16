@@ -75,6 +75,11 @@
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
 
+    yum update 
+    yum install -y gitlab-ee-13.10.3-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
 ## 问题
  1、 `gitlab-ctl status`  发现redis down
     
