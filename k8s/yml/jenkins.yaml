@@ -175,6 +175,7 @@ spec:
 
 # 代理端口
 # curl infra.fusjb.io:10180
+# kubectl delete ConfigMap tcp-services -n ingress-nginx
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -188,6 +189,7 @@ metadata:
         app.kubernetes.io/component: controller
 data:
     10180: "infra/jenkins:80"
+    11234: "infra/buildkitd:1234"
 
 
 

@@ -1,6 +1,9 @@
 #
+# 暂时不支持containerd
+# https://github.com/moby/buildkit/blob/master/docs/rootless.md#known-limitations
 # https://github.com/moby/buildkit/blob/master/examples/kubernetes/deployment%2Bservice.rootless.yaml
 # https://github.com/moby/buildkit/tree/master/examples/kubernetes
+
 
 apiVersion: apps/v1
 kind: Deployment
@@ -25,19 +28,14 @@ spec:
     spec:
       containers:
         - name: buildkitd
-          image: moby/buildkit:master-rootless
+          image: moby/buildkit:v0.8.2
           args:
             - --addr
-            - unix:///run/user/1000/buildkit/buildkitd.sock
+            - unix:///run/buildkit/buildkitd.sock
             - --addr
             - tcp://0.0.0.0:1234
-            - --tlscacert
-            - /certs/ca.pem
-            - --tlscert
-            - /certs/cert.pem
-            - --tlskey
-            - /certs/key.pem
-            - --oci-worker-no-process-sandbox
+            #- --oci-worker=false 
+            #- --containerd-worker=true
           # the probe below will only work after Release v0.6.3
           readinessProbe:
             exec:
@@ -56,21 +54,8 @@ spec:
                 - workers
             initialDelaySeconds: 5
             periodSeconds: 30
-          securityContext:
-            # To change UID/GID, you need to rebuild the image
-            runAsUser: 1000
-            runAsGroup: 3000
           ports:
             - containerPort: 1234
-          volumeMounts:
-            - name: certs
-              readOnly: true
-              mountPath: /certs
-      volumes:
-        # buildkit-daemon-certs must contain ca.pem, cert.pem, and key.pem
-        - name: certs
-          secret:
-            secretName: buildkit-daemon-certs
 ---
 apiVersion: v1
 kind: Service
@@ -81,11 +66,29 @@ metadata:
   name: buildkitd
 spec:
   ports:
-    - port: 31234
+    - port: 1234
       targetPort: 1234      #Pod 的端口
       protocol: TCP
   selector:
     app: buildkitd
+
+# kubectl delete ConfigMap tcp-services -n ingress-nginx
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+data:
+  10180: "infra/jenkins:80"
+  11234: "infra/buildkitd:1234"
+
+
 
 # kubectl delete deployments.apps/buildkitd -n infra
 # kubectl delete services/buildkitd -n infra
@@ -93,6 +96,18 @@ spec:
 
 # kubectl describe pod buildkitd   -n infra
 # kubectl get pod -o wide  -n infra
+# kubectl logs -f buildkitd-797ff49b5d-nvmps  -n infra
+# kubectl exec -it   buildkitd-797ff49b5d-nvmps  -n infra -- /bin/sh
+
+# wget https://github.com/moby/buildkit/releases/download/v0.8.2/buildkit-v0.8.2.linux-amd64.tar.gz
+# tar -xzf buildkit-v0.8.2.linux-amd64.tar.gz 
+
+# ./bin/buildctl  --addr tcp://127.0.0.1:2000 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt source=df.sh
+# ./bin/buildctl  --addr tcp://buildkitd:1234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt source=df.sh
+
+
+# buildctl  --addr tcp://infra.fusjb.io:11234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=192.168.8.71:29108/jenkins-gradle:1.0.0,push=true
+
 
 # yum install nss-tools
 # wget -O mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64

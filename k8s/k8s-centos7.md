@@ -6,23 +6,25 @@
     参考主机如下，操作系统都是centos7.9
     使用keepalived haproxy实现负载均衡 VIP 192.168.8.120
 
-角色 | 主机名 |  ip
--|-|-
-master | k8s-m1 | 192.168.8.121
-master | k8s-m2 | 192.168.8.122
-master | k8s-m3 | 192.168.8.123
+角色 | 主机名 | ip | 备注
+-|-|-|-
+master | k8s-m1 | 192.168.8.121 | kubernetes 1.20.5, containerd 1.4.4, etcd 3.4.13, calico 3.18.1, coredns 1.7.0 
+master | k8s-m2 | 192.168.8.122 | 同上
+master | k8s-m3 | 192.168.8.123 | 同上
 -|
-worker | k8s-w1 | 192.168.8.124
-worker | k8s-w2 | 192.168.8.125
+worker | k8s-w1 | 192.168.8.124 | 同上
+worker | k8s-w2 | 192.168.8.125 | 同上
 -|
 keepalived | k8s-w1 | 192.168.8.124
 keepalived | k8s-w2 | 192.168.8.125
+-|
+nfs-server | k8s-m3 | 192.168.8.123 | nfs持久化存储prometheus和grafana数据
 
 ## 同步时间
 
-## 安装keepalived lvs
-    # 这里借用2台worker主机。推荐专门的其他主机安装keepalived，需相同网段
-    curl http://192.168.8.251/open/doc/raw/master/k8s/install_keepalived.sh > install_keepalived.sh
+## 安装keepalived haproxy
+    # 这里借用2台worker主机。推荐专门的其他主机安装keepalived，需相同node网段
+    curl http://192.168.8.251/open/doc/raw/master/k8s/install_keepalived_haproxy.sh > install_keepalived.sh
     sh install_keepalived.sh 192.168.8.120 192.168.8.121,192.168.8.122,192.168.8.123 6443 bond0
 
 ## 安装k8s集群
