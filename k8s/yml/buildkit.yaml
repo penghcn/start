@@ -5,6 +5,24 @@
 # https://github.com/moby/buildkit/tree/master/examples/kubernetes
 
 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: infra
+  name: buildkitd.cm
+data:
+  buildkitd.toml: |-
+    debug = true # 生产环境请注释
+    [registry."docker.io"]
+      mirrors = ["192.168.8.71:29108"]
+      http = true
+      insecure = true
+    [registry."192.168.8.71:29108"]
+      mirrors = ["192.168.8.71:29108"]
+      http = true
+      insecure = true
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,6 +52,9 @@ spec:
             - unix:///run/buildkit/buildkitd.sock
             - --addr
             - tcp://0.0.0.0:1234
+            #- --debug
+            - --config
+            - /etc/buildkit/buildkitd.toml
             #- --oci-worker=false 
             #- --containerd-worker=true
           # the probe below will only work after Release v0.6.3
@@ -58,6 +79,14 @@ spec:
             privileged: true
           ports:
             - containerPort: 1234
+          volumeMounts:
+            - name: cfg
+              mountPath: /etc/buildkit/buildkitd.toml
+              subPath: buildkitd.toml
+      volumes:
+        - name: cfg
+          configMap:
+            name: buildkitd.cm
 ---
 apiVersion: v1
 kind: Service
@@ -98,8 +127,8 @@ data:
 
 # kubectl describe pod buildkitd   -n infra
 # kubectl get pod -o wide  -n infra
-# kubectl logs -f buildkitd-645c89b554-q55pl  -n infra
-# kubectl exec -it   buildkitd-797ff49b5d-nvmps  -n infra -- /bin/sh
+# kubectl logs -f buildkitd-7f477c44c5-bpwfq  -n infra
+# kubectl exec -it   buildkitd-7f477c44c5-bpwfq  -n infra -- /bin/sh
 
 # wget https://github.com/moby/buildkit/releases/download/v0.8.2/buildkit-v0.8.2.linux-amd64.tar.gz
 # tar -xzf buildkit-v0.8.2.linux-amd64.tar.gz 
@@ -108,8 +137,7 @@ data:
 # ./bin/buildctl  --addr tcp://buildkitd:1234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt source=df.sh
 
 
-# buildctl  --addr tcp://infra.fusjb.io:11234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=192.168.8.71:29107/jenkins-gradle,push=true,registry.insecure=true
-
+# buildctl  --addr tcp://infra.fusjb.io:11234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=192.168.8.71:29107/nginx/test:1.18-alpine-test,push=true,registry.insecure=true
 
 
 # yum install nss-tools
