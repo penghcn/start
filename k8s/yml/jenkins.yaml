@@ -35,6 +35,39 @@ spec:
         requests:
             storage: 128Gi
 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    namespace: infra
+    name: buildkitd.toml
+data:
+    buildkitd.toml: |-
+        # https://github.com/moby/buildkit/blob/master/docs/buildkitd.toml.md
+        debug = true # 生产环境请false
+        [grpc]
+          # 生产环境使用改成localhost
+          # address = [ "tcp://127.0.0.1:11234" ] 
+          address = [ "tcp://0.0.0.0:11234" ]
+        [worker.oci]
+          enabled = true
+          # platforms is manually configure platforms, detected automatically if unset.
+          platforms = [ "linux/amd64", "linux/arm64" ]
+        # 以下是测试地址
+        [registry."docker.io"]
+          mirrors = ["192.168.8.71:29108"]
+          http = true
+          insecure = true
+        [registry."192.168.8.71:29108"]
+          mirrors = ["192.168.8.71:29108"]
+          http = true
+          insecure = true
+        [registry."192.168.8.71:29107"]
+          mirrors = ["192.168.8.71:29107"]
+          http = true
+          insecure = true
+
+
 # https://www.jenkins.io/zh/doc/book/installing/#%E5%9C%A8docker%E4%B8%AD%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BF%90%E8%A1%8Cjenkins
 # https://hub.docker.com/r/jenkins/jenkins/tags?page=1&ordering=last_updated
 # https://hub.docker.com/r/jenkinsci/blueocean/tags?page=1&ordering=last_updated
@@ -56,16 +89,19 @@ spec:
             labels:
                 app: jenkins
         spec:
-            securityContext: 
-                runAsUser: 1000
-                runAsGroup: 3000
-                fsGroup: 2000
+            # securityContext: 
+            #     runAsUser: 1000
+            #     runAsGroup: 3000
+            #     fsGroup: 2000
             imagePullSecrets:
                 -   name: nexus
             containers:
                 -   name: jenkins
-                    image: 192.168.8.71:29108/jenkins-gradle:1.24.5-6.5.1-alpine # jenkinsci/blueocean:1.24.5 # jenkins/jenkins:2.277.1-lts-alpine 
+                    image: 192.168.8.71:29108/jenkins/blueocean-gradle-buildkit:1.24.5-6.5.1-0.8.2-alpine # jenkinsci/blueocean:1.24.5 # jenkins/jenkins:2.277.1-lts-alpine 
                     imagePullPolicy: Always #IfNotPresent #先本地，若无再下载
+                    securityContext: 
+                        runAsUser: 1000
+                        runAsGroup: 3000
                     ports:
                         -   name: http
                             containerPort: 8080
@@ -73,7 +109,7 @@ spec:
                             containerPort: 50000
                     env:
                         -   name: JAVA_OPTS
-                            value: -Xms1g -Xmx2g
+                            value: -Xms2g -Xmx2g
                     volumeMounts:
                         -   name: localtime
                             mountPath: /etc/localtime
@@ -89,10 +125,57 @@ spec:
                         requests:
                             cpu: "1"
                             memory: 2Gi
+                -   name: buildkitd
+                    image: moby/buildkit:v0.8.2 
+                    imagePullPolicy: Always
+                    securityContext:
+                        privileged: true # rootless暂时不支持containerd
+                    ports:
+                        -   containerPort: 11234
+                    args:
+                        -   --addr
+                        -   unix:///run/buildkit/buildkitd.sock
+                        -   --addr
+                        -   tcp://0.0.0.0:11234
+                        -   --config
+                        -   /etc/buildkit/buildkitd.toml
+                    readinessProbe: 
+                        exec:
+                            command:
+                                -   buildctl
+                                -   debug
+                                -   workers
+                        initialDelaySeconds: 5
+                        periodSeconds: 30
+                    livenessProbe: 
+                        exec:
+                            command:
+                                -   buildctl
+                                -   debug
+                                -   workers
+                        initialDelaySeconds: 5
+                        periodSeconds: 30
+                    volumeMounts:
+                        -   name: localtime
+                            mountPath: /etc/localtime
+                            readOnly: true
+                        -   name: buildkitd-toml
+                            mountPath: /etc/buildkit/buildkitd.toml
+                            subPath: buildkitd.toml
+                    resources:
+                        limits:
+                            cpu: "1"  
+                            memory: 2Gi  
+                        requests:
+                            cpu: "1"
+                            memory: 2Gi
             volumes:
                 -   name: jenkins-data
                     persistentVolumeClaim:
                         claimName: nfs-pvc-jenkins
+                -   name: buildkitd-toml
+                    configMap:
+                        name: buildkitd.toml
                 -   name: docker
                     hostPath:
                         path: /run/docker.sock
@@ -105,7 +188,7 @@ spec:
         rollingUpdate: 
             maxUnavailable: 1
             maxSurge: 1
-    revisionHistoryLimit: 7
+    revisionHistoryLimit: 10
     progressDeadlineSeconds: 600
 
 # ---
@@ -135,15 +218,19 @@ metadata:
     labels:        
         app: jenkins   
 spec: 
-    type: NodePort
+    # type: NodePort
     selector:      
         app: jenkins   
     ports:
-        -   name: http    
+        -   name: jenkins    
             protocol: TCP        
             port: 80              #Svc 的端口
             targetPort: 8080      #Pod 的端口
-            nodePort: 31080
+            #nodePort: 31080
+        # 仅测试环境 buildctl  --addr tcp://infra.fusjb.io:11234
+        -   name: buildkitd    
+            port: 11234
+            targetPort: 11234
 
 ---
 kind: Ingress
@@ -165,13 +252,7 @@ spec:
                                 name: jenkins
                                 port: 
                                     number: 80
-                    -   path: /jenkins
-                        pathType: Prefix
-                        backend: 
-                            service: 
-                                name: jenkins
-                                port: 
-                                    number: 80
+                
 
 # 代理端口
 # curl infra.fusjb.io:10180
@@ -188,10 +269,8 @@ metadata:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: controller
 data:
-    10180: "infra/jenkins:80"
-    11234: "infra/buildkitd:1234"
-
-
+    10080: "infra/jenkins:80"
+    11234: "infra/jenkins:11234"
 
 
 #
@@ -203,6 +282,9 @@ data:
 
 # kubectl create secret docker-registry nexus --docker-server=192.168.8.71:29108 --docker-username=fy-nexus-dev --docker-password=fy-nexus-dev-71 -n infra
 
+# on jenkins container
+# buildctl  --addr tcp://127.0.0.1:1234 build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=192.168.8.71:29107/nginx/test:1.18-alpine-test-30,push=true,registry.insecure=true
+
 # 
 #
 # kubectl describe limitrange/limit-mem-cpu-per-pod -n infra
@@ -211,7 +293,10 @@ data:
 
 # kubectl describe nodes k8s-m1
 
+# kubectl describe pod jenkins   -n infra
 # kubectl describe svc/jenkins   -n infra
 # kubectl get pod -o wide  -n infra
 
-# kubectl exec -it jenkins-7fdd867564-br2b6 -n infra -- /bin/sh
+# kubectl logs -f jenkins-666f9c7f58-br5pv  -c jenkins -n infra  
+# kubectl logs -f jenkins-666f9c7f58-br5pv  -c buildkitd -n infra  
+# kubectl exec -it jenkins-666f9c7f58-br5pv  -c buildkitd -n infra -- /bin/sh

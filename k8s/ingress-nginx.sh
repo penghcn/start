@@ -79,7 +79,7 @@ kubectl label nodes k8s-w1 $flag=true
 
 kubectl get pod -n ingress-nginx
 
-# kubectl exec -it ingress-nginx-controller-8r66x -n ingress-nginx -- cat nginx.conf
+# kubectl exec -it ingress-nginx-controller-wg2w6 -n ingress-nginx -- cat nginx.conf
 
 # kubectl logs -f  ingress-nginx-controller-77f8b55d4c-vfzhf -n ingress-nginx
 
