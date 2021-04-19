@@ -12,13 +12,18 @@ metadata:
   name: buildkitd.cm
 data:
   buildkitd.toml: |-
-    debug = true # 生产环境请注释
+    debug = true # 生产环境请false
+    # 以下是测试地址
     [registry."docker.io"]
       mirrors = ["192.168.8.71:29108"]
       http = true
       insecure = true
     [registry."192.168.8.71:29108"]
       mirrors = ["192.168.8.71:29108"]
+      http = true
+      insecure = true
+    [registry."192.168.8.71:29107"]
+      mirrors = ["192.168.8.71:29107"]
       http = true
       insecure = true
 
