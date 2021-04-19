@@ -111,13 +111,10 @@ spec:
                         -   name: JAVA_OPTS
                             value: -Xms2g -Xmx2g
                     volumeMounts:
-                        -   name: localtime
-                            mountPath: /etc/localtime
-                            readOnly: true
                         -   name: jenkins-data
                             mountPath: /var/jenkins_home
-                        -   name: docker
-                            mountPath: /var/run/docker.sock
+                        # -   name: docker
+                        #     mountPath: /var/run/docker.sock
                     resources:
                         limits:
                             cpu: "2"  
@@ -165,10 +162,10 @@ spec:
                     resources:
                         limits:
                             cpu: "1"  
-                            memory: 2Gi  
+                            memory: 1Gi  
                         requests:
                             cpu: "1"
-                            memory: 2Gi
+                            memory: 1Gi
             volumes:
                 -   name: jenkins-data
                     persistentVolumeClaim:
@@ -176,10 +173,10 @@ spec:
                 -   name: buildkitd-toml
                     configMap:
                         name: buildkitd.toml
-                -   name: docker
-                    hostPath:
-                        path: /run/docker.sock
-                        type: ''
+                # -   name: docker
+                #     hostPath:
+                #         path: /run/docker.sock
+                #         type: ''
                 -   name: localtime
                     hostPath:
                         path: /etc/localtime
