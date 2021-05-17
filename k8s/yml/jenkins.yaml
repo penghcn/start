@@ -254,6 +254,7 @@ spec:
 # 代理端口
 # curl infra.fusjb.io:10180
 # kubectl delete ConfigMap tcp-services -n ingress-nginx
+# kubectl edit ConfigMap tcp-services -n ingress-nginx
 ---
 apiVersion: v1
 kind: ConfigMap

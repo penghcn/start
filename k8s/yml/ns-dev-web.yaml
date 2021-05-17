@@ -232,12 +232,18 @@ spec:
                 -   name: nginx #container的名称
                     image: nginx:1.18-alpine  #使用镜像nginx:1.18创建container，该container默认80端口可访问
                     imagePullPolicy: IfNotPresent #先本地，若无再下载
+                    env:
+                        -   name: TZ
+                            value: "Asia/Shanghai"
                     ports:
                         -   name: http
                             containerPort: 80
                         -   name: http2
                             containerPort: 443
                     volumeMounts:
+                        -   name: localtime
+                            mountPath: /etc/localtime
+                            readOnly: true
                         -   mountPath: /etc/nginx/nginx.conf
                             name: nginx-config # 使用下面的配置覆盖默认配置
                             subPath: nginx.conf
@@ -251,6 +257,9 @@ spec:
                             cpu: 25m
                             memory: 256Mi
             volumes:
+                -   name: localtime
+                    hostPath:
+                        path: /etc/localtime
                 -   name: nginx-config
                     configMap:
                         name: nginx.cm
