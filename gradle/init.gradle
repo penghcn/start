@@ -75,31 +75,31 @@ allprojects {
         pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
         xstream_version                 = '1.4.17'//com.thoughtworks.xstream:xstream:$xstream_version
-        jackson_version_jdk8            = '2.12.0'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
+        jackson_version_jdk8            = '2.12.3'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
         jackson_version                 = '2.4.6'//2.8.3
         gson_version                    = '2.8.6'//com.google.code.gson:gson:$gson_version
-        fastjson_version                = '1.2.75'//com.alibaba:fastjson:$fastjson_version
+        fastjson_version                = '1.2.76'//com.alibaba:fastjson:$fastjson_version
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
 
         spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
-        spring_version_52               = '5.2.12.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
+        spring_version_52               = '5.2.15.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
         spring_version                  = '4.3.30.RELEASE'//4.2.5，3.2.18
         //spring_boot_version             = '1.2.8.RELEASE'//1.3.5 jdk7
         //spring_boot_version             = '1.5.15.RELEASE'//1.3.5 jdk7        
-        spring_boot_version             = '2.4.1'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
-        spring_dependency_version       = '1.0.10.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
+        spring_boot_version             = '2.4.5'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_dependency_version       = '1.0.11.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         spring_retry_version            = '1.2.5.RELEASE'//org.springframework.retry:spring-retry:$spring_retry_version
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
         spring_data_version             = '2.3.6.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
         //spring_rabbit_version           = '1.7.9.RELEASE'//
-        spring_rabbit_version           = '2.2.12.RELEASE'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
+        spring_rabbit_version           = '2.2.17.RELEASE'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
         //spring_redis_version            = '1.8.14.RELEASE'//2.0.9
         spring_redis_version            = '2.3.6.RELEASE'//
         spring_kafka_version            = '2.5.6.RELEASE'//org.springframework.kafka:spring-kafka:$spring_kafka_version
-        jedis_version                   = '3.4.0'//redis.clients:jedis:$jedis_version
-        redisson_version                = '3.14.1'//org.redisson:redisson:$redisson_version
+        jedis_version                   = '3.6.0'//redis.clients:jedis:$jedis_version
+        redisson_version                = '3.15.5'//org.redisson:redisson:$redisson_version
         jboss_marshalling_version       = '2.0.10.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
         struts_version                  = '2.5.26'//
@@ -107,8 +107,8 @@ allprojects {
 
         hibernate_version               = '5.4.21.Final'//org.hibernate:hibernate-core:$hibernate_version
         hibernate_validator_version     = '6.0.13.Final'//org.hibernate:hibernate-validator:$hibernate_validator_version
-        mybatis_version                 = '3.5.6' //org.mybatis:mybatis:$mybatis_version
-        mybatis_spring_version          = '2.0.5' //org.mybatis:mybatis-spring:$mybatis_spring_version
+        mybatis_version                 = '3.5.7' //org.mybatis:mybatis:$mybatis_version
+        mybatis_spring_version          = '2.0.6' //org.mybatis:mybatis-spring:$mybatis_spring_version
         mybatis_spring_boot_version     = '2.1.3' //org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatis_spring_boot_version
         druid_version                   = '1.2.4'//com.alibaba:druid:$druid_version
         c3p0_version                    = '0.9.5.5'//com.mchange:c3p0:$c3p0_version
@@ -118,7 +118,7 @@ allprojects {
         mysql_connector_version         = '5.1.46'//6.0.6 requires jdk1.8
         mysql_connector_version_jdk6    = '5.1.46'//
         mysql_connector_version_jdk8    = '6.0.6'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
-        mysql_connector_version_jdk8    = '8.0.22'//'8.0.12'//6.0.6 requires jdk1.8 
+        mysql_connector_version_jdk8    = '8.0.25'//'8.0.12'//6.0.6 requires jdk1.8 
         sqlite_jdbc_version             = '3.34.0'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
 
         httpclient_version              = '4.5.13'//org.apache.httpcomponents:httpclient:$httpclient_version org.apache.httpcomponents:httpmime:$httpclient_version
@@ -139,16 +139,16 @@ allprojects {
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//org.jboss.netty:netty:$netty_version
         //netty_version                   = '3.7.0.Final'//jboss netty
-        netty_io_version                = '4.1.56.Final'//io.netty:netty-all:$netty_io_version
-        protobuf_version                = '3.14.0'//com.google.protobuf:protobuf-java:$protobuf_version
+        netty_io_version                = '4.1.65.Final'//io.netty:netty-all:$netty_io_version
+        protobuf_version                = '3.17.0'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '5.0.0' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
         hessian_lite_version            = '3.2.9' //com.alibaba:hessian-lite:$dubbo_hessian_version
 
-        rabbitmq_version                = '5.10.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        rabbitmq_version                = '5.12.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
-        kafka_version                   = '2.7.0'//org.apache.kafka:kafka_2.12:$kafka_version
+        kafka_version                   = '2.8.0'//org.apache.kafka:kafka_2.12:$kafka_version
         canal_version                   = '1.1.4'//com.alibaba.otter:canal:$canal_version
 
         excel_poi_version               = '4.1.2'//org.apache.poi:poi:$excel_poi_version
@@ -157,7 +157,7 @@ allprojects {
         excel_easy_excel_version        = '2.2.6'//com.alibaba:easyexcel:$excel_easy_excel_version
         zxing_version                   = '3.4.0'//com.google.zxing:core:$zxing_version
 
-        alipay_version                  = '4.11.33.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
+        alipay_version                  = '4.13.50.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
 
         android_sdk_version             = 30 //compileSdkVersion android_sdk_version
