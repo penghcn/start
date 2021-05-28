@@ -50,7 +50,7 @@ allprojects {
 
         servlet_version                 = '3.1.0'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
         tomcat_version                  = '8.0.50'
-        jetty_version                   = '10.0.3' //org.eclipse.jetty:jetty-servlet:$jetty_version
+        jetty_version                   = '9.4.41.v20210516' //org.eclipse.jetty:jetty-servlet:$jetty_version
 
         disruptor_version               = '3.4.2'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.9.1'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
@@ -352,6 +352,10 @@ allprojects {
 
     tasks.withType(GenerateModuleMetadata) {
         enabled = false
+    }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += [/*'-verbose', */'-Xdoclint:none', '-Xlint:deprecation', '-nowarn']
     }
 }
 
