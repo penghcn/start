@@ -227,6 +227,8 @@ allprojects {
 
         REPO_GROUP_URL                  = "$nexus_host/repository/maven-public"
         REPO_GROUP_OTHER_URL            = "$nexus_host/repository/maven-other"
+        REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"
+        REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
     }
 
     configurations.all {
