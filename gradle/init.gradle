@@ -225,17 +225,8 @@ allprojects {
 
 
 
-        REPO_PROXY_URL                  = "$nexus_host/repository/maven-central"
-        REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"//第2版富友maven私库
-        REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
-        REPO_PROXY_URL_J                = "$nexus_host/repository/j-central"
-        REPO_PROXY_URL_GOOGLE           = "$nexus_host/repository/google-central"
-        REPO_PROXY_URL_ALIYUN           = "$nexus_host/repository/aliyun/"
-        REPO_PROXY_URL_JITPACK          = "$nexus_host/repository/jitpack/"
-        REPO_PROXY_URL_UM               = "$nexus_host/repository/um/"
-        REPO_PROXY_URL_MEITUAN          = "$nexus_host/repository/meituan/"
-        //REPO_PROXY_URL_MEITUAN          = 'http://cat.meituan.com/nexus/content/repositories/releases/'
-
+        REPO_GROUP_URL                  = "$nexus_host/repository/maven-public"
+        REPO_GROUP_OTHER_URL            = "$nexus_host/repository/maven-other"
     }
 
     configurations.all {
@@ -261,27 +252,10 @@ allprojects {
             }
 
             maven {
-                url REPO_PUBLISH_URL
+                url REPO_GROUP_URL
             }
             maven {
-                url REPO_PROXY_URL
-            }
-
-            maven {
-                url REPO_PROXY_URL_ALIYUN
-            }
-            maven {
-                url REPO_PROXY_URL_GOOGLE
-            }
-            maven {
-                url REPO_PROXY_URL_JITPACK
-            }
-            
-
-
-            //友盟Maven URL地址
-            maven {
-                url REPO_PROXY_URL_UM
+                url REPO_GROUP_OTHER_URL
             }
         }
     }
@@ -305,44 +279,14 @@ allprojects {
             maven { url "https://maven.aliyun.com/repository/public"}
             maven { url "https://maven.aliyun.com/repository/google"}
         }
+
+        maven {
+            url REPO_GROUP_URL
+        }
+        maven {
+            url REPO_GROUP_OTHER_URL
+        }
         
-        maven {
-            url REPO_PUBLISH_URL
-        }
-
-        maven {
-            url REPO_PROXY_URL
-        }
-
-        maven {
-            url REPO_PROXY_URL_ALIYUN
-        }
-
-        maven {
-            url REPO_PROXY_URL_GOOGLE
-        }
-
-
-        maven { 
-            url REPO_PROXY_URL_JITPACK
-        }
-
-        //友盟Maven URL地址
-        maven {
-            url REPO_PROXY_URL_UM
-        }
-        maven {
-            url REPO_DEV_URL
-        }
-
-        // maven {
-        //     url REPO_PROXY_URL_ALIYUN
-        // }
-        // maven {
-        //     url REPO_PROXY_URL_J
-        // }
-
-        //maven { url 'https://jitpack.io' }
         //mavenCentral()
     }
 
@@ -356,6 +300,8 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.compilerArgs += [/*'-verbose', */'-Xdoclint:none', '-Xlint:deprecation', '-nowarn']
+        sourceCompatibility = jvm_version_8
+        targetCompatibility = jvm_version_8
     }
 }
 
@@ -379,6 +325,7 @@ def getLocalIp() {
 }
 
 
+//gradle clean
 //gradle build -x test --warning-mode=all --refresh-dependencies
 
 //gradle init --type pom
