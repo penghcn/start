@@ -96,7 +96,7 @@ allprojects {
         //spring_rabbit_version           = '1.7.9.RELEASE'//
         spring_rabbit_version           = '2.3.9'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
         //spring_redis_version            = '1.8.14.RELEASE'//2.0.9
-        spring_redis_version            = '2.5.2'// org.springframework.data:spring-data-redis:$spring_redis_version
+        spring_redis_version            = '2.3.6.RELEASE'// org.springframework.data:spring-data-redis:$spring_redis_version
         spring_session_version          = '2.5.1'// org.springframework.session:spring-session-core:$spring_session_version
         spring_kafka_version            = '2.7.3'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '3.6.1'//redis.clients:jedis:$jedis_version
