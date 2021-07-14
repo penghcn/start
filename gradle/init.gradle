@@ -208,7 +208,7 @@ allprojects {
         fuiou_ds_log_version            = '0.0.3'//com.fuiou.ds:ds-log-api:$fuiou_ds_log_version
         fuiou_ds_stock_version          = '1.0.4'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
 
-        fusjb_boot_version              = '1.0.4'//com.fusjb.boot:boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.0.5'//com.fusjb.boot:boot-starter-dubbo:$fusjb_boot_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
