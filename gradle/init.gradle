@@ -69,6 +69,7 @@ allprojects {
         commons_lang_version            = '2.6'//commons-lang:commons-lang:$commons_lang_version
         commons_net_version             = '3.8.0'//commons-net:commons-net:$commons_net_version
         commons_beanutils_version       = '1.9.4'//commons-beanutils:commons-beanutils:$commons_beanutils_version
+        commons_collections_version     = '3.2.2'//commons-collections:commons-collections:$commons_collections_version
         commons_lang_apache_version     = '3.12.0'//org.apache.commons:commons-lang3:$commons_lang_apache_version
         zstd_jni_version                = '1.5.0-3'//com.github.luben:zstd-jni:$zstd_jni_version
 
