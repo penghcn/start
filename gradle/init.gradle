@@ -171,6 +171,9 @@ allprojects {
         android_tools_version           = '4.0.1'//com.android.tools.build:gradle:$android_tools_version
         android_tools_version           = '3.6.4'//com.android.tools.build:gradle:$android_tools_version
         greendao_version                = '3.3.0'//org.greenrobot:greendao-gradle-plugin:$greendao_version
+
+        javacv_version					= '1.5.5'//org.bytedeco:javacv:$javacv_version
+		javacv_ffmpeg_version			= '4.3.2-1.5.5'//org.bytedeco:ffmpeg:$javacv_ffmpeg_version
         
         //pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
