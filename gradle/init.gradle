@@ -50,7 +50,7 @@ allprojects {
 
         servlet_version                 = '3.1.0'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
         tomcat_version                  = '8.0.50'
-        jetty_version                   = '9.4.41.v20210516' //org.eclipse.jetty:jetty-servlet:$jetty_version
+        jetty_version                   = '9.4.43.v20210629' //org.eclipse.jetty:jetty-servlet:$jetty_version
 
         disruptor_version               = '3.4.2'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.9.1'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
@@ -172,8 +172,8 @@ allprojects {
         android_tools_version           = '3.6.4'//com.android.tools.build:gradle:$android_tools_version
         greendao_version                = '3.3.0'//org.greenrobot:greendao-gradle-plugin:$greendao_version
 
-        javacv_version					= '1.5.5'//org.bytedeco:javacv:$javacv_version
-		javacv_ffmpeg_version			= '4.3.2-1.5.5'//org.bytedeco:ffmpeg:$javacv_ffmpeg_version
+        javacv_version                  = '1.5.5'//org.bytedeco:javacv:$javacv_version
+        javacv_ffmpeg_version           = '4.3.2-1.5.5'//org.bytedeco:ffmpeg:$javacv_ffmpeg_version
         
         //pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
