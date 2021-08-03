@@ -19,3 +19,8 @@
 《代码大全》
 
 《阿里Java代码规范》
+
+## 其他
+[Java学习+面试指南 https://github.com/Snailclimb/JavaGuide](https://github.com/Snailclimb/JavaGuide)
+
+[Java工程师进阶知识完全扫盲 https://github.com/doocs/advanced-java](https://github.com/doocs/advanced-java)
