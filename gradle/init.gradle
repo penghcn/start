@@ -350,8 +350,10 @@ listen: 0.0.0.0:14873
 npm install -g pm2 --unsafe-perm
 pm2 start verdaccio
 
-vi ~/.config/verdaccio/config.yaml
+pm2 list
+pm2 logs verdaccio
 
+#https://registry.npm.taobao.org
 npm set registry https://registry.npmjs.org
 npm set registry http://192.168.8.29:14873
 
