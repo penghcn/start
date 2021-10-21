@@ -6,11 +6,11 @@
 
     gitlab_rails['time_zone'] = 'Asia/Shanghai'
     
-    unicorn['worker_processes'] = 5
-    unicorn['worker_timeout'] = 60
+    puma['worker_processes'] = 5
+    puma['worker_timeout'] = 60
 
-    unicorn['worker_memory_limit_min'] = "200 * 1 << 20"
-    unicorn['worker_memory_limit_max'] = "300 * 1 << 20"
+    # 0.98 * ( 800 + ( worker_processes * 1024MB ) ) = 0.98 * ( 800 + ( 5 * 1024 ) ) = 5018
+    puma['per_worker_max_memory_mb'] = 5018
 
     官方建议cpu核数+1，超时60s
     200人左右规模，建议4核cpu、8GB内存
@@ -51,7 +51,8 @@
 ## 升级
     # https://docs.gitlab.com/ee/update/index.html#checking-for-background-migrations-before-upgrading
     # https://docs.gitlab.com/omnibus/update/README.html#zero-downtime-updates
-    #... 12.0.12 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.9.4
+    # https://gitlab.com/gitlab-org/gitlab/-/tags
+    #... 12.0.12 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.9.4 -> 13.12.12 -> 14.0.11 -> 14.3.3
     touch /etc/gitlab/skip-auto-reconfigure
     yum install -y gitlab-ee-12.10.14-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
@@ -80,11 +81,27 @@
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
 
+
+    yum update 
+    yum install -y gitlab-ee-13.12.12-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
+    yum update 
+    yum install -y gitlab-ee-14.0.11-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
+    yum update 
+    yum install -y gitlab-ee-14.3.3-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
 ## 问题
  1、 `gitlab-ctl status`  发现redis down
     
     rm -f /var/opt/gitlab/redis/dump.rdb
 
-2、访问时返回502
+2、访问时返回502，并稍等一下
 
     gitlab-ctl reconfigure
