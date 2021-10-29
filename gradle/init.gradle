@@ -85,8 +85,8 @@ allprojects {
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
 
 
-        spring_version                  = '5.3.9'//org.springframework:spring-core:$spring_version
-        spring_version_52               = '5.2.16.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
+        spring_version                  = '5.3.12'//org.springframework:spring-core:$spring_version
+        spring_version_52               = '5.2.18.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
         spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
@@ -219,7 +219,7 @@ allprojects {
         fuiou_ds_stock_version          = '1.0.4'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
         fuiou_ds_pos_apply_version      = '1.0.7'
 
-        fusjb_boot_version              = '1.1.6'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.1.7'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
