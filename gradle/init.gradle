@@ -181,7 +181,7 @@ allprojects {
         
         //pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
-        pbase_version_4                 = '4.2.24'// cn.pengh.pbase:pbase-core:$pbase_version_4, cn.pengh.pbase:pbase-mvc:$pbase_version_4
+        pbase_version_4                 = '4.2.26'// cn.pengh.pbase:pbase-core:$pbase_version_4, cn.pengh.pbase:pbase-mvc:$pbase_version_4
 
         //fuiou_sms_version               = '1.3.7' //兼容版本1
         //fuiou_sms_version               = '2.0.0' //兼容版本2
