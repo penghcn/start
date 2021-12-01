@@ -20,6 +20,7 @@ set -e
 
 k8s_version=$2
 repo_base_url=$3
+git_base_url=$4
 
 if [[ ! -n $k8s_version ]]; then
     k8s_version=1.22.3
@@ -33,4 +34,4 @@ sh install_kubelet.sh $k8s_version $repo_base_url
 
 
 # 初始化master
-sh init_master.sh $k8s_version
+sh init_master.sh $k8s_version $git_base_url

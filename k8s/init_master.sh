@@ -87,7 +87,9 @@ echo "安装calico enterprise，使用tigera-operator"
 
 # https://docs.tigera.io/manifests/tigera-operator.yaml
 # https://docs.tigera.io/manifests/custom-resources.yaml
-kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+# kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+
+kubectl create -f $2/open/doc/raw/master/k8s/tigera-operator.yaml
 
 cat <<EOF > ./calico-custom-resources.yaml
 apiVersion: operator.tigera.io/v1
