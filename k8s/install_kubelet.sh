@@ -48,25 +48,25 @@ yum install -y yum-utils device-mapper-persistent-data lvm2
 cat <<EOF > /tmp/centos7.repo
 [base]
 name=Nexus
-baseurl=$repo_base_url/repository/centos7/$releasever/os/$basearch/
+baseurl=$repo_base_url/repository/centos7/\$releasever/os/\$basearch/
 gpgcheck=1
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
  
 [updates]
 name=CentOS-$releasever-Updates-custom
-baseurl=$repo_base_url/repository/centos7/$releasever/updates/$basearch/
+baseurl=$repo_base_url/repository/centos7/\$releasever/updates/\$basearch/
 gpgcheck=1
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
  
 [extras]
 name=CentOS-$releasever-Extras-custom
-baseurl=$repo_base_url/repository/centos7/$releasever/extras/$basearch/
+baseurl=$repo_base_url/repository/centos7/\$releasever/extras/\$basearch/
 gpgcheck=1
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
  
 [centosplus]
 name=CentOS-$releasever-Plus-custom
-baseurl=$repo_base_url/repository/centos7/$releasever/centosplus/$basearch/
+baseurl=$repo_base_url/repository/centos7/\$releasever/centosplus/\$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
@@ -76,7 +76,7 @@ EOF
 yum-config-manager --add-repo /tmp/centos7.repo
 
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+# yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 # yum-config-manager --add-repo https://mirror.ccs.tencentyun.com/docker-ce/linux/centos/docker-ce.repo
 
