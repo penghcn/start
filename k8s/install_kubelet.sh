@@ -53,19 +53,19 @@ gpgcheck=1
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
  
 [updates]
-name=CentOS-$releasever-Updates-custom
+name=CentOS-\$releasever-Updates-custom
 baseurl=$repo_base_url/repository/centos7/\$releasever/updates/\$basearch/
 gpgcheck=1
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
  
 [extras]
-name=CentOS-$releasever-Extras-custom
+name=CentOS-\$releasever-Extras-custom
 baseurl=$repo_base_url/repository/centos7/\$releasever/extras/\$basearch/
 gpgcheck=1
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
  
 [centosplus]
-name=CentOS-$releasever-Plus-custom
+name=CentOS-\$releasever-Plus-custom
 baseurl=$repo_base_url/repository/centos7/\$releasever/centosplus/\$basearch/
 gpgcheck=1
 enabled=0
