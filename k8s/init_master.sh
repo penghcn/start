@@ -24,7 +24,10 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 # 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
 # https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
-# 注意，该地址registry.cn-shanghai.aliyuncs.com/k8sxio不存在
+# 注意，该地址registry.cn-shanghai.aliyuncs.com/k8sxio 不存在
+# imageRepository: registry.cn-hangzhou.aliyuncs.com/k8sxio
+
+image_repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 
 rm -f ./kubeadm-config.yaml
 cat <<EOF > ./kubeadm-config.yaml
@@ -32,7 +35,7 @@ cat <<EOF > ./kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 kubernetesVersion: v${1}
-imageRepository: registry.cn-hangzhou.aliyuncs.com/k8sxio
+imageRepository: $image_repository
 controlPlaneEndpoint: "${APISERVER_NAME}:6443"
 networking:
   serviceSubnet: "${SERVICE_SUBNET}"
@@ -49,7 +52,7 @@ EOF
 # kubeadm init
 # 根据您服务器网速的情况，您需要等候 3 - 10 分钟
 echo ""
-echo "抓取镜像，请稍候..."
+echo "$image_repository 抓取镜像，请稍候..."
 
 # 默认配置
 # kubeadm config print init-defaults
