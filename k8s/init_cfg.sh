@@ -30,8 +30,10 @@ fi
 
 if [[ ! -n $mirror ]]; then
     mirror="https://registry.cn-shanghai.aliyuncs.com"
-    mirror="http://192.168.8.71:29108"
+    mirror="http://192.168.8.71:29108" # 测试环境
+    # repo_base_url="http://172.16.231.253:29108" # 生产环境
 fi
+
 
 
 

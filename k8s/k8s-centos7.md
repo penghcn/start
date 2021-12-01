@@ -8,7 +8,7 @@
 
 角色 | 主机名 | ip | 备注
 -|-|-|-
-master | k8s-m1 | 192.168.8.121 | kubernetes 1.20.5, containerd 1.4.4, etcd 3.4.13, calico 3.18.1, coredns 1.7.0 
+master | k8s-m1 | 192.168.8.121 | kubernetes 1.22.3, containerd 1.5.7, etcd 3.4.13, calico 3.18.1, coredns 1.7.0 
 master | k8s-m2 | 192.168.8.122 | 同上
 master | k8s-m3 | 192.168.8.123 | 同上
 -|

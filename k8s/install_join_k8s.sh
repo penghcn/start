@@ -20,8 +20,10 @@ rm -rf /var/etcd
 set -e
 
 k8s_version=$2
+repo_base_url=$3
+
 if [[ ! -n $k8s_version ]]; then
-    k8s_version=1.20.5
+    k8s_version=1.22.3
 fi
 
 # 一些配置或者环境变量
@@ -29,5 +31,5 @@ source ./init_cfg.sh $k8s_version,$1
 
 
 # 安装 containerd和kubelet
-sh install_kubelet.sh $k8s_version
+sh install_kubelet.sh $k8s_version $repo_base_url
 

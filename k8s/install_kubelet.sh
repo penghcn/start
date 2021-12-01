@@ -9,7 +9,7 @@
 # curl -sSL https://kuboard.cn/install-script/v1.20.x/install_kubelet.sh | sh -s 1.20.4
 
 
-# sh install_kubelet.sh 1.20.4
+# sh install_kubelet.sh 1.20.4  http://192.168.8.71:29106
 
 # 在 master 节点和 worker 节点都要执行
 
@@ -17,6 +17,8 @@
 # 参考文档如下
 # https://github.com/containerd/containerd
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
+k8s_version=$1
+repo_base_url=$2
 
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
 overlay
@@ -41,7 +43,37 @@ yum remove -y containerd.io
 
 # 设置 yum repository
 yum install -y yum-utils device-mapper-persistent-data lvm2
-yum-config-manager --add-repo http://192.168.8.251/open/doc/raw/master/k8s/centos7.repo
+
+# 配置K8S的yum源
+cat <<EOF > /tmp/centos7.repo
+[base]
+name=Nexus
+baseurl=$repo_base_url/repository/centos7/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
+ 
+[updates]
+name=CentOS-$releasever-Updates-custom
+baseurl=$repo_base_url/repository/centos7/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
+ 
+[extras]
+name=CentOS-$releasever-Extras-custom
+baseurl=$repo_base_url/repository/centos7/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
+ 
+[centosplus]
+name=CentOS-$releasever-Plus-custom
+baseurl=$repo_base_url/repository/centos7/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
+EOF
+
+# yum-config-manager --add-repo http://192.168.8.251/open/doc/raw/master/k8s/centos7.repo
+yum-config-manager --add-repo /tmp/centos7.repo
 
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
@@ -107,7 +139,7 @@ cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
-baseurl=http://192.168.8.71:29106/repository/centos7-k8s
+baseurl=$repo_base_url/repository/centos7-k8s
 enabled=1
 gpgcheck=0
 repo_gpgcheck=0
@@ -119,8 +151,8 @@ EOF
 yum remove -y kubelet kubeadm kubectl
 
 # 安装kubelet、kubeadm、kubectl
-# 将 ${1} 替换为 kubernetes 版本号，例如 1.20.1
-yum install -y kubelet-${1} kubeadm-${1} kubectl-${1}
+# 将 $k8s_version 替换为 kubernetes 版本号，例如 1.20.1
+yum install -y kubelet-${k8s_version} kubeadm-${k8s_version} kubectl-${k8s_version}
 
 crictl config runtime-endpoint /run/containerd/containerd.sock
 
