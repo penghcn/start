@@ -44,7 +44,7 @@ yum remove -y containerd.io
 # 设置 yum repository
 yum install -y yum-utils device-mapper-persistent-data lvm2
 
-# 配置K8S的yum源
+# 配置centos7的yum源
 cat <<EOF > /tmp/centos7.repo
 [base]
 name=Nexus
@@ -72,8 +72,34 @@ enabled=0
 gpgkey=$repo_base_url/repository/centos7/RPM-GPG-KEY-CentOS-7
 EOF
 
+
+# 配置docker-ce的yum源
+cat <<EOF > /tmp/docker-ce.repo
+[docker-ce-stable]
+name=Docker CE Stable - \$basearch
+baseurl=$repo_base_url/repository/centos7/\$releasever/\$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=$repo_base_url/repository/centos7/gpg
+
+[docker-ce-stable-debuginfo]
+name=Docker CE Stable - Debuginfo $basearch
+baseurl=$repo_base_url/repository/centos7/\$releasever/debug-\$basearch/stable
+enabled=0
+gpgcheck=1
+gpgkey=$repo_base_url/repository/centos7/gpg
+
+[docker-ce-stable-source]
+name=Docker CE Stable - Sources
+baseurl=$repo_base_url/repository/centos7/\$releasever/source/stable
+enabled=0
+gpgcheck=1
+gpgkey=$repo_base_url/repository/centos7/gpg
+EOF
+
 # yum-config-manager --add-repo http://192.168.8.251/open/doc/raw/master/k8s/centos7.repo
 yum-config-manager --add-repo /tmp/centos7.repo
+yum-config-manager --add-repo /tmp/docker-ce.repo
 
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 # yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
