@@ -21,10 +21,9 @@ set -e
 
 k8s_version=$2
 repo_base_url=$3
-git_base_url=$4
 
 if [[ ! -n $k8s_version ]]; then
-    k8s_version=1.22.3
+    k8s_version=1.22.4
 fi
 
 # 一些配置或者环境变量
@@ -32,5 +31,5 @@ source ./init_cfg.sh $k8s_version,$1
 
 
 # 安装 containerd和kubelet
-sh install_kubelet.sh $k8s_version $git_base_url
+sh install_kubelet.sh $k8s_version $repo_base_url
 
