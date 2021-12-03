@@ -12,7 +12,7 @@
 # sh install_kubelet.sh 1.20.4  http://192.168.8.71:29106
 
 # 在 master 节点和 worker 节点都要执行
-k8s_version=$1
+k8s_version="${1}-00"
 
 ## --------------------------
 ## 更新apt源
@@ -122,7 +122,7 @@ sudo apt-get remove -y kubelet kubeadm kubectl
 
 # 安装kubelet、kubeadm、kubectl
 # 将 $k8s_version 替换为 kubernetes 版本号，例如 1.22.4-00
-sudo apt-get install -y kubelet-${k8s_version} kubeadm-${k8s_version} kubectl-${k8s_version}
+sudo apt-get install -y kubelet=${k8s_version} kubeadm=${k8s_version} kubectl=${k8s_version}
 
 crictl config runtime-endpoint /run/containerd/containerd.sock
 

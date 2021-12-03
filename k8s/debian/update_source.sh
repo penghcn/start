@@ -15,10 +15,10 @@ sudo apt-get install -y apt-transport-https ca-certificates curl
 mv /etc/apt/sources.list{,.bak}
 cat > /etc/apt/sources.list <<EOF
 deb $repo_base_url/repository/debian-buster buster main contrib non-free
-deb-src $repo_base_url/repository/debian-buster/debian/ buster main contrib non-free
+deb-src $repo_base_url/repository/debian-buster/ buster main contrib non-free
 
 deb $repo_base_url/repository/debian-buster buster-updates main contrib non-free
-deb-src $repo_base_url/repository/debian-buster/debian/ buster-updates main contrib non-free
+deb-src $repo_base_url/repository/debian-buster/ buster-updates main contrib non-free
 
 deb $repo_base_url/repository/debian-buster-sec/ buster/updates main contrib non-free
 deb-src $repo_base_url/repository/debian-buster-sec/ buster/updates main contrib non-free
@@ -27,7 +27,7 @@ EOF
 sudo apt-get update
 
 # 配置docker-ce的源
-sudo apt-get install ca-certificates curl gnupg lsb-release
+sudo apt-get -y install ca-certificates curl gnupg lsb-release
 
 curl -fsSL $repo_base_url/repository/debian-docker-ce/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
