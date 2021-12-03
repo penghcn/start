@@ -47,7 +47,7 @@ sysctl --system
 
 
 # 卸载旧版本
-sudo apt-get remove -y containerd runc
+sudo apt-get remove -y containerd.io runc
 # 安装 containerd
 #yum install -y containerd.io-1.4.12
 sudo apt-get install -y containerd.io
@@ -100,10 +100,14 @@ sudo apt-get install -y nfs-utils
 sudo apt-get install -y wget
 
 # 关闭 防火墙
+sudo apt-get install -y firewalld
+
 systemctl stop firewalld
 systemctl disable firewalld
 
 # 关闭 SeLinux
+sudo apt-get install -y selinux-utils selinux-basics setools
+
 setenforce 0
 sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 

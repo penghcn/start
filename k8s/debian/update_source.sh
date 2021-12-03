@@ -29,7 +29,7 @@ sudo apt-get update
 # 配置docker-ce的源
 sudo apt-get -y install ca-certificates curl gnupg lsb-release
 
-curl -fsSL $repo_base_url/repository/debian-docker-ce/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+curl -fsSL $repo_base_url/repository/debian-docker-ce/gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 echo  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] $repo_base_url/repository/debian-docker-ce \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker-ce.list > /dev/null
