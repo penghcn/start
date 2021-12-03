@@ -8,13 +8,13 @@
 ## 安装、使用
 <del>可使用sealos快速部署</del>
 
-[k8s基于centos7安装(谨慎操作，本文档会销毁覆盖之前集群)](./k8s-centos7.md) 
+[k8s基于centos7安装(谨慎操作，本文档会销毁覆盖之前集群)](./centos/k8s-centos7.md) 
 
-[dashboard部署](./dashboard.sh)   
+[dashboard部署](./centos/dashboard.sh)   
 
-[ingress-nginx部署](./ingress-nginx.sh)   
+[ingress-nginx部署](./centos/ingress-nginx.sh)   
 
-[keepalived-haproxy部署](./install_keepalived_haproxy.sh)   
+[keepalived-haproxy部署](./centos/install_keepalived_haproxy.sh)   
 
 [Jenkins服务部署](./yml/jenkins.yaml)   
 
