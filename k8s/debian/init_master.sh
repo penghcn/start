@@ -29,10 +29,13 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 image_repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 
+# https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/
+# https://www.jianshu.com/p/50ce5ebced0c
+
 rm -f ./kubeadm-config.yaml
 cat <<EOF > ./kubeadm-config.yaml
 ---
-apiVersion: kubeadm.k8s.io/v1beta2
+apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
 kubernetesVersion: v${1}
 imageRepository: $image_repository
@@ -43,10 +46,27 @@ networking:
   dnsDomain: "cluster.local"
 
 ---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration
+nodeRegistration:
+  name: k8s-master
+  criSocket: "unix:///run/containerd/containerd.sock"
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+
+---
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
 cgroupDriver: systemd
 maxPods: 100 # 默认110
+
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+featureGates:
+  SupportIPVSProxyMode: true
+mode: ipvs
 EOF
 
 # kubeadm init

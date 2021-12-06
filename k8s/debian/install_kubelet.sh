@@ -19,6 +19,31 @@ k8s_version="${1}-00"
 ## --------------------------
 sh update_source.sh $2
 
+
+## --------------------------
+## 启用ipvs
+## --------------------------
+
+apt-get install -y ipvsadm ipset sysstat conntrack libseccomp2
+
+# 开机自启动加载ipvs内核
+> /etc/modules-load.d/ipvs.conf
+module=(
+ip_vs
+ip_vs_rr
+ip_vs_wrr
+ip_vs_sh
+nf_conntrack
+br_netfilter
+)
+for kernel_module in ${module[@]};do
+    /sbin/modinfo -F filename $kernel_module |& grep -qv ERROR && echo $kernel_module >> /etc/modules-load.d/ipvs.conf || :
+done
+# systemctl enable --now systemd-modules-load.service
+
+ipvsadm --clear
+
+
 ## --------------------------
 ## 安装 containerd
 ## --------------------------
@@ -112,10 +137,21 @@ setenforce 0
 sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 
 # 关闭 swap
-swapoff -a
+swapoff -a && sysctl -w vm.swappiness=0
 yes | cp /etc/fstab /etc/fstab_bak
 cat /etc/fstab_bak |grep -v swap > /etc/fstab
 
+
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+br_netfilter
+EOF
+
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sudo sysctl --system
 
 ## --------------------------
 ## 安装 kubeadm
@@ -127,6 +163,7 @@ sudo apt-get remove -y kubelet kubeadm kubectl
 # 安装kubelet、kubeadm、kubectl
 # 将 $k8s_version 替换为 kubernetes 版本号，例如 1.22.4-00
 sudo apt-get install -y kubelet=${k8s_version} kubeadm=${k8s_version} kubectl=${k8s_version}
+sudo apt-mark hold kubelet kubeadm kubectl
 
 crictl config runtime-endpoint unix:///run/containerd/containerd.sock
 
