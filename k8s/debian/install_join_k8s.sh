@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 安装master或者worker其他节点
 # sh install_join_k8s.sh
@@ -40,3 +40,6 @@ source ./init_cfg.sh $k8s_version,$1
 # 安装 containerd和kubelet
 sh install_kubelet.sh $k8s_version $repo_base_url
 
+# 清空之前kubeadm设置
+kubeadm reset -f
+rm -rf ~/.kube/config

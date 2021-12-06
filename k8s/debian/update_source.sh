@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # debian 10.11
 # sh update_source.sh http://192.168.8.71:29106

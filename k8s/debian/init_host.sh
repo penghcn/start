@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 在每一台master和worker节点上都执行
 

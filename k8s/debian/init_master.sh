@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 只在第1个 master 节点执行
 

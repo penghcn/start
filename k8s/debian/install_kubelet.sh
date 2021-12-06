@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 参考 https://kuboard.cn/install/install-k8s.html#%E7%A7%BB%E9%99%A4worker%E8%8A%82%E7%82%B9%E5%B9%B6%E9%87%8D%E8%AF%95
 # 使用 
@@ -128,7 +128,7 @@ sudo apt-get remove -y kubelet kubeadm kubectl
 # 将 $k8s_version 替换为 kubernetes 版本号，例如 1.22.4-00
 sudo apt-get install -y kubelet=${k8s_version} kubeadm=${k8s_version} kubectl=${k8s_version}
 
-crictl config runtime-endpoint /run/containerd/containerd.sock
+crictl config runtime-endpoint unix:///run/containerd/containerd.sock
 
 # 重启 docker，并启动 kubelet
 systemctl daemon-reload

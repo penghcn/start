@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 安装master单节点
 # sh install_master_k8s.sh apiserver.k8
@@ -23,7 +23,7 @@ repo_base_url=$3
 git_base_url=$4
 
 if [[ ! -n $k8s_version ]]; then
-    k8s_version=1.22.3
+    k8s_version=1.22.4
 fi
 
 # 一些配置或者环境变量

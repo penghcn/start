@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #1.20.5,apiserver.k8s,192.168.8.120,http://192.168.8.71:29108
 #k8s_version,api_server,api_server_ip,
