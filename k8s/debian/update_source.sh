@@ -32,7 +32,7 @@ sudo apt-get update
 # debian 10 升级内核
 sudo apt -t buster-backports  install linux-image-amd64
 
-reboot
+# reboot
 
 uname -r
 # 重启后，查看cgroup hugetlb
