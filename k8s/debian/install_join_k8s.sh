@@ -3,6 +3,13 @@
 # 安装master或者worker其他节点
 # sh install_join_k8s.sh
 
+# 在主节点上
+# kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
+# kubectl delete node <node name>
+
+# 需要下线清空的节点上
+# kubeadm reset
+
 
 # 先卸载kube
 kubeadm reset -f

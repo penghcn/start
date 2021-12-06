@@ -20,11 +20,23 @@ deb-src $repo_base_url/repository/debian-buster/ buster main contrib non-free
 deb $repo_base_url/repository/debian-buster buster-updates main contrib non-free
 deb-src $repo_base_url/repository/debian-buster/ buster-updates main contrib non-free
 
+deb $repo_base_url/repository/debian-buster buster-backports main
+
 deb $repo_base_url/repository/debian-buster-sec/ buster/updates main contrib non-free
 deb-src $repo_base_url/repository/debian-buster-sec/ buster/updates main contrib non-free
 EOF
 
 sudo apt-get update
+
+# debian 10 默认关闭了 cgroup hugetlb 可以通过更新内核开启
+# debian 10 升级内核
+sudo apt -t buster-backports  install linux-image-amd64
+
+reboot
+
+uname -r
+# 重启后，查看cgroup hugetlb
+grep HUGETLB /boot/config-$(uname -r)    
 
 # 配置docker-ce的源
 sudo apt-get -y install ca-certificates curl gnupg lsb-release
