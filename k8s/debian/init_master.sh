@@ -35,7 +35,7 @@ image_repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 rm -f ./kubeadm-config.yaml
 cat <<EOF > ./kubeadm-config.yaml
 ---
-apiVersion: kubeadm.k8s.io/v1beta3
+apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 kubernetesVersion: v${1}
 imageRepository: $image_repository
@@ -44,16 +44,14 @@ networking:
   serviceSubnet: "${SERVICE_SUBNET}"
   podSubnet: "${POD_SUBNET}"
   dnsDomain: "cluster.local"
-
+apiServer:
+  timeoutForControlPlane: 1m0s
 ---
-apiVersion: kubeadm.k8s.io/v1beta3
+apiVersion: kubeadm.k8s.io/v1beta2
 kind: InitConfiguration
 nodeRegistration:
-  name: k8s-master
   criSocket: "unix:///run/containerd/containerd.sock"
-  taints:
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/master
+  taints: null
 
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1

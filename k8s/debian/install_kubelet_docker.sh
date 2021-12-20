@@ -72,35 +72,51 @@ sysctl --system
 
 
 # 卸载旧版本
-sudo apt-get remove -y containerd.io runc
+sudo apt-get remove -y docker-ce docker-ce-cli containerd.io
 # 安装 containerd
 #yum install -y containerd.io-1.4.12
-sudo apt-get install -y containerd.io
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
-mkdir -p /etc/containerd
-containerd config default > /etc/containerd/config.toml
+cp /usr/share/bash-completion/completions/docker /etc/bash_completion.d/
+mkdir  /etc/docker
+cat >> /etc/docker/daemon.json <<EOF
+{
+  "data-root": "/var/lib/docker",
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "200m",
+    "max-file": "5"
+  },
+  "default-ulimits": {
+    "nofile": {
+      "Name": "nofile",
+      "Hard": 655360,
+      "Soft": 655360
+    },
+    "nproc": {
+      "Name": "nproc",
+      "Hard": 655360,
+      "Soft": 655360
+    }
+  },
+  "live-restore": true,
+  "oom-score-adjust": -1000,
+  "max-concurrent-downloads": 10,
+  "max-concurrent-uploads": 10,
+  "storage-driver": "overlay2",
+  "storage-opts": ["overlay2.override_kernel_check=true"],
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "registry-mirrors": [
+    "https://mirror.ccs.tencentyun.com/"
+  ]
+}
+EOF
 
-image_aliyun='registry.cn-hangzhou.aliyuncs.com'
+systemctl enable --now docker
 
-sed -i "s#k8s.gcr.io#$image_aliyun/google_containers#g"  /etc/containerd/config.toml
-sed -i '/containerd.runtimes.runc.options/a\ \ \ \ \ \ \ \ \ \ \ \ SystemdCgroup = true' /etc/containerd/config.toml
-sed -i "s#https://registry-1.docker.io#${REGISTRY_MIRROR}#g"  /etc/containerd/config.toml
+# sed -i 's|#oom_score = 0|oom_score = -999|' /etc/containerd/config.toml
 
-#registry_mirrors=${REGISTRY_MIRROR}
-#arr=(${registry_mirrors//\:\/\// })
-#echo ${arr[1]}
-# 私有仓库也加入代理
-mirrors2=$(echo ${REGISTRY_MIRROR} | awk -F '://' '{ print $2}' )
-
-# sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ \ \ endpoint = [\"http://192.168.8.71:29108\"]"  /etc/containerd/config.toml
-# sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ [plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"192.168.8.71:29108\"]"  /etc/containerd/config.toml
-
-# 这些都需要加入私有仓库nexus
-arr=('quay.io' "$image_aliyun" "$mirrors2")
-for i in "${!arr[@]}"; do
-    sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ \ \ endpoint = [\"${REGISTRY_MIRROR}\"]"  /etc/containerd/config.toml
-    sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ [plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"${arr[i]}\"]"  /etc/containerd/config.toml
-done
+# systemctl enable --now containerd
 
 #sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ \ \ endpoint = [\"${REGISTRY_MIRROR}\"]"  /etc/containerd/config.toml
 #sed -i "/registry.mirrors]/a\ \ \ \ \ \ \ \ [plugins.\"io.containerd.grpc.v1.cri\".registry.mirrors.\"registry.aliyuncs.com\"]"  /etc/containerd/config.toml
@@ -109,8 +125,7 @@ done
 
 
 systemctl daemon-reload
-systemctl enable containerd
-systemctl restart containerd
+systemctl restart docker
 
 # 安装 crictl
 #CRICTL_VERSION="v1.20.0"
@@ -168,12 +183,12 @@ sudo apt-get remove -y kubelet kubeadm kubectl  --allow-change-held-packages
 sudo apt-get install -y kubelet=${k8s_version} kubeadm=${k8s_version} kubectl=${k8s_version} --allow-change-held-packages
 #sudo apt-mark hold kubelet kubeadm kubectl
 
-crictl config runtime-endpoint unix:///run/containerd/containerd.sock
+#crictl config runtime-endpoint unix:///run/containerd/containerd.sock
 
 # 重启 docker，并启动 kubelet
 systemctl daemon-reload
 systemctl enable kubelet && systemctl start kubelet 
 
 containerd --version
-crictl -v
+docker -v
 kubelet --version
