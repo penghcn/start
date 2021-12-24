@@ -66,8 +66,6 @@ echo "初始化 Master 节点"
 kubeadm init --config=kubeadm-config.yaml --upload-certs
 
 # 配置 kubectl
-rm -rf /root/.kube/
-mkdir /root/.kube/
 cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
 # 安装 calico 网络插件
