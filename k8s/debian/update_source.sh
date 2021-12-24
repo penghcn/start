@@ -13,10 +13,10 @@ url_debian_sec=$repo_base_url/repository/debian-buster-sec
 url_debian_docker_ce=$repo_base_url/repository/debian-docker-ce
 url_debian_k8s=$repo_base_url/repository/debian-k8s
 
-url_debian=http://mirrors.aliyun.com/debian
-url_debian_sec=http://mirrors.aliyun.com/debian-security
-url_debian_docker_ce=http://mirrors.aliyun.com/docker-ce/linux/debian/
-url_debian_k8s=http://mirrors.aliyun.com/kubernetes/apt/
+# url_debian=http://mirrors.aliyun.com/debian
+# url_debian_sec=http://mirrors.aliyun.com/debian-security
+# url_debian_docker_ce=http://mirrors.aliyun.com/docker-ce/linux/debian/
+# url_debian_k8s=http://mirrors.aliyun.com/kubernetes/apt/
 
 # 安装基本设施
 sudo apt-get install -y apt-transport-https ca-certificates curl
@@ -67,4 +67,4 @@ cat > /etc/apt/sources.list.d/kubernetes.list <<EOF
 deb $url_debian_k8s/ kubernetes-xenial main
 EOF
 
-sudo apt-get update
+

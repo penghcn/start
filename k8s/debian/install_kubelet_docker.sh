@@ -72,13 +72,15 @@ sysctl --system
 
 
 # 卸载旧版本
-sudo apt-get remove -y docker-ce docker-ce-cli containerd.io
+sudo apt-get remove -y  docker docker-engine docker.io containerd runc containerd.io
+
 # 安装 containerd
 #yum install -y containerd.io-1.4.12
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 cp /usr/share/bash-completion/completions/docker /etc/bash_completion.d/
 mkdir  /etc/docker
+> /etc/docker/daemon.json
 cat >> /etc/docker/daemon.json <<EOF
 {
   "data-root": "/var/lib/docker",
@@ -107,12 +109,18 @@ cat >> /etc/docker/daemon.json <<EOF
   "storage-opts": ["overlay2.override_kernel_check=true"],
   "exec-opts": ["native.cgroupdriver=systemd"],
   "registry-mirrors": [
-    "https://mirror.ccs.tencentyun.com/"
+    "https://mirror.ccs.tencentyun.com/",
+    "http://docker.mirrors.ustc.edu.cn"
+  ],
+  "insecure-registries" : [
+    "mirror.ccs.tencentyun.com",
+    "docker.mirrors.ustc.edu.cn"
   ]
 }
 EOF
 
-systemctl enable --now docker
+
+systemctl enable docker
 
 # sed -i 's|#oom_score = 0|oom_score = -999|' /etc/containerd/config.toml
 

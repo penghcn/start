@@ -28,15 +28,8 @@ apt-get install -y ipvsadm ipset sysstat conntrack libseccomp2
 
 # 开机自启动加载ipvs内核
 > /etc/modules-load.d/ipvs.conf
-module=(
-ip_vs
-ip_vs_rr
-ip_vs_wrr
-ip_vs_sh
-nf_conntrack
-br_netfilter
-)
-for kernel_module in ${module[@]};do
+#module=(ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh nf_conntrack br_netfilter)
+for kernel_module in ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh nf_conntrack br_netfilter;do
     /sbin/modinfo -F filename $kernel_module |& grep -qv ERROR && echo $kernel_module >> /etc/modules-load.d/ipvs.conf || :
 done
 # systemctl enable --now systemd-modules-load.service
@@ -161,18 +154,22 @@ sudo sysctl --system
 ## --------------------------
 
 # 卸载旧版本
-sudo apt-get remove -y kubelet kubeadm kubectl  --allow-change-held-packages
+
+sudo apt remove -y --purge kubelet kubeadm kubectl  kubernetes-cni --allow-change-held-packages
 
 # 安装kubelet、kubeadm、kubectl
 # 将 $k8s_version 替换为 kubernetes 版本号，例如 1.22.4-00
 sudo apt-get install -y kubelet=${k8s_version} kubeadm=${k8s_version} kubectl=${k8s_version} --allow-change-held-packages
 #sudo apt-mark hold kubelet kubeadm kubectl
 
+cat /usr/lib/systemd/system/kubelet.service.d/*
+cat /etc/systemd/system/kubelet.service.d/*
+
 crictl config runtime-endpoint unix:///run/containerd/containerd.sock
 
 # 重启 docker，并启动 kubelet
 systemctl daemon-reload
-systemctl enable kubelet && systemctl start kubelet 
+systemctl enable kubelet && systemctl restart kubelet 
 
 containerd --version
 crictl -v
