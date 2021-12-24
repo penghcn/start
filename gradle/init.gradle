@@ -215,7 +215,7 @@ allprojects {
         fuiou_ds_log_version            = '0.0.3'//com.fuiou.ds:ds-log-api:$fuiou_ds_log_version
         fuiou_ds_stock_version          = '1.0.4'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
         fuiou_ds_pos_apply_version      = '1.0.8'
-        fuiou_ds_repair_version         = '1.0.9'//com.fuiou.ds:ds-repair-api:$fuiou_ds_repair_version
+        fuiou_ds_repair_version         = '1.0.10'//com.fuiou.ds:ds-repair-api:$fuiou_ds_repair_version
         fuiou_ds_work_wx_version        = '1.0.0'
 
         fusjb_boot_version              = '1.1.11.8'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
