@@ -49,18 +49,18 @@ allprojects {
         jvm_version_8                   = 1.8
 
         servlet_version                 = '4.0.1'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
-        tomcat_version                  = '8.5.73' //org.apache.tomcat.embed:tomcat-embed-core:$tomcat_version
+        tomcat_version                  = '9.0.56' //org.apache.tomcat.embed:tomcat-embed-core:$tomcat_version
         jetty_version                   = '9.4.44.v20210927' //org.eclipse.jetty:jetty-servlet:$jetty_version
 
         disruptor_version               = '3.4.4'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.9.3'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
         guava_version                   = '19.0'//com.google.guava:guava:$guava_version
-        guava_version_jdk8              = '30.1.1-jre'//com.google.guava:guava:$guava_version_jdk8
+        guava_version_jdk8              = '31.0.1-jre'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.13.1'// 4.13 //testCompile "junit:junit:$junit_version"
         junit5_version                  = '5.7.2' // org.junit:junit-bom:$junit5_version
-        log4j2_version                  = '2.3'//2.4+ requires jdk1.7 
-        log4j2_version_jdk6             = '2.3'//
-        log4j2_version_jdk8             = '2.17.0'//org.apache.logging.log4j:log4j-core:$log4j2_version_jdk8 2.4+ requires jdk1.7 //http://logging.apache.org/log4j/2.x/maven-artifacts.html
+        log4j2_version                  = '2.17.1'//requires jdk1.8+ 
+        log4j2_version_jdk6             = '2.3.2'//
+        log4j2_version_jdk8             = '2.17.1'//org.apache.logging.log4j:log4j-core:$log4j2_version_jdk8
         slf4j_version                   = '1.7.32'//org.slf4j:slf4j-api:$slf4j_version
 
         commons_fileupload_version      = '1.4'//commons-fileupload:commons-fileupload:$commons_fileupload_version
