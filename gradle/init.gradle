@@ -215,7 +215,7 @@ allprojects {
         fuiou_fed_bridge_version        = '1.0.5'//com.fuiou.ds:fed-bridge-dubbo-api:$fuiou_fed_bridge_version
         fuiou_ds_log_version            = '0.0.3'//com.fuiou.ds:ds-log-api:$fuiou_ds_log_version
         fuiou_ds_stock_version          = '1.0.4'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
-        fuiou_ds_pos_apply_version      = '2.1.0'
+        fuiou_ds_pos_apply_version      = '2.1.1'
         fuiou_ds_repair_version         = '1.0.34'//com.fuiou.ds:ds-repair-api:$fuiou_ds_repair_version
         fuiou_ds_work_wx_version        = '1.0.0'
 
