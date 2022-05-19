@@ -204,7 +204,7 @@ allprojects {
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
         //fuiou_ds_lottery_version        = '0.3.8'
         fuiou_ds_rock_version           = '2.3.5'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
-        fuiou_ds_proxy_version          = '1.4.28'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
+        fuiou_ds_proxy_version          = '1.4.29'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
         fuiou_opr_event_version         = '3.2.10'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '1.1.5'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
