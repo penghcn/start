@@ -24,6 +24,7 @@ sudo apt-get install -y apt-transport-https ca-certificates curl
 # 配置debian源
 # http://mirrors.aliyun.com/debian
 # http://mirrors.aliyun.com/debian-security
+
 mv /etc/apt/sources.list{,.bak}
 cat > /etc/apt/sources.list <<EOF
 deb $url_debian buster main contrib non-free
@@ -37,6 +38,20 @@ deb $url_debian buster-backports main
 deb $url_debian_sec/ buster/updates main contrib non-free
 deb-src $url_debian_sec/ buster/updates main contrib non-free
 EOF
+
+# debian 11
+# cat > /etc/apt/sources.list <<EOF
+# deb http://mirrors.aliyun.com/debian bullseye main contrib non-free
+# deb-src http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
+
+# deb http://mirrors.aliyun.com/debian bullseye-updates main contrib non-free
+# deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
+
+# deb http://mirrors.aliyun.com/debian bullseye-backports main
+
+# deb http://mirrors.aliyun.com/debian-security bullseye/updates main contrib non-free
+# deb-src http://mirrors.aliyun.com/debian-security bullseye/updates main contrib non-free
+# EOF
 
 sudo apt-get update
 
