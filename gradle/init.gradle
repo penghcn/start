@@ -200,7 +200,7 @@ allprojects {
         fuiou_dmkt_dispatch_version     = '2.0.2'//com.fuiou.ds:dmkt-dispatch-api:$fuiou_dmkt_dispatch_version
         fuiou_ds_fedqry_version         = '1.7.5'//com.fuiou.ds:sjb-fedqry-dubbo:$fuiou_ds_fedqry_version
         fuiou_ds_flyqry_version         = '1.7.2'//com.fuiou.ds:sjb-flyqry-dubbo:$fuiou_ds_flyqry_version
-        fuiou_ds_trigger_version        = '2.6.4'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
+        fuiou_ds_trigger_version        = '2.6.6'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
         //fuiou_ds_lottery_version        = '0.3.8'
@@ -209,7 +209,7 @@ allprojects {
         fuiou_opr_event_version         = '3.2.12'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '1.1.5'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
-        fuiou_ds_market_version         = '1.8.7'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
+        fuiou_ds_market_version         = '1.8.9'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
         fuiou_ds_pkg_version            = '1.1.9'//com.fuiou.ds:ds-pkg-api:$fuiou_ds_pkg_version
         fuiou_warn_version              = '1.0.1'//com.fuiou:fuiou-warn-client:$fuiou_warn_version
         fuiou_ds_fed_qry_dubbo_version  = '1.9.0'//com.fuiou.ds:fed_qry_dubbo:fuiou_ds_fed_qry_dubbo_version
