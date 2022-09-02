@@ -54,7 +54,8 @@
     # https://gitlab.com/gitlab-org/gitlab/-/tags
     # https://docs.gitlab.com/ee/update/index.html#upgrade-paths
     # ... 12.0.12 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.9.4 -> 13.12.12
-    #  -> 13.12.15 -> 14.0.12 -> 14.3.6 -> 14.9.5 -> 14.10.5 -> 15.0.4 -> latest 15.Y.Z
+    #  -> 13.12.15 -> 14.0.12 -> 14.3.6 -> 14.9.5 -> 14.10.5
+    #  -> 15.0.2 -> 15.1.6 -> 15.4.0 -> latest 15.Y.Z
     touch /etc/gitlab/skip-auto-reconfigure
     yum install -y gitlab-ee-12.10.14-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
@@ -104,12 +105,12 @@
     gitlab-rake db:migrate
 
     yum update 
-    yum install -y gitlab-ee-15.0.4-ee.0.el7.x86_64
+    yum install -y gitlab-ee-15.0.2-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
 
     yum update 
-    yum install -y gitlab-ee-15.1.2-ee.0.el7.x86_64
+    yum install -y gitlab-ee-15.1.6-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
 
