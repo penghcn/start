@@ -82,8 +82,8 @@ allprojects {
         jackson_version                 = '2.12.7'//
         gson_version                    = '2.9.1'//com.google.code.gson:gson:$gson_version
         fastjson_version                = '1.2.76'//com.alibaba:fastjson:$fastjson_version
-        fastjson_version                = '1.2.83_noneautotype'//com.alibaba:fastjson:$fastjson_version
-        //fastjson_version                = '2.0.8'//com.alibaba:fastjson:$fastjson_version
+        //fastjson_version                = '1.2.83_noneautotype'//com.alibaba:fastjson:$fastjson_version
+        //fastjson_version                = '2.0.14'//com.alibaba:fastjson:$fastjson_version
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
 
 
