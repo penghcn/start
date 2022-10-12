@@ -212,7 +212,7 @@ allprojects {
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '1.1.6'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
         fuiou_ds_market_version         = '1.9.0'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
-        fuiou_ds_pkg_version            = '1.2.3'//com.fuiou.ds:ds-pkg-api:$fuiou_ds_pkg_version
+        fuiou_ds_pkg_version            = '1.2.5'//com.fuiou.ds:ds-pkg-api:$fuiou_ds_pkg_version
         fuiou_warn_version              = '1.0.1'//com.fuiou:fuiou-warn-client:$fuiou_warn_version
         fuiou_ds_fed_qry_dubbo_version  = '1.9.0'//com.fuiou.ds:fed_qry_dubbo:fuiou_ds_fed_qry_dubbo_version
         fuiou_fed_bridge_version        = '1.2.0'//com.fuiou.ds:fed-bridge-dubbo-api:$fuiou_fed_bridge_version
