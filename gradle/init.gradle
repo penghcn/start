@@ -149,7 +149,7 @@ allprojects {
         mina_version                    = '1.1.7'//
         kryo_version                    = '5.2.1' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
-        hessian_lite_version            = '3.2.12' //com.alibaba:hessian-lite:$dubbo_hessian_version
+        hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$dubbo_hessian_version
 
         rabbitmq_version                = '5.15.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
