@@ -77,7 +77,7 @@ allprojects {
         joda_version                    = '2.10' //joda-time:joda-time:$joda_version
         pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
-        xstream_version                 = '1.4.19'//com.thoughtworks.xstream:xstream:$xstream_version
+        xstream_version                 = '1.4.20'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.12.7'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
         jackson_version                 = '2.12.7'//
         gson_version                    = '2.9.1'//com.google.code.gson:gson:$gson_version
