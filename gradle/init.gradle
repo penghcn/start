@@ -49,8 +49,8 @@ allprojects {
         jvm_version_8                   = 1.8
 
         servlet_version                 = '4.0.1'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
-        tomcat_version                  = '9.0.56' //org.apache.tomcat.embed:tomcat-embed-core:$tomcat_version
-        jetty_version                   = '9.4.44.v20210927' //org.eclipse.jetty:jetty-servlet:$jetty_version
+        tomcat_version                  = '9.0.69' //org.apache.tomcat.embed:tomcat-embed-core:$tomcat_version
+        jetty_version                   = '9.4.51.v20230217' //org.eclipse.jetty:jetty-servlet:$jetty_version
 
         disruptor_version               = '3.4.4'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.9.3'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
@@ -87,13 +87,13 @@ allprojects {
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
 
 
-        spring_version                  = '5.3.23'//org.springframework:spring-core:$spring_version
-        spring_version_52               = '5.2.22.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
+        spring_version                  = '5.3.26'//org.springframework:spring-core:$spring_version
+        spring_version_52               = '5.2.23.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
         spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
 
-        spring_boot_version             = '2.6.9'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_boot_version             = '2.6.14'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_dependency_version       = '1.0.11.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
         spring_data_version             = '2.3.9.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
@@ -103,7 +103,7 @@ allprojects {
         spring_session_version          = '2.6.0'// org.springframework.session:spring-session-core:$spring_session_version
         spring_kafka_version            = '2.8.0'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '3.9.0'//redis.clients:jedis:$jedis_version
-        redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
+        redisson_version                = '3.20.0'//org.redisson:redisson:$redisson_version
         jboss_marshalling_version       = '2.0.12.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
         struts_version                  = '2.5.30'//
@@ -121,7 +121,7 @@ allprojects {
 
         mysql_connector_version         = '5.1.49'//6.0.6 requires jdk1.8
         mysql_connector_version_jdk6    = '5.1.49'//
-        mysql_connector_version_jdk8    = '8.0.30'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
+        mysql_connector_version_jdk8    = '8.0.32'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
         sqlite_jdbc_version             = '3.39.3.0'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
         db2_jdbc_version                = '10.1'// com.ibm.db2.jcc:db2jcc:$db2_jdbc_version com.ibm.db2.jcc:db2jcc_license_cu:$db2_jdbc_version
         clickhouse_jdbc_version         = '0.3.2-patch11'// com.clickhouse:clickhouse-jdbc:$clickhouse_jdbc_version
@@ -151,7 +151,7 @@ allprojects {
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
         hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$dubbo_hessian_version
 
-        rabbitmq_version                = '5.15.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        rabbitmq_version                = '5.16.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
         kafka_version                   = '2.8.1'//org.apache.kafka:kafka_2.12:$kafka_version
         canal_version                   = '1.1.6'//com.alibaba.otter:canal:$canal_version
