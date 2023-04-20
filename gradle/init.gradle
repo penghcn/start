@@ -124,7 +124,7 @@ allprojects {
         mysql_connector_version_jdk8    = '8.0.32'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
         sqlite_jdbc_version             = '3.39.3.0'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
         db2_jdbc_version                = '10.1'// com.ibm.db2.jcc:db2jcc:$db2_jdbc_version com.ibm.db2.jcc:db2jcc_license_cu:$db2_jdbc_version
-        clickhouse_jdbc_version         = '0.4.4'// com.clickhouse:clickhouse-jdbc:$clickhouse_jdbc_version
+        clickhouse_jdbc_version         = '0.4.0'// com.clickhouse:clickhouse-jdbc:$clickhouse_jdbc_version
 
         httpclient_version              = '4.5.13'//org.apache.httpcomponents:httpclient:$httpclient_version org.apache.httpcomponents:httpmime:$httpclient_version
         okhttp_version                  = '3.14.9'//com.squareup.okhttp3:okhttp:$okhttp_version
