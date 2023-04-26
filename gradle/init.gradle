@@ -162,6 +162,8 @@ allprojects {
         excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
         excel_easy_excel_version        = '2.2.11'//com.alibaba:easyexcel:$excel_easy_excel_version
         zxing_version                   = '3.4.0'//com.google.zxing:core:$zxing_version
+        
+        easy_captcha_version            = '1.6.2'//com.github.whvcse:easy-captcha:$easy_captcha_version
 
         alipay_version                  = '4.31.40.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         alibaba_csb_version             = '1.1.5.11'//com.alibaba.csb.sdk:http-client:$alibaba_csb_version
