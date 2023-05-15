@@ -79,8 +79,8 @@ allprojects {
         pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
         xstream_version                 = '1.4.20'//com.thoughtworks.xstream:xstream:$xstream_version
-        jackson_version_jdk8            = '2.12.7.1'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
-        jackson_version                 = '2.12.7.1'//
+        jackson_version_jdk8            = '2.13.4'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
+        jackson_version                 = '2.13.4'//
         gson_version                    = '2.10.1'//com.google.code.gson:gson:$gson_version
         fastjson_version                = '1.2.76'//com.alibaba:fastjson:$fastjson_version
         //fastjson_version                = '1.2.83_noneautotype'//com.alibaba:fastjson:$fastjson_version
