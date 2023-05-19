@@ -55,7 +55,7 @@
     # https://docs.gitlab.com/ee/update/index.html#upgrade-paths
     # ... 12.0.12 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.9.4 -> 13.12.12
     #  -> 13.12.15 -> 14.0.12 -> 14.3.6 -> 14.9.5 -> 14.10.5
-    #  -> 15.0.2 -> 15.1.6 -> 15.4.0 -> latest 15.Y.Z
+    #  -> 15.0.2 -> 15.1.6 -> 15.4.6 -> 15.11.3 -> latest 15.Y.Z
     touch /etc/gitlab/skip-auto-reconfigure
     yum install -y gitlab-ee-12.10.14-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
@@ -114,6 +114,16 @@
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
 
+    yum update 
+    yum install -y gitlab-ee-15.4.6-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
+    yum update 
+    yum install -y gitlab-ee-15.11.3-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
 ## 问题
  1、 `gitlab-ctl status`  发现redis down
     
@@ -121,7 +131,11 @@
 
     gitlab-rake cache:clear
 
-2、访问时返回502，并稍等一下
+2、访问时返回500/502，并稍等一下
+
+    gitlab-ctl restart
+
+    或者
 
     gitlab-ctl reconfigure
 
