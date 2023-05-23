@@ -225,7 +225,7 @@ allprojects {
         fuiou_ds_repair_version         = '1.0.34'//com.fuiou.ds:ds-repair-api:$fuiou_ds_repair_version
         fuiou_ds_work_wx_version        = '1.0.0'
 
-        fusjb_boot_version              = '1.3.8'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.3.9'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
@@ -242,6 +242,12 @@ allprojects {
         REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"
         REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
     }
+
+    // for springboot Customizing Managed Versions
+    // https://docs.spring.io/spring-boot/docs/3.0.1/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.customizing
+    ext['netty.version']                = "$netty_io_version"
+    ext['log4j2.version']               = "$log4j2_version"
+    ext['gson.version']                 = "$gson_version"
 
     configurations.all {
         // check for updates every build
