@@ -43,7 +43,7 @@ settingsEvaluated { settings ->
 allprojects {
     ext {  
         charset                         = 'UTF-8'
-        checkstyle_version              = '8.36.2'
+        checkstyle_version              = '9.3'
 
         jvm_version                     = 1.6
         jvm_version_8                   = 1.8
