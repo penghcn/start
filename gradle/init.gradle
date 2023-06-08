@@ -170,7 +170,7 @@ allprojects {
         aliyun_gateway_version          = '1.1.7' //com.aliyun.api.gateway:sdk-core-java$aliyun_gateway_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
 
-        sentinel_version                = '1.8.4'//com.alibaba.csp:sentinel-apache-dubbo-adapter:$sentinel_version
+        sentinel_version                = '1.8.6'//com.alibaba.csp:sentinel-apache-dubbo-adapter:$sentinel_version
 
         android_sdk_version             = 30 //compileSdkVersion android_sdk_version
         android_sdk_min_version         = 14 //minSdkVersion android_sdk_min_version targetSdkVersion android_sdk_version
