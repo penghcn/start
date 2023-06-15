@@ -109,7 +109,7 @@ allprojects {
         redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
         jboss_marshalling_version       = '2.0.12.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
-        struts_version                  = '2.5.30'//
+        struts_version                  = '2.5.31'//
         //struts_version                  = '2.3.35'//org.apache.struts:struts2-core:$struts_version
 
         hibernate_version               = '5.4.21.Final'//org.hibernate:hibernate-core:$hibernate_version
