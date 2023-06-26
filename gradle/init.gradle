@@ -191,7 +191,7 @@ allprojects {
 
         //fuiou_sms_version               = '1.3.7' //兼容版本1
         //fuiou_sms_version               = '2.0.0' //兼容版本2
-        fuiou_sms_version               = '2.2.0'//com.fuiou.sms:sms-api:$fuiou_sms_version
+        fuiou_sms_version               = '2.2.1'//com.fuiou.sms:sms-api:$fuiou_sms_version
         fuiou_fus_version               = '1.2.3'//com.fuiou:fus-dubbo-client:$fuiou_fus_version
         fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:$fuiou_mail_version
         fuiou_fas_client_version        = '1.3.2'//com.fuiou:fuiou-fas-client:$fuiou_fas_client_version
