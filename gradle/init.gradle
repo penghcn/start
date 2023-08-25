@@ -80,6 +80,7 @@ allprojects {
         joda_version                    = '2.10' //joda-time:joda-time:$joda_version
         pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
+        reflections_version             = '0.9.12'//org.reflections:reflections:$reflections_version
         xstream_version                 = '1.4.20'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.13.5'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
         jackson_version                 = '2.13.5'//
