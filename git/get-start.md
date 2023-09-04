@@ -31,9 +31,11 @@
 先添第一个地址
     
     git remote add origin git@github.com:penghcn/start.git
+    git remote add origin git@192.168.8.251:open/doc.git
 再添第二个地址，更多地址也类似
     
     git remote set-url --add origin git@192.168.8.251:open/doc.git
+    git remote set-url --add origin git@github.com:penghcn/start.git
 提交所有
 
     git push origin --all
