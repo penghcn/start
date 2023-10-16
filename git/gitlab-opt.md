@@ -53,9 +53,11 @@
     # https://docs.gitlab.com/omnibus/update/README.html#zero-downtime-updates
     # https://gitlab.com/gitlab-org/gitlab/-/tags
     # https://docs.gitlab.com/ee/update/index.html#upgrade-paths
-    # ... 12.0.12 -> 12.10.14 -> 13.0.14 -> 13.1.11 -> 13.9.4 -> 13.12.12
-    #  -> 13.12.15 -> 14.0.12 -> 14.3.6 -> 14.9.5 -> 14.10.5
-    #  -> 15.0.2 -> 15.1.6 -> 15.4.6 -> 15.11.3 -> 15.11.8  -> 15.11.12 -> latest 15.Y.Z
+    # ... 12.0.12 -> 12.10.14 
+    #  -> 13.0.14 -> 13.1.11 -> 13.9.4 -> 13.12.12 -> 13.12.15 
+    #  -> 14.0.12 -> 14.3.6 -> 14.9.5 -> 14.10.5
+    #  -> 15.0.2 -> 15.1.6 -> 15.4.6 -> 15.11.3 -> 15.11.8  -> 15.11.12 -> 15.11.13
+    #  -> 16.0.8 -> 16.1   -> 16.2.8 -> latest 16.Y.Z
     touch /etc/gitlab/skip-auto-reconfigure
     yum install -y gitlab-ee-12.10.14-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
@@ -81,50 +83,6 @@
 
 
     yum update 
-    yum install -y gitlab-ee-13.12.15-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-14.0.12-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-14.3.6-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum install -y gitlab-ee-14.9.5-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-14.10.5-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-15.0.2-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-15.1.6-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-15.4.6-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
-    yum install -y gitlab-ee-15.11.3-ee.0.el7.x86_64
-    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
-    gitlab-rake db:migrate
-
-    yum update 
     yum install -y gitlab-ee-15.11.8-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
@@ -133,6 +91,21 @@
     yum install -y gitlab-ee-15.11.12-ee.0.el7.x86_64
     SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
     gitlab-rake db:migrate
+
+    yum update 
+    yum install -y gitlab-ee-15.11.13-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
+    yum update 
+    yum install -y gitlab-ee-16.0.2-ee.0.el7.x86_64
+    SKIP_POST_DEPLOYMENT_MIGRATIONS=true gitlab-ctl reconfigure
+    gitlab-rake db:migrate
+
+    yum update 
+    yum install -y gitlab-ee-16.2.8-ee.0.el7.x86_64
+    gitlab-ctl reconfigure
+    gitlab-ctl restart
 
 ## 问题
  1、 `gitlab-ctl status`  发现redis down
