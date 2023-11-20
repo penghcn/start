@@ -231,7 +231,7 @@ allprojects {
         fuiou_ds_procure_version        = '1.0.5'//com.fuiou.ds:ds-procure-api:$fuiou_ds_procure_version
         fuiou_ds_wxfxl_version          = '1.0.3'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
 
-        fusjb_boot_version              = '1.4.41'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.4.42'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
