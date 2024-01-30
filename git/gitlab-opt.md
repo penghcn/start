@@ -118,6 +118,10 @@
     gitlab-ctl reconfigure
     gitlab-ctl restart
 
+    yum install -y gitlab-ee-16.8.1-ee.0.el7.x86_64
+    gitlab-ctl reconfigure
+    gitlab-ctl restart
+
 
 ## 问题
  1、 `gitlab-ctl status`  发现redis down
