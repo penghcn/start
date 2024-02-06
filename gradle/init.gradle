@@ -230,6 +230,7 @@ allprojects {
         fuiou_ds_4th_version            = '1.0.1'//com.fuiou.ds:ds-4th-api:$fuiou_ds_4th_version
         fuiou_ds_procure_version        = '1.0.5'//com.fuiou.ds:ds-procure-api:$fuiou_ds_procure_version
         fuiou_ds_wxfxl_version          = '1.0.9'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
+        fuiou_fxl_mch_version           = '1.0.0'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
         fusjb_boot_version              = '1.4.47'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
 
