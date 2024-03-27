@@ -159,6 +159,7 @@ allprojects {
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
         kafka_version                   = '2.8.1'//org.apache.kafka:kafka_2.12:$kafka_version
         canal_version                   = '1.1.6'//com.alibaba.otter:canal:$canal_version
+        mqtt_version                    = '1.2.5'//org.eclipse.paho:org.eclipse.paho.client.mqttv3:$mqtt_version
 
         excel_poi_version               = '4.1.2'//org.apache.poi:poi:$excel_poi_version
         excel_jxls_version              = '2.11.0'//org.jxls:jxls:$excel_jxls_version
@@ -232,7 +233,7 @@ allprojects {
         fuiou_ds_wxfxl_version          = '1.1.7'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
-        fusjb_boot_version              = '1.4.51'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.4.52'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
