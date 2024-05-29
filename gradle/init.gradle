@@ -48,7 +48,7 @@ allprojects {
         jvm_version                     = 1.6
         jvm_version_8                   = 1.8
 
-        bcprov_version                  = '1.76'//org.bouncycastle:bcprov-jdk18on:$bcprov_version
+        bcprov_version                  = '1.78.1'//org.bouncycastle:bcprov-jdk18on:$bcprov_version
 
         servlet_version                 = '4.0.1'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
         tomcat_version                  = '9.0.83' //org.apache.tomcat.embed:tomcat-embed-core:$tomcat_version
