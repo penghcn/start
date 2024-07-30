@@ -130,6 +130,8 @@
     gitlab-ctl reconfigure
     gitlab-ctl restart
 
+    wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ee/packages/el/7/gitlab-ee-16.11.6-ee.0.el7.x86_64.rpm/download.rpm  --no-check-certificate
+    rpm -i gitlab-ee-17.2.0-ee.0.el7.x86_64.rpm
     yum install -y gitlab-ee-16.11.6-ee.0.el7.x86_64
     gitlab-ctl reconfigure
     gitlab-ctl restart
