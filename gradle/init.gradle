@@ -96,6 +96,7 @@ allprojects {
 
         spring_version                  = '5.3.36'//org.springframework:spring-core:$spring_version
         spring_version_52               = '5.2.25.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
+        spring_version_61               = '6.1.12'//jdk21+ org.springframework:spring-core:$spring_version_61
         spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
