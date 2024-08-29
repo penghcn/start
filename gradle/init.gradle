@@ -102,7 +102,7 @@ allprojects {
 
         //spring_boot_version             = '2.6.15'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_boot_version             = '2.7.18'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
-        spring_boot_version3            = '3.3.0'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_boot_version3            = '3.3.3'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_dependency_version       = '1.0.15.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
         spring_data_version             = '2.3.9.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
@@ -238,6 +238,7 @@ allprojects {
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
         fusjb_boot_version              = '1.4.67'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version3             = '3.4.67'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
