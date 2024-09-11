@@ -86,12 +86,13 @@ allprojects {
         reflections_version             = '0.9.12'//org.reflections:reflections:$reflections_version
         xstream_version                 = '1.4.20'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.13.5'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
-        jackson_version                 = '2.13.5'//
+        jackson_version                 = '2.17.2'//
         gson_version                    = '2.10.1'//com.google.code.gson:gson:$gson_version
         fastjson_version                = '1.2.76'//com.alibaba:fastjson:$fastjson_version
         //fastjson_version                = '1.2.83_noneautotype'//com.alibaba:fastjson:$fastjson_version
         //fastjson_version                = '2.0.14'//com.alibaba:fastjson:$fastjson_version
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
+        snakeyaml_version               = '2.3'//org.yaml:snakeyaml:$snakeyaml_version
 
 
         spring_version                  = '5.3.36'//org.springframework:spring-core:$spring_version
@@ -150,14 +151,16 @@ allprojects {
         dubbo_apache_version3           = '3.2.15'//org.apache.dubbo:dubbo:$dubbo_apache_version
         alibaba_spring_version          = '1.0.11'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
         curator_version                 = '4.2.0'
-        zookeeper_version               = '3.6.2'//org.apache.zookeeper:zookeeper:$zookeeper_version
+        curator_version5                = '5.1.0'
         zookeeper_version               = '3.4.14'//目前curator只适配3.4.X
+        zookeeper_version9              = '3.9.2'//org.apache.zookeeper:zookeeper:$zookeeper_version
         zkclient_version                = '0.10'
         javassist_version               = '3.20.0-GA'
         netty_version                   = '3.2.10.Final'//org.jboss.netty:netty:$netty_version
         //netty_version                   = '3.7.0.Final'//jboss netty
         netty_io_version                = '4.1.68.Final'//io.netty:netty-all:$netty_io_version
         protobuf_version                = '3.22.5'//com.google.protobuf:protobuf-java:$protobuf_version
+        protobuf_version                = '4.28.0'//com.google.protobuf:protobuf-java:$protobuf_version
         mina_version                    = '1.1.7'//
         kryo_version                    = '5.2.1' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
