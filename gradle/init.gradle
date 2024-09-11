@@ -60,9 +60,9 @@ allprojects {
         disruptor_version               = '3.4.4'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.9.3'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
         guava_version                   = '19.0'//com.google.guava:guava:$guava_version
-        guava_version_jdk8              = '31.1-jre'//com.google.guava:guava:$guava_version_jdk8
+        guava_version_jdk8              = '33.3.0-jre'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.13.2'// 4.13 //testCompile "junit:junit:$junit_version"
-        junit5_version                  = '5.10.0' // org.junit:junit-bom:$junit5_version org.junit.jupiter:junit-jupiter-api:$junit5_version
+        junit5_version                  = '5.11.0' // org.junit:junit-bom:$junit5_version org.junit.jupiter:junit-jupiter-api:$junit5_version
         log4j2_version                  = '2.24.0'//requires jdk1.8+ 
         log4j2_version_jdk6             = '2.3.2'//
         log4j2_version_jdk8             = '2.24.0'//org.apache.logging.log4j:log4j-core:$log4j2_version_jdk8
@@ -88,7 +88,7 @@ allprojects {
         xstream_version                 = '1.4.20'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.13.5'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
         jackson_version                 = '2.17.2'//
-        gson_version                    = '2.10.1'//com.google.code.gson:gson:$gson_version
+        gson_version                    = '2.11.0'//com.google.code.gson:gson:$gson_version
         fastjson_version                = '1.2.76'//com.alibaba:fastjson:$fastjson_version
         fastjson_version2               = '2.0.52'//com.alibaba.fastjson2:fastjson2:$fastjson_version2
         jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
@@ -118,8 +118,9 @@ allprojects {
         spring_session_version          = '2.6.0'// org.springframework.session:spring-session-core:$spring_session_version
         spring_kafka_version            = '3.2.3'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '3.9.0'//redis.clients:jedis:$jedis_version
-        redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
-        jboss_marshalling_version       = '2.0.12.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
+        jedis_version5                  = '5.1.5'//redis.clients:jedis:$jedis_version
+        redisson_version                = '3.36.0'//org.redisson:redisson:$redisson_version
+        jboss_marshalling_version       = '2.2.1.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
         struts_version                  = '2.5.33'//org.apache.struts:struts2-core:$struts_version
 
@@ -136,8 +137,8 @@ allprojects {
         hikaricp_version                = '4.0.3'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
         hikaricp_version5               = '5.1.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
 
-        mysql_connector_version         = '5.1.49'//6.0.6 requires jdk1.8
-        mysql_connector_version_jdk6    = '5.1.49'//
+        mysql_connector_version         = '9.0.0'// com.mysql:mysql-connector-j:9.0.0
+        mysql_connector_version_jdk6    = '5.1.49'//6.0.6 requires jdk1.8
         mysql_connector_version_jdk8    = '8.0.33'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
         sqlite_jdbc_version             = '3.39.3.0'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
         db2_jdbc_version                = '10.1'// com.ibm.db2.jcc:db2jcc:$db2_jdbc_version com.ibm.db2.jcc:db2jcc_license_cu:$db2_jdbc_version
@@ -170,9 +171,10 @@ allprojects {
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
         hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$dubbo_hessian_version
 
-        rabbitmq_version                = '5.16.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        rabbitmq_version                = '5.21.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
-        kafka_version                   = '2.8.1'//org.apache.kafka:kafka_2.12:$kafka_version
+        kafka_version                   = '2.8.1'//org.apache.kafka:kafka_2.12:$kafka_version org.apache.kafka:kafka_2.13:3.8.0
+        kafka_version3                  = '3.8.0'//org.apache.kafka:kafka_2.13:$kafka_version3
         canal_version                   = '1.1.6'//com.alibaba.otter:canal:$canal_version
         mqtt_version                    = '1.2.5'//org.eclipse.paho:org.eclipse.paho.client.mqttv3:$mqtt_version
 
