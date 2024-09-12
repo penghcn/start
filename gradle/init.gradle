@@ -63,11 +63,11 @@ allprojects {
         guava_version_jdk8              = '33.3.0-jre'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.13.2'// 4.13 //testCompile "junit:junit:$junit_version"
         junit5_version                  = '5.11.0' // org.junit:junit-bom:$junit5_version org.junit.jupiter:junit-jupiter-api:$junit5_version
-        log4j2_version                  = '2.24.0'//requires jdk1.8+ 
+        log4j2_version                  = '2.23.0'//requires jdk1.8+ 
         log4j2_version_jdk6             = '2.3.2'//
-        log4j2_version_jdk8             = '2.24.0'//org.apache.logging.log4j:log4j-core:$log4j2_version_jdk8
+        log4j2_version_jdk8             = '2.20.0'//org.apache.logging.log4j:log4j-core:$log4j2_version_jdk8
         slf4j_version                   = '1.7.36'//org.slf4j:slf4j-api:$slf4j_version
-        slf4j_version                   = '2.0.16'//org.slf4j:slf4j-api:$slf4j_version
+        //slf4j_version                   = '2.0.16'//org.slf4j:slf4j-api:$slf4j_version
 
         commons_fileupload_version      = '1.4'//commons-fileupload:commons-fileupload:$commons_fileupload_version
         commons_codec_version           = '1.15'//commons-codec:commons-codec:$commons_codec_version
@@ -254,7 +254,7 @@ allprojects {
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
         fusjb_boot_version              = '1.4.67'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
-        fusjb_boot_version3             = '3.4.67.3'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
+        fusjb_boot_version3             = '3.4.67.12'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
@@ -277,8 +277,14 @@ allprojects {
     ext['netty.version']                = "$netty_io_version"
     ext['log4j2.version']               = "$log4j2_version"
     ext['gson.version']                 = "$gson_version"
+    //ext['tcnative.version']             = "$netty_io_version"
+
+    
 
     configurations.all {
+        //
+        exclude group: 'ch.qos.logback'
+
         // check for updates every build
         resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
         resolutionStrategy.cacheChangingModulesFor 4, 'hours'
@@ -359,11 +365,11 @@ allprojects {
         enabled = false
     }
 
-    tasks.withType(JavaCompile) {
-        options.compilerArgs += [/*'-verbose', */'-Xdoclint:none', '-Xlint:deprecation', '-nowarn']
-        sourceCompatibility = jvm_version_8
-        targetCompatibility = jvm_version_8
-    }
+    // tasks.withType(JavaCompile) {
+    //     options.compilerArgs += [/*'-verbose', */'-Xdoclint:none', '-Xlint:deprecation', '-nowarn']
+    //     sourceCompatibility = jvm_version_8
+    //     targetCompatibility = jvm_version_8
+    // }
 }
 
 def getLocalIp() {
