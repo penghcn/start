@@ -119,7 +119,7 @@ allprojects {
         spring_kafka_version            = '3.2.3'//org.springframework.kafka:spring-kafka:$spring_kafka_version
         jedis_version                   = '3.9.0'//redis.clients:jedis:$jedis_version
         jedis_version5                  = '5.1.5'//redis.clients:jedis:$jedis_version
-        redisson_version                = '3.36.0'//org.redisson:redisson:$redisson_version
+        redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
         jboss_marshalling_version       = '2.2.1.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
         struts_version                  = '2.5.33'//org.apache.struts:struts2-core:$struts_version
