@@ -170,7 +170,8 @@ allprojects {
         mina_version                    = '1.1.7'//
         kryo_version                    = '5.2.1' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
-        hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$dubbo_hessian_version
+        hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$hessian_lite_version
+        hessian_lite_version4           = '4.0.3' //org.apache.dubbo:hessian-lite:$hessian_lite_version4
 
         rabbitmq_version                = '5.21.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
@@ -255,7 +256,7 @@ allprojects {
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
         fusjb_boot_version              = '1.4.67'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
-        fusjb_boot_version3             = '3.4.67.21'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
+        fusjb_boot_version3             = '3.4.67.22'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
