@@ -153,7 +153,7 @@ allprojects {
         //dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
-        dubbo_apache_version3           = '3.2.15'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        dubbo_apache_version3           = '3.3.0'//org.apache.dubbo:dubbo:$dubbo_apache_version
         alibaba_spring_version          = '1.0.11'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
         curator_version                 = '4.2.0'
         curator_version5                = '5.1.0'
@@ -275,7 +275,7 @@ allprojects {
 
     // for springboot Customizing Managed Versions
     // https://docs.spring.io/spring-boot/docs/3.0.1/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.customizing
-    ext['netty.version']                = "$netty_io_version"
+    //ext['netty.version']                = "$netty_io_version"
     ext['log4j2.version']               = "$log4j2_version"
     //ext['slf4j.version']                = "$slf4j_version"
     ext['gson.version']                 = "$gson_version"
