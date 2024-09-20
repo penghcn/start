@@ -60,7 +60,7 @@ allprojects {
         disruptor_version               = '3.4.4'//com.lmax:disruptor:$disruptor_version
         caffeine_version                = '2.9.3'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
         guava_version                   = '19.0'//com.google.guava:guava:$guava_version
-        guava_version_jdk8              = '33.3.0-jre'//com.google.guava:guava:$guava_version_jdk8
+        guava_version_jdk8              = '31.1-jre'//com.google.guava:guava:$guava_version_jdk8
         junit_version                   = '4.13.2'// 4.13 //testCompile "junit:junit:$junit_version"
         junit5_version                  = '5.11.0' // org.junit:junit-bom:$junit5_version org.junit.jupiter:junit-jupiter-api:$junit5_version
         log4j2_version                  = '2.24.0'//requires jdk1.8+ 
