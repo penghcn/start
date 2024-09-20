@@ -33,6 +33,30 @@
     gitlab-rake gitlab:backup:restore BACKUP=1569390992_2019_09_25_12.3.1-ee
     gitlab-rake gitlab:backup:restore BACKUP=1615896882_2021_03_16_12.3.1-ee
 
+    ## 降级到16.11.6
+    gitlab-ctl stop
+    gitlab-ctl uninstall # /root/gitlab-cleanse-2024-09-19T14:05.
+    yum remove -y gitlab-ee
+    yum install -y gitlab-ee-16.11.6-ee.0.el7.x86_64
+    gitlab-rake gitlab:backup:restore BACKUP=1721724542_2024_07_23_16.11.6-ee
+
+    gitlab-ctl reconfigure
+    gitlab-ctl restart
+
+    https://docs.gitlab.com/omnibus/settings/database.html#upgrade-packaged-postgresql-server
+
+    ##
+    curl http://192.168.8.251/api/v4/users?username=root
+
+    gitlab-rails console production
+    user = User.where(id: 1).first
+    user.password='GL@123567'
+    user.password_confirmation='GL@123567'
+    user.save!
+    quit
+
+    
+
 ## 安装、卸载、升级
     ## 查看版本
     cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
@@ -181,6 +205,8 @@
     insert into schema_migrations VALUES (20210306121310);
     insert into schema_migrations VALUES (20210326121537);
     insert into schema_migrations VALUES (20210413130011);
+
+    ALTER TABLE "application_settings" DROP COLUMN "service_ping_settings" 
 
 
 
