@@ -77,6 +77,7 @@
     # https://docs.gitlab.com/omnibus/update/README.html#zero-downtime-updates
     # https://gitlab.com/gitlab-org/gitlab/-/tags
     # https://docs.gitlab.com/ee/update/index.html#upgrade-paths
+    # https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/?current=16.11.6&target=17.3.3&distro=centos
     # ... 12.0.12 -> 12.10.14 
     #  -> 13.0.14 -> 13.1.11 -> 13.9.4 -> 13.12.12 -> 13.12.15 
     #  -> 14.0.12 -> 14.3.6 -> 14.9.5 -> 14.10.5
