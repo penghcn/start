@@ -120,6 +120,7 @@ allprojects {
         jedis_version                   = '3.9.0'//redis.clients:jedis:$jedis_version
         jedis_version5                  = '5.1.5'//redis.clients:jedis:$jedis_version
         redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
+        redisson_version3               = '3.37.0'//org.redisson:redisson:$redisson_version
         jboss_marshalling_version       = '2.2.1.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
         struts_version                  = '2.5.33'//org.apache.struts:struts2-core:$struts_version
@@ -164,6 +165,7 @@ allprojects {
         netty_version                   = '3.2.10.Final'//org.jboss.netty:netty:$netty_version
         //netty_version                   = '3.7.0.Final'//jboss netty
         netty_io_version                = '4.1.68.Final'//io.netty:netty-all:$netty_io_version
+        netty_io_version3               = '4.1.105.Final'//io.netty:netty-resolver-dns:$netty_io_version3
         netty_tcnative_version          = '2.0.66.Final' //Netty/TomcatNative [OpenSSL Dynamic]   io.netty:netty-tcnative:$netty_tcnative_version
         protobuf_version                = '3.22.5'//com.google.protobuf:protobuf-java:$protobuf_version
         protobuf_version                = '4.28.0'//com.google.protobuf:protobuf-java:$protobuf_version
@@ -256,7 +258,7 @@ allprojects {
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
         fusjb_boot_version              = '1.4.67'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
-        fusjb_boot_version3             = '3.4.67.26'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
+        fusjb_boot_version3             = '3.4.67.28'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
@@ -276,7 +278,7 @@ allprojects {
 
     // for springboot Customizing Managed Versions
     // https://docs.spring.io/spring-boot/docs/3.0.1/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.customizing
-    //ext['netty.version']                = "$netty_io_version"
+    ext['netty.version']                = "$netty_io_version3"
     ext['log4j2.version']               = "$log4j2_version"
     //ext['slf4j.version']                = "$slf4j_version"
     ext['gson.version']                 = "$gson_version"
