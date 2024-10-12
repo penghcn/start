@@ -257,8 +257,8 @@ allprojects {
         fuiou_ds_wxfxl_version          = '1.2.7'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
-        fusjb_boot_version              = '1.4.67'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
-        fusjb_boot_version3             = '3.4.67.32'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
+        fusjb_boot_version              = '1.4.70'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version3             = '3.4.70.10'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
         jar_prefix                      = 'fuiou'
