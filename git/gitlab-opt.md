@@ -40,6 +40,12 @@
     yum install -y gitlab-ee-16.11.6-ee.0.el7.x86_64
     gitlab-rake gitlab:backup:restore BACKUP=1721724542_2024_07_23_16.11.6-ee
 
+    gitlab-ctl stop
+    gitlab-ctl uninstall # /root/gitlab-cleanse-2024-09-19T14:05.
+    yum remove -y gitlab-ee
+    yum install -y gitlab-ee-16.11.10-ee.0.el7.x86_64
+    gitlab-rake gitlab:backup:restore BACKUP=1728625255_2024_10_11_16.11.10-ee
+
     gitlab-ctl reconfigure
     gitlab-ctl restart
 
