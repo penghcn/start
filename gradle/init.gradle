@@ -122,6 +122,7 @@ allprojects {
         redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
         redisson_version3               = '3.37.0'//org.redisson:redisson:$redisson_version
         jboss_marshalling_version       = '2.2.1.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
+        jboss_marshalling_version       = '2.0.12.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
 
         struts_version                  = '2.5.33'//org.apache.struts:struts2-core:$struts_version
 
@@ -257,7 +258,7 @@ allprojects {
         fuiou_ds_wxfxl_version          = '1.2.7'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
-        fusjb_boot_version              = '1.4.70'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.4.71'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
         fusjb_boot_version3             = '3.4.70.10'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
