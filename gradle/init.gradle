@@ -234,7 +234,7 @@ allprojects {
         fuiou_dmkt_dispatch_version     = '2.1.1'//com.fuiou.ds:dmkt-dispatch-api:$fuiou_dmkt_dispatch_version
         fuiou_ds_fedqry_version         = '1.7.7'//com.fuiou.ds:sjb-fedqry-dubbo:$fuiou_ds_fedqry_version
         fuiou_ds_flyqry_version         = '1.7.2'//com.fuiou.ds:sjb-flyqry-dubbo:$fuiou_ds_flyqry_version
-        fuiou_ds_trigger_version        = '2.8.6'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
+        fuiou_ds_trigger_version        = '2.8.9'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
         fuiou_wx_version                = '1.0.0'
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
         //fuiou_ds_lottery_version        = '0.3.8'
@@ -247,7 +247,7 @@ allprojects {
         fuiou_ds_pkg_version            = '2.0.2.4'//com.fuiou.ds:ds-pkg-api:$fuiou_ds_pkg_version
         fuiou_warn_version              = '1.0.1'//com.fuiou:fuiou-warn-client:$fuiou_warn_version
         fuiou_ds_fed_qry_dubbo_version  = '1.9.0'//com.fuiou.ds:fed_qry_dubbo:fuiou_ds_fed_qry_dubbo_version
-        fuiou_fed_bridge_version        = '1.4.8'//com.fuiou.ds:fed-bridge-dubbo-api:$fuiou_fed_bridge_version
+        fuiou_fed_bridge_version        = '1.5.0'//com.fuiou.ds:fed-bridge-dubbo-api:$fuiou_fed_bridge_version
         fuiou_ds_log_version            = '0.0.3'//com.fuiou.ds:ds-log-api:$fuiou_ds_log_version
         fuiou_ds_stock_version          = '1.0.8'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
         fuiou_ds_pos_apply_version      = '2.2.11'//com.fuiou.ds:ds-pos-apply-api:$fuiou_ds_pos_apply_version
