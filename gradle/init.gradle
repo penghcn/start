@@ -85,7 +85,7 @@ allprojects {
         pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
 
         reflections_version             = '0.9.12'//org.reflections:reflections:$reflections_version
-        xstream_version                 = '1.4.20'//com.thoughtworks.xstream:xstream:$xstream_version
+        xstream_version                 = '1.4.21'//com.thoughtworks.xstream:xstream:$xstream_version
         jackson_version_jdk8            = '2.13.5'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
         jackson_version                 = '2.17.2'//
         gson_version                    = '2.11.0'//com.google.code.gson:gson:$gson_version
