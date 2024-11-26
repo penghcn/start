@@ -97,14 +97,14 @@ allprojects {
 
         spring_version                  = '5.3.36'//org.springframework:spring-core:$spring_version
         spring_version_52               = '5.2.25.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
-        spring_version_61               = '6.1.14'//jdk21+ org.springframework:spring-core:$spring_version_61
+        spring_version_61               = '6.2.0'//jdk21+ org.springframework:spring-core:$spring_version_61
         spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
 
         //spring_boot_version             = '2.6.15'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_boot_version             = '2.7.18'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
-        spring_boot_version3            = '3.3.4'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_boot_version3            = '3.4.0'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_dependency_version       = '1.0.15.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         spring_dependency_version       = '1.1.6'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
@@ -155,7 +155,7 @@ allprojects {
         //dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
-        dubbo_apache_version3           = '3.3.0'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        dubbo_apache_version3           = '3.3.2'//org.apache.dubbo:dubbo:$dubbo_apache_version
         alibaba_spring_version          = '1.0.11'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
         curator_version                 = '4.2.0'
         curator_version5                = '5.1.0'
