@@ -211,7 +211,7 @@ allprojects {
         
         //pbase_version                   = '2.4.2'//jdk6
         pbase_version                   = '3.11.6'//jdk8+
-        pbase_version_4                 = '4.6.79'// cn.pengh.pbase:pbase-core:$pbase_version_4, cn.pengh.pbase:pbase-mvc:$pbase_version_4
+        pbase_version_4                 = '4.6.80'// cn.pengh.pbase:pbase-core:$pbase_version_4, cn.pengh.pbase:pbase-mvc:$pbase_version_4
         pbase_version_6                 = '6.0.9'//jdk21+ cn.pengh.pbase:pbase-core:$pbase_version_6, cn.pengh.pbase:pbase-mvc:$pbase_version_6
 
         //fuiou_sms_version               = '1.3.7' //兼容版本1
@@ -258,7 +258,437 @@ allprojects {
         fuiou_ds_wxfxl_version          = '1.2.7'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
 
-        fusjb_boot_version              = '1.4.81'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.4.82'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version3             = '3.4.73'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
+
+        release_dir                     = '/data/release/jar'
+        jar_prefix                      = 'fuiou'
+        jar_include_sources             = true
+
+        PUBLISH_NAME                    = 'Release'
+        PUBLISH_USERNAME                = "$publish_user"
+        PUBLISH_PASSWORD                = "$publish_pass"//
+
+
+
+        REPO_GROUP_URL                  = "$nexus_host/repository/maven-public"
+        REPO_GROUP_OTHER_URL            = "$nexus_host/repository/maven-other"
+        REPO_PUBLISH_URL                = "$nexus_host/repository/maven-releases"
+        REPO_DEV_URL                    = "$nexus_host/repository/maven-snapshots"
+    }
+
+    // for springboot Customizing Managed Versions
+    // https://docs.spring.io/spring-boot/docs/3.0.1/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.customizing
+    ext['netty.version']                = "$netty_io_version3"
+    ext['log4j2.version']               = "$log4j2_version"
+    //ext['slf4j.version']                = "$slf4j_version"
+    ext['gson.version']                 = "$gson_version"
+    ext['tcnative.version']             = "$netty_tcnative_version" //Netty/TomcatNative [OpenSSL Dynamic]   io.netty:netty-tcnative
+
+    
+
+    configurations.all {
+        //
+        //exclude group: 'ch.qos.logback'
+
+        // check for updates every build
+        resolutionStrategy.cacheDynamicVersionsFor 10, 'minutes'
+        resolutionStrategy.cacheChangingModulesFor 4, 'hours'
+        //resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+
+        // Consistent slf4j version (e.g. clashes between slf4j versions)
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == "org.slf4j") {
+                details.useVersion slf4j_version
+            }
+
+            if (details.requested.group == "cn.pengh.pbase") {
+               // details.useVersion pbase_version_4
+            }
+
+            /*if (details.requested.group == "io.netty") {
+                details.useVersion netty_io_version
+            }*/
+        }
+    }
+
+    buildscript {
+    
+        repositories {
+            if (!isFuVpn) {
+                maven { url "https://maven.aliyun.com/repository/google"}
+                maven { url "https://jitpack.io"}
+            }
+
+            maven {
+                allowInsecureProtocol = true
+                url REPO_GROUP_URL
+            }
+            maven {
+                allowInsecureProtocol = true
+                url REPO_GROUP_OTHER_URL
+            }
+        }
+    }
+
+
+    repositories {
+        //maven.oschina.net已经不可用，使用mavenCentral就好，实在嫌下载慢，可使用vpn
+        //这里使用自己搭建的maven私有库
+        all { ArtifactRepository repo ->
+            if(repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $REPO_PROXY_URL."
+                    remove repo
+                }
+            }
+        }
+
+
+        if (!isFuVpn) {
+            maven { url "https://maven.aliyun.com/repository/public"}
+            maven { url "https://maven.aliyun.com/repository/google"}
+        }
+
+        maven {
+            allowInsecureProtocol = true
+            url REPO_GROUP_URL
+        }
+        maven {
+            allowInsecureProtocol = true
+            url REPO_GROUP_OTHER_URL
+        }
+        
+        //mavenCentral()
+    }
+
+    task del(type: Delete) { 
+        delete ".classpath",".project",".settings"
+    }
+
+    tasks.withType(GenerateModuleMetadata) {
+        enabled = false
+    }
+
+    // tasks.withType(JavaCompile) {
+    //     options.compilerArgs += [/*'-verbose', */'-Xdoclint:none', '-Xlint:deprecation', '-nowarn']
+    //     sourceCompatibility = jvm_version_8
+    //     targetCompatibility = jvm_version_8
+    // }
+}
+
+def getLocalIp() {
+    InetAddress result = null;
+    Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+    while (interfaces.hasMoreElements()) {
+        Enumeration<InetAddress> addresses = interfaces.nextElement().getInetAddresses();
+        while (addresses.hasMoreElements()) {
+            InetAddress address = addresses.nextElement();
+            if (!address.isLoopbackAddress()) {
+                if (address.isSiteLocalAddress()) {
+                    return address.getHostAddress();
+                } else if (result == null) {
+                    result = address;
+                }
+            }
+        }
+    }
+    return (result != null ? result : InetAddress.getLocalHost()).getHostAddress();
+}
+
+
+//gradle clean
+//gradle build -x test --warning-mode=all --refresh-dependencies
+
+//gradle init --type pom
+
+//maven发布第三方jar
+//mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-trigger-dubbo-api -Dversion=2.0.1 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-trigger-dubbo-client-2.0.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
+//mvn deploy:deploy-file -DgroupId=com.fuiou.ds -DartifactId=sjb-fedqry-dubbo -Dversion=1.7.0 -Dpackaging=jar -Dfile=/Users/pengh/Downloads/fed-qry-dubbo-1.7.jar -Durl=http://192.168.8.29:29106/repository/maven-releases -DrepositoryId=nexus29-maven-releases
+
+/**
+//npm私服安装使用
+npm -v && node -v && npm config get registry
+npm install verdaccio -g
+vi ~/.config/verdaccio/config.yaml
+listen: 0.0.0.0:14873
+
+npm install -g pm2 --unsafe-perm
+pm2 start verdaccio
+
+pm2 list
+pm2 logs verdaccio
+
+#https://registry.npm.taobao.org
+npm set registry https://registry.npmjs.org
+npm set registry http://192.168.8.70:14873
+
+npm info node
+**/
+
+
+// wget http://192.168.8.251/open/doc/raw/master/gradle/init.gradle
+def isFuVpn = true
+def localPropFile = "${System.properties['user.home']}/.gradle/local.properties"
+println "^_^ *********************************************************************************************************** ^_^"
+println "    Gradle $gradleVersion"
+println "    see global gradle init config file at ${System.properties['user.home']}/.gradle/init.gradle "
+println "    see global gradle properties file at ${System.properties['user.home']}/.gradle/gradle.properties "
+println "    see global local properties file at $localPropFile "
+println "    请注意Gradle的全局配置，如上3行中的文件"
+println "^_^ *********************************************************************************************************** ^_^"
+
+Properties properties = new Properties()  
+properties.load(new FileInputStream("$localPropFile"))
+
+def nexus_host = properties.getProperty("nexus.host")
+def publish_user = properties.getProperty("publish.user")
+def publish_pass = properties.getProperty("publish.pass")
+
+println "LOCAL IP: " + getLocalIp()
+println isFuVpn ? "NEXUS代理HOST: $nexus_host" : "使用公网镜像，大部分aliyun"
+
+
+//配置gradle全局插件设置，如代理
+settingsEvaluated { settings ->
+    settings.pluginManagement {
+        def REPO_PROXY_URL_GRADLE_PLUGINS = isFuVpn ? "$nexus_host/repository/gradle-plugins" : "https://plugins.gradle.org/m2"
+        println "PluginManagement: $REPO_PROXY_URL_GRADLE_PLUGINS"
+        repositories.clear()
+
+        plugins {}
+
+        resolutionStrategy {}
+
+        repositories {
+            maven {
+                allowInsecureProtocol = true
+                url REPO_PROXY_URL_GRADLE_PLUGINS
+            }
+        }
+    }
+}
+
+
+allprojects {
+    ext {  
+        charset                         = 'UTF-8'
+        checkstyle_version              = '9.3'
+
+        jvm_version                     = 1.6
+        jvm_version_8                   = 1.8
+        jvm_version_17                  = 17
+        jvm_version_21                  = 21
+
+        bcprov_version                  = '1.78.1'//org.bouncycastle:bcprov-jdk18on:$bcprov_version
+
+        servlet_version                 = '4.0.1'//compileOnly ("javax.servlet:javax.servlet-api:$servlet_version")
+        tomcat_version                  = '9.0.83' //org.apache.tomcat.embed:tomcat-embed-core:$tomcat_version
+        jetty_version                   = '9.4.51.v20230217' //org.eclipse.jetty:jetty-servlet:$jetty_version
+
+        disruptor_version               = '3.4.4'//com.lmax:disruptor:$disruptor_version
+        caffeine_version                = '2.9.3'//com.github.ben-manes.caffeine:caffeine:$caffeine_version
+        guava_version                   = '19.0'//com.google.guava:guava:$guava_version
+        guava_version_jdk8              = '31.1-jre'//com.google.guava:guava:$guava_version_jdk8
+        junit_version                   = '4.13.2'// 4.13 //testCompile "junit:junit:$junit_version"
+        junit5_version                  = '5.11.0' // org.junit:junit-bom:$junit5_version org.junit.jupiter:junit-jupiter-api:$junit5_version
+        log4j2_version                  = '2.24.0'//requires jdk1.8+ 
+        log4j2_version_jdk6             = '2.3.2'//
+        log4j2_version_jdk8             = '2.20.0'//org.apache.logging.log4j:log4j-core:$log4j2_version_jdk8
+        slf4j_version                   = '1.7.36'//org.slf4j:slf4j-api:$slf4j_version
+        //slf4j_version                   = '2.0.16'//org.slf4j:slf4j-api:$slf4j_version
+
+        commons_fileupload_version      = '1.4'//commons-fileupload:commons-fileupload:$commons_fileupload_version
+        commons_codec_version           = '1.15'//commons-codec:commons-codec:$commons_codec_version
+        commons_io_version              = '2.11.0'//commons-io:commons-io:$commons_io_version
+        commons_lang_version            = '2.6'//commons-lang:commons-lang:$commons_lang_version
+        commons_net_version             = '3.8.0'//commons-net:commons-net:$commons_net_version
+        commons_beanutils_version       = '1.9.4'//commons-beanutils:commons-beanutils:$commons_beanutils_version
+        commons_collections_version     = '3.2.2'//commons-collections:commons-collections:$commons_collections_version
+        commons_lang_apache_version     = '3.12.0'//org.apache.commons:commons-lang3:$commons_lang_apache_version
+        zstd_jni_version                = '1.5.5-3'//com.github.luben:zstd-jni:$zstd_jni_version
+        lz4_version                     = '1.8.0'//org.lz4:lz4-java:$lz4_version
+
+        
+        joda_version                    = '2.10' //joda-time:joda-time:$joda_version
+        pinyin4j_version                = '2.5.1'//com.belerweb:pinyin4j:$pinyin4j_version
+
+        reflections_version             = '0.9.12'//org.reflections:reflections:$reflections_version
+        xstream_version                 = '1.4.21'//com.thoughtworks.xstream:xstream:$xstream_version
+        jackson_version_jdk8            = '2.13.5'//com.fasterxml.jackson.core:jackson-databind:$jackson_version_jdk8
+        jackson_version                 = '2.17.2'//
+        gson_version                    = '2.11.0'//com.google.code.gson:gson:$gson_version
+        fastjson_version                = '1.2.76'//com.alibaba:fastjson:$fastjson_version
+        fastjson_version2               = '2.0.52'//com.alibaba.fastjson2:fastjson2:$fastjson_version2
+        jsonlib_version                 = '2.4-jdk15'//net.sf.json:json-lib:$jsonlib_version
+        snakeyaml_version               = '2.3'//org.yaml:snakeyaml:$snakeyaml_version
+
+
+        spring_version                  = '5.3.36'//org.springframework:spring-core:$spring_version
+        spring_version_52               = '5.2.25.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_52
+        spring_version_61               = '6.2.0'//jdk21+ org.springframework:spring-core:$spring_version_61
+        spring_version_jdk8             = '5.1.20.RELEASE'//jdk8+ org.springframework:spring-core:$spring_version_jdk8
+        spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
+        spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
+
+        //spring_boot_version             = '2.6.15'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_boot_version             = '2.7.18'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_boot_version3            = '3.4.0'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_dependency_version       = '1.0.15.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
+        spring_dependency_version       = '1.1.6'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
+        //spring_data_version             = '1.13.12.RELEASE'//2.0.7
+        spring_data_version             = '2.3.9.RELEASE'// org.springframework.data:spring-data-jpa:$spring_data_version
+        spring_redis_version            = '2.3.9.RELEASE'// org.springframework.data:spring-data-redis:$spring_redis_version
+        spring_redis_version3           = '3.3.3'// org.springframework.data:spring-data-redis:$spring_redis_version
+        spring_retry_version            = '1.3.1'//org.springframework.retry:spring-retry:$spring_retry_version
+        spring_retry_version2           = '2.0.8'//org.springframework.retry:spring-retry:$spring_retry_version
+        spring_rabbit_version           = '2.4.0'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
+        spring_rabbit_version3          = '3.1.7'//org.springframework.amqp:spring-rabbit:$spring_rabbit_version
+        spring_session_version          = '2.6.0'// org.springframework.session:spring-session-core:$spring_session_version
+        spring_kafka_version            = '2.9.13'//org.springframework.kafka:spring-kafka:$spring_kafka_version
+        jedis_version                   = '3.9.0'//redis.clients:jedis:$jedis_version
+        jedis_version5                  = '5.1.5'//redis.clients:jedis:$jedis_version
+        redisson_version                = '3.16.6'//org.redisson:redisson:$redisson_version
+        redisson_version3               = '3.37.0'//org.redisson:redisson:$redisson_version
+        jboss_marshalling_version       = '2.2.1.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
+        jboss_marshalling_version       = '2.0.12.Final'//org.jboss.marshalling:jboss-marshalling-river:$jboss_marshalling_version, org.jboss.marshalling:jboss-marshalling:$jboss_marshalling_version
+
+        struts_version                  = '2.5.33'//org.apache.struts:struts2-core:$struts_version
+
+        hibernate_version               = '5.4.21.Final'//org.hibernate:hibernate-core:$hibernate_version
+        hibernate_validator_version     = '6.0.13.Final'//org.hibernate:hibernate-validator:$hibernate_validator_version
+        mybatis_version                 = '3.5.16' //org.mybatis:mybatis:$mybatis_version
+        mybatis_spring_version          = '2.1.1' //org.mybatis:mybatis-spring:$mybatis_spring_version
+        mybatis_spring_version3         = '3.0.4' //org.mybatis:mybatis-spring:$mybatis_spring_version
+        mybatis_spring_boot_version     = '2.3.1' //org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatis_spring_boot_version
+        mybatis_spring_boot_version3    = '3.0.3' //org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatis_spring_boot_version
+        druid_version                   = '1.2.8'//com.alibaba:druid:$druid_version
+        c3p0_version                    = '0.9.5.5'//com.mchange:c3p0:$c3p0_version
+        hikaricp_jdk6_version           = '2.3.13'//com.zaxxer:HikariCP-java6:2.3.13 https://github.com/brettwooldridge/HikariCP
+        hikaricp_version                = '4.0.3'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
+        hikaricp_version5               = '5.1.0'//com.zaxxer:HikariCP:$hikaricp_version https://github.com/brettwooldridge/HikariCP
+
+        mysql_connector_version         = '9.0.0'// com.mysql:mysql-connector-j:9.0.0
+        mysql_connector_version_jdk6    = '5.1.49'//6.0.6 requires jdk1.8
+        mysql_connector_version_jdk8    = '8.0.33'//mysql:mysql-connector-java:$mysql_connector_version_jdk8
+        sqlite_jdbc_version             = '3.39.3.0'//org.xerial:sqlite-jdbc:$sqlite_jdbc_version
+        db2_jdbc_version                = '10.1'// com.ibm.db2.jcc:db2jcc:$db2_jdbc_version com.ibm.db2.jcc:db2jcc_license_cu:$db2_jdbc_version
+        clickhouse_jdbc_version         = '0.4.6'// com.clickhouse:clickhouse-jdbc:$clickhouse_jdbc_version
+
+        httpclient_version              = '4.5.13'//org.apache.httpcomponents:httpclient:$httpclient_version org.apache.httpcomponents:httpmime:$httpclient_version
+        okhttp_version                  = '3.14.9'//com.squareup.okhttp3:okhttp:$okhttp_version
+        //okhttp_version                  = '4.0.1'//com.squareup.okhttp3:okhttp:$okhttp_version https://github.com/square/okhttp
+        jsoup_version                   = '1.10.3'
+        quartz_version                  = '2.3.2'//org.quartz-scheduler:quartz:$quartz_version
+        cglib_version                   = '3.2.2'//cglib:cglib:$cglib_version
+        //dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
+        dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
+        dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        dubbo_apache_version3           = '3.3.2'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        alibaba_spring_version          = '1.0.11'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
+        curator_version                 = '4.2.0'
+        curator_version5                = '5.1.0'
+        zookeeper_version               = '3.4.14'//目前curator只适配3.4.X
+        zookeeper_version9              = '3.9.2'//org.apache.zookeeper:zookeeper:$zookeeper_version
+        zkclient_version                = '0.10'
+        javassist_version               = '3.20.0-GA'
+        netty_version                   = '3.2.10.Final'//org.jboss.netty:netty:$netty_version
+        //netty_version                   = '3.7.0.Final'//jboss netty
+        netty_io_version                = '4.1.68.Final'//io.netty:netty-all:$netty_io_version
+        netty_io_version3               = '4.1.105.Final'//io.netty:netty-resolver-dns:$netty_io_version3
+        netty_tcnative_version          = '2.0.66.Final' //Netty/TomcatNative [OpenSSL Dynamic]   io.netty:netty-tcnative:$netty_tcnative_version
+        protobuf_version                = '3.25.3'//com.google.protobuf:protobuf-java:$protobuf_version
+        //protobuf_version                = '4.28.0'//com.google.protobuf:protobuf-java:$protobuf_version
+        mina_version                    = '1.1.7'//
+        kryo_version                    = '5.2.1' //com.esotericsoftware:kryo:$kryo_version de.javakaffee:kryo-serializers:0.45
+        javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
+        hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$hessian_lite_version
+        hessian_lite_version4           = '4.0.3' //org.apache.dubbo:hessian-lite:$hessian_lite_version4
+
+        rabbitmq_version                = '5.21.0'//com.rabbitmq:amqp-client:$rabbitmq_version
+        xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
+        kafka_version                   = '3.9.0'//org.apache.kafka:kafka_2.12:$kafka_version org.apache.kafka:kafka_2.13:3.8.0
+        kafka_version3                  = '3.9.0'//org.apache.kafka:kafka_2.13:$kafka_version3
+        canal_version                   = '1.1.7'//com.alibaba.otter:canal:$canal_version
+        mqtt_version                    = '1.2.5'//org.eclipse.paho:org.eclipse.paho.client.mqttv3:$mqtt_version
+
+        excel_poi_version               = '4.1.2'//org.apache.poi:poi:$excel_poi_version
+        excel_jxls_version              = '2.11.0'//org.jxls:jxls:$excel_jxls_version
+        excel_jxls_poi_version          = '1.0.15'//org.jxls:jxls-poi:$excel_jxls_poi_version
+        excel_easy_excel_version        = '2.2.11'//com.alibaba:easyexcel:$excel_easy_excel_version
+        zxing_version                   = '3.4.0'//com.google.zxing:core:$zxing_version
+        
+        easy_captcha_version            = '1.6.2'//com.github.whvcse:easy-captcha:$easy_captcha_version
+
+        alipay_version                  = '4.38.85.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
+        alibaba_csb_version             = '1.1.5.11'//com.alibaba.csb.sdk:http-client:$alibaba_csb_version
+        aliyun_gateway_version          = '1.1.7' //com.aliyun.api.gateway:sdk-core-java$aliyun_gateway_version
+        cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
+
+        sentinel_version                = '1.8.6'//com.alibaba.csp:sentinel-apache-dubbo-adapter:$sentinel_version
+
+        android_sdk_version             = 30 //compileSdkVersion android_sdk_version
+        android_sdk_min_version         = 14 //minSdkVersion android_sdk_min_version targetSdkVersion android_sdk_version
+        android_build_version           = "30.0.2" //buildToolsVersion "$android_build_version"
+        android_ndk_version             = "21.0.6113669" //ndkVersion "$android_ndk_version"
+        android_tools_version           = '4.0.1'//com.android.tools.build:gradle:$android_tools_version
+        android_tools_version           = '3.6.4'//com.android.tools.build:gradle:$android_tools_version
+        greendao_version                = '3.3.0'//org.greenrobot:greendao-gradle-plugin:$greendao_version
+
+        javacv_version                  = '1.5.6'//org.bytedeco:javacv:$javacv_version
+        javacv_ffmpeg_version           = '4.4-1.5.6'//org.bytedeco:ffmpeg:$javacv_ffmpeg_version
+        
+        //pbase_version                   = '2.4.2'//jdk6
+        pbase_version                   = '3.11.6'//jdk8+
+        pbase_version_4                 = '4.6.80'// cn.pengh.pbase:pbase-core:$pbase_version_4, cn.pengh.pbase:pbase-mvc:$pbase_version_4
+        pbase_version_6                 = '6.0.9'//jdk21+ cn.pengh.pbase:pbase-core:$pbase_version_6, cn.pengh.pbase:pbase-mvc:$pbase_version_6
+
+        //fuiou_sms_version               = '1.3.7' //兼容版本1
+        //fuiou_sms_version               = '2.0.0' //兼容版本2
+        fuiou_sms_version               = '2.2.2'//com.fuiou.sms:sms-api:$fuiou_sms_version
+        fuiou_fus_version               = '1.2.3'//com.fuiou:fus-dubbo-client:$fuiou_fus_version
+        fuiou_fus_version3              = '3.2.3'//com.fuiou:fus-dubbo-client:$fuiou_fus_version
+        fuiou_mail_version              = '1.2.0'//com.fuiou:fuiou-mail:$fuiou_mail_version
+        fuiou_fas_client_version        = '1.3.2'//com.fuiou:fuiou-fas-client:$fuiou_fas_client_version
+        fuiou_ds_version                = '1.5.0'//com.fuiou:fuiou-ds:$fuiou_ds_version
+        fuiou_ds_version3               = '3.5.4'//com.fuiou:fuiou-ds:$fuiou_ds_version
+        fuiou_kms_version               = '1.2.2'//com.fuiou:fuiou-keyLoader:$fuiou_kms_version com.fuiou:fuiou-keyMgr:$fuiou_kms_version
+        fuiou_xmemcached_version        = '1.2.0'
+        fuiou_version                   = '1.2.0'
+
+        fuiou_ds_user_act_version       = '3.1.29'//com.fuiou.ds:ds-user-act-api:$fuiou_ds_user_act_version
+        fuiou_box_contract_version      = '1.4.7'//com.fuiou.ds:box-contract-api:$fuiou_box_contract_version
+        fuiou_box_book_version          = '1.0.0'//com.fuiou.ds:box-book-api:$fuiou_box_book_version
+        fuiou_ds_o2o_version            = '2.2.30'//com.fuiou.ds:o2o-dubbo-api:$fuiou_ds_o2o_version
+        fuiou_dmkt_dispatch_version     = '2.1.1'//com.fuiou.ds:dmkt-dispatch-api:$fuiou_dmkt_dispatch_version
+        fuiou_ds_fedqry_version         = '1.7.7'//com.fuiou.ds:sjb-fedqry-dubbo:$fuiou_ds_fedqry_version
+        fuiou_ds_flyqry_version         = '1.7.2'//com.fuiou.ds:sjb-flyqry-dubbo:$fuiou_ds_flyqry_version
+        fuiou_ds_trigger_version        = '2.8.9'//com.fuiou.ds:sjb-trigger-dubbo-api:$fuiou_ds_trigger_version
+        fuiou_wx_version                = '1.0.0'
+        fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
+        //fuiou_ds_lottery_version        = '0.3.8'
+        fuiou_ds_rock_version           = '2.3.24'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
+        fuiou_ds_proxy_version          = '1.4.57'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
+        fuiou_opr_event_version         = '3.3.4'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
+        fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
+        fuiou_ds_express_version        = '1.3.4'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
+        fuiou_ds_market_version         = '2.0.2'//com.fuiou.ds:ds-market-activity-dubbo-api:$fuiou_ds_market_version
+        fuiou_ds_pkg_version            = '2.0.2.4'//com.fuiou.ds:ds-pkg-api:$fuiou_ds_pkg_version
+        fuiou_warn_version              = '1.0.1'//com.fuiou:fuiou-warn-client:$fuiou_warn_version
+        fuiou_ds_fed_qry_dubbo_version  = '1.9.0'//com.fuiou.ds:fed_qry_dubbo:fuiou_ds_fed_qry_dubbo_version
+        fuiou_fed_bridge_version        = '1.5.0'//com.fuiou.ds:fed-bridge-dubbo-api:$fuiou_fed_bridge_version
+        fuiou_ds_log_version            = '0.0.3'//com.fuiou.ds:ds-log-api:$fuiou_ds_log_version
+        fuiou_ds_stock_version          = '1.0.8'//com.fuiou.ds:ds-stock-api:$fuiou_ds_stock_version
+        fuiou_ds_pos_apply_version      = '2.2.11'//com.fuiou.ds:ds-pos-apply-api:$fuiou_ds_pos_apply_version
+        fuiou_ds_repair_version         = '1.0.35'//com.fuiou.ds:ds-repair-api:$fuiou_ds_repair_version
+        fuiou_ds_work_wx_version        = '1.0.1'
+        fuiou_ds_4th_version            = '1.0.1'//com.fuiou.ds:ds-4th-api:$fuiou_ds_4th_version
+        fuiou_ds_procure_version        = '1.0.5'//com.fuiou.ds:ds-procure-api:$fuiou_ds_procure_version
+        fuiou_ds_wxfxl_version          = '1.2.7'//com.fuiou.ds:ds-wxfxl-api:$fuiou_ds_wxfxl_version
+        fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
+
+        fusjb_boot_version              = '1.4.82'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
         fusjb_boot_version3             = '3.4.73'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
