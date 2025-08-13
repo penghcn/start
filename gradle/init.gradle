@@ -192,7 +192,7 @@ allprojects {
         
         easy_captcha_version            = '1.6.2'//com.github.whvcse:easy-captcha:$easy_captcha_version
 
-        alipay_version                  = '4.38.85.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
+        alipay_version                  = '4.40.393.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         alibaba_csb_version             = '1.1.5.11'//com.alibaba.csb.sdk:http-client:$alibaba_csb_version
         aliyun_gateway_version          = '1.1.7' //com.aliyun.api.gateway:sdk-core-java$aliyun_gateway_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
