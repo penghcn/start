@@ -155,6 +155,7 @@ allprojects {
         //dubbo_fuiou_version             = '0.0.1-RELEASE'//com.fuiou:fuiou-dubbo-client:$dubbo_fuiou_version
         dubbo_version                   = '2.5.8'//com.alibaba:dubbo:$dubbo_version
         dubbo_apache_version            = '2.7.4.1'//org.apache.dubbo:dubbo:$dubbo_apache_version
+        dubbo_apache_version            = '2.7.23'//org.apache.dubbo:dubbo:$dubbo_apache_version
         dubbo_apache_version3           = '3.3.2'//org.apache.dubbo:dubbo:$dubbo_apache_version
         alibaba_spring_version          = '1.0.11'//com.alibaba.spring:spring-context-support:$alibaba_spring_version
         curator_version                 = '4.2.0'
