@@ -45,6 +45,9 @@
     yum remove -y gitlab-ee
     yum install -y gitlab-ee-16.11.10-ee.0.el7.x86_64
     gitlab-rake gitlab:backup:restore BACKUP=1728625255_2024_10_11_16.11.10-ee
+    gitlab-rake gitlab:backup:restore BACKUP=1756258531_2025_08_27_16.11.10-ee DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+
+     
 
     gitlab-ctl reconfigure
     gitlab-ctl restart
@@ -157,7 +160,7 @@
     gitlab-ctl reconfigure
     gitlab-ctl restart
 
-    yum install -y gitlab-ee-16.11.5-ee.0.el7.x86_64
+    yum install -y gitlab-ee-16.11.6-ee.0.el7.x86_64
     gitlab-ctl reconfigure
     gitlab-ctl restart
 
