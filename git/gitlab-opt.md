@@ -15,6 +15,8 @@
     官方建议cpu核数+1，超时60s
     200人左右规模，建议4核cpu、8GB内存
 
+    external_url 'http://192.168.8.251'
+
     配置生效
     gitlab-ctl reconfigure
 
@@ -23,6 +25,41 @@
 
 ## 减少sidekiq并发数
     sidekiq['concurrency'] = 8
+
+
+
+## 迁移
+    gitlab-ctl stop
+    gitlab-ctl uninstall
+    
+    apt install -y curl ca-certificates tzdata perl
+    curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | bash
+    
+    apt remove gitlab-ee
+
+    apt install gitlab-ee=16.11.10-ee.0
+    gitlab-ctl reconfigure
+
+    scp ...
+
+
+    gitlab-ctl stop unicorn
+    gitlab-ctl stop sidekiq
+
+    chown git:git /var/opt/gitlab/backups
+    chown git:git /var/opt/gitlab/backups/*
+    chmod 600 /var/opt/gitlab/backups/*.tar
+
+    gitlab-backup restore BACKUP=1756371956_2025_08_28_16.11.10-ee
+
+    gitlab-rake db:migrate
+
+    
+    gitlab-ctl reconfigure
+    gitlab-ctl restart
+
+
+
 
 ## 备份、还原
     ## 备份
@@ -45,12 +82,11 @@
     yum remove -y gitlab-ee
     yum install -y gitlab-ee-16.11.10-ee.0.el7.x86_64
     gitlab-rake gitlab:backup:restore BACKUP=1728625255_2024_10_11_16.11.10-ee
-    gitlab-rake gitlab:backup:restore BACKUP=1756258531_2025_08_27_16.11.10-ee DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 
-     
 
     gitlab-ctl reconfigure
-    gitlab-ctl restart
+    gitlab-backup restore BACKUP=1756371956_2025_08_28_16.11.10-ee DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+
 
     https://docs.gitlab.com/omnibus/settings/database.html#upgrade-packaged-postgresql-server
 
