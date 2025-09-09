@@ -422,7 +422,7 @@ pm2 start verdaccio
 pm2 list
 pm2 logs verdaccio
 
-#https://registry.npm.taobao.org
+# https://registry.npmmirror.com
 npm set registry https://registry.npmjs.org
 npm set registry http://192.168.8.70:14873
 
