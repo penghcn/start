@@ -193,7 +193,7 @@ allprojects {
         
         easy_captcha_version            = '1.6.2'//com.github.whvcse:easy-captcha:$easy_captcha_version
 
-        alipay_version                  = '4.40.393.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
+        alipay_version                  = '4.40.451.ALL'//com.alipay.sdk:alipay-sdk-java:$alipay_version
         alibaba_csb_version             = '1.1.5.11'//com.alibaba.csb.sdk:http-client:$alibaba_csb_version
         aliyun_gateway_version          = '1.1.7' //com.aliyun.api.gateway:sdk-core-java$aliyun_gateway_version
         cat_version                     = '3.0.0'//com.dianping.cat:cat-client:$cat_version
@@ -241,7 +241,7 @@ allprojects {
         fuiou_ds_cainiao_version        = '2.0.3'//com.fuiou.ds:ds-cainiao-api:$fuiou_ds_cainiao_version
         //fuiou_ds_lottery_version        = '0.3.8'
         fuiou_ds_rock_version           = '2.4.0'//com.fuiou.ds:ds-rock-dubbo-api:$fuiou_ds_rock_version
-        fuiou_ds_proxy_version          = '1.6.1'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
+        fuiou_ds_proxy_version          = '1.6.2'//com.fuiou.ds:ds-proxy-api:$fuiou_ds_proxy_version
         fuiou_opr_event_version         = '3.4.9'//com.fuiou.ds:opr-event-api:$fuiou_opr_event_version
         fuiou_host_ads_version          = '1.0.0'//com.fuiou.ds:host-ads-api:$fuiou_host_ads_version
         fuiou_ds_express_version        = '1.4.6'//com.fuiou.ds:ds-express-data-dubbo-api:$fuiou_ds_express_version
