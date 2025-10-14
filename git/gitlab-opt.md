@@ -19,8 +19,6 @@
 
     配置生效
     gitlab-ctl reconfigure
-
-    重启
     gitlab-ctl restart
 
 ## 减少sidekiq并发数
@@ -254,7 +252,8 @@
 
     ALTER TABLE "application_settings" DROP COLUMN "service_ping_settings" 
 
-
+5、磁盘不够
+du -sh /var/opt/gitlab/* | sort -h
 
 
 
