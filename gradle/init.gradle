@@ -262,7 +262,7 @@ allprojects {
         fuiou_fxl_mch_version           = '1.0.6'//com.fuiou.ds:fxl-mch-api:$fuiou_fxl_mch_version
         fuiou_ds_spkg_version           = '0.0.6'//com.fuiou.ds:ds-spkg-api:$fuiou_ds_spkg_version
 
-        fusjb_boot_version              = '1.4.91'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
+        fusjb_boot_version              = '1.4.92'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version
         fusjb_boot_version3             = '3.4.73'//com.fusjb.boot:fusjb-boot-starter-dubbo:$fusjb_boot_version3
 
         release_dir                     = '/data/release/jar'
