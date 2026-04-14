@@ -103,9 +103,10 @@ allprojects {
         spring_version_jdk6             = '3.2.18.RELEASE'//jdk6
         spring_version_4                = '4.3.30.RELEASE'//4.2.5，3.2.18
 
+        spring_ai_version               = '1.1.4' //implementation platform("org.springframework.ai:spring-ai-bom:$spring_ai_version")
         //spring_boot_version             = '2.6.15'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_boot_version             = '2.7.18'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
-        spring_boot_version3            = '3.5.11'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
+        spring_boot_version3            = '3.5.13'//org.springframework.boot:spring-boot-starter-web:$spring_boot_version
         spring_dependency_version       = '1.0.15.RELEASE'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         spring_dependency_version       = '1.1.6'//io.spring.gradle:dependency-management-plugin:$spring_dependency_version
         //spring_data_version             = '1.13.12.RELEASE'//2.0.7
@@ -177,6 +178,8 @@ allprojects {
         javassist_version               = '3.25.0-GA'//org.javassist:javassist:$javassist_version
         hessian_lite_version            = '3.2.13' //com.alibaba:hessian-lite:$hessian_lite_version
         hessian_lite_version4           = '4.0.3' //org.apache.dubbo:hessian-lite:$hessian_lite_version4
+        grpc_version                    = '1.80.0'
+        tika_version                    = '3.3.0' //org.apache.tika:tika-core:$tika_version
 
         rabbitmq_version                = '5.21.0'//com.rabbitmq:amqp-client:$rabbitmq_version
         xmemcached_version              = '2.2.0'//com.googlecode.xmemcached:xmemcached:$xmemcached_version
